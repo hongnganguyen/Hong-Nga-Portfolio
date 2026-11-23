@@ -1,0 +1,663 @@
+date,group,category,plate,note,amount_aud,type
+2025-01-01,Office,Office,,Office expenses,89.63,Operation
+2025-01-02,Material,Parts,CAR-025,Tyres x2 - CAR-025,229.15,Invest
+2025-01-02,Material,Parts,CAR-055,Headlight - CAR-055,358.53,Invest
+2025-01-03,Material,Others,CAR-009,Roadside help (2025-01-14),219.17,Operation
+2025-01-04,Material,Rego,CAR-027,Pinkslip_CAR-027,679.2,Operation
+2025-01-04,Material,Others,CAR-044,Transfer fee (2025-01-24),68.65,Operation
+2025-01-05,HR,Salary,,Staff C salary,869.0,Operation
+2025-01-05,HR,Salary,,Staff B salary,1550.0,Operation
+2025-01-05,Material,Others,CAR-002,Roadside help (2025-01-24),353.04,Operation
+2025-01-05,HR,Salary,,Staff A salary,2000.0,Operation
+2025-01-05,Material,Rego,CAR-049,Greenslip_CAR-049,702.98,Operation
+2025-01-07,Material,Others,CAR-013,Parking (2025-01-13),381.77,Operation
+2025-01-08,Material,Others,CAR-039,Toll (2025-01-08),180.58,Operation
+2025-01-08,Material,Others,CAR-008,Transfer fee (2025-01-07),472.29,Operation
+2025-01-08,Material,Rego,CAR-037,Pinkslip_CAR-037,709.85,Operation
+2025-01-09,Material,Others,CAR-026,Toll (2025-01-30),362.09,Invest
+2025-01-09,Material,Others,CAR-017,Roadside help (2025-01-18),333.52,Operation
+2025-01-10,Material,Parts,CAR-017,Battery - CAR-017,331.56,Invest
+2025-01-10,Material,Parts,CAR-010,Battery - CAR-010,385.29,Operation
+2025-01-10,Material,Others,CAR-022,Parking (2025-01-20),450.45,Invest
+2025-01-11,Material,Others,CAR-006,Parking (2025-01-07),151.11,Operation
+2025-01-12,Material,Rego,CAR-057,Greenslip_CAR-057,696.05,Operation
+2025-01-12,Material,Parts,CAR-055,Wipers - CAR-055,147.18,Invest
+2025-01-12,Material,Parts,CAR-005,Battery - CAR-005,198.04,Invest
+2025-01-12,MKT,Advertising,,Online advertising,879.87,Operation
+2025-01-12,Material,Others,CAR-014,Roadside help (2025-01-22),348.44,Operation
+2025-01-13,Material,Rego,CAR-029,Pinkslip_CAR-029,649.42,Operation
+2025-01-13,Material,Others,CAR-030,Cleaning (2025-01-09),313.99,Operation
+2025-01-14,Material,Operation,,SIM plans,324.67,Operation
+2025-01-15,Material,Operation,,Electricity,354.6,Operation
+2025-01-16,Material,Others,CAR-031,Transfer fee (2025-01-19),307.67,Operation
+2025-01-17,Material,Others,CAR-032,Toll (2025-01-19),371.02,Operation
+2025-01-17,Material,Others,CAR-021,Fuel (2025-01-11),396.88,Operation
+2025-01-17,Material,Rego,CAR-004,Pinkslip_CAR-004,671.21,Operation
+2025-01-17,Material,Parts,CAR-054,Wipers - CAR-054,254.11,Invest
+2025-01-18,Material,Rego,CAR-031,Pinkslip_CAR-031,647.05,Invest
+2025-01-19,Material,Operation,,Hotline,149.24,Operation
+2025-01-19,Material,Parts,CAR-035,Brake pads - CAR-035,212.07,Invest
+2025-01-20,Material,Rent,,Yard rent,1197.19,Operation
+2025-01-22,Material,Others,CAR-004,Transfer fee (2025-01-04),25.98,Operation
+2025-01-22,Material,Others,CAR-051,Toll (2025-01-02),261.81,Operation
+2025-01-23,Material,Others,CAR-032,Parking (2025-01-28),294.47,Operation
+2025-01-23,Material,Parts,CAR-016,Brake pads - CAR-016,91.82,Invest
+2025-01-24,Material,Others,CAR-045,Fuel (2025-01-16),466.18,Invest
+2025-01-26,Material,Rego,CAR-052,Pinkslip_CAR-052,696.87,Operation
+2025-01-26,Material,Operation,,Software subscription,313.4,Operation
+2025-01-26,Material,Others,CAR-052,Cleaning (2025-01-25),58.02,Operation
+2025-01-27,Material,Parts,CAR-021,Wipers - CAR-021,248.39,Invest
+2025-01-27,Material,Others,CAR-048,Transfer fee (2025-01-24),142.11,Operation
+2025-01-27,Material,Rego,CAR-051,Pinkslip_CAR-051,654.46,Invest
+2025-01-30,Material,Rego,CAR-046,Greenslip_CAR-046,657.67,Operation
+2025-01-30,Material,Operation,,Staff meals,271.4,Operation
+2025-02-01,Material,Rego,CAR-059,Pinkslip_CAR-059,690.48,Operation
+2025-02-01,Office,Office,,Office expenses,200.77,Operation
+2025-02-02,Material,Parts,CAR-060,Battery - CAR-060,210.76,Invest
+2025-02-02,Material,Operation,,Hotline,124.01,Operation
+2025-02-04,Material,Others,CAR-007,Roadside help (2025-02-03),107.62,Operation
+2025-02-04,Material,Others,CAR-041,Toll (2025-02-11),427.7,Operation
+2025-02-04,Material,Others,CAR-029,Roadside help (2025-02-08),199.13,Operation
+2025-02-05,HR,Salary,,Staff A salary,2000.0,Operation
+2025-02-05,Material,Rego,CAR-009,Greenslip_CAR-009,648.78,Operation
+2025-02-05,HR,Salary,,Staff B salary,1550.0,Operation
+2025-02-05,HR,Salary,,Staff C salary,968.0,Operation
+2025-02-06,Material,Others,CAR-021,Fuel (2025-02-10),290.04,Operation
+2025-02-06,Material,Others,CAR-045,Cleaning (2025-02-21),48.71,Operation
+2025-02-06,Material,Others,CAR-041,Fuel (2025-02-03),440.58,Operation
+2025-02-06,Material,Parts,CAR-054,Brake pads - CAR-054,372.64,Invest
+2025-02-06,Material,Others,CAR-017,Transfer fee (2025-02-06),137.65,Invest
+2025-02-07,Material,Parts,CAR-045,Service kit - CAR-045,249.19,Operation
+2025-02-07,Material,Others,CAR-049,Roadside help (2025-02-03),359.92,Operation
+2025-02-07,Material,Others,CAR-023,Roadside help (2025-02-22),101.03,Operation
+2025-02-07,Material,Rego,CAR-008,Pinkslip_CAR-008,677.79,Operation
+2025-02-07,Material,Others,CAR-026,Fuel (2025-02-05),161.0,Operation
+2025-02-08,Material,Others,CAR-053,Roadside help (2025-02-14),486.92,Operation
+2025-02-08,Material,Parts,CAR-027,Wipers - CAR-027,179.09,Invest
+2025-02-08,Material,Others,CAR-057,Toll (2025-02-13),332.15,Operation
+2025-02-08,Material,Others,CAR-004,Parking (2025-02-06),138.5,Operation
+2025-02-09,Material,Rego,CAR-033,Greenslip_CAR-033,672.31,Invest
+2025-02-12,Material,Others,CAR-023,Transfer fee (2025-02-12),313.43,Operation
+2025-02-12,MKT,Advertising,,Online advertising,680.05,Operation
+2025-02-13,Material,Rego,CAR-026,Pinkslip_CAR-026,710.88,Operation
+2025-02-14,Material,Others,CAR-027,Transfer fee (2025-02-05),348.5,Operation
+2025-02-14,Material,Parts,CAR-004,Headlight - CAR-004,226.57,Invest
+2025-02-15,Material,Operation,,Software subscription,266.84,Operation
+2025-02-15,Material,Operation,,SIM plans,271.52,Operation
+2025-02-16,Material,Parts,CAR-018,Battery - CAR-018,243.39,Invest
+2025-02-17,Material,Parts,CAR-014,Headlight - CAR-014,395.03,Invest
+2025-02-19,Material,Others,CAR-031,Fuel (2025-02-20),460.99,Operation
+2025-02-20,Material,Operation,,Electricity,332.5,Operation
+2025-02-20,Material,Others,CAR-037,Roadside help (2025-02-04),327.17,Operation
+2025-02-20,Material,Rego,CAR-039,Pinkslip_CAR-039,644.6,Operation
+2025-02-21,Material,Parts,CAR-003,Headlight - CAR-003,159.01,Invest
+2025-02-21,Material,Rego,CAR-026,Greenslip_CAR-026,681.1,Operation
+2025-02-21,Material,Others,CAR-002,Roadside help (2025-02-25),191.97,Operation
+2025-02-23,Material,Rego,CAR-028,Greenslip_CAR-028,695.45,Operation
+2025-02-25,Material,Parts,CAR-032,Headlight - CAR-032,332.9,Invest
+2025-02-26,Material,Operation,,Staff meals,246.66,Operation
+2025-02-26,Material,Others,CAR-036,Cleaning (2025-02-05),92.54,Operation
+2025-02-26,Material,Parts,CAR-037,Battery - CAR-037,276.95,Invest
+2025-02-27,Material,Others,CAR-013,Transfer fee (2025-02-23),457.95,Operation
+2025-02-28,Material,Others,CAR-016,Fuel (2025-02-16),157.63,Operation
+2025-03-01,Material,Others,CAR-002,Cleaning (2025-03-21),217.0,Operation
+2025-03-01,Material,Others,CAR-049,Fuel (2025-03-14),355.87,Invest
+2025-03-01,Material,Parts,CAR-024,Service kit - CAR-024,238.12,Invest
+2025-03-01,Office,Office,,Office expenses,214.9,Operation
+2025-03-02,Material,Others,CAR-018,Toll (2025-03-28),140.57,Operation
+2025-03-03,Material,Rego,CAR-036,Pinkslip_CAR-036,689.12,Invest
+2025-03-03,Material,Parts,CAR-032,Headlight - CAR-032,106.64,Invest
+2025-03-04,Material,Others,CAR-041,Transfer fee (2025-03-26),518.12,Operation
+2025-03-04,Material,Others,CAR-058,Parking (2025-03-26),179.4,Operation
+2025-03-04,Material,Rego,CAR-049,Pinkslip_CAR-049,662.78,Operation
+2025-03-05,Material,Others,CAR-051,Roadside help (2025-03-17),368.98,Operation
+2025-03-05,HR,Salary,,Staff B salary,1550.0,Operation
+2025-03-05,HR,Salary,,Staff A salary,2000.0,Operation
+2025-03-05,HR,Salary,,Staff C salary,1008.0,Operation
+2025-03-06,Material,Tax,,Quarterly tax,1004.55,Operation
+2025-03-06,Material,Others,CAR-053,Parking (2025-03-26),405.25,Operation
+2025-03-07,Material,Others,CAR-057,Transfer fee (2025-03-20),433.18,Operation
+2025-03-09,Material,Operation,,Software subscription,266.53,Operation
+2025-03-10,Material,Rego,CAR-035,Pinkslip_CAR-035,657.19,Operation
+2025-03-10,Material,Others,CAR-027,Toll (2025-03-22),402.06,Operation
+2025-03-10,Material,Parts,CAR-015,Service kit - CAR-015,394.86,Invest
+2025-03-11,Material,Others,CAR-024,Toll (2025-03-01),269.53,Operation
+2025-03-11,Material,Operation,,Staff meals,224.26,Operation
+2025-03-11,Material,Rego,CAR-037,Greenslip_CAR-037,691.06,Operation
+2025-03-12,MKT,Advertising,,Online advertising,884.29,Operation
+2025-03-12,Material,Rego,CAR-041,Pinkslip_CAR-041,655.55,Operation
+2025-03-12,Material,Operation,,Electricity,321.25,Operation
+2025-03-12,Material,Others,CAR-031,Fuel (2025-03-25),265.31,Operation
+2025-03-12,Material,Rego,CAR-018,Pinkslip_CAR-018,640.17,Operation
+2025-03-13,Material,Others,CAR-025,Toll (2025-03-23),322.22,Operation
+2025-03-14,Material,Others,CAR-009,Transfer fee (2025-03-21),228.11,Operation
+2025-03-15,Material,Parts,CAR-027,Headlight - CAR-027,100.86,Invest
+2025-03-15,Material,Others,CAR-019,Toll (2025-03-16),44.57,Operation
+2025-03-16,Material,Others,CAR-020,Fuel (2025-03-26),457.25,Operation
+2025-03-16,Material,Others,CAR-006,Roadside help (2025-03-12),335.76,Operation
+2025-03-17,Material,Others,CAR-023,Roadside help (2025-03-08),490.88,Operation
+2025-03-17,Material,Others,CAR-022,Cleaning (2025-03-06),386.91,Operation
+2025-03-17,Material,Others,CAR-019,Transfer fee (2025-03-14),382.96,Operation
+2025-03-18,Material,Rego,CAR-034,Greenslip_CAR-034,680.07,Operation
+2025-03-18,Material,Others,CAR-056,Fuel (2025-03-16),346.6,Operation
+2025-03-19,Material,Parts,CAR-046,Headlight - CAR-046,137.51,Invest
+2025-03-20,Material,Parts,CAR-060,Battery - CAR-060,396.19,Invest
+2025-03-20,Material,Rego,CAR-003,Pinkslip_CAR-003,675.83,Operation
+2025-03-21,Material,Others,CAR-013,Cleaning (2025-03-06),195.17,Operation
+2025-03-21,Material,Others,CAR-016,Toll (2025-03-23),364.52,Operation
+2025-03-22,Material,Others,CAR-047,Fuel (2025-03-15),26.24,Operation
+2025-03-22,Material,Others,CAR-038,Parking (2025-03-15),323.8,Operation
+2025-03-22,Material,Parts,CAR-030,Brake pads - CAR-030,348.3,Invest
+2025-03-23,Material,Operation,,Hotline,130.52,Operation
+2025-03-23,Material,Others,CAR-033,Fuel (2025-03-11),230.25,Operation
+2025-03-25,Material,Others,CAR-006,Transfer fee (2025-03-27),165.15,Operation
+2025-03-25,Material,Parts,CAR-020,Wipers - CAR-020,193.46,Invest
+2025-03-26,Material,Others,CAR-032,Roadside help (2025-03-10),155.41,Operation
+2025-03-26,Material,Rego,CAR-044,Pinkslip_CAR-044,712.44,Operation
+2025-03-28,Material,Rego,CAR-022,Greenslip_CAR-022,694.02,Operation
+2025-03-29,Material,Others,CAR-008,Toll (2025-03-20),39.35,Operation
+2025-03-29,Material,Rego,CAR-058,Pinkslip_CAR-058,650.38,Operation
+2025-03-30,Material,Parts,CAR-030,Tyres x2 - CAR-030,103.8,Operation
+2025-03-30,Material,Operation,,SIM plans,317.0,Operation
+2025-04-01,Office,Office,,Office expenses,216.79,Operation
+2025-04-01,Material,Rego,CAR-015,Greenslip_CAR-015,662.64,Operation
+2025-04-03,Material,Rego,CAR-051,Greenslip_CAR-051,708.63,Invest
+2025-04-03,Material,Parts,CAR-043,Brake pads - CAR-043,354.32,Invest
+2025-04-03,Material,Others,CAR-022,Roadside help (2025-04-02),517.16,Operation
+2025-04-03,Material,Operation,,Electricity,322.62,Operation
+2025-04-04,Material,Parts,CAR-023,Headlight - CAR-023,366.88,Invest
+2025-04-05,HR,Salary,,Staff A salary,2000.0,Operation
+2025-04-05,HR,Salary,,Staff C salary,1167.0,Operation
+2025-04-05,HR,Salary,,Staff B salary,1550.0,Operation
+2025-04-06,Material,Others,CAR-039,Fuel (2025-04-12),268.69,Operation
+2025-04-06,Material,Others,CAR-008,Toll (2025-04-06),142.97,Operation
+2025-04-06,Material,Operation,,SIM plans,330.34,Operation
+2025-04-06,Material,Others,CAR-026,Toll (2025-04-18),154.54,Operation
+2025-04-07,Material,Rego,CAR-043,Greenslip_CAR-043,698.21,Operation
+2025-04-08,Material,Others,CAR-005,Fuel (2025-04-04),225.23,Operation
+2025-04-08,Material,Others,CAR-047,Fuel (2025-04-05),391.69,Invest
+2025-04-08,Material,Parts,CAR-018,Service kit - CAR-018,291.06,Operation
+2025-04-09,Material,Rego,CAR-012,Pinkslip_CAR-012,714.89,Invest
+2025-04-09,Material,Parts,CAR-022,Brake pads - CAR-022,381.75,Invest
+2025-04-10,Material,Rego,CAR-016,Pinkslip_CAR-016,674.87,Invest
+2025-04-10,Material,Rego,CAR-044,Greenslip_CAR-044,663.44,Operation
+2025-04-10,Material,Rego,CAR-048,Greenslip_CAR-048,689.61,Invest
+2025-04-11,Material,Rego,CAR-036,Greenslip_CAR-036,681.76,Invest
+2025-04-12,MKT,Advertising,,Online advertising,800.3,Operation
+2025-04-12,Material,Parts,CAR-043,Service kit - CAR-043,96.1,Invest
+2025-04-12,Material,Parts,CAR-002,Headlight - CAR-002,122.75,Invest
+2025-04-14,Material,Others,CAR-054,Toll (2025-04-15),73.67,Invest
+2025-04-14,Material,Parts,CAR-010,Battery - CAR-010,216.5,Operation
+2025-04-14,Material,Others,CAR-018,Fuel (2025-04-29),144.32,Operation
+2025-04-16,Material,Others,CAR-055,Cleaning (2025-04-21),320.38,Operation
+2025-04-16,Material,Operation,,Software subscription,287.22,Operation
+2025-04-17,Material,Others,CAR-023,Roadside help (2025-04-22),334.44,Operation
+2025-04-17,Material,Rego,CAR-032,Greenslip_CAR-032,666.0,Operation
+2025-04-17,Material,Others,CAR-056,Fuel (2025-04-08),305.43,Operation
+2025-04-19,Material,Operation,,Hotline,154.49,Operation
+2025-04-19,Material,Rego,CAR-019,Greenslip_CAR-019,667.23,Operation
+2025-04-20,Material,Others,CAR-042,Parking (2025-04-30),33.41,Operation
+2025-04-20,Material,Others,CAR-027,Roadside help (2025-04-04),499.37,Operation
+2025-04-20,Material,Operation,,Staff meals,246.47,Operation
+2025-04-21,Material,Others,CAR-008,Toll (2025-04-10),513.7,Invest
+2025-04-23,Material,Rent,,Yard rent,1085.2,Operation
+2025-04-23,Material,Others,CAR-013,Toll (2025-04-20),269.04,Operation
+2025-04-24,Material,Others,CAR-032,Cleaning (2025-04-17),158.5,Invest
+2025-04-24,Material,Others,CAR-037,Toll (2025-04-17),246.09,Operation
+2025-04-25,Material,Others,CAR-054,Parking (2025-04-01),457.11,Operation
+2025-04-26,Material,Others,CAR-027,Roadside help (2025-04-13),400.69,Operation
+2025-04-26,Material,Parts,CAR-031,Wipers - CAR-031,390.69,Invest
+2025-04-26,Material,Rego,CAR-023,Pinkslip_CAR-023,667.09,Operation
+2025-04-27,Material,Parts,CAR-056,Service kit - CAR-056,239.4,Invest
+2025-04-27,Material,Others,CAR-032,Roadside help (2025-04-28),123.9,Operation
+2025-04-28,Material,Rego,CAR-021,Greenslip_CAR-021,692.93,Operation
+2025-04-28,Material,Parts,CAR-013,Service kit - CAR-013,332.22,Invest
+2025-04-29,Material,Rego,CAR-054,Pinkslip_CAR-054,714.55,Operation
+2025-04-29,Material,Others,CAR-055,Transfer fee (2025-04-26),184.22,Operation
+2025-04-30,Material,Others,CAR-019,Cleaning (2025-04-29),353.6,Operation
+2025-05-01,Material,Parts,CAR-011,Tyres x2 - CAR-011,145.65,Invest
+2025-05-01,Office,Office,,Office expenses,183.67,Operation
+2025-05-02,Material,Others,CAR-008,Fuel (2025-05-05),286.68,Invest
+2025-05-03,Material,Others,CAR-005,Toll (2025-05-28),174.42,Operation
+2025-05-04,Material,Others,CAR-019,Transfer fee (2025-05-25),456.29,Operation
+2025-05-05,Material,Others,CAR-040,Fuel (2025-05-18),267.7,Operation
+2025-05-05,HR,Salary,,Staff B salary,1550.0,Operation
+2025-05-05,HR,Salary,,Staff A salary,2000.0,Operation
+2025-05-05,HR,Salary,,Staff C salary,983.0,Operation
+2025-05-06,Material,Others,CAR-006,Parking (2025-05-07),260.16,Operation
+2025-05-06,Material,Others,CAR-023,Toll (2025-05-11),225.37,Operation
+2025-05-06,Material,Rego,CAR-052,Greenslip_CAR-052,688.28,Invest
+2025-05-06,Material,Rego,CAR-042,Pinkslip_CAR-042,671.0,Operation
+2025-05-07,Material,Others,CAR-014,Cleaning (2025-05-03),56.24,Operation
+2025-05-07,Material,Parts,CAR-026,Tyres x2 - CAR-026,325.38,Invest
+2025-05-09,Material,Others,CAR-041,Parking (2025-05-25),36.62,Invest
+2025-05-09,Material,Parts,CAR-032,Brake pads - CAR-032,244.25,Invest
+2025-05-09,Material,Rego,CAR-043,Pinkslip_CAR-043,659.23,Operation
+2025-05-09,Material,Parts,CAR-014,Wipers - CAR-014,126.81,Invest
+2025-05-09,Material,Others,CAR-043,Parking (2025-05-16),152.33,Operation
+2025-05-10,Material,Rego,CAR-039,Greenslip_CAR-039,660.01,Operation
+2025-05-10,Material,Rego,CAR-029,Greenslip_CAR-029,680.92,Operation
+2025-05-10,Material,Parts,CAR-055,Battery - CAR-055,406.93,Invest
+2025-05-10,Material,Others,CAR-040,Cleaning (2025-05-21),425.0,Operation
+2025-05-11,Material,Operation,,Hotline,127.77,Operation
+2025-05-11,Material,Rego,CAR-002,Pinkslip_CAR-002,714.97,Operation
+2025-05-11,Material,Others,CAR-016,Toll (2025-05-12),152.97,Operation
+2025-05-11,Material,Others,CAR-029,Toll (2025-05-10),474.84,Operation
+2025-05-12,MKT,Advertising,,Online advertising,768.48,Operation
+2025-05-12,Material,Others,CAR-011,Parking (2025-05-11),304.07,Invest
+2025-05-15,Material,Others,CAR-009,Transfer fee (2025-05-08),467.31,Operation
+2025-05-15,Material,Rego,CAR-006,Greenslip_CAR-006,695.81,Operation
+2025-05-15,Material,Others,CAR-013,Fuel (2025-05-12),475.63,Invest
+2025-05-16,Material,Operation,,Electricity,292.15,Operation
+2025-05-17,Material,Others,CAR-045,Roadside help (2025-05-01),111.19,Operation
+2025-05-17,Material,Parts,CAR-029,Service kit - CAR-029,405.61,Operation
+2025-05-17,Material,Rego,CAR-032,Pinkslip_CAR-032,708.93,Invest
+2025-05-18,Material,Others,CAR-051,Transfer fee (2025-05-31),477.62,Operation
+2025-05-18,Material,Others,CAR-057,Fuel (2025-05-21),284.46,Operation
+2025-05-19,Material,Others,CAR-030,Roadside help (2025-05-07),402.58,Operation
+2025-05-19,Material,Others,CAR-053,Parking (2025-05-14),374.56,Operation
+2025-05-19,Material,Others,CAR-024,Toll (2025-05-21),391.3,Operation
+2025-05-20,Material,Rego,CAR-025,Pinkslip_CAR-025,690.52,Operation
+2025-05-20,Material,Others,CAR-017,Fuel (2025-05-14),208.74,Operation
+2025-05-23,Material,Parts,CAR-049,Wipers - CAR-049,193.57,Invest
+2025-05-23,Material,Others,CAR-024,Toll (2025-05-19),492.67,Operation
+2025-05-23,Material,Rego,CAR-060,Greenslip_CAR-060,671.83,Operation
+2025-05-25,Material,Others,CAR-009,Toll (2025-05-05),434.66,Operation
+2025-05-26,Material,Others,CAR-040,Fuel (2025-05-29),435.51,Operation
+2025-05-26,Material,Others,CAR-029,Transfer fee (2025-05-28),307.51,Operation
+2025-05-27,Material,Others,CAR-022,Transfer fee (2025-05-06),343.76,Operation
+2025-05-27,Material,Parts,CAR-031,Battery - CAR-031,95.89,Operation
+2025-05-28,Material,Rego,CAR-020,Greenslip_CAR-020,649.32,Operation
+2025-05-28,Material,Rego,CAR-005,Greenslip_CAR-005,702.84,Invest
+2025-05-28,Material,Operation,,Software subscription,249.59,Operation
+2025-05-29,Material,Others,CAR-051,Parking (2025-05-15),514.86,Operation
+2025-05-30,Material,Operation,,Staff meals,287.76,Operation
+2025-05-30,Material,Operation,,SIM plans,289.01,Operation
+2025-05-31,Material,Parts,CAR-051,Brake pads - CAR-051,344.92,Operation
+2025-05-31,Material,Others,CAR-032,Cleaning (2025-05-29),392.46,Operation
+2025-06-01,Material,Others,CAR-044,Roadside help (2025-06-18),226.07,Operation
+2025-06-01,Office,Office,,Office expenses,140.57,Operation
+2025-06-02,Material,Rego,CAR-040,Pinkslip_CAR-040,683.39,Invest
+2025-06-04,Material,Others,CAR-048,Parking (2025-06-11),153.55,Operation
+2025-06-04,Material,Rego,CAR-001,Pinkslip_CAR-001,680.54,Operation
+2025-06-05,Material,Others,CAR-027,Cleaning (2025-06-15),33.84,Operation
+2025-06-05,Material,Rego,CAR-042,Greenslip_CAR-042,700.88,Invest
+2025-06-05,HR,Salary,,Staff A salary,2000.0,Operation
+2025-06-05,Material,Others,CAR-010,Transfer fee (2025-06-22),68.11,Operation
+2025-06-05,HR,Salary,,Staff C salary,898.0,Operation
+2025-06-05,HR,Salary,,Staff B salary,1550.0,Operation
+2025-06-06,Material,Rego,CAR-027,Greenslip_CAR-027,649.91,Operation
+2025-06-07,Material,Operation,,SIM plans,313.47,Operation
+2025-06-07,Material,Others,CAR-009,Cleaning (2025-06-01),518.12,Invest
+2025-06-07,Material,Others,CAR-049,Transfer fee (2025-06-04),359.65,Invest
+2025-06-07,Material,Others,CAR-021,Roadside help (2025-06-06),299.22,Operation
+2025-06-08,Material,Operation,,Staff meals,228.97,Operation
+2025-06-08,Material,Others,CAR-014,Roadside help (2025-06-25),321.21,Operation
+2025-06-09,Material,Rego,CAR-018,Greenslip_CAR-018,648.28,Operation
+2025-06-09,Material,Others,CAR-006,Cleaning (2025-06-20),119.74,Operation
+2025-06-09,Material,Rego,CAR-016,Greenslip_CAR-016,713.66,Operation
+2025-06-10,Material,Rego,CAR-022,Pinkslip_CAR-022,676.68,Operation
+2025-06-10,Material,Others,CAR-024,Transfer fee (2025-06-06),479.26,Operation
+2025-06-11,Material,Others,CAR-020,Fuel (2025-06-10),147.81,Operation
+2025-06-12,MKT,Advertising,,Online advertising,800.99,Operation
+2025-06-12,Material,Parts,CAR-003,Headlight - CAR-003,315.37,Invest
+2025-06-13,Material,Parts,CAR-037,Brake pads - CAR-037,173.69,Invest
+2025-06-14,Material,Rego,CAR-006,Pinkslip_CAR-006,694.25,Operation
+2025-06-14,Material,Rego,CAR-024,Pinkslip_CAR-024,692.87,Operation
+2025-06-14,Material,Others,CAR-039,Parking (2025-06-22),476.67,Operation
+2025-06-15,Material,Rego,CAR-005,Pinkslip_CAR-005,656.92,Invest
+2025-06-15,Material,Others,CAR-041,Transfer fee (2025-06-27),87.97,Operation
+2025-06-15,Material,Others,CAR-004,Roadside help (2025-06-23),256.1,Operation
+2025-06-15,Material,Parts,CAR-009,Headlight - CAR-009,121.13,Invest
+2025-06-15,Material,Rego,CAR-024,Greenslip_CAR-024,659.27,Operation
+2025-06-16,Material,Rego,CAR-008,Greenslip_CAR-008,708.61,Operation
+2025-06-16,Material,Others,CAR-027,Fuel (2025-06-18),334.12,Operation
+2025-06-18,Material,Parts,CAR-020,Battery - CAR-020,115.37,Invest
+2025-06-18,Material,Others,CAR-030,Parking (2025-06-06),505.81,Operation
+2025-06-20,Material,Others,CAR-008,Parking (2025-06-19),98.09,Operation
+2025-06-20,Material,Rego,CAR-019,Pinkslip_CAR-019,692.39,Operation
+2025-06-21,Material,Tax,,Quarterly tax,851.32,Operation
+2025-06-21,Material,Others,CAR-038,Parking (2025-06-25),238.76,Operation
+2025-06-21,Material,Others,CAR-012,Cleaning (2025-06-07),227.98,Operation
+2025-06-22,Material,Parts,CAR-009,Brake pads - CAR-009,326.86,Invest
+2025-06-22,Material,Others,CAR-058,Cleaning (2025-06-10),55.81,Operation
+2025-06-22,Material,Parts,CAR-018,Service kit - CAR-018,208.32,Invest
+2025-06-23,Material,Others,CAR-014,Fuel (2025-06-16),73.93,Operation
+2025-06-23,Material,Others,CAR-023,Roadside help (2025-06-28),299.81,Operation
+2025-06-24,Material,Parts,CAR-020,Battery - CAR-020,104.22,Invest
+2025-06-25,Material,Operation,,Software subscription,290.47,Operation
+2025-06-26,Material,Parts,CAR-041,Service kit - CAR-041,359.99,Invest
+2025-06-26,Material,Others,CAR-054,Cleaning (2025-06-26),34.88,Operation
+2025-06-27,Material,Operation,,Electricity,320.48,Operation
+2025-06-28,Material,Rego,CAR-015,Pinkslip_CAR-015,660.33,Operation
+2025-06-28,Material,Parts,CAR-050,Wipers - CAR-050,343.57,Invest
+2025-06-28,Material,Operation,,Hotline,152.16,Operation
+2025-06-29,Material,Others,CAR-025,Roadside help (2025-06-06),273.54,Operation
+2025-06-30,Material,Parts,CAR-058,Headlight - CAR-058,254.67,Invest
+2025-06-30,Material,Rego,CAR-003,Greenslip_CAR-003,679.96,Invest
+2025-06-30,Material,Others,CAR-003,Cleaning (2025-06-25),199.4,Operation
+2025-06-30,Material,Others,CAR-052,Transfer fee (2025-06-30),79.02,Invest
+2025-07-01,Office,Office,,Office expenses,191.3,Operation
+2025-07-02,Material,Rego,CAR-007,Greenslip_CAR-007,642.97,Operation
+2025-07-03,Material,Others,CAR-009,Roadside help (2025-07-11),358.4,Operation
+2025-07-04,Material,Others,CAR-024,Transfer fee (2025-07-27),225.68,Operation
+2025-07-04,Material,Others,CAR-018,Roadside help (2025-07-03),389.98,Operation
+2025-07-05,HR,Salary,,Staff B salary,1550.0,Operation
+2025-07-05,HR,Salary,,Staff A salary,2000.0,Operation
+2025-07-05,HR,Salary,,Staff C salary,1049.0,Operation
+2025-07-07,Material,Operation,,Staff meals,255.98,Operation
+2025-07-08,Material,Operation,,Electricity,320.61,Operation
+2025-07-09,Material,Parts,CAR-045,Wipers - CAR-045,257.21,Operation
+2025-07-10,Material,Others,CAR-050,Parking (2025-07-12),85.59,Operation
+2025-07-10,Material,Others,CAR-022,Fuel (2025-07-27),164.42,Operation
+2025-07-10,Material,Rego,CAR-038,Pinkslip_CAR-038,668.8,Operation
+2025-07-11,Material,Others,CAR-046,Cleaning (2025-07-13),458.0,Operation
+2025-07-12,Material,Others,CAR-044,Transfer fee (2025-07-04),173.24,Operation
+2025-07-12,MKT,Advertising,,Online advertising,836.86,Operation
+2025-07-13,Material,Rego,CAR-001,Greenslip_CAR-001,708.61,Invest
+2025-07-13,Material,Parts,CAR-011,Tyres x2 - CAR-011,120.84,Invest
+2025-07-14,Material,Rego,CAR-048,Pinkslip_CAR-048,706.55,Invest
+2025-07-15,Material,Operation,,Software subscription,264.27,Operation
+2025-07-15,Material,Others,CAR-019,Cleaning (2025-07-05),118.85,Invest
+2025-07-15,Material,Others,CAR-031,Parking (2025-07-26),168.27,Invest
+2025-07-16,Material,Parts,CAR-014,Headlight - CAR-014,103.69,Invest
+2025-07-16,Material,Parts,CAR-028,Wipers - CAR-028,181.99,Invest
+2025-07-17,Material,Parts,CAR-006,Brake pads - CAR-006,283.34,Invest
+2025-07-17,Material,Operation,,Hotline,126.11,Operation
+2025-07-17,Material,Others,CAR-005,Transfer fee (2025-07-07),116.35,Operation
+2025-07-18,Material,Parts,CAR-056,Battery - CAR-056,386.75,Invest
+2025-07-18,Material,Others,CAR-001,Toll (2025-07-18),209.19,Operation
+2025-07-19,Material,Others,CAR-057,Cleaning (2025-07-31),268.06,Operation
+2025-07-19,Material,Others,CAR-012,Roadside help (2025-07-11),212.12,Operation
+2025-07-20,Material,Rego,CAR-013,Pinkslip_CAR-013,660.76,Operation
+2025-07-20,Material,Parts,CAR-001,Tyres x2 - CAR-001,318.23,Invest
+2025-07-21,Material,Others,CAR-019,Toll (2025-07-24),237.27,Operation
+2025-07-22,Material,Parts,CAR-033,Service kit - CAR-033,385.5,Invest
+2025-07-24,Material,Others,CAR-025,Toll (2025-07-23),189.4,Operation
+2025-07-24,Material,Rego,CAR-053,Greenslip_CAR-053,708.09,Operation
+2025-07-24,Material,Others,CAR-046,Cleaning (2025-07-23),79.71,Operation
+2025-07-26,Material,Others,CAR-029,Cleaning (2025-07-17),131.69,Invest
+2025-07-27,Material,Others,CAR-048,Roadside help (2025-07-09),338.17,Operation
+2025-07-27,Material,Others,CAR-019,Toll (2025-07-01),230.31,Operation
+2025-07-28,Material,Parts,CAR-053,Battery - CAR-053,306.72,Invest
+2025-07-28,Material,Rego,CAR-021,Pinkslip_CAR-021,684.66,Operation
+2025-07-29,Material,Others,CAR-058,Transfer fee (2025-07-28),30.88,Operation
+2025-07-29,Material,Others,CAR-030,Roadside help (2025-07-23),247.69,Operation
+2025-07-29,Material,Others,CAR-008,Fuel (2025-07-21),345.29,Operation
+2025-07-29,Material,Operation,,SIM plans,277.12,Operation
+2025-07-30,Material,Others,CAR-055,Parking (2025-07-16),325.48,Operation
+2025-07-30,Material,Others,CAR-025,Transfer fee (2025-07-08),439.44,Invest
+2025-07-31,Material,Rent,,Yard rent,1256.02,Operation
+2025-07-31,Material,Parts,CAR-052,Headlight - CAR-052,289.72,Invest
+2025-08-01,Office,Office,,Office expenses,110.73,Operation
+2025-08-01,Material,Rego,CAR-047,Pinkslip_CAR-047,654.78,Operation
+2025-08-01,Material,Others,CAR-016,Transfer fee (2025-08-21),383.82,Operation
+2025-08-01,Material,Others,CAR-023,Fuel (2025-08-21),461.18,Operation
+2025-08-01,Material,Others,CAR-050,Parking (2025-08-27),162.08,Operation
+2025-08-02,Material,Others,CAR-049,Roadside help (2025-08-07),498.3,Operation
+2025-08-02,Material,Rego,CAR-017,Pinkslip_CAR-017,706.38,Operation
+2025-08-03,Material,Others,CAR-010,Transfer fee (2025-08-16),114.4,Operation
+2025-08-04,Material,Rego,CAR-047,Greenslip_CAR-047,695.67,Invest
+2025-08-04,Material,Others,CAR-025,Toll (2025-08-12),487.55,Operation
+2025-08-04,Material,Others,CAR-051,Roadside help (2025-08-17),113.84,Operation
+2025-08-05,HR,Salary,,Staff A salary,2000.0,Operation
+2025-08-05,HR,Salary,,Staff B salary,1550.0,Operation
+2025-08-05,HR,Salary,,Staff C salary,846.0,Operation
+2025-08-05,Material,Rego,CAR-053,Pinkslip_CAR-053,646.51,Operation
+2025-08-05,Material,Operation,,Software subscription,286.28,Operation
+2025-08-06,Material,Rego,CAR-011,Greenslip_CAR-011,686.98,Invest
+2025-08-06,Material,Parts,CAR-060,Battery - CAR-060,390.26,Operation
+2025-08-07,Material,Operation,,SIM plans,289.69,Operation
+2025-08-07,Material,Others,CAR-050,Toll (2025-08-08),267.79,Operation
+2025-08-08,Material,Parts,CAR-014,Wipers - CAR-014,344.95,Invest
+2025-08-08,Material,Operation,,Hotline,120.8,Operation
+2025-08-09,Material,Others,CAR-011,Cleaning (2025-08-20),269.27,Operation
+2025-08-10,Material,Rego,CAR-050,Greenslip_CAR-050,657.38,Operation
+2025-08-12,Material,Parts,CAR-013,Wipers - CAR-013,401.06,Invest
+2025-08-12,MKT,Advertising,,Online advertising,797.93,Operation
+2025-08-12,Material,Others,CAR-047,Toll (2025-08-21),422.42,Operation
+2025-08-12,Material,Operation,,Staff meals,221.81,Operation
+2025-08-13,Material,Parts,CAR-011,Wipers - CAR-011,269.18,Invest
+2025-08-13,Material,Rego,CAR-045,Pinkslip_CAR-045,689.39,Operation
+2025-08-14,Material,Parts,CAR-006,Headlight - CAR-006,254.19,Operation
+2025-08-15,Material,Rego,CAR-014,Greenslip_CAR-014,710.2,Invest
+2025-08-16,Material,Rego,CAR-055,Greenslip_CAR-055,698.16,Operation
+2025-08-16,Material,Operation,,Electricity,348.39,Operation
+2025-08-16,Material,Rego,CAR-023,Greenslip_CAR-023,656.79,Operation
+2025-08-17,Material,Rego,CAR-007,Pinkslip_CAR-007,645.73,Invest
+2025-08-17,Material,Rego,CAR-002,Greenslip_CAR-002,655.14,Operation
+2025-08-18,Material,Parts,CAR-003,Headlight - CAR-003,121.8,Operation
+2025-08-20,Material,Parts,CAR-003,Tyres x2 - CAR-003,289.19,Invest
+2025-08-21,Material,Rego,CAR-012,Greenslip_CAR-012,653.26,Operation
+2025-08-21,Material,Others,CAR-025,Cleaning (2025-08-12),145.75,Operation
+2025-08-22,Material,Parts,CAR-038,Headlight - CAR-038,378.23,Invest
+2025-08-22,Material,Others,CAR-022,Roadside help (2025-08-21),394.3,Operation
+2025-08-23,Material,Others,CAR-048,Roadside help (2025-08-28),446.64,Invest
+2025-08-25,Material,Parts,CAR-017,Tyres x2 - CAR-017,147.14,Invest
+2025-08-25,Material,Others,CAR-017,Toll (2025-08-31),396.43,Operation
+2025-08-25,Material,Others,CAR-011,Parking (2025-08-05),52.91,Operation
+2025-08-26,Material,Others,CAR-023,Transfer fee (2025-08-17),29.12,Operation
+2025-08-27,Material,Rego,CAR-031,Greenslip_CAR-031,692.12,Invest
+2025-08-28,Material,Others,CAR-031,Parking (2025-08-26),296.6,Operation
+2025-08-28,Material,Others,CAR-042,Cleaning (2025-08-24),210.28,Operation
+2025-08-29,Material,Others,CAR-031,Fuel (2025-08-29),340.08,Operation
+2025-08-29,Material,Parts,CAR-003,Tyres x2 - CAR-003,396.92,Operation
+2025-08-30,Material,Parts,CAR-024,Battery - CAR-024,184.09,Invest
+2025-08-30,Material,Rego,CAR-040,Greenslip_CAR-040,667.97,Operation
+2025-08-31,Material,Others,CAR-046,Cleaning (2025-08-14),153.7,Operation
+2025-08-31,Material,Others,CAR-016,Transfer fee (2025-08-10),213.02,Invest
+2025-09-01,Material,Others,CAR-035,Toll (2025-09-24),157.28,Operation
+2025-09-01,Material,Others,CAR-023,Parking (2025-09-12),436.79,Operation
+2025-09-01,Office,Office,,Office expenses,168.81,Operation
+2025-09-02,Material,Others,CAR-031,Fuel (2025-09-04),256.96,Operation
+2025-09-02,Material,Rego,CAR-045,Greenslip_CAR-045,654.26,Invest
+2025-09-03,Material,Others,CAR-008,Parking (2025-09-19),128.98,Operation
+2025-09-03,Material,Rego,CAR-060,Pinkslip_CAR-060,668.8,Operation
+2025-09-04,Material,Operation,,SIM plans,282.09,Operation
+2025-09-04,Material,Rego,CAR-054,Greenslip_CAR-054,710.3,Operation
+2025-09-05,HR,Salary,,Staff A salary,2000.0,Operation
+2025-09-05,Material,Parts,CAR-015,Brake pads - CAR-015,374.1,Invest
+2025-09-05,HR,Salary,,Staff C salary,1195.0,Operation
+2025-09-05,HR,Salary,,Staff B salary,1550.0,Operation
+2025-09-06,Material,Rego,CAR-010,Greenslip_CAR-010,694.6,Operation
+2025-09-06,Material,Others,CAR-056,Transfer fee (2025-09-13),406.69,Operation
+2025-09-07,Material,Others,CAR-001,Transfer fee (2025-09-23),192.15,Operation
+2025-09-07,Material,Others,CAR-015,Parking (2025-09-30),369.25,Operation
+2025-09-07,Material,Parts,CAR-059,Tyres x2 - CAR-059,358.06,Invest
+2025-09-07,Material,Operation,,Hotline,129.9,Operation
+2025-09-08,Material,Others,CAR-016,Fuel (2025-09-12),224.51,Operation
+2025-09-08,Material,Rego,CAR-050,Pinkslip_CAR-050,641.33,Invest
+2025-09-08,Material,Others,CAR-018,Fuel (2025-09-16),214.81,Operation
+2025-09-09,Material,Rego,CAR-055,Pinkslip_CAR-055,673.75,Invest
+2025-09-09,Material,Parts,CAR-058,Brake pads - CAR-058,316.79,Invest
+2025-09-10,Material,Parts,CAR-050,Wipers - CAR-050,327.87,Operation
+2025-09-10,Material,Others,CAR-060,Parking (2025-09-24),447.2,Operation
+2025-09-12,Material,Others,CAR-013,Toll (2025-09-24),326.33,Operation
+2025-09-12,Material,Others,CAR-016,Roadside help (2025-09-16),351.78,Operation
+2025-09-12,Material,Others,CAR-028,Parking (2025-09-08),148.77,Operation
+2025-09-12,MKT,Advertising,,Online advertising,786.71,Operation
+2025-09-13,Material,Others,CAR-006,Roadside help (2025-09-21),175.58,Operation
+2025-09-13,Material,Others,CAR-016,Roadside help (2025-09-06),391.48,Operation
+2025-09-14,Material,Others,CAR-020,Toll (2025-09-22),391.96,Operation
+2025-09-15,Material,Others,CAR-003,Transfer fee (2025-09-18),83.36,Operation
+2025-09-15,Material,Rego,CAR-035,Greenslip_CAR-035,661.93,Operation
+2025-09-15,Material,Rego,CAR-038,Greenslip_CAR-038,688.79,Invest
+2025-09-16,Material,Others,CAR-057,Cleaning (2025-09-02),232.78,Operation
+2025-09-16,Material,Parts,CAR-004,Headlight - CAR-004,228.41,Invest
+2025-09-16,Material,Rego,CAR-011,Pinkslip_CAR-011,640.08,Operation
+2025-09-16,Material,Operation,,Software subscription,273.29,Operation
+2025-09-17,Material,Others,CAR-059,Toll (2025-09-28),35.56,Operation
+2025-09-17,Material,Tax,,Quarterly tax,1020.6,Operation
+2025-09-19,Material,Parts,CAR-059,Wipers - CAR-059,212.87,Operation
+2025-09-20,Material,Rego,CAR-057,Pinkslip_CAR-057,712.9,Operation
+2025-09-21,Material,Parts,CAR-049,Brake pads - CAR-049,219.93,Invest
+2025-09-23,Material,Others,CAR-026,Fuel (2025-09-01),191.97,Invest
+2025-09-24,Material,Others,CAR-001,Toll (2025-09-02),235.21,Operation
+2025-09-25,Material,Parts,CAR-040,Wipers - CAR-040,362.41,Operation
+2025-09-26,Material,Others,CAR-022,Transfer fee (2025-09-01),124.39,Operation
+2025-09-26,Material,Others,CAR-028,Transfer fee (2025-09-29),222.72,Operation
+2025-09-27,Material,Operation,,Electricity,330.68,Operation
+2025-09-27,Material,Others,CAR-030,Cleaning (2025-09-18),252.61,Invest
+2025-09-27,Material,Others,CAR-046,Roadside help (2025-09-02),229.97,Invest
+2025-09-27,Material,Parts,CAR-020,Tyres x2 - CAR-020,123.35,Invest
+2025-09-28,Material,Others,CAR-025,Cleaning (2025-09-12),42.61,Operation
+2025-09-28,Material,Others,CAR-051,Roadside help (2025-09-02),187.34,Operation
+2025-09-30,Material,Operation,,Staff meals,233.57,Operation
+2025-09-30,Material,Rego,CAR-041,Greenslip_CAR-041,689.62,Operation
+2025-10-01,Material,Operation,,Staff meals,249.65,Operation
+2025-10-01,Material,Others,CAR-017,Parking (2025-10-03),269.58,Operation
+2025-10-01,Office,Office,,Office expenses,171.04,Operation
+2025-10-02,Material,Others,CAR-024,Parking (2025-10-27),204.77,Invest
+2025-10-02,Material,Parts,CAR-002,Service kit - CAR-002,253.66,Invest
+2025-10-02,Material,Rego,CAR-056,Pinkslip_CAR-056,666.71,Operation
+2025-10-03,Material,Others,CAR-018,Cleaning (2025-10-01),151.58,Operation
+2025-10-03,Material,Rego,CAR-009,Pinkslip_CAR-009,674.06,Operation
+2025-10-04,Material,Others,CAR-054,Toll (2025-10-17),494.85,Operation
+2025-10-04,Material,Parts,CAR-038,Wipers - CAR-038,210.73,Invest
+2025-10-05,Material,Others,CAR-034,Cleaning (2025-10-28),334.22,Operation
+2025-10-05,HR,Salary,,Staff A salary,2000.0,Operation
+2025-10-05,HR,Salary,,Staff B salary,1550.0,Operation
+2025-10-05,HR,Salary,,Staff C salary,1126.0,Operation
+2025-10-05,Material,Rego,CAR-013,Greenslip_CAR-013,682.39,Operation
+2025-10-06,Material,Parts,CAR-057,Service kit - CAR-057,286.26,Invest
+2025-10-07,Material,Others,CAR-017,Roadside help (2025-10-30),170.83,Operation
+2025-10-08,Material,Others,CAR-036,Cleaning (2025-10-13),340.45,Operation
+2025-10-09,Material,Others,CAR-047,Parking (2025-10-02),487.54,Operation
+2025-10-09,Material,Parts,CAR-035,Battery - CAR-035,244.18,Invest
+2025-10-09,Material,Others,CAR-018,Toll (2025-10-30),33.3,Invest
+2025-10-09,Material,Others,CAR-007,Parking (2025-10-28),319.8,Operation
+2025-10-10,Material,Others,CAR-046,Roadside help (2025-10-29),399.99,Operation
+2025-10-10,Material,Operation,,Electricity,313.67,Operation
+2025-10-10,Material,Rego,CAR-058,Greenslip_CAR-058,701.89,Invest
+2025-10-12,MKT,Advertising,,Online advertising,615.37,Operation
+2025-10-12,Material,Operation,,Software subscription,264.91,Operation
+2025-10-14,Material,Rent,,Yard rent,1027.18,Operation
+2025-10-14,Material,Operation,,Hotline,137.57,Operation
+2025-10-14,Material,Others,CAR-035,Roadside help (2025-10-01),139.33,Invest
+2025-10-14,Material,Others,CAR-022,Cleaning (2025-10-08),113.27,Invest
+2025-10-15,Material,Others,CAR-037,Roadside help (2025-10-23),516.02,Operation
+2025-10-15,Material,Rego,CAR-025,Greenslip_CAR-025,655.26,Operation
+2025-10-17,Material,Others,CAR-022,Transfer fee (2025-10-14),69.41,Operation
+2025-10-17,Material,Parts,CAR-002,Tyres x2 - CAR-002,307.35,Invest
+2025-10-17,Material,Others,CAR-054,Cleaning (2025-10-19),123.31,Operation
+2025-10-17,Material,Others,CAR-021,Parking (2025-10-23),253.99,Invest
+2025-10-19,Material,Parts,CAR-013,Battery - CAR-013,192.1,Invest
+2025-10-19,Material,Operation,,SIM plans,296.07,Operation
+2025-10-20,Material,Parts,CAR-046,Brake pads - CAR-046,212.46,Invest
+2025-10-20,Material,Others,CAR-048,Fuel (2025-10-20),376.3,Operation
+2025-10-21,Material,Parts,CAR-046,Headlight - CAR-046,377.08,Invest
+2025-10-23,Material,Others,CAR-052,Transfer fee (2025-10-10),294.92,Operation
+2025-10-23,Material,Others,CAR-060,Parking (2025-10-19),422.02,Operation
+2025-10-24,Material,Others,CAR-013,Fuel (2025-10-26),285.68,Operation
+2025-10-25,Material,Parts,CAR-055,Battery - CAR-055,189.75,Invest
+2025-10-26,Material,Parts,CAR-046,Tyres x2 - CAR-046,98.45,Operation
+2025-10-26,Material,Others,CAR-026,Roadside help (2025-10-03),273.25,Invest
+2025-10-27,Material,Others,CAR-014,Parking (2025-10-24),80.16,Invest
+2025-10-27,Material,Parts,CAR-002,Tyres x2 - CAR-002,216.71,Invest
+2025-10-27,Material,Parts,CAR-050,Battery - CAR-050,245.62,Operation
+2025-10-30,Material,Others,CAR-027,Cleaning (2025-10-23),271.77,Operation
+2025-10-30,Material,Others,CAR-001,Parking (2025-10-01),192.47,Operation
+2025-10-30,Material,Others,CAR-019,Toll (2025-10-15),29.29,Operation
+2025-11-01,Material,Parts,CAR-023,Service kit - CAR-023,351.59,Invest
+2025-11-01,Material,Operation,,Staff meals,222.35,Operation
+2025-11-01,Office,Office,,Office expenses,128.77,Operation
+2025-11-02,Material,Others,CAR-004,Parking (2025-11-06),138.71,Operation
+2025-11-02,Material,Others,CAR-058,Toll (2025-11-05),240.61,Operation
+2025-11-03,Material,Others,CAR-046,Toll (2025-11-05),133.82,Operation
+2025-11-03,Material,Others,CAR-025,Roadside help (2025-11-11),112.3,Operation
+2025-11-03,Material,Others,CAR-042,Toll (2025-11-20),62.95,Invest
+2025-11-04,Material,Others,CAR-033,Fuel (2025-11-20),300.2,Invest
+2025-11-04,Material,Others,CAR-022,Fuel (2025-11-13),454.39,Operation
+2025-11-05,Material,Operation,,SIM plans,293.04,Operation
+2025-11-05,Material,Others,CAR-057,Transfer fee (2025-11-22),371.62,Operation
+2025-11-05,Material,Others,CAR-020,Fuel (2025-11-29),304.04,Operation
+2025-11-05,HR,Salary,,Staff A salary,2000.0,Operation
+2025-11-05,HR,Salary,,Staff B salary,1550.0,Operation
+2025-11-05,HR,Salary,,Staff C salary,1124.0,Operation
+2025-11-07,Material,Rego,CAR-030,Pinkslip_CAR-030,683.9,Operation
+2025-11-08,Material,Rego,CAR-030,Greenslip_CAR-030,698.82,Operation
+2025-11-08,Material,Rego,CAR-033,Pinkslip_CAR-033,670.24,Operation
+2025-11-08,Material,Others,CAR-011,Parking (2025-11-22),55.6,Operation
+2025-11-09,Material,Others,CAR-054,Parking (2025-11-27),167.97,Operation
+2025-11-09,Material,Others,CAR-012,Fuel (2025-11-28),247.4,Operation
+2025-11-10,Material,Others,CAR-010,Parking (2025-11-05),395.69,Operation
+2025-11-12,Material,Parts,CAR-024,Tyres x2 - CAR-024,247.46,Invest
+2025-11-12,Material,Operation,,Electricity,353.99,Operation
+2025-11-12,MKT,Advertising,,Online advertising,843.4,Operation
+2025-11-13,Material,Parts,CAR-006,Battery - CAR-006,259.74,Invest
+2025-11-16,Material,Rego,CAR-046,Pinkslip_CAR-046,655.05,Operation
+2025-11-16,Material,Others,CAR-012,Transfer fee (2025-11-01),255.38,Operation
+2025-11-17,Material,Others,CAR-051,Roadside help (2025-11-17),186.21,Operation
+2025-11-17,Material,Others,CAR-060,Toll (2025-11-01),168.61,Operation
+2025-11-18,Material,Parts,CAR-033,Service kit - CAR-033,397.67,Invest
+2025-11-19,Material,Others,CAR-008,Roadside help (2025-11-29),449.56,Operation
+2025-11-19,Material,Others,CAR-002,Fuel (2025-11-28),27.06,Operation
+2025-11-20,Material,Parts,CAR-022,Wipers - CAR-022,315.86,Invest
+2025-11-21,Material,Others,CAR-020,Toll (2025-11-24),279.67,Operation
+2025-11-22,Material,Others,CAR-004,Cleaning (2025-11-18),253.69,Invest
+2025-11-23,Material,Others,CAR-010,Fuel (2025-11-23),123.68,Operation
+2025-11-23,Material,Parts,CAR-004,Tyres x2 - CAR-004,91.06,Invest
+2025-11-23,Material,Others,CAR-036,Cleaning (2025-11-04),82.56,Operation
+2025-11-24,Material,Parts,CAR-058,Battery - CAR-058,249.14,Invest
+2025-11-25,Material,Operation,,Hotline,153.23,Operation
+2025-11-26,Material,Parts,CAR-052,Headlight - CAR-052,403.99,Invest
+2025-11-26,Material,Others,CAR-026,Parking (2025-11-17),361.35,Operation
+2025-11-26,Material,Others,CAR-012,Parking (2025-11-21),350.85,Operation
+2025-11-27,Material,Others,CAR-033,Roadside help (2025-11-26),244.97,Operation
+2025-11-28,Material,Parts,CAR-020,Headlight - CAR-020,299.5,Invest
+2025-11-28,Material,Rego,CAR-014,Pinkslip_CAR-014,670.24,Operation
+2025-11-29,Material,Others,CAR-057,Cleaning (2025-11-01),36.23,Operation
+2025-11-29,Material,Rego,CAR-020,Pinkslip_CAR-020,677.12,Invest
+2025-11-29,Material,Others,CAR-043,Cleaning (2025-11-06),266.8,Operation
+2025-11-29,Material,Others,CAR-010,Cleaning (2025-11-05),86.68,Invest
+2025-11-30,Material,Others,CAR-054,Transfer fee (2025-11-29),120.02,Operation
+2025-11-30,Material,Parts,CAR-030,Battery - CAR-030,386.66,Operation
+2025-11-30,Material,Operation,,Software subscription,260.2,Operation
+2025-12-01,Office,Office,,Office expenses,144.02,Operation
+2025-12-01,Material,Rego,CAR-010,Pinkslip_CAR-010,661.77,Operation
+2025-12-02,Material,Others,CAR-043,Parking (2025-12-26),332.04,Operation
+2025-12-03,Material,Parts,CAR-032,Tyres x2 - CAR-032,274.69,Invest
+2025-12-04,Material,Others,CAR-027,Cleaning (2025-12-24),30.31,Operation
+2025-12-05,HR,Salary,,Staff C salary,1119.0,Operation
+2025-12-05,HR,Salary,,Staff B salary,1550.0,Operation
+2025-12-05,HR,Salary,,Staff A salary,2000.0,Operation
+2025-12-05,Material,Others,CAR-008,Toll (2025-12-16),352.64,Operation
+2025-12-06,Material,Rego,CAR-017,Greenslip_CAR-017,677.03,Operation
+2025-12-07,Material,Others,CAR-004,Toll (2025-12-21),484.12,Operation
+2025-12-07,Material,Others,CAR-033,Fuel (2025-12-17),171.65,Operation
+2025-12-08,Material,Rego,CAR-056,Greenslip_CAR-056,678.89,Operation
+2025-12-08,Material,Others,CAR-003,Cleaning (2025-12-15),515.77,Operation
+2025-12-08,Material,Others,CAR-030,Cleaning (2025-12-16),190.58,Operation
+2025-12-09,Material,Rego,CAR-034,Pinkslip_CAR-034,700.23,Operation
+2025-12-10,Material,Others,CAR-041,Parking (2025-12-18),327.53,Operation
+2025-12-12,Material,Parts,CAR-050,Headlight - CAR-050,296.53,Invest
+2025-12-12,MKT,Advertising,,Online advertising,624.95,Operation
+2025-12-12,Material,Operation,,SIM plans,317.92,Operation
+2025-12-13,Material,Operation,,Hotline,122.99,Operation
+2025-12-13,Material,Others,CAR-056,Roadside help (2025-12-07),372.24,Operation
+2025-12-14,Material,Operation,,Software subscription,289.33,Operation
+2025-12-14,Material,Others,CAR-048,Toll (2025-12-03),173.95,Operation
+2025-12-14,Material,Rego,CAR-059,Greenslip_CAR-059,660.34,Operation
+2025-12-14,Material,Parts,CAR-047,Service kit - CAR-047,322.69,Operation
+2025-12-15,Material,Parts,CAR-052,Battery - CAR-052,182.23,Operation
+2025-12-17,Material,Others,CAR-038,Transfer fee (2025-12-18),515.32,Invest
+2025-12-18,Material,Others,CAR-009,Fuel (2025-12-31),230.82,Operation
+2025-12-18,Material,Parts,CAR-044,Headlight - CAR-044,166.51,Invest
+2025-12-19,Material,Parts,CAR-048,Battery - CAR-048,117.66,Invest
+2025-12-20,Material,Parts,CAR-001,Headlight - CAR-001,322.66,Invest
+2025-12-21,Material,Rego,CAR-004,Greenslip_CAR-004,713.78,Operation
+2025-12-22,Material,Rego,CAR-028,Pinkslip_CAR-028,679.51,Invest
+2025-12-22,Material,Operation,,Electricity,292.28,Operation
+2025-12-23,Material,Parts,CAR-038,Battery - CAR-038,383.18,Invest
+2025-12-24,Material,Others,CAR-050,Roadside help (2025-12-19),42.91,Operation
+2025-12-24,Material,Others,CAR-012,Parking (2025-12-10),158.69,Operation
+2025-12-24,Material,Others,CAR-007,Cleaning (2025-12-28),299.57,Operation
+2025-12-25,Material,Operation,,Staff meals,288.83,Operation
+2025-12-26,Material,Others,CAR-054,Transfer fee (2025-12-17),494.24,Operation
+2025-12-26,Material,Tax,,Quarterly tax,914.73,Operation
+2025-12-27,Material,Others,CAR-037,Cleaning (2025-12-03),373.26,Invest
+2025-12-27,Material,Others,CAR-054,Transfer fee (2025-12-13),462.76,Operation
+2025-12-28,Material,Others,CAR-011,Cleaning (2025-12-12),334.8,Operation
+2025-12-29,Material,Others,CAR-048,Fuel (2025-12-11),386.74,Operation
+2025-12-30,Material,Others,CAR-048,Cleaning (2025-12-22),186.19,Operation
+2025-12-30,Material,Others,CAR-036,Transfer fee (2025-12-20),211.74,Operation

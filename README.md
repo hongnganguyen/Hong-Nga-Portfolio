@@ -19,24 +19,24 @@ Data Analyst with an Economics background (UEH, Investment Economics, GPA 3.6/4.
 ## Projects
 
 ### 1 · Automotive glass service performance (Power BI, synthetic data)
-Multi-branch business selling and installing car glass. One dashboard tracks daily and monthly **sales, every expense line, profit, promotions and staff KPIs**, with month-over-month comparison. 3 pages: Overview, Worker, Location (map).
-**Tools:** Power BI, DAX, Power Query · **Model:** star schema, 4 branches, 5 staff, ≈9,000 orders.
-**What the sample report shows** (synthetic): sales **10,225 M VND**, profit margin **16.8%**, COG the largest cost at **42%** of sales, strong year-end seasonality (peak Dec, low Feb).
+Car glass sales and installation business (Sydney, AUD). One dashboard tracks daily and monthly **sales, every expense line, profit, promotions, Premium vs Luxury mix and staff KPIs**, always versus the previous month. 3 pages: Overview, Worker, Location (map).
+**Tools:** Power BI, DAX, Power Query · **Model:** star schema, ≈3,200 orders, 20 suburbs, 5 staff.
+**What the sample report shows** (synthetic, Nov 2025): sales **A$68.2K** (+21.4% MoM), profit margin **20.8%**, COG the largest cost at **43%**, BOGO the top promotion at **24%** of sales, 7 loss-making days.
+**Design:** sparkline KPI cards, drill from daily profit to same-period-last-month variance, promotion profitability table, auto-written insights.
 
 [![Overview](projects/automotive-glass-service-powerbi/images/01-overview.png)](projects/automotive-glass-service-powerbi/images/01-overview.png)
-[![Expenses and promotions](projects/automotive-glass-service-powerbi/images/02-expenses-promotions.png)](projects/automotive-glass-service-powerbi/images/02-expenses-promotions.png)
 
-→ [Project folder](projects/automotive-glass-service-powerbi) · [sample report](projects/automotive-glass-service-powerbi/reports/sample-annual-report-2025.md) · [data](projects/automotive-glass-service-powerbi/data)
+→ [Live dashboard](https://hongnganguyen.github.io/Hong-Nga-Portfolio/) · [Project folder](projects/automotive-glass-service-powerbi) · [sample report](projects/automotive-glass-service-powerbi/reports/sample-report-2025-11.md) · [data](projects/automotive-glass-service-powerbi/data)
 
 ### 2 · Car rental overview (Power BI, synthetic data)
-Dashboard for a car-rental operation: **revenue, expense groups (Invest vs Operation), profit, fleet status and customer debt**, plus a detail page with per-car profitability.
-**Tools:** Power BI, DAX, Power Query · **Model:** 60 cars, 52 weeks, material / HR / office expenses.
-**What the sample report shows** (synthetic): revenue **484,970 AUD**, profit margin **24.3%**, **20 of 60** cars not yet covering their material costs, 10 customers with outstanding balances.
+Dashboard for a car-rental operation (Sydney, AUD): **sales, expense groups (Operation vs Invest), profit, fleet status and customer debt**, plus a detail page with per-car profitability.
+**Tools:** Power BI, DAX, Power Query · **Model:** 60 cars (44 rentable), daily rentals, dated expenses by group and category.
+**What the sample report shows** (synthetic, Nov 2025): sales **A$27.4K** (+8.8% MoM), profit margin **26.1%**, material costs **72%** of expenses, **33 of 44** rentable cars on rent at month end, **79%** of customers paid.
+**Design:** Operation vs Invest split, expandable expense detail table, stacked month-by-month breakdowns.
 
 [![Overview](projects/car-rental-overview-powerbi/images/01-overview.png)](projects/car-rental-overview-powerbi/images/01-overview.png)
-[![Car detail](projects/car-rental-overview-powerbi/images/03-car-detail.png)](projects/car-rental-overview-powerbi/images/03-car-detail.png)
 
-→ [Project folder](projects/car-rental-overview-powerbi) · [sample report](projects/car-rental-overview-powerbi/reports/sample-annual-report-2025.md) · [data](projects/car-rental-overview-powerbi/data)
+→ [Live dashboard](https://hongnganguyen.github.io/Hong-Nga-Portfolio/#c-over) · [Project folder](projects/car-rental-overview-powerbi) · [sample report](projects/car-rental-overview-powerbi/reports/sample-report-2025-11.md) · [data](projects/car-rental-overview-powerbi/data)
 
 ### 3 · LG Social Listening report (Power BI)
 Quarterly (Q2) analysis of online discussions about LG and competitors in washing machines: volume, sentiment, content type, audience, and brand comparison.
@@ -113,4 +113,4 @@ requirements.txt
 ```
 
 ## Tech stack
-SQL Server (T-SQL), Power BI (DAX, Power Query, data modeling), Excel / Google Sheets, Python (pandas, NumPy, matplotlib) for synthetic data and chart previews, Apache ECharts (HTML/JS) for the interactive web dashboards.
+SQL Server (T-SQL), Power BI (DAX, Power Query, data modeling), Excel / Google Sheets, Python (pandas, NumPy) for synthetic data and sample reports, Apache ECharts + Leaflet (HTML/JS) for the interactive web recreations of the Power BI dashboards.

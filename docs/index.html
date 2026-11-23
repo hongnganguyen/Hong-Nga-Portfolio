@@ -3,264 +3,402 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hong Nga · Dashboard Portfolio</title>
-<meta name="description" content="Interactive Power BI-style dashboards built on synthetic data: automotive glass service performance and car rental overview.">
+<title>Hong Nga · Power BI Dashboard Portfolio</title>
+<meta name="description" content="Interactive recreations of two Power BI dashboards (automotive glass service and car rental) built on synthetic data.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
-  :root{
-    --bg:#f6f7f9; --card:#ffffff; --text:#1d2330; --muted:#667085; --line:#e4e7ec;
-    --accent:#ff5500; --good:#1f9e32; --bad:#d34803; --blue:#2f80ed;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){ --bg:#12141a; --card:#1b1f29; --text:#e8eaf0; --muted:#9aa3b5; --line:#2a3040; }
-  }
-  :root[data-theme="dark"]{ --bg:#12141a; --card:#1b1f29; --text:#e8eaf0; --muted:#9aa3b5; --line:#2a3040; }
+  :root{--ink:#111;--muted:#667085;--line:#e4e7ec;--card:#fff;--accent:#ff5500;--page:#c9d6df;--good:#1f9e32;--bad:#d92d20}
+  body.t-car{--accent:#a666b0;--page:#e9e7ea}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-  .wrap{max-width:1240px;margin:0 auto;padding:16px}
-  header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:8px}
-  h1{font-size:20px;margin:0}
-  .sub{color:var(--muted);font-size:13px}
-  .banner{background:color-mix(in srgb,var(--accent) 10%,var(--card));border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));border-radius:10px;padding:8px 12px;margin:8px 0 14px;font-size:13px}
-  .tabs{display:flex;gap:6px;flex-wrap:wrap}
-  .tab{border:1px solid var(--line);background:var(--card);color:var(--text);padding:8px 14px;border-radius:999px;cursor:pointer;font:inherit}
-  .tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
-  .filters{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:12px 0}
-  .filters label{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--muted)}
-  select{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font:inherit}
-  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:12px}
-  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
-  .kpi .l{font-size:12px;color:var(--muted)} .kpi .v{font-size:22px;font-weight:650;margin-top:2px} .kpi .d{font-size:12px;margin-top:2px}
-  .up{color:var(--good)} .down{color:var(--bad)}
-  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0}
-  .card h2{font-size:13px;margin:0 0 4px;color:var(--muted);font-weight:600}
-  .c4{grid-column:span 4}.c6{grid-column:span 6}.c8{grid-column:span 8}.c12{grid-column:span 12}
-  .chart{height:280px}
-  @media (max-width:860px){.c4,.c6,.c8{grid-column:span 12}.chart{height:260px}}
-  table{width:100%;border-collapse:collapse;font-size:13px}
-  th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
-  th:first-child,td:first-child,th:nth-child(2),td:nth-child(2),th:nth-child(3),td:nth-child(3){text-align:left}
-  th{color:var(--muted);font-weight:600;cursor:pointer;user-select:none}
-  .scroll{overflow:auto;max-height:340px}
-  footer{margin:18px 0 6px;color:var(--muted);font-size:12px}
-  a{color:var(--blue)}
+  html{background:#000}
+  body{margin:0;background:var(--page);color:var(--ink);font:13px/1.4 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+  .top{background:#000;color:#fff;padding:14px 14px 10px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+  .top h1{margin:0;font-size:18px;letter-spacing:.3px;font-weight:700}
+  .top h1 b{color:var(--accent)}
+  .nav{display:flex;gap:6px;flex-wrap:wrap}
+  .nav button{background:#000;color:#fff;border:1px solid #333;border-radius:4px;padding:6px 10px;font:600 12px inherit;font-family:inherit;cursor:pointer}
+  .nav button[aria-selected="true"]{color:var(--accent);border-color:var(--accent)}
+  .bar{display:flex;flex-wrap:wrap;gap:14px;align-items:end;justify-content:space-between;padding:10px 14px}
+  .bar .f{display:flex;gap:14px;align-items:end}
+  .bar label{display:flex;flex-direction:column;font-size:11px;font-weight:600;gap:2px}
+  select{border:1px solid #c7ccd4;border-radius:6px;padding:5px 8px;background:#fff;font:inherit}
+  .note{font-size:12px;color:#344054;background:#fffaeb;border:1px solid #fedf89;border-radius:8px;padding:6px 10px;max-width:640px}
+  .wrap{padding:0 14px 14px}
+  .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px;margin-bottom:12px}
+  .card{background:var(--card);border-radius:12px;padding:10px 12px;min-width:0;box-shadow:0 1px 2px rgba(16,24,40,.06)}
+  .card h2{margin:0 0 6px;font-size:13px;font-weight:700}
+  .c2{grid-column:span 2}.c3{grid-column:span 3}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
+  .ch{height:260px}.ch.t{height:320px}.map{height:420px;border-radius:8px}
+  .kpi .l{font-weight:700;margin-bottom:2px}.kpi .v{font-size:26px;font-weight:500}
+  .kpi .d{font-size:11px;margin-top:2px}.up{color:var(--good)}.down{color:var(--bad)}
+  .kpi svg{display:block;width:100%;height:42px;margin-top:4px}
+  .kpi.two{display:flex;gap:14px}.kpi.two>div{flex:1}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  th{background:#000;color:#fff;text-align:right;padding:5px 8px;font-weight:600;position:sticky;top:0;cursor:pointer}
+  td{padding:4px 8px;border-bottom:1px solid #eef0f3;text-align:right;white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  td.bar2{position:relative}
+  td.bar2 i{position:absolute;left:0;top:2px;bottom:2px;opacity:.85;border-radius:2px}
+  td.bar2 span{position:relative}
+  tr.hl td{background:#86f595;font-weight:700}
+  tr.grp td{background:#eceef2;font-weight:700;cursor:pointer}
+  .scroll{overflow:auto;max-height:420px}
+  .ins{font-size:12px;line-height:1.5}.ins ul{margin:4px 0 0 16px;padding:0}.ins li{margin-bottom:6px}
+  .hdr2{display:flex;gap:12px}.hdr2 div{flex:1;text-align:center;color:#fff;font-weight:700;padding:8px;border-radius:4px}
+  .hdr2 .a{background:#000}.hdr2 .b{background:#326a96}
+  footer{padding:6px 14px 18px;font-size:12px;color:#475467}
+  a{color:#175cd3}
   [hidden]{display:none!important}
+  @media (max-width:900px){.c2,.c3,.c4,.c5,.c6,.c7,.c8{grid-column:span 12}.ch{height:240px}}
 </style>
 </head>
-<body>
-<div class="wrap">
-  <header>
-    <div>
-      <h1>Dashboard Portfolio · Nguyen Thi Hong Nga</h1>
-      <div class="sub">Interactive previews of two Power BI projects · <a href="https://github.com/hongnganguyen/Hong-Nga-Portfolio">GitHub repo</a></div>
-    </div>
-    <div class="tabs" role="tablist">
-      <button class="tab" role="tab" id="tab-retail" aria-selected="true">Automotive Glass Service</button>
-      <button class="tab" role="tab" id="tab-car" aria-selected="false">Car Rental</button>
-    </div>
-  </header>
-  <div class="banner"><strong>Synthetic data.</strong> These dashboards use randomly generated data with the same structure as the real (confidential) models. They are illustrative recreations, not screenshots of the production reports, and none of the numbers are real business results.</div>
-
-  <!-- ===== Automotive glass ===== -->
-  <section id="retail">
-    <div class="filters">
-      <label>Branch <select id="r-branch"></select></label>
-      <label>From <select id="r-from"></select></label>
-      <label>To <select id="r-to"></select></label>
-    </div>
-    <div class="kpis" id="r-kpis"></div>
-    <div class="grid">
-      <div class="card c8"><h2>Sales vs expenses by month (M VND)</h2><div class="chart" id="r-trend"></div></div>
-      <div class="card c4"><h2>Expenses by category</h2><div class="chart" id="r-exp"></div></div>
-      <div class="card c4"><h2>Profit by month (M VND)</h2><div class="chart" id="r-profit"></div></div>
-      <div class="card c4"><h2>Sales by vehicle segment</h2><div class="chart" id="r-seg"></div></div>
-      <div class="card c4"><h2>Sales by promotion (M VND)</h2><div class="chart" id="r-promo"></div></div>
-      <div class="card c6"><h2>Sales by branch (M VND)</h2><div class="chart" id="r-branchchart"></div></div>
-      <div class="card c6"><h2>Staff: total made vs KPI target in selected period</h2><div class="chart" id="r-staff"></div></div>
-    </div>
-  </section>
-
-  <!-- ===== Car rental ===== -->
-  <section id="car" hidden>
-    <div class="filters">
-      <label>Car status <select id="c-status"></select></label>
-      <label>From <select id="c-from"></select></label>
-      <label>To <select id="c-to"></select></label>
-    </div>
-    <div class="sub" id="c-note" style="margin-bottom:8px"></div>
-    <div class="kpis" id="c-kpis"></div>
-    <div class="grid">
-      <div class="card c8"><h2>Revenue vs expenses by month (AUD)</h2><div class="chart" id="c-trend"></div></div>
-      <div class="card c4"><h2>Cars by status</h2><div class="chart" id="c-status-chart"></div></div>
-      <div class="card c4"><h2>Expenses by category</h2><div class="chart" id="c-exp"></div></div>
-      <div class="card c4"><h2>Operation vs Invest (material, AUD)</h2><div class="chart" id="c-type"></div></div>
-      <div class="card c4"><h2>Top 10 cars by profit (AUD)</h2><div class="chart" id="c-top"></div></div>
-      <div class="card c12"><h2>Car detail (click a header to sort)</h2><div class="scroll"><table id="c-table"></table></div></div>
-    </div>
-  </section>
-
-  <footer>Built with Apache ECharts. Data and generator: <code>tools/generate.py</code> (seeded), aggregated by <code>tools/build_dashboard.py</code>.</footer>
+<body class="t-glass">
+<div class="top">
+  <h1 id="title">SALES PERFORMANCE DASHBOARD | <b>OVERVIEW</b></h1>
+  <div class="nav" role="tablist">
+    <button data-p="g-over" aria-selected="true">Glass · Overview</button>
+    <button data-p="g-work" aria-selected="false">Glass · Worker</button>
+    <button data-p="g-loc" aria-selected="false">Glass · Location</button>
+    <button data-p="c-over" aria-selected="false">Car Rental</button>
+    <button data-p="c-det" aria-selected="false">Car Rental · Detail</button>
+  </div>
+</div>
+<div class="bar">
+  <div class="f">
+    <label>Month <select id="month"></select></label>
+    <label>Year <select id="year"><option>2025</option></select></label>
+  </div>
+  <div class="note"><strong>Synthetic data.</strong> Interactive recreation of two real Power BI dashboards using randomly generated numbers. Not production screenshots; no figure is a real business result. <a href="https://github.com/hongnganguyen/Hong-Nga-Portfolio">Repo</a></div>
 </div>
 
+<div class="wrap">
+<!-- ============ GLASS OVERVIEW ============ -->
+<section id="g-over">
+  <div class="grid" id="g-kpis"></div>
+  <div class="grid">
+    <div class="card c6"><h2>Profit Trendline (daily)</h2><div class="ch t" id="g-profit"></div></div>
+    <div class="card c6"><h2>Total Sales &amp; Expenses by day</h2><div class="ch t" id="g-salesexp"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c5"><h2>Quantity Trendline</h2><div class="ch" id="g-qty"></div></div>
+    <div class="card c7"><h2>Sales by customer suburb (bubble = sales)</h2><div class="map" id="g-map1"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c7"><h2>Expenses Breakdown Trendline (last months)</h2><div class="ch" id="g-expbr"></div></div>
+    <div class="card c5"><h2>Promotion Name by Total Sales</h2><div class="ch" id="g-promo"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c7"><h2>Promotion performance</h2><div class="scroll" id="g-promotbl"></div></div>
+    <div class="card c5"><h2>Summary</h2><div class="scroll" id="g-summary"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c12"><div class="hdr2"><div class="a" id="g-lm">LAST MONTH</div><div class="b" id="g-tm">THIS MONTH</div></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c4"><h2>Daily profit · last month</h2><div class="scroll" id="g-lmtbl"></div></div>
+    <div class="card c4"><h2>Insights <small style="font-weight:400;color:#667085">(auto-generated from the synthetic data)</small></h2><div class="ins" id="g-ins"></div></div>
+    <div class="card c4"><h2>Daily profit · this month vs last month</h2><div class="scroll" id="g-tmtbl"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c12"><h2>Profit vs same period last month (SPLM) and variance</h2><div class="ch t" id="g-splm"></div></div>
+  </div>
+</section>
+
+<!-- ============ GLASS WORKER ============ -->
+<section id="g-work" hidden>
+  <div class="grid" id="w-kpis"></div>
+  <div class="grid">
+    <div class="card c6"><h2>Total made by sales staff: last month vs this month</h2><div class="ch t" id="w-chart"></div></div>
+    <div class="card c6"><h2>KPI achievement, bonus and salary</h2><div class="scroll" id="w-table"></div></div>
+  </div>
+</section>
+
+<!-- ============ GLASS LOCATION ============ -->
+<section id="g-loc" hidden>
+  <div class="grid">
+    <div class="card c8"><h2>Sales by customer suburb</h2><div class="map" id="g-map2" style="height:520px"></div></div>
+    <div class="card c4"><h2>Suburb ranking</h2><div class="scroll" id="l-table" style="max-height:520px"></div></div>
+  </div>
+</section>
+
+<!-- ============ CAR OVERVIEW ============ -->
+<section id="c-over" hidden>
+  <div class="grid" id="c-kpis"></div>
+  <div class="grid">
+    <div class="card c7"><h2>Sales &amp; Total Expenses by day</h2><div class="ch t" id="c-salesexp"></div></div>
+    <div class="card c5"><h2>Profit Trendline</h2><div class="ch t" id="c-profit"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c5"><h2>Total Expense Breakdown (Operation vs Invest)</h2><div class="ch" id="c-donut"></div></div>
+    <div class="card c7"><h2>Total Expense Detail</h2><div class="ch" id="c-detailbars"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c5"><h2>Summary | Car Rental</h2><div id="c-summary"></div></div>
+    <div class="card c7"><h2>Expense For Operation Breakdown</h2><div class="ch" id="c-opbr"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c7"><h2>Expense For Material Breakdown</h2><div class="ch" id="c-matbr"></div></div>
+    <div class="card c5"><h2>Material expenses by category</h2><div class="ch" id="c-matdonut"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c12"><h2>Table Detail: Expenses · Material (click a group to expand / collapse)</h2><div class="scroll" id="c-detail" style="max-height:480px"></div></div>
+  </div>
+</section>
+
+<!-- ============ CAR DETAIL ============ -->
+<section id="c-det" hidden>
+  <div class="grid" id="d-kpis"></div>
+  <div class="grid">
+    <div class="card c4"><h2>Total Car by Status</h2><div class="ch" id="d-status"></div></div>
+    <div class="card c4"><h2>Top 10 cars by profit (full year, A$)</h2><div class="ch" id="d-top"></div></div>
+    <div class="card c4"><h2>New rentals vs returns by month</h2><div class="ch" id="d-flow"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c12"><h2>Car detail (click a header to sort)</h2>
+      <label style="font-size:11px;font-weight:600">Status <select id="d-filter"></select></label>
+      <div class="scroll" id="d-table"></div></div>
+  </div>
+</section>
+</div>
+<footer>Built with Apache ECharts and Leaflet (OpenStreetMap tiles). Data generated by <code>tools/generate.py</code> (seeded) and aggregated by <code>tools/build_dashboard.py</code>.</footer>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="data.js"></script>
 <script>
 (function(){
-  var MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  var charts={};
-  function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
-  function $(id){return document.getElementById(id);}
-  function sum(a,f){var s=0;for(var i=0;i<a.length;i++)s+=f(a[i]);return s;}
-  function fmt(n,d){return Number(n).toLocaleString("en-US",{maximumFractionDigits:d||0});}
-  function pct(n){return (n*100).toFixed(1)+"%";}
-  function chart(id){
-    if(!window.echarts){return null;}
-    if(!charts[id]){charts[id]=echarts.init($(id));}
-    return charts[id];
-  }
-  function base(){
-    var t=css("--text"),m=css("--muted"),l=css("--line");
-    return {t:t,m:m,l:l,textStyle:{color:t},grid:{left:48,right:14,top:28,bottom:28}};
-  }
-  function setOpt(id,o){var c=chart(id);if(c)c.setOption(o,true);}
-  function axes(b,cats){
-    return {xAxis:{type:"category",data:cats,axisLine:{lineStyle:{color:b.l}},axisLabel:{color:b.m}},
-            yAxis:{type:"value",splitLine:{lineStyle:{color:b.l}},axisLabel:{color:b.m}}};
-  }
-  function donut(id,data,b){
-    setOpt(id,{textStyle:b.textStyle,tooltip:{trigger:"item",formatter:"{b}: {c} ({d}%)"},
-      legend:{bottom:0,textStyle:{color:b.m},type:"scroll"},
-      series:[{type:"pie",radius:["45%","70%"],center:["50%","44%"],label:{show:false},data:data}]});
-  }
-  function bar(id,cats,vals,color,horizontal,b){
-    var o={textStyle:b.textStyle,tooltip:{trigger:"axis",axisPointer:{type:"shadow"}},grid:horizontal?{left:110,right:20,top:10,bottom:24}:b.grid,
-      series:[{type:"bar",data:vals,itemStyle:{color:color}}]};
-    if(horizontal){o.yAxis={type:"category",data:cats,axisLabel:{color:b.m},axisLine:{lineStyle:{color:b.l}}};o.xAxis={type:"value",splitLine:{lineStyle:{color:b.l}},axisLabel:{color:b.m}};}
-    else{var a=axes(b,cats);o.xAxis=a.xAxis;o.yAxis=a.yAxis;}
-    setOpt(id,o);
-  }
-  function kpiHtml(items){
-    return items.map(function(k){
-      var d=k.d==null?"":'<div class="d '+(k.d>=0?"up":"down")+'">'+(k.d>=0?"▲ ":"▼ ")+Math.abs(k.d*100).toFixed(1)+'% '+k.dl+'</div>';
-      return '<div class="kpi"><div class="l">'+k.l+'</div><div class="v">'+k.v+'</div>'+d+'</div>';
-    }).join("");
-  }
-  function fillSelect(sel,opts,val){sel.innerHTML=opts.map(function(o){return '<option value="'+o[0]+'">'+o[1]+'</option>';}).join("");sel.value=val;}
-  function monthOpts(){return MN.map(function(n,i){return [i+1,n+" 2025"];});}
-  function inRange(m,f,t){return m>=f&&m<=t;}
-  function range(fromId,toId){
-    var f=+$(fromId).value,t=+$(toId).value; if(f>t){var x=f;f=t;t=x;}
-    return [f,t];
-  }
+"use strict";
+var D=window.DATA,MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var ORANGE="#ff5500",BLACK="#1a1a1a",PURPLE="#a666b0",GREEN="#1f9e32",RED="#d92d20",BLUE="#326a96";
+function $(i){return document.getElementById(i);}
+function pad(n){return n<10?"0"+n:""+n;}
+function dim(m){return new Date(2025,m,0).getDate();}
+function dk(m,d){return "2025-"+pad(m)+"-"+pad(d);}
+function mo(s){return +s.slice(5,7);}
+function sum(a){var s=0;for(var i=0;i<a.length;i++)s+=a[i];return s;}
+function usd(n,full){var a=Math.abs(n);if(!full&&a>=1e6)return (n<0?"-":"")+"$"+(a/1e6).toFixed(2)+"M";var s=full?a.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}):(a>=1000?(a/1000).toFixed(2)+"K":a.toFixed(0));return (n<0?"-":"")+"$"+s;}
+function kk(v){var a=Math.abs(v);return a>=1000?(v/1000).toFixed(a>=10000?0:1)+"K":Math.round(v)+"";}
+function dlt(c,p){return p?(c-p)/Math.abs(p):null;}
+function dayArr(o,m){var r=[];for(var d=1;d<=dim(m);d++)r.push(o[dk(m,d)]||0);return r;}
+function add(o,k,v){o[k]=(o[k]||0)+v;}
+var charts={};
+function ch(id){if(!window.echarts)return null;var el=$(id);if(!charts[id]||charts[id].getDom()!==el){if(charts[id])charts[id].dispose();charts[id]=echarts.init(el);}return charts[id];}
+function opt(id,o){var c=ch(id);if(c)c.setOption(o,true);}
+var AX={axisLine:{lineStyle:{color:"#d0d5dd"}},axisLabel:{color:"#475467"},axisTick:{show:false}};
+function xcat(c){return {type:"category",data:c,axisLine:AX.axisLine,axisLabel:AX.axisLabel,axisTick:AX.axisTick};}
+function yval(f){return {type:"value",splitLine:{lineStyle:{color:"#eef0f3"}},axisLabel:{color:"#475467",formatter:f||kk}};}
+var GR={left:44,right:12,top:30,bottom:26};
+function spark(v,color){
+  var w=200,h=42,mn=Math.min.apply(null,v.concat([0])),mx=Math.max.apply(null,v.concat([0.001])),n=v.length;
+  function X(i){return n>1?i*(w/(n-1)):0;} function Y(x){return h-3-(x-mn)/(mx-mn||1)*(h-6);}
+  var p="";for(var i=0;i<n;i++)p+=(i?" L":"M")+X(i).toFixed(1)+" "+Y(v[i]).toFixed(1);
+  var a=p+" L"+X(n-1).toFixed(1)+" "+Y(0).toFixed(1)+" L0 "+Y(0).toFixed(1)+"Z";
+  return '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none"><path d="'+a+'" fill="'+color+'" opacity=".15"/><path d="'+p+'" fill="none" stroke="'+color+'" stroke-width="1.6"/></svg>';
+}
+function badge(d,goodUp,txt){if(d==null)return "";var up=d>=0,good=goodUp?up:!up;return '<div class="d '+(good?"up":"down")+'">'+(up?"▲ ":"▼ ")+Math.abs(d*100).toFixed(1)+"% "+(txt||"vs last month")+"</div>";}
+function kpi(span,label,val,d,goodUp,series,color){return '<div class="card kpi c'+span+'"><div class="l">'+label+'</div><div class="v">'+val+'</div>'+badge(d,goodUp)+(series?spark(series,color):"")+"</div>";}
+function tbl(cols,rows,o){
+  o=o||{};var mx={};cols.forEach(function(c,i){if(c.bar){mx[i]=Math.max.apply(null,rows.map(function(r){return Math.abs(r.v[i])||0;}).concat([1e-9]));}});
+  var h="<table><thead><tr>"+cols.map(function(c,i){return '<th data-i="'+i+'">'+c.t+"</th>";}).join("")+"</tr></thead><tbody>";
+  rows.forEach(function(r){h+="<tr"+(r.cls?' class="'+r.cls+'"':"")+(r.attr||"")+">"+cols.map(function(c,i){var v=r.v[i],s=c.f?c.f(v,r):v;
+    if(c.bar){var w=Math.min(100,Math.abs(v)/mx[i]*100);return '<td class="bar2"><i style="width:'+w.toFixed(1)+"%;background:"+(v<0?"#f7c6b3":c.bar)+'"></i><span>'+s+"</span></td>";}
+    return "<td>"+s+"</td>";}).join("")+"</tr>";});
+  return h+"</tbody></table>";
+}
+function donut(id,data,center,colors){
+  opt(id,{tooltip:{trigger:"item",formatter:function(p){return p.name+": "+usd(p.value,true)+" ("+p.percent+"%)";}},
+    legend:{type:"scroll",bottom:0,textStyle:{color:"#475467"}},color:colors,
+    title:center?{text:center,left:"center",top:"38%",textStyle:{fontSize:20,fontWeight:400}}:undefined,
+    series:[{type:"pie",radius:["48%","72%"],center:["50%","44%"],label:{show:true,formatter:function(p){return usd(p.value)+" ("+p.percent+"%)";},color:"#475467",fontSize:11},data:data}]});
+}
+function stacked(id,cats,series,colors){
+  opt(id,{tooltip:{trigger:"axis",axisPointer:{type:"shadow"},valueFormatter:function(v){return usd(v,true);}},legend:{top:0,type:"scroll",textStyle:{color:"#475467"}},color:colors,grid:GR,xAxis:xcat(cats),yAxis:yval(),
+    series:series.map(function(s){return {name:s[0],type:"bar",stack:"t",data:s[1],label:{show:true,color:"#fff",fontSize:10,formatter:function(p){return p.value>=700?kk(p.value):"";}}};})});
+}
 
-  /* ---------- Automotive glass ---------- */
-  var R=window.DATA.retail;
-  function renderRetail(){
-    var b=base(),br=$("r-branch").value,rg=range("r-from","r-to"),f=rg[0],t=rg[1];
-    function okB(x){return br==="ALL"||x===br;}
-    var O=R.orders.filter(function(r){return okB(r[1]);});
-    var E=R.exp.filter(function(r){return okB(r[1]);});
-    var months=[];for(var m=f;m<=t;m++)months.push(m);
-    var ms=months.map(function(m){return sum(O.filter(function(r){return r[0]===m;}),function(r){return r[4];});});
-    var me=months.map(function(m){return sum(E.filter(function(r){return r[0]===m;}),function(r){return r[3];});});
-    var mp=ms.map(function(s,i){return s-me[i];});
-    var sales=sum(ms,function(x){return x;}),exps=sum(me,function(x){return x;}),prof=sales-exps,orders=sum(O.filter(function(r){return inRange(r[0],f,t);}),function(r){return r[7];});
-    var last=months.length-1,mom=function(a){return last>0&&a[last-1]?(a[last]-a[last-1])/Math.abs(a[last-1]):null;};
-    $("r-kpis").innerHTML=kpiHtml([
-      {l:"Total sales",v:fmt(sales/1e6)+" M",d:mom(ms),dl:"MoM (last month)"},
-      {l:"Total expenses",v:fmt(exps/1e6)+" M",d:mom(me),dl:"MoM"},
-      {l:"Profit",v:fmt(prof/1e6)+" M",d:mom(mp),dl:"MoM"},
-      {l:"Profit margin",v:sales?pct(prof/sales):"-"},
-      {l:"Orders",v:fmt(orders)},
-      {l:"Avg order value",v:orders?fmt(sales/orders/1e3)+" K":"-"}]);
-    var cats=months.map(function(m){return MN[m-1];}), a=axes(b,cats);
-    setOpt("r-trend",{textStyle:b.textStyle,tooltip:{trigger:"axis"},legend:{top:0,textStyle:{color:b.m}},grid:b.grid,xAxis:a.xAxis,yAxis:a.yAxis,
-      series:[{name:"Sales",type:"line",smooth:true,data:ms.map(function(v){return +(v/1e6).toFixed(1);}),itemStyle:{color:"#ff5500"}},
-              {name:"Expenses",type:"line",smooth:true,data:me.map(function(v){return +(v/1e6).toFixed(1);}),itemStyle:{color:"#888"}}]});
-    setOpt("r-profit",{textStyle:b.textStyle,tooltip:{trigger:"axis"},grid:b.grid,xAxis:a.xAxis,yAxis:a.yAxis,
-      series:[{type:"bar",data:mp.map(function(v){return {value:+(v/1e6).toFixed(1),itemStyle:{color:v>=0?"#1f9e32":"#d34803"}};})}]});
-    var ex={};E.filter(function(r){return inRange(r[0],f,t);}).forEach(function(r){ex[r[2]]=(ex[r[2]]||0)+r[3];});
-    donut("r-exp",Object.keys(ex).map(function(k){return {name:k,value:+(ex[k]/1e6).toFixed(1)};}),b);
-    var sg={},pr={},bs={};
-    O.filter(function(r){return inRange(r[0],f,t);}).forEach(function(r){sg[r[2]]=(sg[r[2]]||0)+r[4];if(r[3]!=="None")pr[r[3]]=(pr[r[3]]||0)+r[4];});
-    R.orders.filter(function(r){return inRange(r[0],f,t);}).forEach(function(r){bs[r[1]]=(bs[r[1]]||0)+r[4];});
-    donut("r-seg",Object.keys(sg).map(function(k){return {name:k,value:+(sg[k]/1e6).toFixed(1)};}),b);
-    var pk=Object.keys(pr).sort(function(x,y){return pr[x]-pr[y];});
-    bar("r-promo",pk,pk.map(function(k){return +(pr[k]/1e6).toFixed(1);}),"#ff5500",true,b);
-    var names={};R.branches.forEach(function(x){names[x[0]]=x[1];});
-    var bk=Object.keys(bs).sort(function(x,y){return bs[x]-bs[y];});
-    bar("r-branchchart",bk.map(function(k){return names[k];}),bk.map(function(k){return +(bs[k]/1e6).toFixed(1);}),"#2f80ed",true,b);
-    var st={},tg={};R.kpi.filter(function(r){return inRange(r[0],f,t);}).forEach(function(r){st[r[1]]=(st[r[1]]||0)+r[2];tg[r[1]]=(tg[r[1]]||0)+r[3];});
-    var sk=Object.keys(st).sort();
-    setOpt("r-staff",{textStyle:b.textStyle,tooltip:{trigger:"axis"},legend:{top:0,textStyle:{color:b.m}},grid:b.grid,xAxis:{type:"category",data:sk,axisLabel:{color:b.m},axisLine:{lineStyle:{color:b.l}}},yAxis:{type:"value",splitLine:{lineStyle:{color:b.l}},axisLabel:{color:b.m}},
-      series:[{name:"Total made (M VND)",type:"bar",data:sk.map(function(k){return +(st[k]/1e6).toFixed(0);}),itemStyle:{color:"#ff5500"}},
-              {name:"KPI target (M VND)",type:"bar",data:sk.map(function(k){return +(tg[k]/1e6).toFixed(0);}),itemStyle:{color:"#9aa3b5"}}]});
-  }
+/* ======================= GLASS DATA ======================= */
+var G=D.retail,GS={},GQ1={},GQ2={},GE={},GEC={},GP={},GSM={},GPM={},GCM={};
+G.orders.forEach(function(r){var m=mo(r[0]);add(GS,r[0],r[4]);add(r[1]==="Premium"?GQ1:GQ2,r[0],r[3]);add(GSM,m,r[4]);add(GCM,m,r[6]);
+  if(r[2]!=="None"){GP[m]=GP[m]||{};var o=GP[m][r[2]]=GP[m][r[2]]||{n:0,s:0,p:0,c:0};o.n+=r[7];o.s+=r[4];o.p+=r[5];o.c+=r[6];}});
+G.exp.forEach(function(r){var m=mo(r[0]);add(GE,r[0],r[2]);GEC[m]=GEC[m]||{};add(GEC[m],r[1],r[2]);});
+function gMonth(m){
+  var s=dayArr(GS,m),e=dayArr(GE,m),p=s.map(function(x,i){return x-e[i];});
+  return {s:s,e:e,p:p,q1:dayArr(GQ1,m),q2:dayArr(GQ2,m),S:sum(s),E:sum(e),P:sum(p)};
+}
+var maps={};
+function makeMap(id){
+  if(!window.L)return null;
+  if(!maps[id]){var mp=L.map(id,{scrollWheelZoom:false}).setView([-33.88,151.05],10);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:17,attribution:"© OpenStreetMap contributors"}).addTo(mp);
+    maps[id]={map:mp,layer:L.layerGroup().addTo(mp)};}
+  return maps[id];
+}
+function drawMap(id,m){
+  var mm=makeMap(id);if(!mm)return;mm.layer.clearLayers();
+  var rows=G.bysub.filter(function(r){return r[0]===m;}),mx=Math.max.apply(null,rows.map(function(r){return r[2];}).concat([1]));
+  rows.forEach(function(r){var s=G.suburbs[r[1]];
+    L.circleMarker([s[1],s[2]],{radius:5+22*Math.sqrt(r[2]/mx),color:"#12b206",weight:1,fillColor:"#2fd02a",fillOpacity:.6})
+     .bindTooltip(s[0]+": "+usd(r[2],true)+" · "+r[3]+" orders").addTo(mm.layer);});
+  setTimeout(function(){mm.map.invalidateSize();},60);
+}
+function renderGOver(m){
+  var c=gMonth(m),p=m>1?gMonth(m-1):null,days=[];for(var d=1;d<=dim(m);d++)days.push(d);
+  var q1=sum(c.q1),q2=sum(c.q2);
+  $("g-kpis").innerHTML=
+    kpi(3,"Total Sales",usd(c.S),p?dlt(c.S,p.S):null,true,c.s,ORANGE)+
+    kpi(3,"Profit",usd(c.P),p?dlt(c.P,p.P):null,true,c.p,ORANGE)+
+    kpi(3,"Total Expenses",usd(c.E),p?dlt(c.E,p.E):null,false,c.e,"#444")+
+    '<div class="card kpi c3 two"><div><div class="l">Total Premium</div><div class="v">'+q1+"</div>"+badge(p?dlt(q1,sum(p.q1)):null,true,"MoM")+"</div><div><div class=\"l\">Total Luxury</div><div class=\"v\">"+q2+"</div>"+badge(p?dlt(q2,sum(p.q2)):null,true,"MoM")+"</div></div>";
+  opt("g-profit",{tooltip:{trigger:"axis",valueFormatter:function(v){return usd(v,true);}},grid:GR,xAxis:xcat(days),yAxis:yval(),
+    series:[{type:"line",smooth:true,data:c.p.map(function(v){return +v.toFixed(0);}),itemStyle:{color:ORANGE},areaStyle:{color:ORANGE,opacity:.12},markLine:{silent:true,symbol:"none",data:[{yAxis:0}],lineStyle:{color:"#999"}},
+      markPoint:{data:[{type:"max",name:"Best"},{type:"min",name:"Worst"}],symbolSize:44,label:{formatter:function(q){return kk(q.value);},fontSize:10,color:"#fff"},itemStyle:{color:ORANGE}}}]});
+  opt("g-salesexp",{tooltip:{trigger:"axis",valueFormatter:function(v){return usd(v,true);}},legend:{top:0},color:[ORANGE,BLACK],grid:GR,xAxis:xcat(days),yAxis:yval(),
+    series:[{name:"Total Sales",type:"bar",data:c.s.map(Math.round)},{name:"Total Expenses",type:"bar",data:c.e.map(Math.round)}]});
+  opt("g-qty",{tooltip:{trigger:"axis"},legend:{top:0},color:[ORANGE,BLACK],grid:GR,xAxis:xcat(days),yAxis:yval(),
+    series:[{name:"Total Premium",type:"bar",stack:"q",data:c.q1,label:{show:true,color:"#fff",fontSize:9}},{name:"Total Luxury",type:"bar",stack:"q",data:c.q2,label:{show:true,color:"#fff",fontSize:9}}]});
+  drawMap("g-map1",m);
+  var from=Math.max(1,m-5),cats=[],cl=["COG","Worker Salary","Sales Salary","Promo","Warehouse","Back Office","Loss","MKT","Office VN"];
+  for(var i=from;i<=m;i++)cats.push(MN[i-1]);
+  stacked("g-expbr",cats,cl.map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round((GEC[i]||{})[k]||0));return [k,a];}),["#1a1a1a","#326a96","#7fa8c7","#ff5500","#9aa3b5","#c7ccd4","#e4572e","#12b206","#f2c94c"]);
+  var pm=GP[m]||{},names=Object.keys(pm).sort(function(a,b){return pm[b].s-pm[a].s;});
+  donut("g-promo",names.map(function(k){return {name:k,value:+pm[k].s.toFixed(2)};}),null,[ORANGE,BLACK,"#7a7a7a","#bdbdbd","#e0e0e0","#326a96"]);
+  $("g-promotbl").innerHTML=tbl([{t:"Promotion"},{t:"Number Promo"},{t:"Promo Expenses",bar:ORANGE,f:function(v){return usd(v,true);}},{t:"Cost",f:function(v){return usd(v,true);}},{t:"Total Sales",bar:ORANGE,f:function(v){return usd(v,true);}},{t:"Profit",bar:"#6f95b3",f:function(v){return usd(v,true);}}],
+    names.map(function(k){var o=pm[k];return {v:[k,o.n,o.p,o.c,o.s,o.s-o.c-o.p]};}));
+  var ec=GEC[m]||{},hr=(ec["Worker Salary"]||0)+(ec["Sales Salary"]||0);
+  var srows=[["Revenue",c.S],["HR",hr],["COG",ec.COG||0],["Profit",c.P],["Promo Cost",ec.Promo||0],["Warehouse",ec.Warehouse||0],["Back Office",ec["Back Office"]||0],["Loss",ec.Loss||0],["MKT Expenses",ec.MKT||0],["Office VN",ec["Office VN"]||0]];
+  $("g-summary").innerHTML=tbl([{t:"Item"},{t:"Amount",bar:ORANGE,f:function(v){return usd(v,true);}}],srows.map(function(r){return {v:r,cls:r[0]==="Profit"?"hl":""};}));
+  $("g-lm").textContent="LAST MONTH · "+(m>1?MN[m-2]:"-");$("g-tm").textContent="THIS MONTH · "+MN[m-1];
+  var fmtv=function(v){return usd(v,true);};
+  $("g-lmtbl").innerHTML=p?tbl([{t:"Day"},{t:"Profit",bar:"#6f95b3",f:fmtv}],p.p.map(function(v,i){return {v:[i+1,v]};})):"<p>No previous month.</p>";
+  $("g-tmtbl").innerHTML=tbl([{t:"Day"},{t:"Profit",bar:"#6f95b3",f:fmtv},{t:"vs SPLM",bar:"#7fd18b",f:function(v){return '<span class="'+(v>=0?"up":"down")+'">'+usd(v,true)+"</span>";}}],
+    c.p.map(function(v,i){return {v:[i+1,v,p&&p.p[i]!==undefined?v-p.p[i]:0]};}));
+  // insights
+  var best=c.p.indexOf(Math.max.apply(null,c.p)),worst=c.p.indexOf(Math.min.apply(null,c.p)),neg=c.p.filter(function(x){return x<0;}).length;
+  var we=[],wd=[];c.p.forEach(function(v,i){var dw=new Date(2025,m-1,i+1).getDay();(dw===0||dw===6?we:wd).push(v);});
+  var avg=function(a){return a.length?sum(a)/a.length:0;};
+  var topn=names[0],worstRatio=names.slice().sort(function(a,b){return pm[b].p/pm[b].s-pm[a].p/pm[a].s;})[0];
+  var li=[];
+  if(p)li.push("Profit is <b>"+usd(c.P)+"</b>, "+(c.P>=p.P?"up ":"down ")+"<b>"+Math.abs(dlt(c.P,p.P)*100).toFixed(1)+"%</b> versus "+MN[m-2]+"; sales moved "+(dlt(c.S,p.S)*100).toFixed(1)+"% and expenses "+(dlt(c.E,p.E)*100).toFixed(1)+"%.");
+  li.push("Best day: <b>"+MN[m-1]+" "+(best+1)+"</b> ("+usd(c.p[best])+"); weakest day: <b>"+MN[m-1]+" "+(worst+1)+"</b> ("+usd(c.p[worst])+"). "+neg+" loss-making day(s) in the month.");
+  li.push("Weekend days average <b>"+usd(avg(we))+"</b> profit vs <b>"+usd(avg(wd))+"</b> on weekdays"+(avg(we)>avg(wd)?": weekends carry the month.":": promotions could target the weaker weekend days."));
+  if(topn)li.push("<b>"+topn+"</b> is the top promotion by sales ("+usd(pm[topn].s)+"). <b>"+worstRatio+"</b> has the heaviest promo cost relative to its sales ("+(pm[worstRatio].p/pm[worstRatio].s*100).toFixed(0)+"%): review it before extending the program.");
+  $("g-ins").innerHTML="<ul><li>"+li.join("</li><li>")+"</li></ul>";
+  opt("g-splm",{tooltip:{trigger:"axis",valueFormatter:function(v){return usd(v,true);}},legend:{top:0},color:["#111",BLUE,GREEN],grid:GR,xAxis:xcat(days),yAxis:yval(),
+    series:[{name:"Profit",type:"line",smooth:true,data:c.p.map(Math.round)},
+      {name:"Profit SPLM",type:"line",smooth:true,data:p?p.p.map(Math.round):[],lineStyle:{type:"dashed"}},
+      {name:"vs profit SPLM",type:"bar",data:c.p.map(function(v,i){return {value:Math.round(v-(p?p.p[i]||0:0)),itemStyle:{color:v-(p?p.p[i]||0:0)>=0?GREEN:RED}};})}]});
+}
+function renderGWork(m){
+  var st=G.staff,cur=st.filter(function(r){return r[0]===m;}),prv=st.filter(function(r){return r[0]===m-1;});
+  var pm={};prv.forEach(function(r){pm[r[1]]=r[2];});
+  var tot=sum(cur.map(function(r){return r[2];})),totp=sum(prv.map(function(r){return r[2];}));
+  var sal=sum(cur.map(function(r){return r[4]+r[5]+r[6];})),hit=cur.filter(function(r){return r[2]>=r[3];}).length;
+  $("w-kpis").innerHTML=kpi(3,"Total made",usd(tot),m>1?dlt(tot,totp):null,true)+kpi(3,"Staff reaching KPI",hit+" / "+cur.length)+kpi(3,"Total sales salary",usd(sal))+kpi(3,"KPI target per person",usd(cur[0]?cur[0][3]:0));
+  var names=cur.map(function(r){return r[1];});
+  opt("w-chart",{tooltip:{trigger:"axis",valueFormatter:function(v){return usd(v,true);}},legend:{top:0},color:["#9aa3b5",ORANGE],grid:GR,xAxis:xcat(names),yAxis:yval(),
+    series:[{name:m>1?"Total made "+MN[m-2]:"Previous",type:"bar",data:cur.map(function(r){return Math.round(pm[r[1]]||0);})},{name:"Total made "+MN[m-1],type:"bar",data:cur.map(function(r){return Math.round(r[2]);}),markLine:{symbol:"none",data:[{yAxis:cur[0]?cur[0][3]:0,name:"KPI"}],lineStyle:{color:"#111",type:"dashed"}}}]});
+  var f=function(v){return usd(v,true);};
+  $("w-table").innerHTML=tbl([{t:"Staff"},{t:"Total made",bar:ORANGE,f:f},{t:"% vs LM",f:function(v){return v==null?"-":'<span class="'+(v>=0?"up":"down")+'">'+(v>=0?"▲ ":"▼ ")+Math.abs(v*100).toFixed(1)+"%</span>";}},{t:"KPI %",f:function(v){return (v*100).toFixed(0)+"%";}},{t:"Commission",f:f},{t:"Bonus",f:f},{t:"Total salary",f:f}],
+    cur.map(function(r){return {v:[r[1],r[2],pm[r[1]]?dlt(r[2],pm[r[1]]):null,r[2]/r[3],r[5],r[6],r[4]+r[5]+r[6]]};}));
+}
+function renderGLoc(m){
+  drawMap("g-map2",m);
+  var rows=G.bysub.filter(function(r){return r[0]===m;}).sort(function(a,b){return b[2]-a[2];});
+  $("l-table").innerHTML=tbl([{t:"Suburb"},{t:"Orders"},{t:"Sales",bar:"#2fd02a",f:function(v){return usd(v,true);}}],rows.map(function(r){return {v:[G.suburbs[r[1]][0],r[3],r[2]]};}));
+}
 
-  /* ---------- Car rental ---------- */
-  var C=window.DATA.car, statusOf={}, carInfo={};
-  C.cars.forEach(function(c){statusOf[c[0]]=c[3];carInfo[c[0]]=c;});
-  var sortKey="profit",sortDir=-1;
-  function renderCar(){
-    var b=base(),stt=$("c-status").value,rg=range("c-from","c-to"),f=rg[0],t=rg[1],all=stt==="ALL";
-    function okP(p){return all||statusOf[p]===stt;}
-    $("c-note").textContent=all?"":"Status filter applies to car-level data; HR and office expenses are company-wide and are hidden when a single status is selected.";
-    var RV=C.rev.filter(function(r){return okP(r[1])&&inRange(r[0],f,t);});
-    var MT=C.mat.filter(function(r){return okP(r[1])&&inRange(r[0],f,t);});
-    var HR=all?C.hr.filter(function(r){return inRange(r[0],f,t);}):[];
-    var OF=all?C.off.filter(function(r){return inRange(r[0],f,t);}):[];
-    var months=[];for(var m=f;m<=t;m++)months.push(m);
-    var mrev=months.map(function(m){return sum(RV.filter(function(r){return r[0]===m;}),function(r){return r[2];});});
-    var mexp=months.map(function(m){return sum(MT.filter(function(r){return r[0]===m;}),function(r){return r[3];})+sum(HR.filter(function(r){return r[0]===m;}),function(r){return r[1];})+sum(OF.filter(function(r){return r[0]===m;}),function(r){return r[2];});});
-    var rev=sum(mrev,function(x){return x;}),exp=sum(mexp,function(x){return x;}),prof=rev-exp;
-    var cars=C.cars.filter(function(c){return all||c[3]===stt;});
-    var debt=sum(C.debt.filter(function(d){return okP(d[1]);}),function(d){return d[2];});
-    var last=months.length-1,mom=function(a){return last>0&&a[last-1]?(a[last]-a[last-1])/Math.abs(a[last-1]):null;};
-    $("c-kpis").innerHTML=kpiHtml([
-      {l:"Total revenue",v:fmt(rev),d:mom(mrev),dl:"MoM"},{l:"Total expenses",v:fmt(exp),d:mom(mexp),dl:"MoM"},
-      {l:"Profit",v:fmt(prof)},{l:"Profit margin",v:rev?pct(prof/rev):"-"},
-      {l:"Cars",v:fmt(cars.length)},{l:"Customer debt (AUD)",v:fmt(debt)}]);
-    var cats=months.map(function(m){return MN[m-1];}),a=axes(b,cats);
-    setOpt("c-trend",{textStyle:b.textStyle,tooltip:{trigger:"axis"},legend:{top:0,textStyle:{color:b.m}},grid:b.grid,xAxis:a.xAxis,yAxis:a.yAxis,
-      series:[{name:"Revenue",type:"line",smooth:true,data:mrev,itemStyle:{color:"#1f9e32"}},{name:"Expenses",type:"line",smooth:true,data:mexp,itemStyle:{color:"#d34803"}}]});
-    var sc={};C.cars.forEach(function(c){sc[c[3]]=(sc[c[3]]||0)+1;});
-    donut("c-status-chart",Object.keys(sc).map(function(k){return {name:k,value:sc[k]};}),b);
-    var ec={};MT.forEach(function(r){ec[r[2]]=(ec[r[2]]||0)+r[3];});
-    if(all){ec.HR=sum(HR,function(r){return r[1];});OF.forEach(function(r){ec["Office: "+r[1]]=(ec["Office: "+r[1]]||0)+r[2];});}
-    donut("c-exp",Object.keys(ec).map(function(k){return {name:k,value:ec[k]};}),b);
-    var ty={};MT.forEach(function(r){ty[r[4]]=(ty[r[4]]||0)+r[3];});
-    bar("c-type",Object.keys(ty),Object.keys(ty).map(function(k){return ty[k];}),"#2f80ed",false,b);
-    var per={};cars.forEach(function(c){per[c[0]]={rev:0,exp:0};});
-    RV.forEach(function(r){if(per[r[1]])per[r[1]].rev+=r[2];});MT.forEach(function(r){if(per[r[1]])per[r[1]].exp+=r[3];});
-    var list=Object.keys(per).map(function(p){var c=carInfo[p];return {plate:p,make:c[1],status:c[3],price:c[2],rev:per[p].rev,exp:per[p].exp,profit:per[p].rev-per[p].exp};});
-    var top=list.slice().sort(function(x,y){return y.profit-x.profit;}).slice(0,10).reverse();
-    bar("c-top",top.map(function(x){return x.plate;}),top.map(function(x){return x.profit;}),"#1f9e32",true,b);
-    list.sort(function(x,y){var u=x[sortKey],v=y[sortKey];return (u<v?-1:u>v?1:0)*sortDir;});
-    var cols=[["plate","Plate"],["make","Make"],["status","Status"],["price","Buying price"],["rev","Revenue"],["exp","Material exp."],["profit","Profit"]];
-    $("c-table").innerHTML="<thead><tr>"+cols.map(function(c){return '<th data-k="'+c[0]+'">'+c[1]+(sortKey===c[0]?(sortDir>0?" ▲":" ▼"):"")+"</th>";}).join("")+"</tr></thead><tbody>"+
-      list.map(function(x){return "<tr><td>"+x.plate+"</td><td>"+x.make+"</td><td>"+x.status+"</td><td>"+fmt(x.price)+"</td><td>"+fmt(x.rev)+"</td><td>"+fmt(x.exp)+"</td><td class='"+(x.profit>=0?"up":"down")+"'>"+fmt(x.profit)+"</td></tr>";}).join("")+"</tbody>";
-    Array.prototype.forEach.call($("c-table").querySelectorAll("th"),function(th){th.onclick=function(){var k=th.getAttribute("data-k");if(sortKey===k)sortDir=-sortDir;else{sortKey=k;sortDir=-1;}renderCar();};});
-  }
+/* ======================= CAR DATA ======================= */
+var C=D.car,CAR={},CRV={},CRT={},CEX={},CG={},CC={},CT={},CITEMS={},CEVM={};
+C.cars.forEach(function(c){CAR[c[0]]=c;});
+C.rdaily.forEach(function(r){CRV[r[0]]=r[1];CRT[r[0]]=r[2];});
+C.exp.forEach(function(r){var m=mo(r[0]);add(CEX,r[0],r[5]);CG[m]=CG[m]||{};add(CG[m],r[1],r[5]);
+  if(r[1]==="Material"){CC[m]=CC[m]||{};add(CC[m],r[2],r[5]);CITEMS[m]=CITEMS[m]||[];CITEMS[m].push(r);}
+  CT[m]=CT[m]||{};add(CT[m],r[6],r[5]);});
+C.events.forEach(function(r){var m=mo(r[0]);CEVM[m]=CEVM[m]||[0,0];CEVM[m][0]+=r[1];CEVM[m][1]+=r[2];});
+function cMonth(m){var s=dayArr(CRV,m),e=dayArr(CEX,m),p=s.map(function(x,i){return x-e[i];});return {s:s,e:e,p:p,r:dayArr(CRT,m),S:sum(s),E:sum(e),P:sum(p)};}
+var CCOL={Rego:"#1a1a1a",Parts:"#7fb7ff",Others:"#7a5cc0",Operation:"#a666b0",Tax:"#3b1e6e",Rent:"#e44fa8"};
+function renderCOver(m){
+  var c=cMonth(m),p=m>1?cMonth(m-1):null,days=[];for(var d=1;d<=dim(m);d++)days.push(d);
+  var db=C.debt[m-1],rent=c.r[c.r.length-1];
+  $("c-kpis").innerHTML=
+    kpi(3,"Profit",'<span class="'+(c.P>=0?"up":"down")+'">'+usd(c.P)+"</span>",p?dlt(c.P,p.P):null,true,c.p,PURPLE)+
+    kpi(3,"Total Sales",usd(c.S),p?dlt(c.S,p.S):null,true,c.s,"#5fc8d6")+
+    kpi(3,"Total Expenses",usd(c.E),p?dlt(c.E,p.E):null,false,c.e,"#333")+
+    '<div class="card kpi c3 two"><div><div class="l">Customer debt</div><div class="v">'+usd(db[1])+'</div></div><div><div class="l">% customers paid</div><div class="v">'+Math.round(db[2]*100)+"%</div></div></div>"+
+    kpi(3,"Renting cars (month end)",rent,null,true,c.r,PURPLE);
+  opt("c-salesexp",{tooltip:{trigger:"axis",valueFormatter:function(v){return usd(v,true);}},legend:{top:0},color:[PURPLE,"#111"],grid:GR,xAxis:xcat(days),yAxis:yval(),
+    series:[{name:"Total Sales",type:"bar",stack:"x",data:c.s.map(Math.round)},{name:"Total Expenses",type:"bar",stack:"x",data:c.e.map(Math.round)}]});
+  opt("c-profit",{tooltip:{trigger:"axis",valueFormatter:function(v){return usd(v,true);}},grid:GR,xAxis:xcat(days),yAxis:yval(),
+    series:[{type:"line",smooth:true,data:c.p.map(Math.round),itemStyle:{color:"#4da3ff"},areaStyle:{color:"#4da3ff",opacity:.2},markLine:{silent:true,symbol:"none",data:[{yAxis:0}],lineStyle:{color:"#999"}},markPoint:{data:[{type:"max"},{type:"min"}],symbolSize:44,label:{formatter:function(q){return kk(q.value);},fontSize:10,color:"#fff"},itemStyle:{color:"#4da3ff"}}}]});
+  var ty=CT[m]||{};
+  donut("c-donut",[{name:"Expenses for Operation",value:+(ty.Operation||0).toFixed(2)},{name:"Expenses for Invest",value:+(ty.Invest||0).toFixed(2)}],usd(c.E),["#222",PURPLE]);
+  var g=CG[m]||{},tot=c.E||1,gl=["HR","Material","Office","MKT"];
+  opt("c-detailbars",{tooltip:{valueFormatter:function(v){return usd(v,true);}},grid:{left:90,right:80,top:10,bottom:20},xAxis:yval(),yAxis:{type:"category",data:gl.slice().reverse(),axisLabel:{color:"#475467"},axisLine:AX.axisLine,axisTick:AX.axisTick},
+    series:[{type:"bar",data:gl.slice().reverse().map(function(k,i){return {value:Math.round(g[k]||0),itemStyle:{color:[ "#9cc873",PURPLE,"#111","#111"][["MKT","Office","Material","HR"].indexOf(k)<0?0:["MKT","Office","Material","HR"].indexOf(k)]}};}),
+      label:{show:true,position:"right",formatter:function(q){return usd(q.value)+" ("+(q.value/tot*100).toFixed(0)+"%)";}}}]});
+  var mt=CC[m]||{},rows=[["Revenue",c.S],["Profit",c.P],["MKT Expense",g.MKT||0],["Material Expenses",g.Material||0],["  Material_Operation",(CITEMS[m]||[]).filter(function(r){return r[6]==="Operation";}).reduce(function(a,r){return a+r[5];},0)],["HR Expense",g.HR||0],["Office Expense",g.Office||0]];
+  $("c-summary").innerHTML=tbl([{t:"Item"},{t:"Amount",bar:PURPLE,f:function(v){return usd(v,true);}}],rows.map(function(r){return {v:r,cls:r[0]==="Profit"?"hl":""};}));
+  var from=Math.max(1,m-2),cats=[];for(var i=from;i<=m;i++)cats.push(MN[i-1]);
+  stacked("c-opbr",cats,["Material","HR","MKT","Office"].map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round((CG[i]||{})[k]||0));return [k,a];}),["#111","#74cd8b","#a5e3ea","#5a007a"]);
+  stacked("c-matbr",cats,Object.keys(CCOL).map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round((CC[i]||{})[k]||0));return [k,a];}),Object.keys(CCOL).map(function(k){return CCOL[k];}));
+  donut("c-matdonut",Object.keys(mt).map(function(k){return {name:k,value:+mt[k].toFixed(2)};}),null,Object.keys(mt).map(function(k){return CCOL[k]||"#999";}));
+  // grouped detail
+  var items=(CITEMS[m]||[]).slice().sort(function(a,b){return b[5]-a[5];}),groups={};
+  items.forEach(function(r){(groups[r[2]]=groups[r[2]]||[]).push(r);});
+  var order=Object.keys(groups).sort(function(a,b){return sum(groups[b].map(function(r){return r[5];}))-sum(groups[a].map(function(r){return r[5];}));});
+  var mx=Math.max.apply(null,items.map(function(r){return r[5];}).concat([1])),h="<table><thead><tr><th>Category / item</th><th>Expenses</th><th>Car</th></tr></thead><tbody>";
+  order.forEach(function(k){var t=sum(groups[k].map(function(r){return r[5];}));
+    h+='<tr class="grp" data-g="'+k+'"><td>▾ '+k+"</td><td>"+usd(t,true)+"</td><td></td></tr>";
+    groups[k].forEach(function(r){h+='<tr data-in="'+k+'"><td style="padding-left:22px">'+r[4]+'</td><td class="bar2"><i style="width:'+(r[5]/mx*100).toFixed(1)+'%;background:#7479c9"></i><span>'+usd(r[5],true)+"</span></td><td>"+(r[3]||"")+"</td></tr>";});});
+  $("c-detail").innerHTML=h+'<tr class="grp"><td>Total</td><td>'+usd(sum(items.map(function(r){return r[5];})),true)+"</td><td></td></tr></tbody></table>";
+  Array.prototype.forEach.call($("c-detail").querySelectorAll("tr.grp[data-g]"),function(tr){tr.onclick=function(){var g=tr.getAttribute("data-g"),open=tr.firstChild.textContent.charAt(0)==="▾";tr.firstChild.textContent=(open?"▸ ":"▾ ")+g;
+    Array.prototype.forEach.call($("c-detail").querySelectorAll('tr[data-in="'+g+'"]'),function(x){x.hidden=open;});};});
+}
+var dSort={k:5,dir:-1};
+function renderCDet(m){
+  var st=$("d-filter").value||"ALL",yr={},mon={},mex={};
+  C.rplate.forEach(function(r){add(yr,r[1],r[2]);if(r[0]===m)add(mon,r[1],r[2]);});
+  C.exp.forEach(function(r){if(r[1]==="Material"&&r[3])add(mex,r[3],r[5]);});
+  var cs=C.cars.filter(function(c){return st==="ALL"||c[3]===st;});
+  var rows=cs.map(function(c){var rv=yr[c[0]]||0,ex=mex[c[0]]||0;return [c[0],c[1],c[3],c[2],mon[c[0]]||0,rv,ex,rv-ex];});
+  var sc={};C.cars.forEach(function(c){add(sc,c[3],1);});
+  var rent=C.cars.filter(function(c){return c[3]==="Active"||c[3]==="RTO";}).length;
+  $("d-kpis").innerHTML=kpi(3,"Cars in fleet",C.cars.length)+kpi(3,"Rentable (Active + RTO)",rent)+kpi(3,"Fleet buying price",usd(sum(C.cars.map(function(c){return c[2];}))))+kpi(3,"Avg daily rate",usd(sum(C.cars.map(function(c){return c[4];}))/C.cars.length,true));
+  donut("d-status",Object.keys(sc).map(function(k){return {name:k,value:sc[k]};}),null,["#76cd8c","#e37a7e","#c499ca","#f0a787","#bdbdbd","#7479c9","#9cc873"]);
+  // donut labels for counts
+  var c1=ch("d-status");if(c1)c1.setOption({series:[{label:{formatter:function(p){return p.value+" ("+p.percent+"%)";}}}],tooltip:{formatter:function(p){return p.name+": "+p.value;}}});
+  var top=rows.slice().sort(function(a,b){return b[7]-a[7];}).slice(0,10).reverse();
+  opt("d-top",{tooltip:{valueFormatter:function(v){return usd(v,true);}},grid:{left:70,right:20,top:10,bottom:20},xAxis:yval(),yAxis:{type:"category",data:top.map(function(r){return r[0];}),axisLabel:{color:"#475467"}},series:[{type:"bar",data:top.map(function(r){return Math.round(r[7]);}),itemStyle:{color:GREEN}}]});
+  opt("d-flow",{tooltip:{trigger:"axis"},legend:{top:0},color:[GREEN,RED],grid:GR,xAxis:xcat(MN),yAxis:yval(),series:[{name:"New rent",type:"bar",data:MN.map(function(_,i){return (CEVM[i+1]||[0,0])[0];})},{name:"Returned",type:"bar",data:MN.map(function(_,i){return (CEVM[i+1]||[0,0])[1];})}]});
+  var f=function(v){return usd(v,true);},cols=[{t:"Plate"},{t:"Make"},{t:"Status"},{t:"Buying price",f:f},{t:MN[m-1]+" revenue",bar:PURPLE,f:f},{t:"Revenue (year)",bar:PURPLE,f:f},{t:"Material exp. (year)",f:f},{t:"Profit (year)",bar:GREEN,f:function(v){return '<span class="'+(v>=0?"up":"down")+'">'+usd(v,true)+"</span>";}}];
+  rows.sort(function(a,b){var u=a[dSort.k],v=b[dSort.k];return (u<v?-1:u>v?1:0)*dSort.dir;});
+  $("d-table").innerHTML=tbl(cols,rows.map(function(r){return {v:r};}));
+  Array.prototype.forEach.call($("d-table").querySelectorAll("th"),function(th){th.onclick=function(){var i=+th.getAttribute("data-i");if(dSort.k===i)dSort.dir=-dSort.dir;else{dSort.k=i;dSort.dir=-1;}renderCDet(m);};});
+}
 
-  /* ---------- wiring ---------- */
-  fillSelect($("r-branch"),[["ALL","All branches"]].concat(R.branches.map(function(x){return [x[0],x[1]];})),"ALL");
-  fillSelect($("r-from"),monthOpts(),1);fillSelect($("r-to"),monthOpts(),12);
-  var sts=Object.keys(C.cars.reduce(function(o,c){o[c[3]]=1;return o;},{})).sort();
-  fillSelect($("c-status"),[["ALL","All statuses"]].concat(sts.map(function(s){return [s,s];})),"ALL");
-  fillSelect($("c-from"),monthOpts(),1);fillSelect($("c-to"),monthOpts(),12);
-  ["r-branch","r-from","r-to"].forEach(function(id){$(id).onchange=renderRetail;});
-  ["c-status","c-from","c-to"].forEach(function(id){$(id).onchange=renderCar;});
-  function show(which){
-    $("retail").hidden=which!=="retail";$("car").hidden=which!=="car";
-    $("tab-retail").setAttribute("aria-selected",which==="retail");$("tab-car").setAttribute("aria-selected",which==="car");
-    try{history.replaceState(null,"","#"+which);}catch(e){}
-    (which==="retail"?renderRetail:renderCar)();
-    Object.keys(charts).forEach(function(k){charts[k].resize();});
-  }
-  $("tab-retail").onclick=function(){show("retail");};$("tab-car").onclick=function(){show("car");};
-  window.addEventListener("resize",function(){Object.keys(charts).forEach(function(k){charts[k].resize();});});
-  if(window.matchMedia){window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",function(){show($("car").hidden?"retail":"car");});}
-  show(location.hash==="#car"?"car":"retail");
+/* ======================= wiring ======================= */
+var PAGES={"g-over":["glass","SALES PERFORMANCE DASHBOARD | <b>OVERVIEW</b>"],"g-work":["glass","SALES PERFORMANCE DASHBOARD | <b>WORKER</b>"],"g-loc":["glass","SALES PERFORMANCE DASHBOARD | <b>LOCATION</b>"],"c-over":["car","SALE PERFORMANCE DASHBOARD | <b>CAR RENTAL</b>"],"c-det":["car","SALE PERFORMANCE DASHBOARD | <b>CAR RENTAL DETAIL</b>"]};
+var cur="g-over";
+function month(){return +$("month").value;}
+function render(){
+  var m=month();
+  ({"g-over":renderGOver,"g-work":renderGWork,"g-loc":renderGLoc,"c-over":renderCOver,"c-det":renderCDet})[cur](m);
+  Object.keys(charts).forEach(function(k){if(charts[k]&&$(k)&&$(k).offsetParent)charts[k].resize();});
+}
+function show(p){
+  cur=p;Object.keys(PAGES).forEach(function(k){$(k).hidden=k!==p;});
+  document.body.className=PAGES[p][0]==="car"?"t-car":"t-glass";$("title").innerHTML=PAGES[p][1];
+  Array.prototype.forEach.call(document.querySelectorAll(".nav button"),function(b){b.setAttribute("aria-selected",b.getAttribute("data-p")===p);});
+  try{history.replaceState(null,"","#"+p);}catch(e){}
+  render();
+}
+$("month").innerHTML=MN.map(function(n,i){return '<option value="'+(i+1)+'">'+n+"</option>";}).join("");$("month").value=11;
+var sts=Object.keys(C.cars.reduce(function(o,c){o[c[3]]=1;return o;},{})).sort();
+$("d-filter").innerHTML='<option value="ALL">All statuses</option>'+sts.map(function(s){return "<option>"+s+"</option>";}).join("");
+$("month").onchange=render;$("d-filter").onchange=render;
+Array.prototype.forEach.call(document.querySelectorAll(".nav button"),function(b){b.onclick=function(){show(b.getAttribute("data-p"));};});
+window.addEventListener("resize",function(){Object.keys(charts).forEach(function(k){if(charts[k])charts[k].resize();});});
+var h=location.hash.slice(1);show(PAGES[h]?h:"g-over");
 })();
 </script>
 </body>

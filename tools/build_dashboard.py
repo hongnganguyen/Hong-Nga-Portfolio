@@ -1,4 +1,4 @@
-"""Aggregate the SYNTHETIC CSVs into docs/data.js for the interactive dashboard.
+"""Aggregate the SYNTHETIC CSVs into docs/data.js for the interactive dashboards.
 Run after tools/generate.py:  python tools/build_dashboard.py"""
 import os, json
 import pandas as pd
@@ -8,44 +8,52 @@ RET = os.path.join(ROOT, "projects", "automotive-glass-service-powerbi", "data")
 CAR = os.path.join(ROOT, "projects", "car-rental-overview-powerbi", "data")
 OUT = os.path.join(ROOT, "docs")
 os.makedirs(OUT, exist_ok=True)
+NA = dict(keep_default_na=False)  # "None" is a real promotion label, not a missing value
 
 
 def rows(df):
     return json.loads(df.to_json(orient="values"))
 
 
-# ---- automotive glass service ----
-rev = pd.read_csv(os.path.join(RET, "daily_revenue.csv"), parse_dates=["date"], keep_default_na=False)  # "None" = no promotion, not missing
-rev["m"] = rev.date.dt.month
-orders = (rev.groupby(["m", "branch_id", "vehicle_segment", "promotion_name"])
-          .agg(sales=("amount_vnd", "sum"), promo=("promo_expense_vnd", "sum"), cogs=("cogs_vnd", "sum"), n=("order_id", "count"))
-          .reset_index())
+# ---------------- automotive glass ----------------
+o = pd.read_csv(os.path.join(RET, "orders.csv"), **NA)
+o["m"] = pd.to_datetime(o.date).dt.month
+daily = (o.groupby(["date", "product_line", "promotion_name"])
+         .agg(qty=("quantity", "sum"), sales=("amount_aud", "sum"), promo=("promo_expense_aud", "sum"), cogs=("cogs_aud", "sum"), n=("order_id", "count"))
+         .round(2).reset_index())
+sub = pd.read_csv(os.path.join(RET, "suburbs.csv"))
+sidx = {s: i for i, s in enumerate(sub.suburb)}
+o["si"] = o.suburb.map(sidx)
+bysub = o.groupby(["m", "si"]).agg(sales=("amount_aud", "sum"), n=("order_id", "count")).round(2).reset_index()
 exp = pd.read_csv(os.path.join(RET, "expenses.csv"))
 kpi = pd.read_csv(os.path.join(RET, "staff_kpi.csv"))
-br = pd.read_csv(os.path.join(RET, "branches.csv"))
 retail = {
-    "branches": br[["branch_id", "branch_name"]].values.tolist(),
-    "orders": rows(orders),            # m, branch, segment, promo, sales, promo_exp, cogs, n
-    "exp": rows(exp[["month", "branch_id", "category", "amount_vnd"]]),
-    "kpi": rows(kpi[["month", "staff", "total_made_vnd", "kpi_target_vnd", "bonus_vnd", "base_salary_vnd"]]),
+    "orders": rows(daily),   # date, line, promo, qty, sales, promoExp, cogs, n
+    "exp": rows(exp),        # date, category, amount
+    "suburbs": rows(sub[["suburb", "lat", "lon"]]),
+    "bysub": rows(bysub),    # month, suburbIdx, sales, n
+    "staff": rows(kpi[["month", "staff", "total_made_aud", "kpi_target_aud", "base_salary_aud", "commission_aud", "bonus_aud"]]),
 }
 
-# ---- car rental ----
+# ---------------- car rental ----------------
 car = pd.read_csv(os.path.join(CAR, "car_info.csv"))
-rw = pd.read_csv(os.path.join(CAR, "revenue_weekly.csv"), parse_dates=["week_start"])
-rw["m"] = rw.week_start.dt.month
-rw = rw.groupby(["m", "plate"]).agg(amt=("amount_aud", "sum"), new=("new_rent", "sum"), ret=("returned", "sum")).reset_index()
-mat = pd.read_csv(os.path.join(CAR, "expenses_material.csv"))
-hr = pd.read_csv(os.path.join(CAR, "expenses_hr.csv")).groupby("month").total_aud.sum().reset_index()
-off = pd.read_csv(os.path.join(CAR, "expenses_office.csv"))
+rev = pd.read_csv(os.path.join(CAR, "revenue_daily.csv"))
+ev = pd.read_csv(os.path.join(CAR, "rental_events.csv"))
+rev["m"] = pd.to_datetime(rev.date).dt.month
+rdaily = rev.groupby("date").agg(amt=("amount_aud", "sum"), rented=("plate", "nunique")).reset_index()
+rplate = rev.groupby(["m", "plate"]).amount_aud.sum().round(2).reset_index()
+evd = ev.groupby(["date", "event"]).size().unstack(fill_value=0).reset_index()
+for c in ("new_rent", "returned"):
+    if c not in evd: evd[c] = 0
+cexp = pd.read_csv(os.path.join(CAR, "expenses.csv"), **NA)
 debt = pd.read_csv(os.path.join(CAR, "customer_debt.csv"))
 carj = {
-    "cars": car[["plate", "make", "buying_price_aud", "status"]].values.tolist(),
-    "rev": rows(rw),                   # m, plate, amt, new, ret
-    "mat": rows(mat[["month", "plate", "category", "expense_aud", "type"]]),
-    "hr": rows(hr),
-    "off": rows(off),
-    "debt": rows(debt[["customer_id", "plate", "outstanding_aud"]]),
+    "cars": rows(car[["plate", "make", "buying_price_aud", "status", "daily_rate_aud"]]),
+    "rdaily": rows(rdaily),                     # date, revenue, cars on rent
+    "rplate": rows(rplate),                     # month, plate, revenue
+    "events": rows(evd[["date", "new_rent", "returned"]]),
+    "exp": rows(cexp[["date", "group", "category", "plate", "note", "amount_aud", "type"]]),
+    "debt": rows(debt),
 }
 
 with open(os.path.join(OUT, "data.js"), "w", encoding="utf-8") as f:
