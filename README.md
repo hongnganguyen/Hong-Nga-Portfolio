@@ -4,7 +4,7 @@ Data Analyst with an Economics background (UEH, Investment Economics, GPA 3.6/4.
 
 **Tools:** SQL · Advanced Excel · Power Query · Power BI (DAX, data modeling) · Google Sheets · basic Python
 
-📧 hongnga230902@gmail.com · 📍 Ho Chi Minh City, Vietnam
+📧 hongnga230902@gmail.com · 📞 0345 576 131 · 📍 Ho Chi Minh City, Vietnam
 
 ---
 
@@ -44,4 +44,5 @@ Source repositories: [Project-PAYTM](https://github.com/hongnganguyen/Project-PA
 - 3rd Prize, E-research Award 2022 (Faculty of Economics) · 2nd Prize, UEH Young Researcher 2022 · 3 GPA scholarships
 - IC3 Certificate · TOEIC 715
 - Courses: SQL & Python for Data Analysis (MazHocData), Excel for Analysis and Power BI Essential (Vy Le Training), Finance for Leaders (PACE Training)
+
 
