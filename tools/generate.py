@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 rng = np.random.default_rng(2025)
 ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "projects")
-RET = os.path.join(ROOT, "retail-store-performance-powerbi")
+RET = os.path.join(ROOT, "automotive-glass-service-powerbi")
 CAR = os.path.join(ROOT, "car-rental-overview-powerbi")
 for p in (RET, CAR):
     for sub in ("data", "images", "reports"):
@@ -27,10 +27,10 @@ def money(x, pos=None): return f"{x/1000:,.0f}K"
 def note(fig): fig.text(0.99, 0.005, "Synthetic sample data - illustrative preview", ha="right", fontsize=7, color="#888")
 
 # ============================ RETAIL STORE PERFORMANCE ============================
-stores = pd.DataFrame({"store_id": ["S1", "S2", "S3", "S4"],
-                       "store_name": ["Branch 1 - District 1", "Branch 2 - District 3", "Branch 3 - District 7", "Branch 4 - Thu Duc"],
+stores = pd.DataFrame({"branch_id": ["S1", "S2", "S3", "S4"],
+                       "branch_name": ["Branch 1 - District 1", "Branch 2 - District 3", "Branch 3 - District 7", "Branch 4 - Thu Duc"],
                        "size_factor": [1.3, 1.0, 0.9, 0.7]})
-stores.to_csv(os.path.join(RET, "data", "stores.csv"), index=False)
+stores.to_csv(os.path.join(RET, "data", "branches.csv"), index=False)
 promos = pd.DataFrame({"promotion_name": ["None", "BOGO", "B2G2", "B3G1", "B3G2", "B3G3", "B4G4"],
                        "description": ["No promotion", "Buy 1 get 1", "Buy 2 get 2", "Buy 3 get 1", "Buy 3 get 2", "Buy 3 get 3", "Buy 4 get 4"],
                        "free_share": [0, .5, .5, .25, .4, .5, .5]})
@@ -49,27 +49,27 @@ for d in cal.date:
             promo = rng.choice(promos.promotion_name, p=[.55, .1, .08, .08, .07, .06, .06])
             share = float(promos.loc[promos.promotion_name == promo, "free_share"].iloc[0])
             amount = round(base * (1 - share * rng.uniform(.5, 1)) / 1000) * 1000
-            rows.append((oid, d.date(), s.store_id, tier, promo, amount, round(base * share * 0.4 / 1000) * 1000 if promo != "None" else 0,
+            rows.append((oid, d.date(), s.branch_id, tier, promo, amount, round(base * share * 0.4 / 1000) * 1000 if promo != "None" else 0,
                          round(amount * rng.uniform(.38, .46) / 1000) * 1000, rng.choice(staff)))
             oid += 1
-rev = pd.DataFrame(rows, columns=["order_id", "date", "store_id", "vehicle_segment", "promotion_name", "amount_vnd", "promo_expense_vnd", "cogs_vnd", "sales_staff"])
+rev = pd.DataFrame(rows, columns=["order_id", "date", "branch_id", "vehicle_segment", "promotion_name", "amount_vnd", "promo_expense_vnd", "cogs_vnd", "sales_staff"])
 rev.to_csv(os.path.join(RET, "data", "daily_revenue.csv"), index=False)
 rev["date"] = pd.to_datetime(rev.date); rev["m"] = rev.date.dt.month
 
 exp_rows = []
 for m in range(1, 13):
     for _, s in stores.iterrows():
-        sub = rev[(rev.m == m) & (rev.store_id == s.store_id)]
+        sub = rev[(rev.m == m) & (rev.branch_id == s.branch_id)]
         sales = sub.amount_vnd.sum()
-        exp_rows += [(m, s.store_id, "COG", sub.cogs_vnd.sum()),
-                     (m, s.store_id, "Promo", sub.promo_expense_vnd.sum()),
-                     (m, s.store_id, "Back Office", round(sales * rng.uniform(.06, .09))),
-                     (m, s.store_id, "MKT", round(sales * rng.uniform(.04, .08))),
-                     (m, s.store_id, "Warehouse", round(sales * rng.uniform(.02, .035))),
-                     (m, s.store_id, "Cash Loss", round(sales * rng.uniform(0, .008))),
-                     (m, s.store_id, "Sales Salary", round(sales * rng.uniform(.05, .07))),
-                     (m, s.store_id, "Worker Salary", 18_000_000 + int(rng.integers(0, 4)) * 1_000_000)]
-exp = pd.DataFrame(exp_rows, columns=["month", "store_id", "category", "amount_vnd"])
+        exp_rows += [(m, s.branch_id, "COG", sub.cogs_vnd.sum()),
+                     (m, s.branch_id, "Promo", sub.promo_expense_vnd.sum()),
+                     (m, s.branch_id, "Back Office", round(sales * rng.uniform(.06, .09))),
+                     (m, s.branch_id, "MKT", round(sales * rng.uniform(.04, .08))),
+                     (m, s.branch_id, "Warehouse", round(sales * rng.uniform(.02, .035))),
+                     (m, s.branch_id, "Cash Loss", round(sales * rng.uniform(0, .008))),
+                     (m, s.branch_id, "Sales Salary", round(sales * rng.uniform(.05, .07))),
+                     (m, s.branch_id, "Worker Salary", 18_000_000 + int(rng.integers(0, 4)) * 1_000_000)]
+exp = pd.DataFrame(exp_rows, columns=["month", "branch_id", "category", "amount_vnd"])
 exp.to_csv(os.path.join(RET, "data", "expenses.csv"), index=False)
 
 kpi = []
@@ -109,7 +109,7 @@ note(fig); fig.tight_layout(); fig.savefig(os.path.join(RET, "images", "02-expen
 fig, ax = plt.subplots(1, 2, figsize=(14, 3.6)); fig.suptitle("Automotive Glass Service Performance - Staff KPI & Branches", fontweight="bold")
 piv = kpi.pivot(index="month", columns="staff", values="total_made_vnd") / 1e6
 piv.plot(kind="bar", ax=ax[0], width=.85); ax[0].axhline(200, color="#333", ls="--", lw=.8); ax[0].set_title("Total made by staff vs KPI target (M VND)"); ax[0].legend(frameon=False, ncol=5, fontsize=7); ax[0].set_xticklabels(mn, rotation=45)
-ss = rev.merge(stores, on="store_id").groupby("store_name").amount_vnd.sum().sort_values()
+ss = rev.merge(stores, on="branch_id").groupby("branch_name").amount_vnd.sum().sort_values()
 ax[1].barh(ss.index, ss / 1e6, color=C["main"]); ax[1].set_title("Annual sales by branch (M VND)")
 note(fig); fig.tight_layout(); fig.savefig(os.path.join(RET, "images", "03-staff-stores.png"), dpi=130); plt.close(fig)
 
@@ -224,6 +224,7 @@ open(os.path.join(CAR, "reports", "sample-annual-report-2025.md"), "w", encoding
 """)
 print("done", len(rev), len(rw))
 print(m_sales.sum() / 1e6, m_profit.sum() / 1e6, r_rev.sum(), r_profit.sum())
+
 
 
 

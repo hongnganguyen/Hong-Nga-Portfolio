@@ -1,4 +1,4 @@
-﻿# Data Analytics Portfolio · Nguyen Thi Hong Nga
+# Data Analytics Portfolio · Nguyen Thi Hong Nga
 
 Data Analyst with an Economics background (UEH, Investment Economics, GPA 3.6/4.0, high distinction). I build automated ETL workflows, interactive Power BI dashboards and KPI / financial reports that support business decisions. This portfolio holds five projects: two Power BI dashboards from my day-to-day work, one social-listening dashboard, and two SQL analyses.
 
@@ -7,6 +7,8 @@ Data Analyst with an Economics background (UEH, Investment Economics, GPA 3.6/4.
 | | |
 |---|---|
 | **Contact** | hongnga230902@gmail.com · 0345 576 131 · Ho Chi Minh City |
+| **CV** | [CV_Nguyen_Thi_Hong_Nga.pdf](docs/CV_Nguyen_Thi_Hong_Nga.pdf) |
+| **Interactive dashboards** | [hongnganguyen.github.io/Hong-Nga-Portfolio](https://hongnganguyen.github.io/Hong-Nga-Portfolio/) (projects 1 and 2, synthetic data) |
 | **Skills** | SQL (T-SQL) · Power BI (DAX, data modeling) · Power Query · Advanced Excel · Google Sheets · basic Python |
 | **Source repos** | [Project-PAYTM](https://github.com/hongnganguyen/Project-PAYTM) · [Project-Azuz-Web](https://github.com/hongnganguyen/Project-Azuz-Web) |
 
@@ -21,10 +23,10 @@ Multi-branch business selling and installing car glass. One dashboard tracks dai
 **Tools:** Power BI, DAX, Power Query · **Model:** star schema, 4 branches, 5 staff, ≈9,000 orders.
 **What the sample report shows** (synthetic): sales **10,225 M VND**, profit margin **16.8%**, COG the largest cost at **42%** of sales, strong year-end seasonality (peak Dec, low Feb).
 
-[![Overview](projects/retail-store-performance-powerbi/images/01-overview.png)](projects/retail-store-performance-powerbi/images/01-overview.png)
-[![Expenses and promotions](projects/retail-store-performance-powerbi/images/02-expenses-promotions.png)](projects/retail-store-performance-powerbi/images/02-expenses-promotions.png)
+[![Overview](projects/automotive-glass-service-powerbi/images/01-overview.png)](projects/automotive-glass-service-powerbi/images/01-overview.png)
+[![Expenses and promotions](projects/automotive-glass-service-powerbi/images/02-expenses-promotions.png)](projects/automotive-glass-service-powerbi/images/02-expenses-promotions.png)
 
-→ [Project folder](projects/retail-store-performance-powerbi) · [sample report](projects/retail-store-performance-powerbi/reports/sample-annual-report-2025.md) · [data](projects/retail-store-performance-powerbi/data)
+→ [Project folder](projects/automotive-glass-service-powerbi) · [sample report](projects/automotive-glass-service-powerbi/reports/sample-annual-report-2025.md) · [data](projects/automotive-glass-service-powerbi/data)
 
 ### 2 · Car rental overview (Power BI, synthetic data)
 Dashboard for a car-rental operation: **revenue, expense groups (Invest vs Operation), profit, fleet status and customer debt**, plus a detail page with per-car profitability.
@@ -88,7 +90,10 @@ The synthetic datasets, charts and sample reports for projects 1–2 are produce
 ```powershell
 pip install -r requirements.txt
 python tools/generate.py
+python tools/build_dashboard.py
 ```
+
+Then open `docs/index.html` through a local server (for example `python -m http.server --directory docs`) to see the interactive dashboards; the same folder is published with GitHub Pages.
 
 To rebuild a dashboard, load the CSVs from `projects/<project>/data` into Power BI Desktop and follow the "How to reproduce" section of that project's README. SQL files run on SQL Server (T-SQL).
 
@@ -96,14 +101,16 @@ To rebuild a dashboard, load the CSVs from `projects/<project>/data` into Power 
 
 ```
 projects/
-  retail-store-performance-powerbi/   # project 1: data/, images/, reports/
+  automotive-glass-service-powerbi/   # project 1: data/, images/, reports/
   car-rental-overview-powerbi/        # project 2: data/, images/, reports/
   lg-social-listening-powerbi/        # project 3: images/, report/, docs/
   paytm-customer-analysis-sql/        # project 4: sql/, data/
   azuz-customer-behavior-sql/         # project 5: sql/, data/
+docs/                                 # GitHub Pages: index.html, data.js, CV PDF
 tools/generate.py                     # synthetic data + charts + sample reports
+tools/build_dashboard.py              # aggregates the CSVs into docs/data.js
 requirements.txt
 ```
 
 ## Tech stack
-SQL Server (T-SQL), Power BI (DAX, Power Query, data modeling), Excel / Google Sheets, Python (pandas, NumPy, matplotlib) for synthetic data and chart previews.
+SQL Server (T-SQL), Power BI (DAX, Power Query, data modeling), Excel / Google Sheets, Python (pandas, NumPy, matplotlib) for synthetic data and chart previews, Apache ECharts (HTML/JS) for the interactive web dashboards.

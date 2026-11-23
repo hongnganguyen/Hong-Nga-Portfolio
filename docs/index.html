@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hong Nga · Dashboard Portfolio</title>
+<meta name="description" content="Interactive Power BI-style dashboards built on synthetic data: automotive glass service performance and car rental overview.">
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --text:#1d2330; --muted:#667085; --line:#e4e7ec;
+    --accent:#ff5500; --good:#1f9e32; --bad:#d34803; --blue:#2f80ed;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --bg:#12141a; --card:#1b1f29; --text:#e8eaf0; --muted:#9aa3b5; --line:#2a3040; }
+  }
+  :root[data-theme="dark"]{ --bg:#12141a; --card:#1b1f29; --text:#e8eaf0; --muted:#9aa3b5; --line:#2a3040; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1240px;margin:0 auto;padding:16px}
+  header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:8px}
+  h1{font-size:20px;margin:0}
+  .sub{color:var(--muted);font-size:13px}
+  .banner{background:color-mix(in srgb,var(--accent) 10%,var(--card));border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));border-radius:10px;padding:8px 12px;margin:8px 0 14px;font-size:13px}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap}
+  .tab{border:1px solid var(--line);background:var(--card);color:var(--text);padding:8px 14px;border-radius:999px;cursor:pointer;font:inherit}
+  .tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .filters{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:12px 0}
+  .filters label{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--muted)}
+  select{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font:inherit}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:12px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+  .kpi .l{font-size:12px;color:var(--muted)} .kpi .v{font-size:22px;font-weight:650;margin-top:2px} .kpi .d{font-size:12px;margin-top:2px}
+  .up{color:var(--good)} .down{color:var(--bad)}
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0}
+  .card h2{font-size:13px;margin:0 0 4px;color:var(--muted);font-weight:600}
+  .c4{grid-column:span 4}.c6{grid-column:span 6}.c8{grid-column:span 8}.c12{grid-column:span 12}
+  .chart{height:280px}
+  @media (max-width:860px){.c4,.c6,.c8{grid-column:span 12}.chart{height:260px}}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+  th:first-child,td:first-child,th:nth-child(2),td:nth-child(2),th:nth-child(3),td:nth-child(3){text-align:left}
+  th{color:var(--muted);font-weight:600;cursor:pointer;user-select:none}
+  .scroll{overflow:auto;max-height:340px}
+  footer{margin:18px 0 6px;color:var(--muted);font-size:12px}
+  a{color:var(--blue)}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Dashboard Portfolio · Nguyen Thi Hong Nga</h1>
+      <div class="sub">Interactive previews of two Power BI projects · <a href="https://github.com/hongnganguyen/Hong-Nga-Portfolio">GitHub repo</a></div>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tab-retail" aria-selected="true">Automotive Glass Service</button>
+      <button class="tab" role="tab" id="tab-car" aria-selected="false">Car Rental</button>
+    </div>
+  </header>
+  <div class="banner"><strong>Synthetic data.</strong> These dashboards use randomly generated data with the same structure as the real (confidential) models. They are illustrative recreations, not screenshots of the production reports, and none of the numbers are real business results.</div>
+
+  <!-- ===== Automotive glass ===== -->
+  <section id="retail">
+    <div class="filters">
+      <label>Branch <select id="r-branch"></select></label>
+      <label>From <select id="r-from"></select></label>
+      <label>To <select id="r-to"></select></label>
+    </div>
+    <div class="kpis" id="r-kpis"></div>
+    <div class="grid">
+      <div class="card c8"><h2>Sales vs expenses by month (M VND)</h2><div class="chart" id="r-trend"></div></div>
+      <div class="card c4"><h2>Expenses by category</h2><div class="chart" id="r-exp"></div></div>
+      <div class="card c4"><h2>Profit by month (M VND)</h2><div class="chart" id="r-profit"></div></div>
+      <div class="card c4"><h2>Sales by vehicle segment</h2><div class="chart" id="r-seg"></div></div>
+      <div class="card c4"><h2>Sales by promotion (M VND)</h2><div class="chart" id="r-promo"></div></div>
+      <div class="card c6"><h2>Sales by branch (M VND)</h2><div class="chart" id="r-branchchart"></div></div>
+      <div class="card c6"><h2>Staff: total made vs KPI target in selected period</h2><div class="chart" id="r-staff"></div></div>
+    </div>
+  </section>
+
+  <!-- ===== Car rental ===== -->
+  <section id="car" hidden>
+    <div class="filters">
+      <label>Car status <select id="c-status"></select></label>
+      <label>From <select id="c-from"></select></label>
+      <label>To <select id="c-to"></select></label>
+    </div>
+    <div class="sub" id="c-note" style="margin-bottom:8px"></div>
+    <div class="kpis" id="c-kpis"></div>
+    <div class="grid">
+      <div class="card c8"><h2>Revenue vs expenses by month (AUD)</h2><div class="chart" id="c-trend"></div></div>
+      <div class="card c4"><h2>Cars by status</h2><div class="chart" id="c-status-chart"></div></div>
+      <div class="card c4"><h2>Expenses by category</h2><div class="chart" id="c-exp"></div></div>
+      <div class="card c4"><h2>Operation vs Invest (material, AUD)</h2><div class="chart" id="c-type"></div></div>
+      <div class="card c4"><h2>Top 10 cars by profit (AUD)</h2><div class="chart" id="c-top"></div></div>
+      <div class="card c12"><h2>Car detail (click a header to sort)</h2><div class="scroll"><table id="c-table"></table></div></div>
+    </div>
+  </section>
+
+  <footer>Built with Apache ECharts. Data and generator: <code>tools/generate.py</code> (seeded), aggregated by <code>tools/build_dashboard.py</code>.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script src="data.js"></script>
+<script>
+(function(){
+  var MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var charts={};
+  function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
+  function $(id){return document.getElementById(id);}
+  function sum(a,f){var s=0;for(var i=0;i<a.length;i++)s+=f(a[i]);return s;}
+  function fmt(n,d){return Number(n).toLocaleString("en-US",{maximumFractionDigits:d||0});}
+  function pct(n){return (n*100).toFixed(1)+"%";}
+  function chart(id){
+    if(!window.echarts){return null;}
+    if(!charts[id]){charts[id]=echarts.init($(id));}
+    return charts[id];
+  }
+  function base(){
+    var t=css("--text"),m=css("--muted"),l=css("--line");
+    return {t:t,m:m,l:l,textStyle:{color:t},grid:{left:48,right:14,top:28,bottom:28}};
+  }
+  function setOpt(id,o){var c=chart(id);if(c)c.setOption(o,true);}
+  function axes(b,cats){
+    return {xAxis:{type:"category",data:cats,axisLine:{lineStyle:{color:b.l}},axisLabel:{color:b.m}},
+            yAxis:{type:"value",splitLine:{lineStyle:{color:b.l}},axisLabel:{color:b.m}}};
+  }
+  function donut(id,data,b){
+    setOpt(id,{textStyle:b.textStyle,tooltip:{trigger:"item",formatter:"{b}: {c} ({d}%)"},
+      legend:{bottom:0,textStyle:{color:b.m},type:"scroll"},
+      series:[{type:"pie",radius:["45%","70%"],center:["50%","44%"],label:{show:false},data:data}]});
+  }
+  function bar(id,cats,vals,color,horizontal,b){
+    var o={textStyle:b.textStyle,tooltip:{trigger:"axis",axisPointer:{type:"shadow"}},grid:horizontal?{left:110,right:20,top:10,bottom:24}:b.grid,
+      series:[{type:"bar",data:vals,itemStyle:{color:color}}]};
+    if(horizontal){o.yAxis={type:"category",data:cats,axisLabel:{color:b.m},axisLine:{lineStyle:{color:b.l}}};o.xAxis={type:"value",splitLine:{lineStyle:{color:b.l}},axisLabel:{color:b.m}};}
+    else{var a=axes(b,cats);o.xAxis=a.xAxis;o.yAxis=a.yAxis;}
+    setOpt(id,o);
+  }
+  function kpiHtml(items){
+    return items.map(function(k){
+      var d=k.d==null?"":'<div class="d '+(k.d>=0?"up":"down")+'">'+(k.d>=0?"▲ ":"▼ ")+Math.abs(k.d*100).toFixed(1)+'% '+k.dl+'</div>';
+      return '<div class="kpi"><div class="l">'+k.l+'</div><div class="v">'+k.v+'</div>'+d+'</div>';
+    }).join("");
+  }
+  function fillSelect(sel,opts,val){sel.innerHTML=opts.map(function(o){return '<option value="'+o[0]+'">'+o[1]+'</option>';}).join("");sel.value=val;}
+  function monthOpts(){return MN.map(function(n,i){return [i+1,n+" 2025"];});}
+  function inRange(m,f,t){return m>=f&&m<=t;}
+  function range(fromId,toId){
+    var f=+$(fromId).value,t=+$(toId).value; if(f>t){var x=f;f=t;t=x;}
+    return [f,t];
+  }
+
+  /* ---------- Automotive glass ---------- */
+  var R=window.DATA.retail;
+  function renderRetail(){
+    var b=base(),br=$("r-branch").value,rg=range("r-from","r-to"),f=rg[0],t=rg[1];
+    function okB(x){return br==="ALL"||x===br;}
+    var O=R.orders.filter(function(r){return okB(r[1]);});
+    var E=R.exp.filter(function(r){return okB(r[1]);});
+    var months=[];for(var m=f;m<=t;m++)months.push(m);
+    var ms=months.map(function(m){return sum(O.filter(function(r){return r[0]===m;}),function(r){return r[4];});});
+    var me=months.map(function(m){return sum(E.filter(function(r){return r[0]===m;}),function(r){return r[3];});});
+    var mp=ms.map(function(s,i){return s-me[i];});
+    var sales=sum(ms,function(x){return x;}),exps=sum(me,function(x){return x;}),prof=sales-exps,orders=sum(O.filter(function(r){return inRange(r[0],f,t);}),function(r){return r[7];});
+    var last=months.length-1,mom=function(a){return last>0&&a[last-1]?(a[last]-a[last-1])/Math.abs(a[last-1]):null;};
+    $("r-kpis").innerHTML=kpiHtml([
+      {l:"Total sales",v:fmt(sales/1e6)+" M",d:mom(ms),dl:"MoM (last month)"},
+      {l:"Total expenses",v:fmt(exps/1e6)+" M",d:mom(me),dl:"MoM"},
+      {l:"Profit",v:fmt(prof/1e6)+" M",d:mom(mp),dl:"MoM"},
+      {l:"Profit margin",v:sales?pct(prof/sales):"-"},
+      {l:"Orders",v:fmt(orders)},
+      {l:"Avg order value",v:orders?fmt(sales/orders/1e3)+" K":"-"}]);
+    var cats=months.map(function(m){return MN[m-1];}), a=axes(b,cats);
+    setOpt("r-trend",{textStyle:b.textStyle,tooltip:{trigger:"axis"},legend:{top:0,textStyle:{color:b.m}},grid:b.grid,xAxis:a.xAxis,yAxis:a.yAxis,
+      series:[{name:"Sales",type:"line",smooth:true,data:ms.map(function(v){return +(v/1e6).toFixed(1);}),itemStyle:{color:"#ff5500"}},
+              {name:"Expenses",type:"line",smooth:true,data:me.map(function(v){return +(v/1e6).toFixed(1);}),itemStyle:{color:"#888"}}]});
+    setOpt("r-profit",{textStyle:b.textStyle,tooltip:{trigger:"axis"},grid:b.grid,xAxis:a.xAxis,yAxis:a.yAxis,
+      series:[{type:"bar",data:mp.map(function(v){return {value:+(v/1e6).toFixed(1),itemStyle:{color:v>=0?"#1f9e32":"#d34803"}};})}]});
+    var ex={};E.filter(function(r){return inRange(r[0],f,t);}).forEach(function(r){ex[r[2]]=(ex[r[2]]||0)+r[3];});
+    donut("r-exp",Object.keys(ex).map(function(k){return {name:k,value:+(ex[k]/1e6).toFixed(1)};}),b);
+    var sg={},pr={},bs={};
+    O.filter(function(r){return inRange(r[0],f,t);}).forEach(function(r){sg[r[2]]=(sg[r[2]]||0)+r[4];if(r[3]!=="None")pr[r[3]]=(pr[r[3]]||0)+r[4];});
+    R.orders.filter(function(r){return inRange(r[0],f,t);}).forEach(function(r){bs[r[1]]=(bs[r[1]]||0)+r[4];});
+    donut("r-seg",Object.keys(sg).map(function(k){return {name:k,value:+(sg[k]/1e6).toFixed(1)};}),b);
+    var pk=Object.keys(pr).sort(function(x,y){return pr[x]-pr[y];});
+    bar("r-promo",pk,pk.map(function(k){return +(pr[k]/1e6).toFixed(1);}),"#ff5500",true,b);
+    var names={};R.branches.forEach(function(x){names[x[0]]=x[1];});
+    var bk=Object.keys(bs).sort(function(x,y){return bs[x]-bs[y];});
+    bar("r-branchchart",bk.map(function(k){return names[k];}),bk.map(function(k){return +(bs[k]/1e6).toFixed(1);}),"#2f80ed",true,b);
+    var st={},tg={};R.kpi.filter(function(r){return inRange(r[0],f,t);}).forEach(function(r){st[r[1]]=(st[r[1]]||0)+r[2];tg[r[1]]=(tg[r[1]]||0)+r[3];});
+    var sk=Object.keys(st).sort();
+    setOpt("r-staff",{textStyle:b.textStyle,tooltip:{trigger:"axis"},legend:{top:0,textStyle:{color:b.m}},grid:b.grid,xAxis:{type:"category",data:sk,axisLabel:{color:b.m},axisLine:{lineStyle:{color:b.l}}},yAxis:{type:"value",splitLine:{lineStyle:{color:b.l}},axisLabel:{color:b.m}},
+      series:[{name:"Total made (M VND)",type:"bar",data:sk.map(function(k){return +(st[k]/1e6).toFixed(0);}),itemStyle:{color:"#ff5500"}},
+              {name:"KPI target (M VND)",type:"bar",data:sk.map(function(k){return +(tg[k]/1e6).toFixed(0);}),itemStyle:{color:"#9aa3b5"}}]});
+  }
+
+  /* ---------- Car rental ---------- */
+  var C=window.DATA.car, statusOf={}, carInfo={};
+  C.cars.forEach(function(c){statusOf[c[0]]=c[3];carInfo[c[0]]=c;});
+  var sortKey="profit",sortDir=-1;
+  function renderCar(){
+    var b=base(),stt=$("c-status").value,rg=range("c-from","c-to"),f=rg[0],t=rg[1],all=stt==="ALL";
+    function okP(p){return all||statusOf[p]===stt;}
+    $("c-note").textContent=all?"":"Status filter applies to car-level data; HR and office expenses are company-wide and are hidden when a single status is selected.";
+    var RV=C.rev.filter(function(r){return okP(r[1])&&inRange(r[0],f,t);});
+    var MT=C.mat.filter(function(r){return okP(r[1])&&inRange(r[0],f,t);});
+    var HR=all?C.hr.filter(function(r){return inRange(r[0],f,t);}):[];
+    var OF=all?C.off.filter(function(r){return inRange(r[0],f,t);}):[];
+    var months=[];for(var m=f;m<=t;m++)months.push(m);
+    var mrev=months.map(function(m){return sum(RV.filter(function(r){return r[0]===m;}),function(r){return r[2];});});
+    var mexp=months.map(function(m){return sum(MT.filter(function(r){return r[0]===m;}),function(r){return r[3];})+sum(HR.filter(function(r){return r[0]===m;}),function(r){return r[1];})+sum(OF.filter(function(r){return r[0]===m;}),function(r){return r[2];});});
+    var rev=sum(mrev,function(x){return x;}),exp=sum(mexp,function(x){return x;}),prof=rev-exp;
+    var cars=C.cars.filter(function(c){return all||c[3]===stt;});
+    var debt=sum(C.debt.filter(function(d){return okP(d[1]);}),function(d){return d[2];});
+    var last=months.length-1,mom=function(a){return last>0&&a[last-1]?(a[last]-a[last-1])/Math.abs(a[last-1]):null;};
+    $("c-kpis").innerHTML=kpiHtml([
+      {l:"Total revenue",v:fmt(rev),d:mom(mrev),dl:"MoM"},{l:"Total expenses",v:fmt(exp),d:mom(mexp),dl:"MoM"},
+      {l:"Profit",v:fmt(prof)},{l:"Profit margin",v:rev?pct(prof/rev):"-"},
+      {l:"Cars",v:fmt(cars.length)},{l:"Customer debt (AUD)",v:fmt(debt)}]);
+    var cats=months.map(function(m){return MN[m-1];}),a=axes(b,cats);
+    setOpt("c-trend",{textStyle:b.textStyle,tooltip:{trigger:"axis"},legend:{top:0,textStyle:{color:b.m}},grid:b.grid,xAxis:a.xAxis,yAxis:a.yAxis,
+      series:[{name:"Revenue",type:"line",smooth:true,data:mrev,itemStyle:{color:"#1f9e32"}},{name:"Expenses",type:"line",smooth:true,data:mexp,itemStyle:{color:"#d34803"}}]});
+    var sc={};C.cars.forEach(function(c){sc[c[3]]=(sc[c[3]]||0)+1;});
+    donut("c-status-chart",Object.keys(sc).map(function(k){return {name:k,value:sc[k]};}),b);
+    var ec={};MT.forEach(function(r){ec[r[2]]=(ec[r[2]]||0)+r[3];});
+    if(all){ec.HR=sum(HR,function(r){return r[1];});OF.forEach(function(r){ec["Office: "+r[1]]=(ec["Office: "+r[1]]||0)+r[2];});}
+    donut("c-exp",Object.keys(ec).map(function(k){return {name:k,value:ec[k]};}),b);
+    var ty={};MT.forEach(function(r){ty[r[4]]=(ty[r[4]]||0)+r[3];});
+    bar("c-type",Object.keys(ty),Object.keys(ty).map(function(k){return ty[k];}),"#2f80ed",false,b);
+    var per={};cars.forEach(function(c){per[c[0]]={rev:0,exp:0};});
+    RV.forEach(function(r){if(per[r[1]])per[r[1]].rev+=r[2];});MT.forEach(function(r){if(per[r[1]])per[r[1]].exp+=r[3];});
+    var list=Object.keys(per).map(function(p){var c=carInfo[p];return {plate:p,make:c[1],status:c[3],price:c[2],rev:per[p].rev,exp:per[p].exp,profit:per[p].rev-per[p].exp};});
+    var top=list.slice().sort(function(x,y){return y.profit-x.profit;}).slice(0,10).reverse();
+    bar("c-top",top.map(function(x){return x.plate;}),top.map(function(x){return x.profit;}),"#1f9e32",true,b);
+    list.sort(function(x,y){var u=x[sortKey],v=y[sortKey];return (u<v?-1:u>v?1:0)*sortDir;});
+    var cols=[["plate","Plate"],["make","Make"],["status","Status"],["price","Buying price"],["rev","Revenue"],["exp","Material exp."],["profit","Profit"]];
+    $("c-table").innerHTML="<thead><tr>"+cols.map(function(c){return '<th data-k="'+c[0]+'">'+c[1]+(sortKey===c[0]?(sortDir>0?" ▲":" ▼"):"")+"</th>";}).join("")+"</tr></thead><tbody>"+
+      list.map(function(x){return "<tr><td>"+x.plate+"</td><td>"+x.make+"</td><td>"+x.status+"</td><td>"+fmt(x.price)+"</td><td>"+fmt(x.rev)+"</td><td>"+fmt(x.exp)+"</td><td class='"+(x.profit>=0?"up":"down")+"'>"+fmt(x.profit)+"</td></tr>";}).join("")+"</tbody>";
+    Array.prototype.forEach.call($("c-table").querySelectorAll("th"),function(th){th.onclick=function(){var k=th.getAttribute("data-k");if(sortKey===k)sortDir=-sortDir;else{sortKey=k;sortDir=-1;}renderCar();};});
+  }
+
+  /* ---------- wiring ---------- */
+  fillSelect($("r-branch"),[["ALL","All branches"]].concat(R.branches.map(function(x){return [x[0],x[1]];})),"ALL");
+  fillSelect($("r-from"),monthOpts(),1);fillSelect($("r-to"),monthOpts(),12);
+  var sts=Object.keys(C.cars.reduce(function(o,c){o[c[3]]=1;return o;},{})).sort();
+  fillSelect($("c-status"),[["ALL","All statuses"]].concat(sts.map(function(s){return [s,s];})),"ALL");
+  fillSelect($("c-from"),monthOpts(),1);fillSelect($("c-to"),monthOpts(),12);
+  ["r-branch","r-from","r-to"].forEach(function(id){$(id).onchange=renderRetail;});
+  ["c-status","c-from","c-to"].forEach(function(id){$(id).onchange=renderCar;});
+  function show(which){
+    $("retail").hidden=which!=="retail";$("car").hidden=which!=="car";
+    $("tab-retail").setAttribute("aria-selected",which==="retail");$("tab-car").setAttribute("aria-selected",which==="car");
+    try{history.replaceState(null,"","#"+which);}catch(e){}
+    (which==="retail"?renderRetail:renderCar)();
+    Object.keys(charts).forEach(function(k){charts[k].resize();});
+  }
+  $("tab-retail").onclick=function(){show("retail");};$("tab-car").onclick=function(){show("car");};
+  window.addEventListener("resize",function(){Object.keys(charts).forEach(function(k){charts[k].resize();});});
+  if(window.matchMedia){window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",function(){show($("car").hidden?"retail":"car");});}
+  show(location.hash==="#car"?"car":"retail");
+})();
+</script>
+</body>
+</html>

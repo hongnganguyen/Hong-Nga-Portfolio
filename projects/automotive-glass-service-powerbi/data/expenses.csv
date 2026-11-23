@@ -1,4 +1,4 @@
-month,store_id,category,amount_vnd
+month,branch_id,category,amount_vnd
 1,S1,COG,108609000
 1,S1,Promo,20475000
 1,S1,Back Office,16324359

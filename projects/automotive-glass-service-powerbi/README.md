@@ -1,4 +1,4 @@
-﻿# Automotive Glass Service Performance Dashboard (Kiếng) — Power BI
+# Automotive Glass Service Performance Dashboard (Kiếng) — Power BI
 
 **Tools:** Power BI (data modeling, DAX, Power Query), Excel
 **Currency:** VND · **Period shown:** 2025 (synthetic)
@@ -18,7 +18,7 @@ Management needed one place to monitor daily and monthly performance of a multi-
 Features: calendar table with date hierarchy, page-navigation buttons, month/year slicers, conditional formatting (up/down arrows, colour scales), tooltips.
 
 ## Data model (star schema)
-`daily_revenue` (fact) · `expenses` (fact) · `staff_kpi` · `stores` · `promotions` · `calendar`
+`daily_revenue` (fact) · `expenses` (fact) · `staff_kpi` · `branches` · `promotions` · `calendar`
 CSV files in [`data/`](data) (≈9,000 synthetic orders, 4 branches, 5 staff).
 
 Measures in the model (names): Total Sales, Sales Same Day Last Month, Total Expenses, COG / MKT / Back-office / Warehouse / Promo expenses, Cash Loss, Profit, % Profit Margin, vs-profit-SPLM, Total Luxury / Premium (+SPLM), Total Made, KPIs, Bonus, Total Salary.
@@ -32,6 +32,5 @@ Measures in the model (names): Total Sales, Sales Same Day Last Month, Total Exp
 [`reports/sample-annual-report-2025.md`](reports/sample-annual-report-2025.md) — an example of the periodic report that sits on top of the dashboard (KPIs, highlights, recommended actions), computed from the synthetic data.
 
 ## How to reproduce
-Load the CSVs into Power BI Desktop (Get Data → Text/CSV), relate `daily_revenue[date]` and `expenses[month]` to `calendar`, `store_id` to `stores`, then build the measures above. The generator script is in [`/tools/generate.py`](../../tools/generate.py).
-
+Load the CSVs into Power BI Desktop (Get Data → Text/CSV), relate `daily_revenue[date]` and `expenses[month]` to `calendar`, `branch_id` to `branches`, then build the measures above. The generator script is in [`/tools/generate.py`](../../tools/generate.py).
 
