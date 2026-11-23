@@ -221,6 +221,7 @@ function tbl(cols,rows,o){
   return h+"</tbody></table>";
 }
 function donut(id,data,center,colors){
+  if(colors&&!Array.isArray(colors)){var map=colors;colors=undefined;data=data.map(function(d){return {name:d.name,value:d.value,itemStyle:{color:map[d.name]||"#999"}};});}
   opt(id,{tooltip:{trigger:"item",formatter:function(p){return p.name+": "+usd(p.value,true)+" ("+p.percent+"%)";}},
     legend:{type:"scroll",bottom:0,textStyle:{color:"#475467"}},color:colors,
     title:center?{text:center,left:"center",top:"38%",textStyle:{fontSize:20,fontWeight:400}}:undefined,
@@ -276,7 +277,7 @@ function renderGOver(m){
   for(var i=from;i<=m;i++)cats.push(MN[i-1]);
   stacked("g-expbr",cats,cl.map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round((GEC[i]||{})[k]||0));return [k,a];}),["#161616","#0e4a7a","#d6d6d6","#ff7733","#7a7a7a","#19a803","#5f8fb3","#bdbdbd","#f2c94c"]);
   var pm=GP[m]||{},names=Object.keys(pm).sort(function(a,b){return pm[b].s-pm[a].s;});
-  donut("g-promo",names.map(function(k){return {name:k,value:+pm[k].s.toFixed(2)};}),null,[ORANGE,BLACK,"#7a7a7a","#bdbdbd","#e0e0e0","#326a96"]);
+  donut("g-promo",names.map(function(k){return {name:k,value:+pm[k].s.toFixed(2)};}),null,{BOGO:ORANGE,B4G4:"#1a1a1a",BSGM:"#7a7a7a",B3G2:"#bdbdbd",B2G2:"#e0e0e0",IM:"#326a96"});
   $("g-promotbl").innerHTML=tbl([{t:"Promotion"},{t:"Number Promo"},{t:"Promo Expenses",bar:ORANGE,f:function(v){return usd(v,true);}},{t:"Cost",f:function(v){return usd(v,true);}},{t:"Total Sales",bar:ORANGE,f:function(v){return usd(v,true);}},{t:"Profit",bar:"#6f95b3",f:function(v){return usd(v,true);}}],
     names.map(function(k){var o=pm[k];return {v:[k,o.n,o.p,o.c,o.s,o.s-o.c-o.p]};}));
   var ec=GEC[m]||{},hr=(ec["Worker Salary"]||0)+(ec["Sales Salary"]||0);
@@ -356,7 +357,7 @@ function renderCOver(m){
   var from=Math.max(1,m-2),cats=[];for(var i=from;i<=m;i++)cats.push(MN[i-1]);
   stacked("c-opbr",cats,["Material","HR","MKT","Office"].map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round((CG[i]||{})[k]||0));return [k,a];}),["#111","#74cd8b","#a5e3ea","#5a007a"]);
   stacked("c-matbr",cats,Object.keys(CCOL).map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round((CC[i]||{})[k]||0));return [k,a];}),Object.keys(CCOL).map(function(k){return CCOL[k];}));
-  donut("c-matdonut",Object.keys(mt).map(function(k){return {name:k,value:+mt[k].toFixed(2)};}),null,Object.keys(mt).map(function(k){return CCOL[k]||"#999";}));
+  donut("c-matdonut",Object.keys(mt).map(function(k){return {name:k,value:+mt[k].toFixed(2)};}),null,CCOL);
   // grouped detail
   var items=(CITEMS[m]||[]).slice().sort(function(a,b){return b[5]-a[5];}),groups={};
   items.forEach(function(r){(groups[r[2]]=groups[r[2]]||[]).push(r);});
@@ -379,7 +380,7 @@ function renderCDet(m){
   var sc={};C.cars.forEach(function(c){add(sc,c[3],1);});
   var rent=C.cars.filter(function(c){return c[3]==="Active"||c[3]==="RTO";}).length;
   $("d-kpis").innerHTML=kpi(3,"Cars in fleet",C.cars.length)+kpi(3,"Rentable (Active + RTO)",rent)+kpi(3,"Fleet buying price",usd(sum(C.cars.map(function(c){return c[2];}))))+kpi(3,"Avg daily rate",usd(sum(C.cars.map(function(c){return c[4];}))/C.cars.length,true));
-  donut("d-status",Object.keys(sc).map(function(k){return {name:k,value:sc[k]};}),null,["#76cd8c","#e37a7e","#c499ca","#f0a787","#bdbdbd","#7479c9","#9cc873"]);
+  donut("d-status",Object.keys(sc).map(function(k){return {name:k,value:sc[k]};}),null,{Active:"#76cd8c",RTO:"#48bc66",Sold:"#e37a7e",Holding:"#c499ca",Fixing:"#f0a787",Lost:"#7a7a7a",Inactive:"#c7ccd4"});
   // donut labels for counts
   var c1=ch("d-status");if(c1)c1.setOption({series:[{label:{formatter:function(p){return p.value+" ("+p.percent+"%)";}}}],tooltip:{formatter:function(p){return p.name+": "+p.value;}}});
   var top=rows.slice().sort(function(a,b){return b[7]-a[7];}).slice(0,10).reverse();
