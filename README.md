@@ -12,9 +12,13 @@ Data Analyst with an Economics background (UEH, Investment Economics, GPA 3.6/4.
 
 | Project | Tools | Focus |
 |---|---|---|
+| [**Retail Store Performance Dashboard**](projects/retail-store-performance-powerbi) | Power BI, DAX, Power Query | Sales, expenses, profit, promotions and staff KPIs across stores *(synthetic data)* |
+| [**Car Rental Overview Dashboard**](projects/car-rental-overview-powerbi) | Power BI, DAX, Power Query | Revenue, expense groups, profit, fleet status and customer debt *(synthetic data)* |
 | [**LG Social Listening Dashboard**](projects/lg-social-listening-powerbi) | Power BI | Brand sentiment, content & demographic analysis, competitor benchmarking (washing machines) |
 | [**PayTM Customer Purchasing Analysis**](projects/paytm-customer-analysis-sql) | SQL (T-SQL), Excel | Top products, promotion effectiveness, Cohort retention, RFM segmentation |
 | [**Azuz Customer Behavior Analysis**](projects/azuz-customer-behavior-sql) | SQL (T-SQL) | Purchase patterns, gold-membership impact, loyalty-points program |
+
+> **Data note:** the two employer dashboards (Retail, Car Rental) use **synthetic data** generated for this portfolio to protect confidential company information. Their charts are illustrative previews, not production screenshots. The SQL projects and the LG Social Listening report are based on the original course/academic datasets.
 
 Source repositories: [Project-PAYTM](https://github.com/hongnganguyen/Project-PAYTM) · [Project-Azuz-Web](https://github.com/hongnganguyen/Project-Azuz-Web)
 
