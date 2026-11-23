@@ -15,7 +15,7 @@ A car glass sales and installation business needed one place to monitor daily an
 | **Worker** | Per-staff total made vs previous month, % change, KPI achievement, commission, bonus and total salary |
 | **Location** | Map and ranking of sales by customer suburb |
 
-Design choices: Month/Year slicers, consistent orange / black palette, sparkline KPI cards, data bars inside tables, positive/negative variance colors, one insight box that turns the numbers into actions.
+Design choices: same layout standard as the Car Rental dashboard (black header band with page tabs, grey page background, sparkline KPI cards, expense donut + detail bars, summary table), orange / black accent palette, sparkline KPI cards, data bars inside tables, positive/negative variance colors, one insight box that turns the numbers into actions.
 
 ## Data model (star schema)
 `orders` (fact: date, suburb, product line, quantity, amount, promotion, promo expense, COGS, sales staff) · `expenses` (daily fact by category) · `staff_kpi` · `promotions` · `suburbs` · `calendar`
