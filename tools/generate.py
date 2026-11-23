@@ -1,4 +1,4 @@
-"""Generate SYNTHETIC sample data, charts and sample reports for the portfolio.
+﻿"""Generate SYNTHETIC sample data, charts and sample reports for the portfolio.
 All values are randomly generated (seed fixed) and do not come from any real company."""
 import numpy as np, pandas as pd, os
 import matplotlib
@@ -89,7 +89,7 @@ m_profit = m_sales - m_exp
 mn = [p.strftime("%b") for p in months]
 
 # retail charts
-fig, ax = plt.subplots(1, 3, figsize=(14, 3.6)); fig.suptitle("Retail Store Performance - Overview", fontweight="bold")
+fig, ax = plt.subplots(1, 3, figsize=(14, 3.6)); fig.suptitle("Eyewear Retail Performance - Overview", fontweight="bold")
 ax[0].plot(mn, m_sales / 1e6, color=C["main"], marker="o", label="Sales"); ax[0].plot(mn, m_exp / 1e6, color=C["grey"], marker="o", label="Expenses")
 ax[0].set_title("Sales vs Expenses (M VND)"); ax[0].legend(frameon=False)
 ax[1].bar(mn, m_profit / 1e6, color=[C["green"] if v >= 0 else C["red"] for v in m_profit]); ax[1].set_title("Profit by month (M VND)")
@@ -97,7 +97,7 @@ mom = m_sales.pct_change() * 100
 ax[2].bar(mn[1:], mom.iloc[1:], color=[C["green"] if v >= 0 else C["red"] for v in mom.iloc[1:]]); ax[2].set_title("Sales MoM %"); ax[2].axhline(0, color="#333", lw=.6)
 plt.setp(ax, xlabel=""); [a.tick_params(axis="x", rotation=45) for a in ax]; note(fig); fig.tight_layout(); fig.savefig(os.path.join(RET, "images", "01-overview.png"), dpi=130); plt.close(fig)
 
-fig, ax = plt.subplots(1, 3, figsize=(14, 3.8)); fig.suptitle("Retail Store Performance - Expenses, Product mix & Promotions", fontweight="bold")
+fig, ax = plt.subplots(1, 3, figsize=(14, 3.8)); fig.suptitle("Eyewear Retail Performance - Expenses, Product mix & Promotions", fontweight="bold")
 cat = exp.groupby("category").amount_vnd.sum().sort_values(ascending=False)
 ax[0].pie(cat, labels=cat.index, autopct="%1.0f%%", startangle=90, wedgeprops=dict(width=.45), textprops={"fontsize": 7}); ax[0].set_title("Expenses by category")
 tier = rev.groupby("product_tier").amount_vnd.sum()
@@ -106,7 +106,7 @@ pr = rev[rev.promotion_name != "None"].groupby("promotion_name").amount_vnd.sum(
 ax[2].barh(pr.index, pr / 1e6, color=C["main"]); ax[2].set_title("Sales by promotion (M VND)")
 note(fig); fig.tight_layout(); fig.savefig(os.path.join(RET, "images", "02-expenses-promotions.png"), dpi=130); plt.close(fig)
 
-fig, ax = plt.subplots(1, 2, figsize=(14, 3.6)); fig.suptitle("Retail Store Performance - Staff KPI & Stores", fontweight="bold")
+fig, ax = plt.subplots(1, 2, figsize=(14, 3.6)); fig.suptitle("Eyewear Retail Performance - Staff KPI & Stores", fontweight="bold")
 piv = kpi.pivot(index="month", columns="staff", values="total_made_vnd") / 1e6
 piv.plot(kind="bar", ax=ax[0], width=.85); ax[0].axhline(200, color="#333", ls="--", lw=.8); ax[0].set_title("Total made by staff vs KPI target (M VND)"); ax[0].legend(frameon=False, ncol=5, fontsize=7); ax[0].set_xticklabels(mn, rotation=45)
 ss = rev.merge(stores, on="store_id").groupby("store_name").amount_vnd.sum().sort_values()
@@ -224,3 +224,4 @@ open(os.path.join(CAR, "reports", "sample-annual-report-2025.md"), "w", encoding
 """)
 print("done", len(rev), len(rw))
 print(m_sales.sum() / 1e6, m_profit.sum() / 1e6, r_rev.sum(), r_profit.sum())
+

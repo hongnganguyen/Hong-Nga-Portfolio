@@ -1,4 +1,4 @@
-# Nguyen Thi Hong Nga — Data Analyst Portfolio
+﻿# Nguyen Thi Hong Nga — Data Analyst Portfolio
 
 Data Analyst with an Economics background (UEH, Investment Economics, GPA 3.6/4.0, graduated with high distinction). I build automated ETL workflows, interactive dashboards and KPI / financial reports that support data-driven decisions.
 
@@ -12,13 +12,13 @@ Data Analyst with an Economics background (UEH, Investment Economics, GPA 3.6/4.
 
 | Project | Tools | Focus |
 |---|---|---|
-| [**Retail Store Performance Dashboard**](projects/retail-store-performance-powerbi) | Power BI, DAX, Power Query | Sales, expenses, profit, promotions and staff KPIs across stores *(synthetic data)* |
+| [**Eyewear Retail Performance Dashboard**](projects/retail-store-performance-powerbi) | Power BI, DAX, Power Query | Sales, expenses, profit, promotions and staff KPIs across eyewear stores *(synthetic data)* |
 | [**Car Rental Overview Dashboard**](projects/car-rental-overview-powerbi) | Power BI, DAX, Power Query | Revenue, expense groups, profit, fleet status and customer debt *(synthetic data)* |
 | [**LG Social Listening Dashboard**](projects/lg-social-listening-powerbi) | Power BI | Brand sentiment, content & demographic analysis, competitor benchmarking (washing machines) |
 | [**PayTM Customer Purchasing Analysis**](projects/paytm-customer-analysis-sql) | SQL (T-SQL), Excel | Top products, promotion effectiveness, Cohort retention, RFM segmentation |
 | [**Azuz Customer Behavior Analysis**](projects/azuz-customer-behavior-sql) | SQL (T-SQL) | Purchase patterns, gold-membership impact, loyalty-points program |
 
-> **Data note:** the two employer dashboards (Retail, Car Rental) use **synthetic data** generated for this portfolio to protect confidential company information. Their charts are illustrative previews, not production screenshots. The SQL projects and the LG Social Listening report are based on the original course/academic datasets.
+> **Data note:** the two employer dashboards (Eyewear Retail, Car Rental) use **synthetic data** generated for this portfolio to protect confidential company information. Their charts are illustrative previews, not production screenshots. The SQL projects and the LG Social Listening report are based on the original course/academic datasets.
 
 Source repositories: [Project-PAYTM](https://github.com/hongnganguyen/Project-PAYTM) · [Project-Azuz-Web](https://github.com/hongnganguyen/Project-Azuz-Web)
 
@@ -44,3 +44,4 @@ Source repositories: [Project-PAYTM](https://github.com/hongnganguyen/Project-PA
 - 3rd Prize, E-research Award 2022 (Faculty of Economics) · 2nd Prize, UEH Young Researcher 2022 · 3 GPA scholarships
 - IC3 Certificate · TOEIC 715
 - Courses: SQL & Python for Data Analysis (MazHocData), Excel for Analysis and Power BI Essential (Vy Le Training), Finance for Leaders (PACE Training)
+
