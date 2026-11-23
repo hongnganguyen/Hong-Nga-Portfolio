@@ -6,7 +6,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 rng = np.random.default_rng(2025)
-ROOT = r"C:\hn\portfolio\projects"
+ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "projects")
 RET = os.path.join(ROOT, "retail-store-performance-powerbi")
 CAR = os.path.join(ROOT, "car-rental-overview-powerbi")
 for p in (RET, CAR):
