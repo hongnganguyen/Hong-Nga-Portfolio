@@ -28,7 +28,7 @@ def note(fig): fig.text(0.99, 0.005, "Synthetic sample data - illustrative previ
 
 # ============================ RETAIL STORE PERFORMANCE ============================
 stores = pd.DataFrame({"store_id": ["S1", "S2", "S3", "S4"],
-                       "store_name": ["Store 1 - District 1", "Store 2 - District 3", "Store 3 - District 7", "Store 4 - Thu Duc"],
+                       "store_name": ["Branch 1 - District 1", "Branch 2 - District 3", "Branch 3 - District 7", "Branch 4 - Thu Duc"],
                        "size_factor": [1.3, 1.0, 0.9, 0.7]})
 stores.to_csv(os.path.join(RET, "data", "stores.csv"), index=False)
 promos = pd.DataFrame({"promotion_name": ["None", "BOGO", "B2G2", "B3G1", "B3G2", "B3G3", "B4G4"],
@@ -52,7 +52,7 @@ for d in cal.date:
             rows.append((oid, d.date(), s.store_id, tier, promo, amount, round(base * share * 0.4 / 1000) * 1000 if promo != "None" else 0,
                          round(amount * rng.uniform(.38, .46) / 1000) * 1000, rng.choice(staff)))
             oid += 1
-rev = pd.DataFrame(rows, columns=["order_id", "date", "store_id", "product_tier", "promotion_name", "amount_vnd", "promo_expense_vnd", "cogs_vnd", "sales_staff"])
+rev = pd.DataFrame(rows, columns=["order_id", "date", "store_id", "vehicle_segment", "promotion_name", "amount_vnd", "promo_expense_vnd", "cogs_vnd", "sales_staff"])
 rev.to_csv(os.path.join(RET, "data", "daily_revenue.csv"), index=False)
 rev["date"] = pd.to_datetime(rev.date); rev["m"] = rev.date.dt.month
 
@@ -89,7 +89,7 @@ m_profit = m_sales - m_exp
 mn = [p.strftime("%b") for p in months]
 
 # retail charts
-fig, ax = plt.subplots(1, 3, figsize=(14, 3.6)); fig.suptitle("Eyewear Retail Performance - Overview", fontweight="bold")
+fig, ax = plt.subplots(1, 3, figsize=(14, 3.6)); fig.suptitle("Automotive Glass Service Performance - Overview", fontweight="bold")
 ax[0].plot(mn, m_sales / 1e6, color=C["main"], marker="o", label="Sales"); ax[0].plot(mn, m_exp / 1e6, color=C["grey"], marker="o", label="Expenses")
 ax[0].set_title("Sales vs Expenses (M VND)"); ax[0].legend(frameon=False)
 ax[1].bar(mn, m_profit / 1e6, color=[C["green"] if v >= 0 else C["red"] for v in m_profit]); ax[1].set_title("Profit by month (M VND)")
@@ -97,20 +97,20 @@ mom = m_sales.pct_change() * 100
 ax[2].bar(mn[1:], mom.iloc[1:], color=[C["green"] if v >= 0 else C["red"] for v in mom.iloc[1:]]); ax[2].set_title("Sales MoM %"); ax[2].axhline(0, color="#333", lw=.6)
 plt.setp(ax, xlabel=""); [a.tick_params(axis="x", rotation=45) for a in ax]; note(fig); fig.tight_layout(); fig.savefig(os.path.join(RET, "images", "01-overview.png"), dpi=130); plt.close(fig)
 
-fig, ax = plt.subplots(1, 3, figsize=(14, 3.8)); fig.suptitle("Eyewear Retail Performance - Expenses, Product mix & Promotions", fontweight="bold")
+fig, ax = plt.subplots(1, 3, figsize=(14, 3.8)); fig.suptitle("Automotive Glass Service Performance - Expenses, Product mix & Promotions", fontweight="bold")
 cat = exp.groupby("category").amount_vnd.sum().sort_values(ascending=False)
 ax[0].pie(cat, labels=cat.index, autopct="%1.0f%%", startangle=90, wedgeprops=dict(width=.45), textprops={"fontsize": 7}); ax[0].set_title("Expenses by category")
-tier = rev.groupby("product_tier").amount_vnd.sum()
-ax[1].pie(tier, labels=tier.index, autopct="%1.0f%%", startangle=90, wedgeprops=dict(width=.45), colors=[C["main"], C["blue"], C["grey"]]); ax[1].set_title("Sales by product tier")
+tier = rev.groupby("vehicle_segment").amount_vnd.sum()
+ax[1].pie(tier, labels=tier.index, autopct="%1.0f%%", startangle=90, wedgeprops=dict(width=.45), colors=[C["main"], C["blue"], C["grey"]]); ax[1].set_title("Sales by vehicle segment")
 pr = rev[rev.promotion_name != "None"].groupby("promotion_name").amount_vnd.sum().sort_values()
 ax[2].barh(pr.index, pr / 1e6, color=C["main"]); ax[2].set_title("Sales by promotion (M VND)")
 note(fig); fig.tight_layout(); fig.savefig(os.path.join(RET, "images", "02-expenses-promotions.png"), dpi=130); plt.close(fig)
 
-fig, ax = plt.subplots(1, 2, figsize=(14, 3.6)); fig.suptitle("Eyewear Retail Performance - Staff KPI & Stores", fontweight="bold")
+fig, ax = plt.subplots(1, 2, figsize=(14, 3.6)); fig.suptitle("Automotive Glass Service Performance - Staff KPI & Branches", fontweight="bold")
 piv = kpi.pivot(index="month", columns="staff", values="total_made_vnd") / 1e6
 piv.plot(kind="bar", ax=ax[0], width=.85); ax[0].axhline(200, color="#333", ls="--", lw=.8); ax[0].set_title("Total made by staff vs KPI target (M VND)"); ax[0].legend(frameon=False, ncol=5, fontsize=7); ax[0].set_xticklabels(mn, rotation=45)
 ss = rev.merge(stores, on="store_id").groupby("store_name").amount_vnd.sum().sort_values()
-ax[1].barh(ss.index, ss / 1e6, color=C["main"]); ax[1].set_title("Annual sales by store (M VND)")
+ax[1].barh(ss.index, ss / 1e6, color=C["main"]); ax[1].set_title("Annual sales by branch (M VND)")
 note(fig); fig.tight_layout(); fig.savefig(os.path.join(RET, "images", "03-staff-stores.png"), dpi=130); plt.close(fig)
 
 best = m_sales.idxmax(); worst = m_sales.idxmin()
@@ -132,13 +132,13 @@ open(os.path.join(RET, "reports", "sample-annual-report-2025.md"), "w", encoding
 ## Highlights
 - Peak month: **{mn[best-1]}** ({m_sales[best]/1e6:,.0f} M VND); weakest month: **{mn[worst-1]}** ({m_sales[worst]/1e6:,.0f} M VND). Sales are seasonal, rising toward year-end.
 - COG is the largest cost block at {cogp:.0%} of sales; promotions cost {cat['Promo']/m_sales.sum():.1%} of sales.
-- Best performing promotion by sales: **{top_promo}**. Best store: **{top_store}**.
+- Best performing promotion by sales: **{top_promo}**. Best branch: **{top_store}**.
 - {int((kpi.kpi_achievement>=1).sum())} of {len(kpi)} staff-months reached the KPI target.
 
 ## Recommended actions (example format)
 1. Review promotion mix: compare sales lift against promo expense per promotion before extending budgets.
 2. Prepare inventory and staffing earlier for the Nov-Dec peak.
-3. Track cash-loss lines monthly per store to find outliers early.
+3. Track cash-loss lines monthly per branch to find outliers early.
 """)
 
 # ============================ CAR RENTAL OVERVIEW ============================
@@ -224,4 +224,6 @@ open(os.path.join(CAR, "reports", "sample-annual-report-2025.md"), "w", encoding
 """)
 print("done", len(rev), len(rw))
 print(m_sales.sum() / 1e6, m_profit.sum() / 1e6, r_rev.sum(), r_profit.sum())
+
+
 
