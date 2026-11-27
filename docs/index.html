@@ -12,7 +12,23 @@
 <style>
   /* Color system: one accent per project, neutral greys, green/red only for good/bad */
   :root{--ink:#1f2933;--muted:#667085;--line:#e4e7ec;--card:#fff;--accent:#e8590c;--page:#eef0f3;--good:#2e9e5b;--bad:#d64545}
-  body.t-fleet{--accent:#2dd4bf}
+  /* Project 2 theme: light page, teal navigation panel, cyan + navy + amber (modern BI dashboard look) */
+  body.t-fleet{--accent:#1aa5b8;--page:#eef6f8;--ink:#12384a}
+  body.t-fleet .top{background:#fff;color:#12384a;border-bottom:1px solid #d5e6eb;padding-bottom:12px}
+  body.t-fleet .proj button{background:#fff;color:#12384a;border-color:#b9d6dd}
+  body.t-fleet .proj button[aria-selected="true"]{background:#1aa5b8;border-color:#1aa5b8;color:#fff}
+  body.t-fleet .tabs{display:none}
+  body.t-fleet .top,body.t-fleet .bar,body.t-fleet .wrap,body.t-fleet footer{margin-left:176px}
+  body.t-fleet .card{border:1px solid #dbe9ee;box-shadow:none}
+  body.t-fleet .kpi{border-top:3px solid #1aa5b8}
+  body.t-fleet th{background:#14405a}
+  .side{display:none}
+  body.t-fleet .side{display:block;position:fixed;left:0;top:0;bottom:0;width:176px;background:linear-gradient(180deg,#1aa5b8,#0e7e8f);color:#fff;padding:18px 12px;z-index:5}
+  .side .brand{font-weight:700;font-size:15px;letter-spacing:.3px;margin-bottom:4px}
+  .side h3{margin:0 0 14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.85;font-weight:600}
+  .side button{display:block;width:100%;text-align:left;margin-bottom:8px;padding:9px 10px;border:0;border-radius:8px;background:rgba(255,255,255,.16);color:#fff;font-weight:600;font-size:13px;cursor:pointer}
+  .side button[aria-selected="true"]{background:#fff;color:#0e7e8f}
+  @media (max-width:900px){body.t-fleet .side{position:static;width:auto}body.t-fleet .top,body.t-fleet .bar,body.t-fleet .wrap,body.t-fleet footer{margin-left:0}}
   *{box-sizing:border-box}
   body{margin:0;min-height:100vh;background:var(--page);color:var(--ink);font-family:"Inter","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;font-size:13px;line-height:1.45;font-feature-settings:"cv11","ss01";-webkit-font-smoothing:antialiased}
   button,select,input{font-family:inherit}
@@ -62,6 +78,7 @@
 </style>
 </head>
 <body class="t-mfg">
+<nav class="side" id="side" aria-label="Pages"></nav>
 <div class="top">
   <div class="row1">
     <h1 id="title">GLASS MANUFACTURING PERFORMANCE | <b>OVERVIEW</b></h1>
@@ -300,8 +317,8 @@ window.BI={D:window.DATA,T:T,MN:MN,$:$,pad:pad,dim:dim,dk:dk,mo:mo,sum:sum,usd:u
 (function(){
 "use strict";
 var B=window.BI,D=B.D,T=B.T,MN=B.MN,$=B.$,dim=B.dim,mo=B.mo,sum=B.sum,usd=B.usd,kk=B.kk,dlt=B.dlt,dayArr=B.dayArr,add=B.add,ch=B.ch,opt=B.opt,AX=B.AX,xcat=B.xcat,yval=B.yval,GR=B.GR,kpi=B.kpi,tbl=B.tbl,donut=B.donut,stacked=B.stacked,charts=B.charts;
-/* teal accent system: sales = teal, expenses = ink */
-var ACC="#0f766e",MID="#5fb7ae",TINT="#cdebe7",INK=T.ink,GRAY=T.gray,AMBER="#f59e0b";
+/* cyan-teal accent system: sales = cyan, expenses = navy, amber for highlights */
+var ACC="#1aa5b8",MID="#7fd0db",TINT="#cfeef2",INK="#14405a",GRAY=T.gray,AMBER="#f5a623";
 function pc(x){return (x*100).toFixed(1)+"%";}
 function f2(v){return usd(v,true);}
 function days(m){var a=[];for(var d=1;d<=dim(m);d++)a.push(d);return a;}
@@ -316,9 +333,9 @@ C.exp.forEach(function(r){var m=mo(r[0]);add(CEX,r[0],r[5]);add(CG[m],r[1],r[5])
 C.events.forEach(function(r){var m=mo(r[0]);CEVM[m]=CEVM[m]||[0,0];CEVM[m][0]+=r[1];CEVM[m][1]+=r[2];});
 function cMonth(m){var s=dayArr(CRV,m),e=dayArr(CEX,m),p=s.map(function(x,i){return x-e[i];});return {s:s,e:e,p:p,r:dayArr(CRT,m),S:sum(s),E:sum(e),P:sum(p)};}
 function ctot(m){var s=0;for(var k in CG[m])s+=CG[m][k];return s;}
-var GCOL={HR:INK,Material:ACC,MKT:MID,Office:GRAY},GORD=["HR","Material","MKT","Office"];
+var GCOL={HR:INK,Material:ACC,MKT:AMBER,Office:GRAY},GORD=["HR","Material","MKT","Office"];
 var TCOL={Operation:INK,Invest:ACC};
-var MCOL={Rego:"#0b4f4a",Parts:ACC,Others:"#35a79d",Operation:"#7fcfc7",Tax:GRAY,Rent:T.gray2};
+var MCOL={Rego:INK,Parts:ACC,Others:MID,Operation:AMBER,Tax:GRAY,Rent:T.gray2};
 var SCOL={Active:T.good,RTO:"#7cc79a",Holding:"#f2b84b",Fixing:"#e08a3c",Sold:GRAY,Lost:T.bad,Inactive:T.gray2};
 var rentable=C.cars.filter(function(c){return c[3]==="Active"||c[3]==="RTO";}).length;
 
@@ -342,7 +359,7 @@ function renderOver(m){
     series:[{name:"Total sales",type:"bar",data:sv},{name:"Total expenses",type:"bar",data:ev},{name:"Profit margin %",type:"line",yAxisIndex:1,smooth:true,data:mg,label:{show:true,formatter:"{c}%",fontSize:10}}]});
   var g=CG[m],opx=(CITEMS[m]||[]).filter(function(r){return r[6]==="Operation";}).reduce(function(a,r){return a+r[5];},0);
   var rows=[["Revenue",c.S],["HR",g.HR||0],["Material",g.Material||0],["  of which Operation",opx],["Marketing",g.MKT||0],["Office",g.Office||0],["Profit",c.P]];
-  $("c-summary").innerHTML=tbl([{t:"Item"},{t:"Amount",bar:"#e3f3f1",f:f2}],rows.map(function(r){return {v:r,bc:r[0]==="Revenue"?T.goodTint:r[0]==="Profit"?"#9ed5ce":null};}));
+  $("c-summary").innerHTML=tbl([{t:"Item"},{t:"Amount",bar:"#e1f3f6",f:f2}],rows.map(function(r){return {v:r,bc:r[0]==="Revenue"?T.goodTint:r[0]==="Profit"?"#8fd6e0":null};}));
   // debt chart
   var ob=[],pp=[];for(var k=0;k<12;k++){ob.push(Math.round(C.debt[k][1]));pp.push(Math.round(C.debt[k][2]*100));}
   opt("c-debt",{tooltip:{trigger:"axis"},legend:{top:0},color:[MID,INK],grid:{left:48,right:44,top:30,bottom:26},xAxis:xcat(MN),
@@ -442,6 +459,8 @@ function show(p){
   Object.keys(PAGE).forEach(function(k){$(k).hidden=k!==p;});
   document.body.className=proj==="fleet"?"t-fleet":"t-mfg";
   $("title").innerHTML=PAGE[p][2];$("purpose").textContent=PROJ[proj].purpose;
+  $("side").innerHTML='<div class="brand">CAR RENTAL</div><h3>Navigation</h3>'+(proj==="fleet"?PROJ.fleet.pages.map(function(x){return '<button data-p="'+x[0]+'" aria-selected="'+(x[0]===p)+'">'+x[1]+"</button>";}).join(""):"");
+  Array.prototype.forEach.call($("side").querySelectorAll("button"),function(b){b.onclick=function(){show(b.getAttribute("data-p"));};});
   $("tabs").innerHTML=PROJ[proj].pages.map(function(x){return '<button data-p="'+x[0]+'" aria-selected="'+(x[0]===p)+'">'+x[1]+"</button>";}).join("");
   Array.prototype.forEach.call($("tabs").querySelectorAll("button"),function(b){b.onclick=function(){show(b.getAttribute("data-p"));};});
   Array.prototype.forEach.call(document.querySelectorAll(".proj button"),function(b){b.setAttribute("aria-selected",b.getAttribute("data-proj")===proj);});
