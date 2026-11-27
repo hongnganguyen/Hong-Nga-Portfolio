@@ -8,7 +8,6 @@ Data Analyst with an Economics background (UEH, Investment Economics, GPA 3.6/4.
 |---|---|
 | **Contact** | hongnga230902@gmail.com · 0345 576 131 · Ho Chi Minh City |
 | **CV** | [CV_Nguyen_Thi_Hong_Nga.pdf](docs/CV_Nguyen_Thi_Hong_Nga.pdf) |
-| **Interactive dashboards** | [hongnganguyen.github.io/Hong-Nga-Portfolio](https://hongnganguyen.github.io/Hong-Nga-Portfolio/) (projects 1 and 2, synthetic data) |
 | **Skills** | SQL (T-SQL) · Power BI (DAX, data modeling) · Power Query · Advanced Excel · Google Sheets · basic Python |
 | **Source repos** | [Project-PAYTM](https://github.com/hongnganguyen/Project-PAYTM) · [Project-Azuz-Web](https://github.com/hongnganguyen/Project-Azuz-Web) |
 
@@ -24,10 +23,27 @@ Manufacturing business selling Premium and Luxury glass products in Sydney (AUD)
 **What the sample report shows** (synthetic, Nov 2025): sales **A$81.8K** (+24.7% MoM), profit margin **27.9%**, COGS **46%** of expenses, promotions **48%** of sales but a **55.5%** margin vs **67.1%** on full-price orders.
 **Design:** one accent color, five fixed expense-group colors, KPI cards with sparklines, profit bridge (waterfall), promotion margin vs full price, new vs returning customers, sales concentration by suburb, auto-written insights.
 
-[![Overview](projects/glass-manufacturing-performance-powerbi/images/01-overview.png)](projects/glass-manufacturing-performance-powerbi/images/01-overview.png)
-[![Profit and costs](projects/glass-manufacturing-performance-powerbi/images/05-profit-costs.png)](projects/glass-manufacturing-performance-powerbi/images/05-profit-costs.png)
+**All 6 pages** (synthetic data):
 
-→ [Live dashboard](https://hongnganguyen.github.io/Hong-Nga-Portfolio/) · [Project folder](projects/glass-manufacturing-performance-powerbi) · [sample report](projects/glass-manufacturing-performance-powerbi/reports/sample-report-2025-11.md) · [data](projects/glass-manufacturing-performance-powerbi/data)
+**1 · Overview**
+![Overview](projects/glass-manufacturing-performance-powerbi/images/01-overview.png)
+
+**2 · Sales & Products**
+![Sales and products](projects/glass-manufacturing-performance-powerbi/images/02-sales-products.png)
+
+**3 · Promotions**
+![Promotions](projects/glass-manufacturing-performance-powerbi/images/03-promotions.png)
+
+**4 · Customers & Location**
+![Customers and location](projects/glass-manufacturing-performance-powerbi/images/04-customers-location.png)
+
+**5 · Profit & Costs**
+![Profit and costs](projects/glass-manufacturing-performance-powerbi/images/05-profit-costs.png)
+
+**6 · Team**
+![Team](projects/glass-manufacturing-performance-powerbi/images/06-team.png)
+
+→ [Project folder](projects/glass-manufacturing-performance-powerbi) · [sample report](projects/glass-manufacturing-performance-powerbi/reports/sample-report-2025-11.md) · [data](projects/glass-manufacturing-performance-powerbi/data)
 
 ### 2 · Car rental overview (Power BI, synthetic data)
 Car rental operation in Sydney (AUD), answering *how much does the fleet earn and cost, and where does the money go?* It is split into **4 pages**: Overview · Expenses (Operation vs Invest) · Material Costs · Fleet & Cars.
@@ -35,10 +51,21 @@ Car rental operation in Sydney (AUD), answering *how much does the fleet earn an
 **What the sample report shows** (synthetic, Nov 2025): sales **A$27.6K** (-9.7% MoM), profit margin **24.2%**, material costs **75%** of expenses, **33 of 47** rentable cars on rent at month end, **85%** of customers paid.
 **Design:** light page with a teal navigation panel, cyan for sales, navy for expenses, amber for highlights, Operation vs Invest split kept on every expense view, expandable expense detail table, status colors with a natural meaning.
 
-[![Overview](projects/car-rental-overview-powerbi/images/01-overview.png)](projects/car-rental-overview-powerbi/images/01-overview.png)
-[![Expenses](projects/car-rental-overview-powerbi/images/02-expenses.png)](projects/car-rental-overview-powerbi/images/02-expenses.png)
+**All 4 pages** (synthetic data):
 
-→ [Live dashboard](https://hongnganguyen.github.io/Hong-Nga-Portfolio/#c-over) · [Project folder](projects/car-rental-overview-powerbi) · [sample report](projects/car-rental-overview-powerbi/reports/sample-report-2025-11.md) · [data](projects/car-rental-overview-powerbi/data)
+**1 · Overview**
+![Overview](projects/car-rental-overview-powerbi/images/01-overview.png)
+
+**2 · Expenses**
+![Expenses](projects/car-rental-overview-powerbi/images/02-expenses.png)
+
+**3 · Material Costs**
+![Material costs](projects/car-rental-overview-powerbi/images/03-material-costs.png)
+
+**4 · Fleet & Cars**
+![Fleet and cars](projects/car-rental-overview-powerbi/images/04-fleet-cars.png)
+
+→ [Project folder](projects/car-rental-overview-powerbi) · [sample report](projects/car-rental-overview-powerbi/reports/sample-report-2025-11.md) · [data](projects/car-rental-overview-powerbi/data)
 
 ### 3 · LG Social Listening report (Power BI)
 Quarterly (Q2) analysis of online discussions about LG and competitors in washing machines: volume, sentiment, content type, audience, and brand comparison.
@@ -95,7 +122,7 @@ python tools/generate.py
 python tools/build_dashboard.py
 ```
 
-Then open `docs/index.html` through a local server (for example `python -m http.server --directory docs`) to see the interactive dashboards; the same folder is published with GitHub Pages.
+Then open `docs/index.html` through a local server (for example `python -m http.server --directory docs`) to see the interactive dashboards locally.
 
 To rebuild a dashboard, load the CSVs from `projects/<project>/data` into Power BI Desktop and follow the "How to reproduce" section of that project's README. SQL files run on SQL Server (T-SQL).
 
@@ -108,7 +135,7 @@ projects/
   lg-social-listening-powerbi/        # project 3: images/, report/, docs/
   paytm-customer-analysis-sql/        # project 4: sql/, data/
   azuz-customer-behavior-sql/         # project 5: sql/, data/
-docs/                                 # GitHub Pages: index.html, mfg.js, data.js, CV PDF
+docs/                                 # interactive dashboards (index.html, mfg.js, data.js) and CV PDF
 tools/generate.py                     # synthetic data + sample reports
 tools/build_dashboard.py              # aggregates the CSVs into docs/data.js
 requirements.txt

@@ -1,7 +1,6 @@
 # Glass Manufacturing Performance Dashboard — Power BI
 
 **Industry:** manufacturing (glass products, Premium and Luxury lines) · **Tools:** Power BI (data modeling, DAX, Power Query), Excel · **Currency:** AUD · **Area:** Sydney, Australia
-**Live interactive recreation:** [hongnganguyen.github.io/Hong-Nga-Portfolio](https://hongnganguyen.github.io/Hong-Nga-Portfolio/) (project **1 · Glass Manufacturing**, 6 pages)
 
 > ⚠️ **About the data.** The original dashboard was built for a real employer, so its data (customers, staff, suburbs, finances) is confidential and is not published. Everything in this folder is **synthetic**: randomly generated (fixed seed) with the same kind of tables, metrics and promotion codes as the real report. The images are screenshots of a web recreation of the dashboard built from that synthetic data, **not** screenshots of the production report, and no number is a real business result.
 

@@ -1,7 +1,6 @@
 # Car Rental Overview Dashboard — Power BI
 
 **Industry:** car rental · **Tools:** Power BI (data modeling, DAX, Power Query), Excel · **Currency:** AUD · **Area:** Sydney, Australia
-**Live interactive recreation:** [hongnganguyen.github.io/Hong-Nga-Portfolio](https://hongnganguyen.github.io/Hong-Nga-Portfolio/#c-over) (project **2 · Car Rental**, 4 pages)
 
 > ⚠️ **About the data.** The original dashboard was built for a real employer, so its data (customers, car plates, staff, bank transactions) is confidential and is not published. Everything in this folder is **synthetic**: randomly generated (fixed seed) with the same kind of tables and metrics as the real report. The images are screenshots of a web recreation of the dashboard built from that synthetic data, **not** screenshots of the production report, and no number is a real business result.
 
