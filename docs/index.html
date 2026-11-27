@@ -4,25 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hong Nga · Power BI Dashboard Portfolio</title>
-<meta name="description" content="Interactive recreations of two Power BI car-rental dashboards (sales performance and fleet &amp; finance overview) built on synthetic data.">
+<meta name="description" content="Interactive recreations of two Power BI dashboards (glass manufacturing performance and car rental overview) built on synthetic data.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
-  :root{--ink:#111;--muted:#667085;--line:#e4e7ec;--card:#fff;--accent:#ff5500;--page:#e9e7ea;--good:#1f9e32;--bad:#d92d20}
+  /* Color system: one accent per project, neutral greys, green/red only for good/bad */
+  :root{--ink:#1f2933;--muted:#667085;--line:#e4e7ec;--card:#fff;--accent:#e8590c;--page:#eef0f3;--good:#2e9e5b;--bad:#d64545}
   body.t-fleet{--accent:#c9a0dc}
   *{box-sizing:border-box}
   body{margin:0;min-height:100vh;background:var(--page);color:var(--ink);font:13px/1.4 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
-  .top{background:#000;color:#fff;padding:14px 14px 0}
+  .top{background:#111;color:#fff;padding:14px 14px 0}
   .row1{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
   .top h1{margin:0;font-size:18px;letter-spacing:.3px;font-weight:700}
   .top h1 b{color:var(--accent)}
   .proj{display:flex;gap:6px;flex-wrap:wrap}
-  .proj button{background:#000;color:#fff;border:1px solid #444;border-radius:999px;padding:5px 12px;font:600 12px "Segoe UI",system-ui,sans-serif;cursor:pointer}
-  .proj button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#000}
+  .proj button{background:transparent;color:#fff;border:1px solid #555;border-radius:999px;padding:5px 12px;font:600 12px "Segoe UI",system-ui,sans-serif;cursor:pointer}
+  .proj button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#111}
   .tabs{display:flex;gap:2px;flex-wrap:wrap;margin-top:10px}
   .tabs button{background:transparent;color:#b8b8b8;border:0;border-bottom:3px solid transparent;padding:8px 12px;font:600 13px "Segoe UI",system-ui,sans-serif;cursor:pointer}
   .tabs button[aria-selected="true"]{color:#fff;border-bottom-color:var(--accent)}
   .bar{display:flex;flex-wrap:wrap;gap:14px;align-items:end;justify-content:space-between;padding:10px 14px}
-  .bar .f{display:flex;gap:14px;align-items:end}
+  .bar .f{display:flex;gap:14px;align-items:end;flex-wrap:wrap}
   .bar label{display:flex;flex-direction:column;font-size:11px;font-weight:600;gap:2px}
   .purpose{font-size:12px;color:#344054;max-width:560px}
   select{border:1px solid #c7ccd4;border-radius:6px;padding:5px 8px;background:#fff;font:inherit}
@@ -38,31 +39,30 @@
   .kpi svg{display:block;width:100%;height:42px;margin-top:4px}
   .kpi.two{display:flex;gap:14px}.kpi.two>div{flex:1}
   table{width:100%;border-collapse:collapse;font-size:12px}
-  th{background:#000;color:#fff;text-align:right;padding:5px 8px;font-weight:600;position:sticky;top:0;cursor:pointer}
+  th{background:#111;color:#fff;text-align:right;padding:5px 8px;font-weight:600;position:sticky;top:0;cursor:pointer}
   td{padding:4px 8px;border-bottom:1px solid #eef0f3;text-align:right;white-space:nowrap}
   th:first-child,td:first-child{text-align:left}
   td.bar2{position:relative}
-  td.bar2 i{position:absolute;left:0;top:2px;bottom:2px;opacity:.85;border-radius:2px}
+  td.bar2 i{position:absolute;left:0;top:2px;bottom:2px;border-radius:2px}
   td.bar2 span{position:relative}
-  tr.hl td{background:#86f595;font-weight:700}
   tr.grp td{background:#eceef2;font-weight:700;cursor:pointer}
   .scroll{overflow:auto;max-height:420px}
   .ins{font-size:12.5px;line-height:1.5}.ins ul{margin:4px 0 0 16px;padding:0}.ins li{margin-bottom:6px}
   .hdr2{display:flex;gap:12px}.hdr2 div{flex:1;text-align:center;color:#fff;font-weight:700;padding:8px;border-radius:4px}
-  .hdr2 .a{background:#000}.hdr2 .b{background:#326a96}
+  .hdr2 .a{background:#475467}.hdr2 .b{background:#e8590c}
   footer{padding:6px 14px 18px;font-size:12px;color:#475467}
   a{color:#175cd3}
   [hidden]{display:none!important}
   @media (max-width:900px){.c2,.c3,.c4,.c5,.c6,.c7,.c8{grid-column:span 12}.ch{height:240px}}
 </style>
 </head>
-<body class="t-sales">
+<body class="t-mfg">
 <div class="top">
   <div class="row1">
-    <h1 id="title">CAR RENTAL SALES PERFORMANCE | <b>OVERVIEW</b></h1>
+    <h1 id="title">GLASS MANUFACTURING PERFORMANCE | <b>OVERVIEW</b></h1>
     <div class="proj" role="tablist" aria-label="Project">
-      <button data-proj="sales" aria-selected="true">1 · Sales Performance</button>
-      <button data-proj="fleet" aria-selected="false">2 · Fleet &amp; Finance Overview</button>
+      <button data-proj="mfg" aria-selected="true">1 · Glass Manufacturing</button>
+      <button data-proj="fleet" aria-selected="false">2 · Car Rental</button>
     </div>
   </div>
   <div class="tabs" id="tabs" role="tablist"></div>
@@ -77,11 +77,11 @@
 </div>
 
 <div class="wrap">
-<!-- ================= PROJECT 1 · SALES PERFORMANCE ================= -->
+<!-- ================= PROJECT 1 · GLASS MANUFACTURING ================= -->
 <section id="s-over">
   <div class="grid" id="s-kpis"></div>
   <div class="grid">
-    <div class="card c7"><h2>Rental sales &amp; total expenses by day</h2><div class="ch t" id="s-salesexp"></div></div>
+    <div class="card c7"><h2>Sales &amp; total expenses by day</h2><div class="ch t" id="s-salesexp"></div></div>
     <div class="card c5"><h2>Profit trendline</h2><div class="ch t" id="s-profitline"></div></div>
   </div>
   <div class="grid">
@@ -96,15 +96,15 @@
 <section id="s-sales" hidden>
   <div class="grid" id="s-skpis"></div>
   <div class="grid">
-    <div class="card c7"><h2>Rentals per day by car class</h2><div class="ch" id="s-qty"></div></div>
-    <div class="card c5"><h2>Sales by car class</h2><div class="ch" id="s-clsdonut"></div></div>
+    <div class="card c7"><h2>Orders per day by product line</h2><div class="ch" id="s-qty"></div></div>
+    <div class="card c5"><h2>Sales by product line</h2><div class="ch" id="s-clsdonut"></div></div>
   </div>
   <div class="grid">
     <div class="card c5"><h2>Average sales by weekday</h2><div class="ch" id="s-wday"></div></div>
-    <div class="card c7"><h2>Rental length distribution (rentals by number of days)</h2><div class="ch" id="s-dur"></div></div>
+    <div class="card c7"><h2>Order size distribution (orders by units per order)</h2><div class="ch" id="s-dur"></div></div>
   </div>
   <div class="grid">
-    <div class="card c12"><h2>Monthly rental sales by car class · full year</h2><div class="ch" id="s-clsm"></div></div>
+    <div class="card c12"><h2>Monthly sales by product line · full year</h2><div class="ch" id="s-clsm"></div></div>
   </div>
 </section>
 
@@ -126,7 +126,7 @@
 <section id="s-cust" hidden>
   <div class="grid" id="s-ckpis"></div>
   <div class="grid">
-    <div class="card c8"><h2>Rental sales by customer suburb (bubble = sales)</h2><div class="map" id="s-map" style="height:460px"></div></div>
+    <div class="card c8"><h2>Sales by customer suburb (bubble = sales)</h2><div class="map" id="s-map" style="height:460px"></div></div>
     <div class="card c4"><h2>Suburb ranking</h2><div class="scroll" id="s-suburbtbl" style="max-height:460px"></div></div>
   </div>
   <div class="grid">
@@ -138,7 +138,7 @@
 <section id="s-profit" hidden>
   <div class="grid" id="s-fkpis"></div>
   <div class="grid">
-    <div class="card c7"><h2>Profit bridge: revenue to profit</h2><div class="ch t" id="s-waterfall"></div></div>
+    <div class="card c7"><h2>Profit bridge: sales to profit</h2><div class="ch t" id="s-waterfall"></div></div>
     <div class="card c5"><h2>Total expense breakdown</h2><div class="ch t" id="s-expdonut"></div></div>
   </div>
   <div class="grid">
@@ -161,40 +161,56 @@
 <section id="s-team" hidden>
   <div class="grid" id="s-tkpis"></div>
   <div class="grid">
-    <div class="card c6"><h2>Rental sales made by sales staff: last month vs this month</h2><div class="ch t" id="s-tchart"></div></div>
+    <div class="card c6"><h2>Sales made by sales staff: last month vs this month</h2><div class="ch t" id="s-tchart"></div></div>
     <div class="card c6"><h2>KPI achievement, commission, bonus and salary</h2><div class="scroll" id="s-ttable"></div></div>
   </div>
 </section>
 
-<!-- ================= PROJECT 2 · FLEET & FINANCE OVERVIEW ================= -->
+<!-- ================= PROJECT 2 · CAR RENTAL ================= -->
 <section id="c-over" hidden>
   <div class="grid" id="c-kpis"></div>
   <div class="grid">
-    <div class="card c7"><h2>Sales &amp; Total Expenses by day</h2><div class="ch t" id="c-salesexp"></div></div>
-    <div class="card c5"><h2>Profit Trendline</h2><div class="ch t" id="c-profit"></div></div>
+    <div class="card c7"><h2>Sales &amp; total expenses by day</h2><div class="ch t" id="c-salesexp"></div></div>
+    <div class="card c5"><h2>Profit trendline</h2><div class="ch t" id="c-profitline"></div></div>
   </div>
   <div class="grid">
-    <div class="card c5"><h2>Total Expense Breakdown (Operation vs Invest)</h2><div class="ch" id="c-donut"></div></div>
-    <div class="card c7"><h2>Total Expense Detail</h2><div class="ch" id="c-detailbars"></div></div>
+    <div class="card c7"><h2>Sales, expenses and profit margin · last 6 months</h2><div class="ch" id="c-trend6"></div></div>
+    <div class="card c5"><h2>Summary | Car Rental</h2><div class="scroll" id="c-summary"></div></div>
   </div>
   <div class="grid">
-    <div class="card c5"><h2>Summary | Car Rental</h2><div id="c-summary"></div></div>
-    <div class="card c7"><h2>Expense For Operation Breakdown</h2><div class="ch" id="c-opbr"></div></div>
-  </div>
-  <div class="grid">
-    <div class="card c7"><h2>Expense For Material Breakdown</h2><div class="ch" id="c-matbr"></div></div>
-    <div class="card c5"><h2>Material expenses by category</h2><div class="ch" id="c-matdonut"></div></div>
-  </div>
-  <div class="grid">
-    <div class="card c12"><h2>Table Detail: Expenses · Material (click a group to expand / collapse)</h2><div class="scroll" id="c-detail" style="max-height:480px"></div></div>
+    <div class="card c6"><h2>Customer debt and % customers paid by month</h2><div class="ch" id="c-debt"></div></div>
+    <div class="card c6"><h2>Insights <small style="font-weight:400;color:#667085">(auto-generated from the synthetic data)</small></h2><div class="ins" id="c-ins"></div></div>
   </div>
 </section>
 
-<section id="c-det" hidden>
+<section id="c-exp" hidden>
+  <div class="grid" id="c-ekpis"></div>
+  <div class="grid">
+    <div class="card c5"><h2>Operation vs Invest expenses</h2><div class="ch t" id="c-donut"></div></div>
+    <div class="card c7"><h2>Total expense detail by group</h2><div class="ch t" id="c-detailbars"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c7"><h2>Expenses by group · last 6 months</h2><div class="ch" id="c-grpbr"></div></div>
+    <div class="card c5"><h2>Operation vs Invest by month · full year</h2><div class="ch" id="c-typebr"></div></div>
+  </div>
+</section>
+
+<section id="c-mat" hidden>
+  <div class="grid" id="c-mkpis"></div>
+  <div class="grid">
+    <div class="card c7"><h2>Material expenses by category · last 6 months</h2><div class="ch" id="c-matbr"></div></div>
+    <div class="card c5"><h2>Material expenses by category · selected month</h2><div class="ch" id="c-matdonut"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c12"><h2>Material expense detail (click a group to expand / collapse)</h2><div class="scroll" id="c-detail" style="max-height:480px"></div></div>
+  </div>
+</section>
+
+<section id="c-fleet" hidden>
   <div class="grid" id="d-kpis"></div>
   <div class="grid">
-    <div class="card c4"><h2>Total Car by Status</h2><div class="ch" id="d-status"></div></div>
-    <div class="card c4"><h2>Top 10 cars by profit (full year, A$)</h2><div class="ch" id="d-top"></div></div>
+    <div class="card c4"><h2>Total car by status</h2><div class="ch" id="d-status"></div></div>
+    <div class="card c4"><h2>Top 10 cars by profit (full year)</h2><div class="ch" id="d-top"></div></div>
     <div class="card c4"><h2>New rentals vs returns by month</h2><div class="ch" id="d-flow"></div></div>
   </div>
   <div class="grid">
@@ -210,10 +226,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="data.js"></script>
 <script>
-/* ===== shared helpers, exposed as window.BI for sales.js ===== */
+/* ===== shared helpers, exposed as window.BI for mfg.js ===== */
 (function(){
 "use strict";
 var MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var T={ink:"#1f2933",muted:"#667085",gray:"#98a2b3",gray2:"#d0d5dd",blue:"#2f6da3",good:"#2e9e5b",bad:"#d64545",goodTint:"#cdebd8",badTint:"#f5c2c0",barTint:"#e4e7ec"};
 function $(i){return document.getElementById(i);}
 function pad(n){return n<10?"0"+n:""+n;}
 function dim(m){return new Date(2025,m,0).getDate();}
@@ -244,13 +261,13 @@ function kpi(span,label,val,d,goodUp,series,color){return '<div class="card kpi 
 function tbl(cols,rows){
   var mx={};cols.forEach(function(c,i){if(c.bar){mx[i]=Math.max.apply(null,rows.map(function(r){return Math.abs(r.v[i])||0;}).concat([1e-9]));}});
   var h="<table><thead><tr>"+cols.map(function(c,i){return '<th data-i="'+i+'">'+c.t+"</th>";}).join("")+"</tr></thead><tbody>";
-  rows.forEach(function(r){h+="<tr"+(r.cls?' class="'+r.cls+'"':"")+(r.attr||"")+">"+cols.map(function(c,i){var v=r.v[i],s=c.f?c.f(v,r):v;
-    if(c.bar){var w=Math.min(100,Math.abs(v)/mx[i]*100);return '<td class="bar2"><i style="width:'+w.toFixed(1)+"%;background:"+(v<0?"#f7c6b3":(r.bc||c.bar))+'"></i><span>'+s+"</span></td>";}
+  rows.forEach(function(r){h+="<tr"+(r.cls?' class="'+r.cls+'"':"")+">"+cols.map(function(c,i){var v=r.v[i],s=c.f?c.f(v,r):v;
+    if(c.bar){var w=Math.min(100,Math.abs(v)/mx[i]*100);return '<td class="bar2"><i style="width:'+w.toFixed(1)+"%;background:"+(v<0?T.badTint:(r.bc||c.bar))+'"></i><span>'+s+"</span></td>";}
     return "<td>"+s+"</td>";}).join("")+"</tr>";});
   return h+"</tbody></table>";
 }
 function donut(id,data,center,colors){
-  if(colors&&!Array.isArray(colors)){var map=colors;colors=undefined;data=data.map(function(d){return {name:d.name,value:d.value,itemStyle:{color:map[d.name]||"#999"}};});}
+  if(colors&&!Array.isArray(colors)){var map=colors;colors=undefined;data=data.map(function(d){return {name:d.name,value:d.value,itemStyle:{color:map[d.name]||T.gray}};});}
   opt(id,{tooltip:{trigger:"item",formatter:function(p){return p.name+": "+usd(p.value,true)+" ("+p.percent+"%)";}},
     legend:{type:"scroll",bottom:0,textStyle:{color:"#475467"}},color:colors,
     title:center?{text:center,left:"center",top:"38%",textStyle:{fontSize:20,fontWeight:400}}:undefined,
@@ -268,92 +285,143 @@ function makeMap(id){
     maps[id]={map:mp,layer:L.layerGroup().addTo(mp)};}
   return maps[id];
 }
-window.BI={D:window.DATA,MN:MN,$:$,pad:pad,dim:dim,dk:dk,mo:mo,sum:sum,usd:usd,kk:kk,dlt:dlt,dayArr:dayArr,add:add,charts:charts,ch:ch,opt:opt,AX:AX,xcat:xcat,yval:yval,GR:GR,spark:spark,badge:badge,kpi:kpi,tbl:tbl,donut:donut,stacked:stacked,makeMap:makeMap,pages:{}};
+window.BI={D:window.DATA,T:T,MN:MN,$:$,pad:pad,dim:dim,dk:dk,mo:mo,sum:sum,usd:usd,kk:kk,dlt:dlt,dayArr:dayArr,add:add,charts:charts,ch:ch,opt:opt,AX:AX,xcat:xcat,yval:yval,GR:GR,spark:spark,badge:badge,kpi:kpi,tbl:tbl,donut:donut,stacked:stacked,makeMap:makeMap,pages:{}};
 })();
 </script>
-<script src="sales.js"></script>
+<script src="mfg.js"></script>
 <script>
-/* ===== project 2 (fleet & finance) + page wiring ===== */
+/* ===== project 2 (car rental) + page wiring ===== */
 (function(){
 "use strict";
-var B=window.BI,D=B.D,MN=B.MN,$=B.$,dim=B.dim,mo=B.mo,sum=B.sum,usd=B.usd,kk=B.kk,dlt=B.dlt,dayArr=B.dayArr,add=B.add,ch=B.ch,opt=B.opt,AX=B.AX,xcat=B.xcat,yval=B.yval,GR=B.GR,kpi=B.kpi,tbl=B.tbl,donut=B.donut,stacked=B.stacked,charts=B.charts;
-var PURPLE="#a666b0",GREEN="#1f9e32",RED="#d92d20";
+var B=window.BI,D=B.D,T=B.T,MN=B.MN,$=B.$,dim=B.dim,mo=B.mo,sum=B.sum,usd=B.usd,kk=B.kk,dlt=B.dlt,dayArr=B.dayArr,add=B.add,ch=B.ch,opt=B.opt,AX=B.AX,xcat=B.xcat,yval=B.yval,GR=B.GR,kpi=B.kpi,tbl=B.tbl,donut=B.donut,stacked=B.stacked,charts=B.charts;
+/* purple accent system: sales = purple, expenses = ink */
+var ACC="#7b4fa3",MID="#b58cd6",TINT="#e6d5f2",INK=T.ink,GRAY=T.gray;
+function pc(x){return (x*100).toFixed(1)+"%";}
+function f2(v){return usd(v,true);}
+function days(m){var a=[];for(var d=1;d<=dim(m);d++)a.push(d);return a;}
+function ul(items){return "<ul><li>"+items.join("</li><li>")+"</li></ul>";}
 
-var C=D.car,CAR={},CRV={},CRT={},CEX={},CG={},CC={},CT={},CITEMS={},CEVM={};
-C.cars.forEach(function(c){CAR[c[0]]=c;});
+var C=D.car,CRV={},CRT={},CEX={},CG={},CC={},CT={},CITEMS={},CEVM={};
+for(var i=1;i<=12;i++){CG[i]={};CC[i]={};CT[i]={};CITEMS[i]=[];}
 C.rdaily.forEach(function(r){CRV[r[0]]=r[1];CRT[r[0]]=r[2];});
-C.exp.forEach(function(r){var m=mo(r[0]);add(CEX,r[0],r[5]);CG[m]=CG[m]||{};add(CG[m],r[1],r[5]);
-  if(r[1]==="Material"){CC[m]=CC[m]||{};add(CC[m],r[2],r[5]);CITEMS[m]=CITEMS[m]||[];CITEMS[m].push(r);}
-  CT[m]=CT[m]||{};add(CT[m],r[6],r[5]);});
+C.exp.forEach(function(r){var m=mo(r[0]);add(CEX,r[0],r[5]);add(CG[m],r[1],r[5]);
+  if(r[1]==="Material"){add(CC[m],r[2],r[5]);CITEMS[m].push(r);}
+  add(CT[m],r[6],r[5]);});
 C.events.forEach(function(r){var m=mo(r[0]);CEVM[m]=CEVM[m]||[0,0];CEVM[m][0]+=r[1];CEVM[m][1]+=r[2];});
 function cMonth(m){var s=dayArr(CRV,m),e=dayArr(CEX,m),p=s.map(function(x,i){return x-e[i];});return {s:s,e:e,p:p,r:dayArr(CRT,m),S:sum(s),E:sum(e),P:sum(p)};}
-var CCOL={Rego:"#6e8f8c",Parts:"#9dcbff",Others:"#f0a787",Operation:"#6a0f7a",Tax:"#4b2a7a",Rent:"#e44fa8"};
-function renderCOver(m){
-  var c=cMonth(m),p=m>1?cMonth(m-1):null,days=[];for(var d=1;d<=dim(m);d++)days.push(d);
-  var db=C.debt[m-1],rent=c.r[c.r.length-1];
+function ctot(m){var s=0;for(var k in CG[m])s+=CG[m][k];return s;}
+var GCOL={HR:INK,Material:ACC,MKT:MID,Office:GRAY},GORD=["HR","Material","MKT","Office"];
+var TCOL={Operation:INK,Invest:ACC};
+var MCOL={Rego:"#4b2a7a",Parts:ACC,Others:"#a47cc8",Operation:"#c9a0dc",Tax:GRAY,Rent:T.gray2};
+var SCOL={Active:T.good,RTO:"#7cc79a",Holding:"#f2b84b",Fixing:"#e08a3c",Sold:GRAY,Lost:T.bad,Inactive:T.gray2};
+var rentable=C.cars.filter(function(c){return c[3]==="Active"||c[3]==="RTO";}).length;
+
+/* ---------- 1 OVERVIEW ---------- */
+function renderOver(m){
+  var c=cMonth(m),p=m>1?cMonth(m-1):null,dd=days(m),rent=c.r[c.r.length-1],db=C.debt[m-1];
   $("c-kpis").innerHTML=
-    kpi(3,"Profit",'<span class="'+(c.P>=0?"up":"down")+'">'+usd(c.P)+"</span>",p?dlt(c.P,p.P):null,true,c.p,PURPLE)+
-    kpi(3,"Total Sales",usd(c.S),p?dlt(c.S,p.S):null,true,c.s,"#5fc8d6")+
-    kpi(3,"Total Expenses",usd(c.E),p?dlt(c.E,p.E):null,false,c.e,"#333")+
-    '<div class="card kpi c3 two"><div><div class="l">Customer debt</div><div class="v">'+usd(db[1])+'</div></div><div><div class="l">% customers paid</div><div class="v">'+Math.round(db[2]*100)+"%</div></div></div>"+
-    kpi(3,"Renting cars (month end)",rent,null,true,c.r,PURPLE);
-  opt("c-salesexp",{tooltip:{trigger:"axis",valueFormatter:function(v){return usd(v,true);}},legend:{top:0},color:["#c59bd0","#111"],grid:GR,xAxis:xcat(days),yAxis:yval(),
-    series:[{name:"Total Sales",type:"bar",stack:"x",data:c.s.map(Math.round)},{name:"Total Expenses",type:"bar",stack:"x",data:c.e.map(Math.round)}]});
-  opt("c-profit",{tooltip:{trigger:"axis",valueFormatter:function(v){return usd(v,true);}},grid:GR,xAxis:xcat(days),yAxis:yval(),
-    series:[{type:"line",smooth:true,data:c.p.map(Math.round),itemStyle:{color:"#4da3ff"},areaStyle:{color:"#4da3ff",opacity:.2},markLine:{silent:true,symbol:"none",data:[{yAxis:0}],lineStyle:{color:"#999"}},markPoint:{data:[{type:"max"},{type:"min"}],symbolSize:44,label:{formatter:function(q){return kk(q.value);},fontSize:10,color:"#fff"},itemStyle:{color:"#4da3ff"}}}]});
-  var ty=CT[m]||{};
-  donut("c-donut",[{name:"Expenses for Operation",value:+(ty.Operation||0).toFixed(2)},{name:"Expenses for Invest",value:+(ty.Invest||0).toFixed(2)}],usd(c.E),["#222",PURPLE]);
-  var g=CG[m]||{},tot=c.E||1,gl=["HR","Material","Office","MKT"];
-  opt("c-detailbars",{tooltip:{valueFormatter:function(v){return usd(v,true);}},grid:{left:90,right:80,top:10,bottom:20},xAxis:yval(),yAxis:{type:"category",data:gl.slice().reverse(),axisLabel:{color:"#475467"},axisLine:AX.axisLine,axisTick:AX.axisTick},
-    series:[{type:"bar",data:gl.slice().reverse().map(function(k){return {value:Math.round(g[k]||0),itemStyle:{color:{HR:"#111",Material:"#a666b0",Office:"#c7ccd4",MKT:"#9cc873"}[k]}};}),
-      label:{show:true,position:"right",formatter:function(q){return usd(q.value)+" ("+(q.value/tot*100).toFixed(0)+"%)";}}}]});
-  var mt=CC[m]||{},rows=[["Revenue",c.S],["Profit",c.P],["MKT Expense",g.MKT||0],["Material Expenses",g.Material||0],["  Material_Operation",(CITEMS[m]||[]).filter(function(r){return r[6]==="Operation";}).reduce(function(a,r){return a+r[5];},0)],["HR Expense",g.HR||0],["Office Expense",g.Office||0]];
-  $("c-summary").innerHTML=tbl([{t:"Item"},{t:"Amount",bar:"#d8c3df",f:function(v){return usd(v,true);}}],rows.map(function(r){return {v:r,bc:r[0]==="Revenue"?"#a3ddb3":r[0]==="Profit"?"#f5c4af":null};}));
-  var from=Math.max(1,m-2),cats=[];for(var i=from;i<=m;i++)cats.push(MN[i-1]);
-  stacked("c-opbr",cats,["Material","HR","MKT","Office"].map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round((CG[i]||{})[k]||0));return [k,a];}),["#111","#74cd8b","#a5e3ea","#5a007a"]);
-  stacked("c-matbr",cats,Object.keys(CCOL).map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round((CC[i]||{})[k]||0));return [k,a];}),Object.keys(CCOL).map(function(k){return CCOL[k];}));
-  donut("c-matdonut",Object.keys(mt).map(function(k){return {name:k,value:+mt[k].toFixed(2)};}),null,CCOL);
-  var items=(CITEMS[m]||[]).slice().sort(function(a,b){return b[5]-a[5];}),groups={};
+    kpi(3,"Profit · margin "+pc(c.S?c.P/c.S:0),'<span class="'+(c.P>=0?"up":"down")+'">'+usd(c.P)+"</span>",p?dlt(c.P,p.P):null,true,c.p,ACC)+
+    kpi(3,"Total sales",usd(c.S),p?dlt(c.S,p.S):null,true,c.s,ACC)+
+    kpi(3,"Total expenses",usd(c.E),p?dlt(c.E,p.E):null,false,c.e,T.muted)+
+    kpi(3,"Cars on rent (month end) · "+pc(rent/rentable)+" of "+rentable+" rentable",rent,null,true,c.r,ACC);
+  opt("c-salesexp",{tooltip:{trigger:"axis",valueFormatter:f2},legend:{top:0},color:[ACC,INK],grid:GR,xAxis:xcat(dd),yAxis:yval(),
+    series:[{name:"Total sales",type:"bar",stack:"x",data:c.s.map(Math.round)},{name:"Total expenses",type:"bar",stack:"x",data:c.e.map(Math.round)}]});
+  opt("c-profitline",{tooltip:{trigger:"axis",valueFormatter:f2},grid:GR,xAxis:xcat(dd),yAxis:yval(),
+    series:[{type:"line",smooth:true,data:c.p.map(Math.round),itemStyle:{color:ACC},areaStyle:{color:ACC,opacity:.15},markLine:{silent:true,symbol:"none",data:[{yAxis:0}],lineStyle:{color:GRAY}},
+      markPoint:{data:[{type:"max"},{type:"min"}],symbolSize:44,label:{formatter:function(q){return kk(q.value);},fontSize:10,color:"#fff"},itemStyle:{color:ACC}}}]});
+  var from=Math.max(1,m-5),cats=[],sv=[],ev=[],mg=[];
+  for(var i=from;i<=m;i++){cats.push(MN[i-1]);var s=sum(dayArr(CRV,i)),e=ctot(i);sv.push(Math.round(s));ev.push(Math.round(e));mg.push(s?+((s-e)/s*100).toFixed(1):0);}
+  opt("c-trend6",{tooltip:{trigger:"axis"},legend:{top:0},color:[ACC,INK,T.blue],grid:{left:48,right:44,top:30,bottom:26},xAxis:xcat(cats),
+    yAxis:[yval(),{type:"value",axisLabel:{color:"#475467",formatter:"{value}%"},splitLine:{show:false}}],
+    series:[{name:"Total sales",type:"bar",data:sv},{name:"Total expenses",type:"bar",data:ev},{name:"Profit margin %",type:"line",yAxisIndex:1,smooth:true,data:mg,label:{show:true,formatter:"{c}%",fontSize:10}}]});
+  var g=CG[m],opx=(CITEMS[m]||[]).filter(function(r){return r[6]==="Operation";}).reduce(function(a,r){return a+r[5];},0);
+  var rows=[["Revenue",c.S],["HR",g.HR||0],["Material",g.Material||0],["  of which Operation",opx],["Marketing",g.MKT||0],["Office",g.Office||0],["Profit",c.P]];
+  $("c-summary").innerHTML=tbl([{t:"Item"},{t:"Amount",bar:T.barTint,f:f2}],rows.map(function(r){return {v:r,bc:r[0]==="Revenue"?T.goodTint:r[0]==="Profit"?TINT:null};}));
+  // debt chart
+  var ob=[],pp=[];for(var k=0;k<12;k++){ob.push(Math.round(C.debt[k][1]));pp.push(Math.round(C.debt[k][2]*100));}
+  opt("c-debt",{tooltip:{trigger:"axis"},legend:{top:0},color:[MID,INK],grid:{left:48,right:44,top:30,bottom:26},xAxis:xcat(MN),
+    yAxis:[yval(),{type:"value",min:50,max:100,axisLabel:{color:"#475467",formatter:"{value}%"},splitLine:{show:false}}],
+    series:[{name:"Outstanding balance (A$)",type:"bar",data:ob.map(function(v,i){return {value:v,itemStyle:{color:i===m-1?ACC:MID}};})},{name:"% customers paid",type:"line",yAxisIndex:1,smooth:true,data:pp,label:{show:true,formatter:"{c}%",fontSize:9}}]});
+  // insights
+  var li=[],best=c.p.indexOf(Math.max.apply(null,c.p)),worst=c.p.indexOf(Math.min.apply(null,c.p));
+  if(p)li.push("Profit is <b>"+usd(c.P)+"</b> ("+pc(c.S?c.P/c.S:0)+" margin), "+(c.P>=p.P?"up ":"down ")+"<b>"+Math.abs(dlt(c.P,p.P)*100).toFixed(1)+"%</b> versus "+MN[m-2]+"; sales moved "+(dlt(c.S,p.S)*100).toFixed(1)+"% and expenses "+(dlt(c.E,p.E)*100).toFixed(1)+"%.");
+  li.push("Best day: <b>"+MN[m-1]+" "+(best+1)+"</b> ("+usd(c.p[best])+"); weakest: <b>"+MN[m-1]+" "+(worst+1)+"</b> ("+usd(c.p[worst])+"), check whether a large registration or parts invoice was paid that day before reading it as a drop in rentals.");
+  var top=(CITEMS[m]||[]).slice().sort(function(a,b){return b[5]-a[5];})[0];
+  if(top)li.push("Largest single expense: <b>"+top[4]+"</b> ("+usd(top[5],true)+", "+top[2]+"). Lumpy costs like registration should be planned ahead of time.");
+  li.push(rent+" of "+rentable+" rentable cars are on rent (<b>"+pc(rent/rentable)+"</b> utilisation). Customer debt is <b>"+usd(db[1])+"</b> with <b>"+Math.round(db[2]*100)+"%</b> of customers paid.");
+  $("c-ins").innerHTML=ul(li);
+}
+
+/* ---------- 2 EXPENSES ---------- */
+function renderExp(m){
+  var c=cMonth(m),p=m>1?cMonth(m-1):null,g=CG[m],ty=CT[m],E=c.E||1;
+  $("c-ekpis").innerHTML=
+    kpi(3,"Total expenses",usd(c.E),p?dlt(c.E,p.E):null,false,c.e,T.muted)+
+    kpi(3,"Operation expenses · "+pc((ty.Operation||0)/E),usd(ty.Operation||0),m>1&&CT[m-1].Operation?dlt(ty.Operation||0,CT[m-1].Operation):null,false)+
+    kpi(3,"Invest expenses · "+pc((ty.Invest||0)/E),usd(ty.Invest||0),m>1&&CT[m-1].Invest?dlt(ty.Invest||0,CT[m-1].Invest):null,false)+
+    kpi(3,"Material share of expenses",pc((g.Material||0)/E),null,false);
+  donut("c-donut",[{name:"Operation",value:+(ty.Operation||0).toFixed(2)},{name:"Invest",value:+(ty.Invest||0).toFixed(2)}],usd(c.E),TCOL);
+  var gl=GORD.slice().sort(function(a,b){return (g[a]||0)-(g[b]||0);});
+  opt("c-detailbars",{tooltip:{valueFormatter:f2},grid:{left:90,right:90,top:10,bottom:20},xAxis:yval(),yAxis:{type:"category",data:gl,axisLabel:{color:"#475467"},axisLine:AX.axisLine,axisTick:AX.axisTick},
+    series:[{type:"bar",data:gl.map(function(k){return {value:Math.round(g[k]||0),itemStyle:{color:GCOL[k]}};}),label:{show:true,position:"right",formatter:function(q){return usd(q.value)+" ("+(q.value/E*100).toFixed(0)+"%)";}}}]});
+  var from=Math.max(1,m-5),cats=[];for(var i=from;i<=m;i++)cats.push(MN[i-1]);
+  stacked("c-grpbr",cats,GORD.map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round(CG[i][k]||0));return [k,a];}),GORD.map(function(k){return GCOL[k];}));
+  stacked("c-typebr",MN.slice(),["Operation","Invest"].map(function(k){var a=[];for(var i=1;i<=12;i++)a.push(Math.round(CT[i][k]||0));return [k,a];}),[INK,ACC]);
+}
+
+/* ---------- 3 MATERIAL COSTS ---------- */
+function renderMat(m){
+  var mt=CC[m],tot=sum(Object.keys(mt).map(function(k){return mt[k];}))||1,pm=m>1?CC[m-1]:null,ptot=pm?sum(Object.keys(pm).map(function(k){return pm[k];})):0;
+  $("c-mkpis").innerHTML=
+    kpi(3,"Material expenses",usd(tot),pm&&ptot?dlt(tot,ptot):null,false)+
+    kpi(3,"Rego (registration) · "+pc((mt.Rego||0)/tot),usd(mt.Rego||0),pm&&pm.Rego?dlt(mt.Rego||0,pm.Rego):null,false)+
+    kpi(3,"Parts · "+pc((mt.Parts||0)/tot),usd(mt.Parts||0),pm&&pm.Parts?dlt(mt.Parts||0,pm.Parts):null,false)+
+    kpi(3,"Others · "+pc((mt.Others||0)/tot),usd(mt.Others||0),pm&&pm.Others?dlt(mt.Others||0,pm.Others):null,false);
+  var from=Math.max(1,m-5),cats=[],ks=Object.keys(MCOL);for(var i=from;i<=m;i++)cats.push(MN[i-1]);
+  stacked("c-matbr",cats,ks.map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round(CC[i][k]||0));return [k,a];}),ks.map(function(k){return MCOL[k];}));
+  donut("c-matdonut",Object.keys(mt).map(function(k){return {name:k,value:+mt[k].toFixed(2)};}),usd(tot),MCOL);
+  var items=CITEMS[m].slice().sort(function(a,b){return b[5]-a[5];}),groups={};
   items.forEach(function(r){(groups[r[2]]=groups[r[2]]||[]).push(r);});
   var order=Object.keys(groups).sort(function(a,b){return sum(groups[b].map(function(r){return r[5];}))-sum(groups[a].map(function(r){return r[5];}));});
   var mx=Math.max.apply(null,items.map(function(r){return r[5];}).concat([1])),h="<table><thead><tr><th>Category / item</th><th>Expenses</th><th>Car</th></tr></thead><tbody>";
   order.forEach(function(k){var t=sum(groups[k].map(function(r){return r[5];}));
     h+='<tr class="grp" data-g="'+k+'"><td>▾ '+k+"</td><td>"+usd(t,true)+"</td><td></td></tr>";
-    groups[k].forEach(function(r){h+='<tr data-in="'+k+'"><td style="padding-left:22px">'+r[4]+'</td><td class="bar2"><i style="width:'+(r[5]/mx*100).toFixed(1)+'%;background:#7479c9"></i><span>'+usd(r[5],true)+"</span></td><td>"+(r[3]||"")+"</td></tr>";});});
+    groups[k].forEach(function(r){h+='<tr data-in="'+k+'"><td style="padding-left:22px">'+r[4]+'</td><td class="bar2"><i style="width:'+(r[5]/mx*100).toFixed(1)+'%;background:'+TINT+'"></i><span>'+usd(r[5],true)+"</span></td><td>"+(r[3]||"")+"</td></tr>";});});
   $("c-detail").innerHTML=h+'<tr class="grp"><td>Total</td><td>'+usd(sum(items.map(function(r){return r[5];})),true)+"</td><td></td></tr></tbody></table>";
   Array.prototype.forEach.call($("c-detail").querySelectorAll("tr.grp[data-g]"),function(tr){tr.onclick=function(){var g=tr.getAttribute("data-g"),open=tr.firstChild.textContent.charAt(0)==="▾";tr.firstChild.textContent=(open?"▸ ":"▾ ")+g;
     Array.prototype.forEach.call($("c-detail").querySelectorAll('tr[data-in="'+g+'"]'),function(x){x.hidden=open;});};});
 }
-var dSort={k:5,dir:-1};
-function renderCDet(m){
+
+/* ---------- 4 FLEET & CARS ---------- */
+var dSort={k:7,dir:-1};
+function renderFleet(m){
   var st=$("d-filter").value||"ALL",yr={},mon={},mex={};
   C.rplate.forEach(function(r){add(yr,r[1],r[2]);if(r[0]===m)add(mon,r[1],r[2]);});
   C.exp.forEach(function(r){if(r[1]==="Material"&&r[3])add(mex,r[3],r[5]);});
   var cs=C.cars.filter(function(c){return st==="ALL"||c[3]===st;});
   var rows=cs.map(function(c){var rv=yr[c[0]]||0,ex=mex[c[0]]||0;return [c[0],c[1],c[3],c[2],mon[c[0]]||0,rv,ex,rv-ex];});
   var sc={};C.cars.forEach(function(c){add(sc,c[3],1);});
-  var rent=C.cars.filter(function(c){return c[3]==="Active"||c[3]==="RTO";}).length;
-  $("d-kpis").innerHTML=kpi(3,"Cars in fleet",C.cars.length)+kpi(3,"Rentable (Active + RTO)",rent)+kpi(3,"Fleet buying price",usd(sum(C.cars.map(function(c){return c[2];}))))+kpi(3,"Avg daily rate",usd(sum(C.cars.map(function(c){return c[4];}))/C.cars.length,true));
-  donut("d-status",Object.keys(sc).map(function(k){return {name:k,value:sc[k]};}),null,{Active:"#76cd8c",RTO:"#48bc66",Sold:"#e37a7e",Holding:"#c499ca",Fixing:"#f0a787",Lost:"#7a7a7a",Inactive:"#c7ccd4"});
+  $("d-kpis").innerHTML=kpi(3,"Cars in fleet",C.cars.length)+kpi(3,"Rentable (Active + RTO)",rentable+" · "+pc(rentable/C.cars.length))+kpi(3,"Fleet buying price",usd(sum(C.cars.map(function(c){return c[2];}))))+kpi(3,"Average daily rate",usd(sum(C.cars.map(function(c){return c[4];}))/C.cars.length,true));
+  donut("d-status",Object.keys(sc).map(function(k){return {name:k,value:sc[k]};}),null,SCOL);
   var c1=ch("d-status");if(c1)c1.setOption({series:[{label:{formatter:function(p){return p.value+" ("+p.percent+"%)";}}}],tooltip:{formatter:function(p){return p.name+": "+p.value;}}});
   var top=rows.slice().sort(function(a,b){return b[7]-a[7];}).slice(0,10).reverse();
-  opt("d-top",{tooltip:{valueFormatter:function(v){return usd(v,true);}},grid:{left:70,right:20,top:10,bottom:20},xAxis:yval(),yAxis:{type:"category",data:top.map(function(r){return r[0];}),axisLabel:{color:"#475467"}},series:[{type:"bar",data:top.map(function(r){return Math.round(r[7]);}),itemStyle:{color:GREEN}}]});
-  opt("d-flow",{tooltip:{trigger:"axis"},legend:{top:0},color:[GREEN,RED],grid:GR,xAxis:xcat(MN),yAxis:yval(),series:[{name:"New rent",type:"bar",data:MN.map(function(_,i){return (CEVM[i+1]||[0,0])[0];})},{name:"Returned",type:"bar",data:MN.map(function(_,i){return (CEVM[i+1]||[0,0])[1];})}]});
-  var f=function(v){return usd(v,true);},cols=[{t:"Plate"},{t:"Make"},{t:"Status"},{t:"Buying price",f:f},{t:MN[m-1]+" revenue",bar:PURPLE,f:f},{t:"Revenue (year)",bar:PURPLE,f:f},{t:"Material exp. (year)",f:f},{t:"Profit (year)",bar:"#b9e3c2",f:function(v){return '<span class="'+(v>=0?"up":"down")+'">'+usd(v,true)+"</span>";}}];
+  opt("d-top",{tooltip:{valueFormatter:f2},grid:{left:70,right:20,top:10,bottom:20},xAxis:yval(),yAxis:{type:"category",data:top.map(function(r){return r[0];}),axisLabel:{color:"#475467"}},series:[{type:"bar",data:top.map(function(r){return Math.round(r[7]);}),itemStyle:{color:ACC}}]});
+  opt("d-flow",{tooltip:{trigger:"axis"},legend:{top:0},color:[ACC,INK],grid:GR,xAxis:xcat(MN),yAxis:yval(),series:[{name:"New rent",type:"bar",data:MN.map(function(_,i){return (CEVM[i+1]||[0,0])[0];})},{name:"Returned",type:"bar",data:MN.map(function(_,i){return (CEVM[i+1]||[0,0])[1];})}]});
+  var cols=[{t:"Plate"},{t:"Make"},{t:"Status",f:function(v){return '<span style="color:'+(SCOL[v]||INK)+'">●</span> '+v;}},{t:"Buying price",f:f2},{t:MN[m-1]+" revenue",bar:TINT,f:f2},{t:"Revenue (year)",bar:TINT,f:f2},{t:"Material exp. (year)",f:f2},{t:"Profit (year)",f:function(v){return '<span class="'+(v>=0?"up":"down")+'">'+usd(v,true)+"</span>";}}];
   rows.sort(function(a,b){var u=a[dSort.k],v=b[dSort.k];return (u<v?-1:u>v?1:0)*dSort.dir;});
   $("d-table").innerHTML=tbl(cols,rows.map(function(r){return {v:r};}));
-  Array.prototype.forEach.call($("d-table").querySelectorAll("th"),function(th){th.onclick=function(){var i=+th.getAttribute("data-i");if(dSort.k===i)dSort.dir=-dSort.dir;else{dSort.k=i;dSort.dir=-1;}renderCDet(m);};});
+  Array.prototype.forEach.call($("d-table").querySelectorAll("th"),function(th){th.onclick=function(){var i=+th.getAttribute("data-i");if(dSort.k===i)dSort.dir=-dSort.dir;else{dSort.k=i;dSort.dir=-1;}renderFleet(m);};});
 }
-B.pages["c-over"]=renderCOver;B.pages["c-det"]=renderCDet;
+B.pages["c-over"]=renderOver;B.pages["c-exp"]=renderExp;B.pages["c-mat"]=renderMat;B.pages["c-fleet"]=renderFleet;
 
 /* ---------- navigation: project -> pages ---------- */
 var PROJ={
-  sales:{first:"s-over",purpose:"Project 1 · Which rentals, promotions, customers and costs drive revenue and profit each month?",
-    pages:[["s-over","Overview","CAR RENTAL SALES PERFORMANCE | <b>OVERVIEW</b>"],["s-sales","Sales &amp; Rentals","CAR RENTAL SALES PERFORMANCE | <b>SALES &amp; RENTALS</b>"],
-           ["s-promo","Promotions","CAR RENTAL SALES PERFORMANCE | <b>PROMOTIONS</b>"],["s-cust","Customers &amp; Location","CAR RENTAL SALES PERFORMANCE | <b>CUSTOMERS &amp; LOCATION</b>"],
-           ["s-profit","Profit &amp; Costs","CAR RENTAL SALES PERFORMANCE | <b>PROFIT &amp; COSTS</b>"],["s-team","Team","CAR RENTAL SALES PERFORMANCE | <b>TEAM</b>"]]},
-  fleet:{first:"c-over",purpose:"Project 2 · How much does the fleet earn and cost, and where does the money go (Operation vs Invest)?",
-    pages:[["c-over","Finance Overview","CAR RENTAL OVERVIEW | <b>FINANCE</b>"],["c-det","Fleet Detail","CAR RENTAL OVERVIEW | <b>FLEET DETAIL</b>"]]}
+  mfg:{first:"s-over",purpose:"Project 1 · Which orders, products, promotions, customers and costs drive sales and profit each month?",
+    pages:[["s-over","Overview","GLASS MANUFACTURING PERFORMANCE | <b>OVERVIEW</b>"],["s-sales","Sales &amp; Products","GLASS MANUFACTURING PERFORMANCE | <b>SALES &amp; PRODUCTS</b>"],
+           ["s-promo","Promotions","GLASS MANUFACTURING PERFORMANCE | <b>PROMOTIONS</b>"],["s-cust","Customers &amp; Location","GLASS MANUFACTURING PERFORMANCE | <b>CUSTOMERS &amp; LOCATION</b>"],
+           ["s-profit","Profit &amp; Costs","GLASS MANUFACTURING PERFORMANCE | <b>PROFIT &amp; COSTS</b>"],["s-team","Team","GLASS MANUFACTURING PERFORMANCE | <b>TEAM</b>"]]},
+  fleet:{first:"c-over",purpose:"Project 2 · How much does the rental fleet earn and cost, and where does the money go (Operation vs Invest)?",
+    pages:[["c-over","Overview","CAR RENTAL | <b>OVERVIEW</b>"],["c-exp","Expenses","CAR RENTAL | <b>EXPENSES</b>"],["c-mat","Material Costs","CAR RENTAL | <b>MATERIAL COSTS</b>"],["c-fleet","Fleet &amp; Cars","CAR RENTAL | <b>FLEET &amp; CARS</b>"]]}
 };
 var PAGE={},OWNER={};
 Object.keys(PROJ).forEach(function(k){PROJ[k].pages.forEach(function(p){PAGE[p[0]]=p;OWNER[p[0]]=k;});});
@@ -366,7 +434,7 @@ function render(){
 function show(p){
   cur=p;var proj=OWNER[p];
   Object.keys(PAGE).forEach(function(k){$(k).hidden=k!==p;});
-  document.body.className=proj==="fleet"?"t-fleet":"t-sales";
+  document.body.className=proj==="fleet"?"t-fleet":"t-mfg";
   $("title").innerHTML=PAGE[p][2];$("purpose").textContent=PROJ[proj].purpose;
   $("tabs").innerHTML=PROJ[proj].pages.map(function(x){return '<button data-p="'+x[0]+'" aria-selected="'+(x[0]===p)+'">'+x[1]+"</button>";}).join("");
   Array.prototype.forEach.call($("tabs").querySelectorAll("button"),function(b){b.onclick=function(){show(b.getAttribute("data-p"));};});

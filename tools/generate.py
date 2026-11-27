@@ -1,6 +1,6 @@
 ﻿"""Generate SYNTHETIC sample data and sample reports for the two Power BI portfolio projects.
-Project 1: car rental SALES performance (rentals, promotions, customers, costs, team).
-Project 2: car rental OVERVIEW (fleet, expenses by group, Operation vs Invest, customer debt).
+Project 1: glass manufacturing performance (orders, product lines, promotions, customers, production costs, team).
+Project 2: car rental overview (fleet, expenses by group, Operation vs Invest, customer debt).
 All values are randomly generated (fixed seed). They do not come from any real company, customer or employee.
 Usage: python tools/generate.py   (then: python tools/build_dashboard.py)"""
 import os
@@ -9,21 +9,21 @@ import pandas as pd
 
 rng = np.random.default_rng(7)
 ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "projects")
-SAL = os.path.join(ROOT, "car-rental-sales-performance-powerbi")
+MFG = os.path.join(ROOT, "glass-manufacturing-performance-powerbi")
 CAR = os.path.join(ROOT, "car-rental-overview-powerbi")
-for p in (SAL, CAR):
+for p in (MFG, CAR):
     for sub in ("data", "images", "reports"):
         os.makedirs(os.path.join(p, sub), exist_ok=True)
 
 days = pd.date_range("2025-01-01", "2025-12-31")
 cal = pd.DataFrame({"date": days.date, "year": days.year, "quarter": days.quarter, "month": days.month,
                     "month_name": days.strftime("%B"), "day": days.day, "weekday": days.strftime("%a")})
-cal.to_csv(os.path.join(SAL, "data", "calendar.csv"), index=False)
+cal.to_csv(os.path.join(MFG, "data", "calendar.csv"), index=False)
 cal.to_csv(os.path.join(CAR, "data", "calendar.csv"), index=False)
 MN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 dim = {m: int(pd.Period(f"2025-{m:02d}").days_in_month) for m in range(1, 13)}
 
-# =============================== PROJECT 1: CAR RENTAL SALES PERFORMANCE (AUD) ===============================
+# =============================== PROJECT 1: GLASS MANUFACTURING PERFORMANCE (AUD) ===============================
 suburbs = [("Parramatta", -33.815, 151.001, 9), ("Bankstown", -33.917, 151.035, 8), ("Chatswood", -33.797, 151.180, 6),
            ("Sutherland", -34.031, 151.057, 5), ("Liverpool", -33.920, 150.923, 7), ("Blacktown", -33.771, 150.906, 7),
            ("Manly", -33.797, 151.287, 3), ("Bondi", -33.891, 151.274, 3), ("Hornsby", -33.704, 151.099, 4),
@@ -32,20 +32,20 @@ suburbs = [("Parramatta", -33.815, 151.001, 9), ("Bankstown", -33.917, 151.035, 
            ("Penrith", -33.751, 150.694, 3), ("Hurstville", -33.967, 151.100, 5), ("Ryde", -33.815, 151.105, 5),
            ("Marrickville", -33.911, 151.155, 5), ("Mascot", -33.929, 151.193, 4)]
 sub_df = pd.DataFrame(suburbs, columns=["suburb", "lat", "lon", "weight"])
-sub_df.to_csv(os.path.join(SAL, "data", "suburbs.csv"), index=False)
+sub_df.to_csv(os.path.join(MFG, "data", "suburbs.csv"), index=False)
 sub_p = (sub_df.weight / sub_df.weight.sum()).values
 
 promo_tbl = pd.DataFrame({"promotion_name": ["None", "BOGO", "BSGM", "B4G4", "B3G2", "B2G2", "IM"],
-                          "description": ["No promotion", "Free-day promotion (BOGO)", "Free-day promotion (BSGM)", "Free-day promotion (B4G4)",
-                                          "Free-day promotion (B3G2)", "Free-day promotion (B2G2)", "Introductory offer (IM)"],
+                          "description": ["No promotion", "Promotion programme (code BOGO)", "Promotion programme (code BSGM)", "Promotion programme (code B4G4)",
+                                          "Promotion programme (code B3G2)", "Promotion programme (code B2G2)", "Introductory offer (code IM)"],
                           "discount_rate": [0, .20, .12, .18, .14, .11, .06],
                           "probability": [.50, .20, .13, .07, .04, .04, .02]})
-promo_tbl.to_csv(os.path.join(SAL, "data", "promotions.csv"), index=False)
+promo_tbl.to_csv(os.path.join(MFG, "data", "promotions.csv"), index=False)
 staff = [f"Staff {c}" for c in "ABCDE"]
 season = {1: .95, 2: .86, 3: 1.0, 4: .97, 5: 1.0, 6: 1.06, 7: 1.0, 8: 1.05, 9: 1.04, 10: 1.0, 11: 1.12, 12: 1.22}
-dur_p = [.30, .28, .18, .10, .06, .05, .03]
+qty_p = [.30, .28, .18, .10, .06, .05, .03]
 
-rows, rid = [], 1
+rows, oid = [], 1
 cust_home, cust_ids = {}, []
 for d in days:
     n = rng.poisson(7.2 * season[d.month] * (1.18 if d.dayofweek >= 5 else 1.0) * (1 + 0.0006 * d.dayofyear))
@@ -55,25 +55,25 @@ for d in days:
             cid = cust_ids[int(rng.integers(len(cust_ids)))]; is_new = 0; sub = cust_home[cid]
         else:
             cid = f"CUST-{len(cust_ids) + 1:04d}"; sub = str(rng.choice(sub_df.suburb, p=sub_p)); cust_home[cid] = sub; cust_ids.append(cid); is_new = 1
-        cls = str(rng.choice(["Premium", "Luxury"], p=[.58, .42]))
-        rate = rng.uniform(55, 85) if cls == "Premium" else rng.uniform(95, 150)
-        nd = int(rng.choice([1, 2, 3, 4, 5, 6, 7], p=dur_p))
+        line = str(rng.choice(["Premium", "Luxury"], p=[.58, .42]))
+        unit = rng.uniform(70, 115) if line == "Premium" else rng.uniform(105, 155)
+        qty = int(rng.choice([1, 2, 3, 4, 5, 6, 7], p=qty_p))
         pr = promo_tbl.sample(1, weights=promo_tbl.probability, random_state=int(rng.integers(1e9))).iloc[0]
-        listamt = rate * nd
+        listamt = unit * qty
         amount = round(listamt * (1 - pr.discount_rate), 2)
-        promo_exp = round(listamt * pr.discount_rate * 0.6, 2) if pr.promotion_name != "None" else 0.0
-        rows.append((rid, d.date(), sub, cid, is_new, cls, nd, amount, pr.promotion_name, promo_exp,
+        promo_cost = round(listamt * pr.discount_rate * 0.6, 2) if pr.promotion_name != "None" else 0.0
+        rows.append((oid, d.date(), sub, cid, is_new, line, qty, amount, pr.promotion_name, promo_cost,
                      round(amount * rng.uniform(.30, .36), 2), str(rng.choice(staff))))
-        rid += 1
-rentals = pd.DataFrame(rows, columns=["rental_id", "date", "suburb", "customer_id", "is_new_customer", "car_class", "rental_days",
-                                      "amount_aud", "promotion_name", "promo_cost_aud", "direct_cost_aud", "sales_staff"])
-rentals.to_csv(os.path.join(SAL, "data", "rentals.csv"), index=False)
-rentals["m"] = pd.to_datetime(rentals.date).dt.month
+        oid += 1
+orders = pd.DataFrame(rows, columns=["order_id", "date", "suburb", "customer_id", "is_new_customer", "product_line", "quantity",
+                                     "amount_aud", "promotion_name", "promo_cost_aud", "cogs_aud", "sales_staff"])
+orders.to_csv(os.path.join(MFG, "data", "orders.csv"), index=False)
+orders["m"] = pd.to_datetime(orders.date).dt.month
 
 # staff KPI by month
 kp = []
 for m in range(1, 13):
-    sub = rentals[rentals.m == m]
+    sub = orders[orders.m == m]
     for s in staff:
         made = round(sub[sub.sales_staff == s].amount_aud.sum(), 2)
         target = 10000.0
@@ -82,24 +82,24 @@ for m in range(1, 13):
         kp.append((m, s, made, target, round(made / target, 3), 900.0, commission, bonus, round(900 + commission + bonus, 2)))
 kpi = pd.DataFrame(kp, columns=["month", "staff", "total_made_aud", "kpi_target_aud", "kpi_achievement", "base_salary_aud",
                                 "commission_aud", "bonus_aud", "total_salary_aud"])
-kpi.to_csv(os.path.join(SAL, "data", "staff_kpi.csv"), index=False)
+kpi.to_csv(os.path.join(MFG, "data", "staff_kpi.csv"), index=False)
 
-# daily expenses (category names are business names, not generic ledger codes)
+# daily expenses
 er = []
-by_day = rentals.groupby("date").agg(cost=("direct_cost_aud", "sum"), promo=("promo_cost_aud", "sum"))
+by_day = orders.groupby("date").agg(cogs=("cogs_aud", "sum"), promo=("promo_cost_aud", "sum"))
 sal_month = kpi.groupby("month").total_salary_aud.sum()
-ops_month = {m: 11000 + float(rng.integers(-400, 500)) for m in range(1, 13)}
+wage_month = {m: 11000 + float(rng.integers(-400, 500)) for m in range(1, 13)}
 for d in days:
     m, k = d.month, dim[d.month]
     ds = d.date()
-    er += [(ds, "Direct cost", round(by_day.cost.get(ds, 0.0), 2)), (ds, "Promo cost", round(by_day.promo.get(ds, 0.0), 2)),
-           (ds, "Sales salary", round(sal_month[m] / k, 2)), (ds, "Ops staff salary", round(ops_month[m] / k, 2)),
-           (ds, "Garage & yard", round(3200 / k, 2)), (ds, "Back office", round(1800 / k, 2))]
-    if rng.random() < .30: er.append((ds, "Damage & loss", round(float(rng.uniform(60, 400)), 2)))
+    er += [(ds, "COGS", round(by_day.cogs.get(ds, 0.0), 2)), (ds, "Promotions", round(by_day.promo.get(ds, 0.0), 2)),
+           (ds, "Sales salary", round(sal_month[m] / k, 2)), (ds, "Production wages", round(wage_month[m] / k, 2)),
+           (ds, "Warehouse", round(3200 / k, 2)), (ds, "Back office", round(1800 / k, 2))]
+    if rng.random() < .30: er.append((ds, "Breakage & loss", round(float(rng.uniform(60, 400)), 2)))
     if d.dayofweek == 0: er.append((ds, "Marketing", round(float(rng.uniform(120, 260)), 2)))
     if d.day == 1: er.append((ds, "Office", round(float(rng.uniform(60, 110)), 2)))
 exp = pd.DataFrame(er, columns=["date", "category", "amount_aud"])
-exp.to_csv(os.path.join(SAL, "data", "expenses.csv"), index=False)
+exp.to_csv(os.path.join(MFG, "data", "expenses.csv"), index=False)
 
 # =============================== PROJECT 2: CAR RENTAL OVERVIEW (AUD) ===============================
 makes = ["Toyota", "Mazda", "Hyundai", "Kia", "Honda", "MG", "Nissan"]
@@ -157,53 +157,54 @@ def aud(x): return f"{'-' if x < 0 else ''}A${abs(x):,.0f}"
 
 M, P = 11, 10
 dts = pd.to_datetime(exp.date)
-rs = rentals.groupby("m").amount_aud.sum(); ex = exp.groupby(dts.dt.month).amount_aud.sum(); rp = rs - ex
+rs = orders.groupby("m").amount_aud.sum(); ex = exp.groupby(dts.dt.month).amount_aud.sum(); rp = rs - ex
 cat_m = exp[dts.dt.month == M].groupby("category").amount_aud.sum().sort_values(ascending=False)
-pm = rentals[rentals.m == M]
-pp = pm[pm.promotion_name != "None"].groupby("promotion_name").agg(n=("rental_id", "count"), sales=("amount_aud", "sum"), pc=("promo_cost_aud", "sum"), dc=("direct_cost_aud", "sum"))
+pm = orders[orders.m == M]
+pp = pm[pm.promotion_name != "None"].groupby("promotion_name").agg(n=("order_id", "count"), sales=("amount_aud", "sum"), pc=("promo_cost_aud", "sum"), dc=("cogs_aud", "sum"))
 pp["profit"] = pp.sales - pp.dc - pp.pc
 pp = pp.sort_values("sales", ascending=False)
 no = pm[pm.promotion_name == "None"]
-mg_no = (no.amount_aud.sum() - no.direct_cost_aud.sum()) / no.amount_aud.sum()
+mg_no = (no.amount_aud.sum() - no.cogs_aud.sum()) / no.amount_aud.sum()
 mg_pr = (pp.sales.sum() - pp.dc.sum() - pp.pc.sum()) / pp.sales.sum()
 dprof = (pm.groupby("date").amount_aud.sum() - exp[dts.dt.month == M].groupby("date").amount_aud.sum()).dropna()
 neg_days = int((dprof < 0).sum())
 cu = pm.customer_id.nunique(); new_c = int(pm.is_new_customer.sum())
 lines = "\n".join(f"| {k} | {int(r.n)} | {r.sales:,.0f} | {r.pc:,.0f} | {r.profit:,.0f} |" for k, r in pp.iterrows())
-open(os.path.join(SAL, "reports", "sample-report-2025-11.md"), "w", encoding="utf-8").write(f"""# Sample monthly report - November 2025 (synthetic data)
+open(os.path.join(MFG, "reports", "sample-report-2025-11.md"), "w", encoding="utf-8").write(f"""# Sample monthly report - November 2025 (synthetic data)
 
 > Generated from randomly simulated data in [`../data`](../data). The numbers illustrate the report format and the analysis approach; they are **not real business results**.
 
 | KPI | Nov 2025 | vs Oct 2025 |
 |---|---|---|
-| Rental sales | {aud(rs[M])} | {pct(rs[M], rs[P])} |
+| Sales | {aud(rs[M])} | {pct(rs[M], rs[P])} |
 | Total expenses | {aud(ex[M])} | {pct(ex[M], ex[P])} |
 | Profit | {aud(rp[M])} | {pct(rp[M], rp[P])} |
 | Profit margin | {rp[M]/rs[M]:.1%} | {rp[P]/rs[P]:.1%} |
-| Rentals | {len(pm):,} | {(rentals.m==P).sum():,} |
-| Average rental value | {aud(pm.amount_aud.mean())} | {pct(pm.amount_aud.mean(), rentals[rentals.m==P].amount_aud.mean())} |
+| Orders | {len(pm):,} | {(orders.m==P).sum():,} |
+| Units sold | {int(pm.quantity.sum()):,} | {int(orders[orders.m==P].quantity.sum()):,} |
+| Average order value | {aud(pm.amount_aud.mean())} | {pct(pm.amount_aud.mean(), orders[orders.m==P].amount_aud.mean())} |
 | Unique customers | {cu:,} ({new_c:,} new) | |
 
 ## Expense structure (Nov)
 {chr(10).join(f"- **{k}**: {aud(v)} ({v/ex[M]:.0%})" for k, v in cat_m.items())}
 
 ## Promotion performance (Nov)
-| Promotion | Rentals | Sales (A$) | Promo cost (A$) | Profit after direct and promo cost (A$) |
+| Promotion | Orders | Sales (A$) | Promo cost (A$) | Profit after COGS and promo cost (A$) |
 |---|---|---|---|---|
 {lines}
 
-Margin after direct and promo cost: **{mg_pr:.1%}** on promotional rentals vs **{mg_no:.1%}** on full-price rentals.
+Margin after COGS and promo cost: **{mg_pr:.1%}** on promotional orders vs **{mg_no:.1%}** on full-price orders.
 
 ## Highlights
 - The month has **{neg_days} loss-making day(s)**; the best day earned {aud(dprof.max())} and the weakest {aud(dprof.min())}.
 - **{pp.index[0]}** is the top promotion by sales ({pp.sales.iloc[0]/pm.amount_aud.sum():.0%} of the month); compare its promo cost with the profit it generates before extending it.
-- Premium cars bring {pm[pm.car_class=='Premium'].amount_aud.sum()/pm.amount_aud.sum():.0%} of rental sales and Luxury {pm[pm.car_class=='Luxury'].amount_aud.sum()/pm.amount_aud.sum():.0%}.
-- Staff salaries and garage costs are fixed, so profit is thin on low-rental days.
+- Premium products bring {pm[pm.product_line=='Premium'].amount_aud.sum()/pm.amount_aud.sum():.0%} of sales and Luxury {pm[pm.product_line=='Luxury'].amount_aud.sum()/pm.amount_aud.sum():.0%}.
+- Production wages and warehouse costs are fixed, so profit is thin on low-order days.
 
 ## Recommended actions (example format)
-1. Concentrate promotions on low-demand days instead of days that already book well.
-2. Review damage and loss events weekly to find recurring causes.
-3. Grow the repeat-customer share with a loyalty offer in the top suburbs.
+1. Concentrate promotions on low-demand days instead of days that already sell well.
+2. Review breakage and loss events weekly to find recurring causes in production or handling.
+3. Grow the repeat-customer share with an offer in the top suburbs.
 """)
 
 rr = rev.assign(m=pd.to_datetime(rev.date).dt.month).groupby("m").amount_aud.sum()
@@ -240,5 +241,5 @@ Material expenses by category: {", ".join(f"{k} {aud(v)}" for k, v in mat.items(
 2. Review Fixing / Holding cars: repair, rent out again or sell.
 3. Schedule registration renewals in advance to smooth cash needs.
 """)
-print("done: rentals", len(rentals), "| fleet revenue rows", len(rev))
+print("done: orders", len(orders), "| fleet revenue rows", len(rev))
 print("Nov sales/profit", round(rs[M]), round(rp[M]), "| fleet revenue/profit", round(rr[M]), round(cp[M]))

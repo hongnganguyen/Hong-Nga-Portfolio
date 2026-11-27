@@ -1,0 +1,2372 @@
+date,category,amount_aud
+2025-01-01,COGS,520.45
+2025-01-01,Promotions,28.22
+2025-01-01,Sales salary,230.83
+2025-01-01,Production wages,357.39
+2025-01-01,Warehouse,103.23
+2025-01-01,Back office,58.06
+2025-01-01,Breakage & loss,349.49
+2025-01-01,Office,61.16
+2025-01-02,COGS,425.52
+2025-01-02,Promotions,65.99
+2025-01-02,Sales salary,230.83
+2025-01-02,Production wages,357.39
+2025-01-02,Warehouse,103.23
+2025-01-02,Back office,58.06
+2025-01-03,COGS,392.53
+2025-01-03,Promotions,36.82
+2025-01-03,Sales salary,230.83
+2025-01-03,Production wages,357.39
+2025-01-03,Warehouse,103.23
+2025-01-03,Back office,58.06
+2025-01-04,COGS,1383.42
+2025-01-04,Promotions,186.96
+2025-01-04,Sales salary,230.83
+2025-01-04,Production wages,357.39
+2025-01-04,Warehouse,103.23
+2025-01-04,Back office,58.06
+2025-01-05,COGS,671.1
+2025-01-05,Promotions,112.61
+2025-01-05,Sales salary,230.83
+2025-01-05,Production wages,357.39
+2025-01-05,Warehouse,103.23
+2025-01-05,Back office,58.06
+2025-01-06,COGS,610.03
+2025-01-06,Promotions,49.02
+2025-01-06,Sales salary,230.83
+2025-01-06,Production wages,357.39
+2025-01-06,Warehouse,103.23
+2025-01-06,Back office,58.06
+2025-01-06,Marketing,146.71
+2025-01-07,COGS,381.1
+2025-01-07,Promotions,67.3
+2025-01-07,Sales salary,230.83
+2025-01-07,Production wages,357.39
+2025-01-07,Warehouse,103.23
+2025-01-07,Back office,58.06
+2025-01-08,COGS,687.86
+2025-01-08,Promotions,168.21
+2025-01-08,Sales salary,230.83
+2025-01-08,Production wages,357.39
+2025-01-08,Warehouse,103.23
+2025-01-08,Back office,58.06
+2025-01-09,COGS,476.54
+2025-01-09,Promotions,44.77
+2025-01-09,Sales salary,230.83
+2025-01-09,Production wages,357.39
+2025-01-09,Warehouse,103.23
+2025-01-09,Back office,58.06
+2025-01-10,COGS,1133.07
+2025-01-10,Promotions,233.48
+2025-01-10,Sales salary,230.83
+2025-01-10,Production wages,357.39
+2025-01-10,Warehouse,103.23
+2025-01-10,Back office,58.06
+2025-01-11,COGS,534.64
+2025-01-11,Promotions,59.23
+2025-01-11,Sales salary,230.83
+2025-01-11,Production wages,357.39
+2025-01-11,Warehouse,103.23
+2025-01-11,Back office,58.06
+2025-01-12,COGS,427.06
+2025-01-12,Promotions,61.14
+2025-01-12,Sales salary,230.83
+2025-01-12,Production wages,357.39
+2025-01-12,Warehouse,103.23
+2025-01-12,Back office,58.06
+2025-01-13,COGS,394.05
+2025-01-13,Promotions,23.59
+2025-01-13,Sales salary,230.83
+2025-01-13,Production wages,357.39
+2025-01-13,Warehouse,103.23
+2025-01-13,Back office,58.06
+2025-01-13,Breakage & loss,182.39
+2025-01-13,Marketing,195.8
+2025-01-14,COGS,811.73
+2025-01-14,Promotions,142.39
+2025-01-14,Sales salary,230.83
+2025-01-14,Production wages,357.39
+2025-01-14,Warehouse,103.23
+2025-01-14,Back office,58.06
+2025-01-14,Breakage & loss,384.46
+2025-01-15,COGS,290.52
+2025-01-15,Promotions,82.24
+2025-01-15,Sales salary,230.83
+2025-01-15,Production wages,357.39
+2025-01-15,Warehouse,103.23
+2025-01-15,Back office,58.06
+2025-01-16,COGS,238.33
+2025-01-16,Promotions,65.69
+2025-01-16,Sales salary,230.83
+2025-01-16,Production wages,357.39
+2025-01-16,Warehouse,103.23
+2025-01-16,Back office,58.06
+2025-01-16,Breakage & loss,267.74
+2025-01-17,COGS,524.96
+2025-01-17,Promotions,83.2
+2025-01-17,Sales salary,230.83
+2025-01-17,Production wages,357.39
+2025-01-17,Warehouse,103.23
+2025-01-17,Back office,58.06
+2025-01-18,COGS,924.66
+2025-01-18,Promotions,237.09
+2025-01-18,Sales salary,230.83
+2025-01-18,Production wages,357.39
+2025-01-18,Warehouse,103.23
+2025-01-18,Back office,58.06
+2025-01-18,Breakage & loss,186.5
+2025-01-19,COGS,978.43
+2025-01-19,Promotions,109.67
+2025-01-19,Sales salary,230.83
+2025-01-19,Production wages,357.39
+2025-01-19,Warehouse,103.23
+2025-01-19,Back office,58.06
+2025-01-20,COGS,701.41
+2025-01-20,Promotions,103.18
+2025-01-20,Sales salary,230.83
+2025-01-20,Production wages,357.39
+2025-01-20,Warehouse,103.23
+2025-01-20,Back office,58.06
+2025-01-20,Marketing,156.18
+2025-01-21,COGS,394.76
+2025-01-21,Promotions,131.15
+2025-01-21,Sales salary,230.83
+2025-01-21,Production wages,357.39
+2025-01-21,Warehouse,103.23
+2025-01-21,Back office,58.06
+2025-01-22,COGS,469.17
+2025-01-22,Promotions,129.68
+2025-01-22,Sales salary,230.83
+2025-01-22,Production wages,357.39
+2025-01-22,Warehouse,103.23
+2025-01-22,Back office,58.06
+2025-01-22,Breakage & loss,228.4
+2025-01-23,COGS,943.05
+2025-01-23,Promotions,248.3
+2025-01-23,Sales salary,230.83
+2025-01-23,Production wages,357.39
+2025-01-23,Warehouse,103.23
+2025-01-23,Back office,58.06
+2025-01-24,COGS,947.48
+2025-01-24,Promotions,123.71
+2025-01-24,Sales salary,230.83
+2025-01-24,Production wages,357.39
+2025-01-24,Warehouse,103.23
+2025-01-24,Back office,58.06
+2025-01-25,COGS,333.48
+2025-01-25,Promotions,133.02
+2025-01-25,Sales salary,230.83
+2025-01-25,Production wages,357.39
+2025-01-25,Warehouse,103.23
+2025-01-25,Back office,58.06
+2025-01-26,COGS,285.44
+2025-01-26,Promotions,4.81
+2025-01-26,Sales salary,230.83
+2025-01-26,Production wages,357.39
+2025-01-26,Warehouse,103.23
+2025-01-26,Back office,58.06
+2025-01-26,Breakage & loss,107.5
+2025-01-27,COGS,193.26
+2025-01-27,Promotions,18.9
+2025-01-27,Sales salary,230.83
+2025-01-27,Production wages,357.39
+2025-01-27,Warehouse,103.23
+2025-01-27,Back office,58.06
+2025-01-27,Marketing,141.17
+2025-01-28,COGS,428.35
+2025-01-28,Promotions,63.63
+2025-01-28,Sales salary,230.83
+2025-01-28,Production wages,357.39
+2025-01-28,Warehouse,103.23
+2025-01-28,Back office,58.06
+2025-01-28,Breakage & loss,299.1
+2025-01-29,COGS,309.87
+2025-01-29,Promotions,12.31
+2025-01-29,Sales salary,230.83
+2025-01-29,Production wages,357.39
+2025-01-29,Warehouse,103.23
+2025-01-29,Back office,58.06
+2025-01-30,COGS,512.53
+2025-01-30,Promotions,103.92
+2025-01-30,Sales salary,230.83
+2025-01-30,Production wages,357.39
+2025-01-30,Warehouse,103.23
+2025-01-30,Back office,58.06
+2025-01-30,Breakage & loss,96.99
+2025-01-31,COGS,932.34
+2025-01-31,Promotions,254.73
+2025-01-31,Sales salary,230.83
+2025-01-31,Production wages,357.39
+2025-01-31,Warehouse,103.23
+2025-01-31,Back office,58.06
+2025-01-31,Breakage & loss,177.77
+2025-02-01,COGS,543.73
+2025-02-01,Promotions,128.62
+2025-02-01,Sales salary,242.05
+2025-02-01,Production wages,383.54
+2025-02-01,Warehouse,114.29
+2025-02-01,Back office,64.29
+2025-02-01,Office,68.33
+2025-02-02,COGS,611.74
+2025-02-02,Promotions,164.87
+2025-02-02,Sales salary,242.05
+2025-02-02,Production wages,383.54
+2025-02-02,Warehouse,114.29
+2025-02-02,Back office,64.29
+2025-02-03,COGS,681.76
+2025-02-03,Promotions,84.03
+2025-02-03,Sales salary,242.05
+2025-02-03,Production wages,383.54
+2025-02-03,Warehouse,114.29
+2025-02-03,Back office,64.29
+2025-02-03,Breakage & loss,363.32
+2025-02-03,Marketing,158.97
+2025-02-04,COGS,927.5
+2025-02-04,Promotions,139.48
+2025-02-04,Sales salary,242.05
+2025-02-04,Production wages,383.54
+2025-02-04,Warehouse,114.29
+2025-02-04,Back office,64.29
+2025-02-05,COGS,572.35
+2025-02-05,Promotions,110.46
+2025-02-05,Sales salary,242.05
+2025-02-05,Production wages,383.54
+2025-02-05,Warehouse,114.29
+2025-02-05,Back office,64.29
+2025-02-06,COGS,293.56
+2025-02-06,Promotions,19.04
+2025-02-06,Sales salary,242.05
+2025-02-06,Production wages,383.54
+2025-02-06,Warehouse,114.29
+2025-02-06,Back office,64.29
+2025-02-06,Breakage & loss,99.03
+2025-02-07,COGS,448.43
+2025-02-07,Promotions,91.82
+2025-02-07,Sales salary,242.05
+2025-02-07,Production wages,383.54
+2025-02-07,Warehouse,114.29
+2025-02-07,Back office,64.29
+2025-02-08,COGS,776.33
+2025-02-08,Promotions,96.36
+2025-02-08,Sales salary,242.05
+2025-02-08,Production wages,383.54
+2025-02-08,Warehouse,114.29
+2025-02-08,Back office,64.29
+2025-02-09,COGS,760.82
+2025-02-09,Promotions,152.18
+2025-02-09,Sales salary,242.05
+2025-02-09,Production wages,383.54
+2025-02-09,Warehouse,114.29
+2025-02-09,Back office,64.29
+2025-02-09,Breakage & loss,182.46
+2025-02-10,COGS,316.45
+2025-02-10,Promotions,79.24
+2025-02-10,Sales salary,242.05
+2025-02-10,Production wages,383.54
+2025-02-10,Warehouse,114.29
+2025-02-10,Back office,64.29
+2025-02-10,Breakage & loss,80.69
+2025-02-10,Marketing,223.02
+2025-02-11,COGS,996.32
+2025-02-11,Promotions,206.48
+2025-02-11,Sales salary,242.05
+2025-02-11,Production wages,383.54
+2025-02-11,Warehouse,114.29
+2025-02-11,Back office,64.29
+2025-02-12,COGS,922.95
+2025-02-12,Promotions,137.95
+2025-02-12,Sales salary,242.05
+2025-02-12,Production wages,383.54
+2025-02-12,Warehouse,114.29
+2025-02-12,Back office,64.29
+2025-02-12,Breakage & loss,212.94
+2025-02-13,COGS,551.97
+2025-02-13,Promotions,45.12
+2025-02-13,Sales salary,242.05
+2025-02-13,Production wages,383.54
+2025-02-13,Warehouse,114.29
+2025-02-13,Back office,64.29
+2025-02-14,COGS,418.51
+2025-02-14,Promotions,30.17
+2025-02-14,Sales salary,242.05
+2025-02-14,Production wages,383.54
+2025-02-14,Warehouse,114.29
+2025-02-14,Back office,64.29
+2025-02-15,COGS,779.93
+2025-02-15,Promotions,132.08
+2025-02-15,Sales salary,242.05
+2025-02-15,Production wages,383.54
+2025-02-15,Warehouse,114.29
+2025-02-15,Back office,64.29
+2025-02-15,Breakage & loss,298.47
+2025-02-16,COGS,660.81
+2025-02-16,Promotions,98.59
+2025-02-16,Sales salary,242.05
+2025-02-16,Production wages,383.54
+2025-02-16,Warehouse,114.29
+2025-02-16,Back office,64.29
+2025-02-16,Breakage & loss,227.24
+2025-02-17,COGS,541.73
+2025-02-17,Promotions,101.59
+2025-02-17,Sales salary,242.05
+2025-02-17,Production wages,383.54
+2025-02-17,Warehouse,114.29
+2025-02-17,Back office,64.29
+2025-02-17,Marketing,174.83
+2025-02-18,COGS,865.47
+2025-02-18,Promotions,162.02
+2025-02-18,Sales salary,242.05
+2025-02-18,Production wages,383.54
+2025-02-18,Warehouse,114.29
+2025-02-18,Back office,64.29
+2025-02-18,Breakage & loss,65.85
+2025-02-19,COGS,326.02
+2025-02-19,Promotions,86.19
+2025-02-19,Sales salary,242.05
+2025-02-19,Production wages,383.54
+2025-02-19,Warehouse,114.29
+2025-02-19,Back office,64.29
+2025-02-20,COGS,502.36
+2025-02-20,Promotions,141.44
+2025-02-20,Sales salary,242.05
+2025-02-20,Production wages,383.54
+2025-02-20,Warehouse,114.29
+2025-02-20,Back office,64.29
+2025-02-21,COGS,664.85
+2025-02-21,Promotions,181.89
+2025-02-21,Sales salary,242.05
+2025-02-21,Production wages,383.54
+2025-02-21,Warehouse,114.29
+2025-02-21,Back office,64.29
+2025-02-22,COGS,686.66
+2025-02-22,Promotions,48.98
+2025-02-22,Sales salary,242.05
+2025-02-22,Production wages,383.54
+2025-02-22,Warehouse,114.29
+2025-02-22,Back office,64.29
+2025-02-23,COGS,833.29
+2025-02-23,Promotions,126.46
+2025-02-23,Sales salary,242.05
+2025-02-23,Production wages,383.54
+2025-02-23,Warehouse,114.29
+2025-02-23,Back office,64.29
+2025-02-24,COGS,277.83
+2025-02-24,Promotions,46.96
+2025-02-24,Sales salary,242.05
+2025-02-24,Production wages,383.54
+2025-02-24,Warehouse,114.29
+2025-02-24,Back office,64.29
+2025-02-24,Breakage & loss,131.22
+2025-02-24,Marketing,160.28
+2025-02-25,COGS,331.65
+2025-02-25,Promotions,68.38
+2025-02-25,Sales salary,242.05
+2025-02-25,Production wages,383.54
+2025-02-25,Warehouse,114.29
+2025-02-25,Back office,64.29
+2025-02-26,COGS,205.99
+2025-02-26,Promotions,45.25
+2025-02-26,Sales salary,242.05
+2025-02-26,Production wages,383.54
+2025-02-26,Warehouse,114.29
+2025-02-26,Back office,64.29
+2025-02-27,COGS,904.59
+2025-02-27,Promotions,57.39
+2025-02-27,Sales salary,242.05
+2025-02-27,Production wages,383.54
+2025-02-27,Warehouse,114.29
+2025-02-27,Back office,64.29
+2025-02-27,Breakage & loss,145.61
+2025-02-28,COGS,85.04
+2025-02-28,Promotions,28.42
+2025-02-28,Sales salary,242.05
+2025-02-28,Production wages,383.54
+2025-02-28,Warehouse,114.29
+2025-02-28,Back office,64.29
+2025-03-01,COGS,1028.8
+2025-03-01,Promotions,190.85
+2025-03-01,Sales salary,239.93
+2025-03-01,Production wages,359.03
+2025-03-01,Warehouse,103.23
+2025-03-01,Back office,58.06
+2025-03-01,Breakage & loss,339.8
+2025-03-01,Office,94.95
+2025-03-02,COGS,554.19
+2025-03-02,Promotions,0.0
+2025-03-02,Sales salary,239.93
+2025-03-02,Production wages,359.03
+2025-03-02,Warehouse,103.23
+2025-03-02,Back office,58.06
+2025-03-03,COGS,487.06
+2025-03-03,Promotions,92.89
+2025-03-03,Sales salary,239.93
+2025-03-03,Production wages,359.03
+2025-03-03,Warehouse,103.23
+2025-03-03,Back office,58.06
+2025-03-03,Marketing,259.38
+2025-03-04,COGS,287.08
+2025-03-04,Promotions,64.06
+2025-03-04,Sales salary,239.93
+2025-03-04,Production wages,359.03
+2025-03-04,Warehouse,103.23
+2025-03-04,Back office,58.06
+2025-03-05,COGS,840.2
+2025-03-05,Promotions,72.44
+2025-03-05,Sales salary,239.93
+2025-03-05,Production wages,359.03
+2025-03-05,Warehouse,103.23
+2025-03-05,Back office,58.06
+2025-03-05,Breakage & loss,340.67
+2025-03-06,COGS,521.68
+2025-03-06,Promotions,89.01
+2025-03-06,Sales salary,239.93
+2025-03-06,Production wages,359.03
+2025-03-06,Warehouse,103.23
+2025-03-06,Back office,58.06
+2025-03-07,COGS,801.94
+2025-03-07,Promotions,101.61
+2025-03-07,Sales salary,239.93
+2025-03-07,Production wages,359.03
+2025-03-07,Warehouse,103.23
+2025-03-07,Back office,58.06
+2025-03-08,COGS,453.44
+2025-03-08,Promotions,100.41
+2025-03-08,Sales salary,239.93
+2025-03-08,Production wages,359.03
+2025-03-08,Warehouse,103.23
+2025-03-08,Back office,58.06
+2025-03-09,COGS,749.91
+2025-03-09,Promotions,175.68
+2025-03-09,Sales salary,239.93
+2025-03-09,Production wages,359.03
+2025-03-09,Warehouse,103.23
+2025-03-09,Back office,58.06
+2025-03-09,Breakage & loss,247.7
+2025-03-10,COGS,584.29
+2025-03-10,Promotions,78.61
+2025-03-10,Sales salary,239.93
+2025-03-10,Production wages,359.03
+2025-03-10,Warehouse,103.23
+2025-03-10,Back office,58.06
+2025-03-10,Breakage & loss,238.37
+2025-03-10,Marketing,239.58
+2025-03-11,COGS,693.63
+2025-03-11,Promotions,47.63
+2025-03-11,Sales salary,239.93
+2025-03-11,Production wages,359.03
+2025-03-11,Warehouse,103.23
+2025-03-11,Back office,58.06
+2025-03-11,Breakage & loss,163.06
+2025-03-12,COGS,460.69
+2025-03-12,Promotions,95.48
+2025-03-12,Sales salary,239.93
+2025-03-12,Production wages,359.03
+2025-03-12,Warehouse,103.23
+2025-03-12,Back office,58.06
+2025-03-13,COGS,579.06
+2025-03-13,Promotions,167.53
+2025-03-13,Sales salary,239.93
+2025-03-13,Production wages,359.03
+2025-03-13,Warehouse,103.23
+2025-03-13,Back office,58.06
+2025-03-13,Breakage & loss,245.02
+2025-03-14,COGS,492.83
+2025-03-14,Promotions,65.07
+2025-03-14,Sales salary,239.93
+2025-03-14,Production wages,359.03
+2025-03-14,Warehouse,103.23
+2025-03-14,Back office,58.06
+2025-03-15,COGS,658.51
+2025-03-15,Promotions,141.05
+2025-03-15,Sales salary,239.93
+2025-03-15,Production wages,359.03
+2025-03-15,Warehouse,103.23
+2025-03-15,Back office,58.06
+2025-03-16,COGS,337.43
+2025-03-16,Promotions,57.3
+2025-03-16,Sales salary,239.93
+2025-03-16,Production wages,359.03
+2025-03-16,Warehouse,103.23
+2025-03-16,Back office,58.06
+2025-03-16,Breakage & loss,139.13
+2025-03-17,COGS,485.07
+2025-03-17,Promotions,60.97
+2025-03-17,Sales salary,239.93
+2025-03-17,Production wages,359.03
+2025-03-17,Warehouse,103.23
+2025-03-17,Back office,58.06
+2025-03-17,Marketing,223.19
+2025-03-18,COGS,261.51
+2025-03-18,Promotions,108.96
+2025-03-18,Sales salary,239.93
+2025-03-18,Production wages,359.03
+2025-03-18,Warehouse,103.23
+2025-03-18,Back office,58.06
+2025-03-19,COGS,423.61
+2025-03-19,Promotions,89.41
+2025-03-19,Sales salary,239.93
+2025-03-19,Production wages,359.03
+2025-03-19,Warehouse,103.23
+2025-03-19,Back office,58.06
+2025-03-20,COGS,470.66
+2025-03-20,Promotions,64.4
+2025-03-20,Sales salary,239.93
+2025-03-20,Production wages,359.03
+2025-03-20,Warehouse,103.23
+2025-03-20,Back office,58.06
+2025-03-21,COGS,1102.69
+2025-03-21,Promotions,204.18
+2025-03-21,Sales salary,239.93
+2025-03-21,Production wages,359.03
+2025-03-21,Warehouse,103.23
+2025-03-21,Back office,58.06
+2025-03-22,COGS,751.85
+2025-03-22,Promotions,52.99
+2025-03-22,Sales salary,239.93
+2025-03-22,Production wages,359.03
+2025-03-22,Warehouse,103.23
+2025-03-22,Back office,58.06
+2025-03-23,COGS,436.83
+2025-03-23,Promotions,77.09
+2025-03-23,Sales salary,239.93
+2025-03-23,Production wages,359.03
+2025-03-23,Warehouse,103.23
+2025-03-23,Back office,58.06
+2025-03-23,Breakage & loss,364.71
+2025-03-24,COGS,925.7
+2025-03-24,Promotions,121.73
+2025-03-24,Sales salary,239.93
+2025-03-24,Production wages,359.03
+2025-03-24,Warehouse,103.23
+2025-03-24,Back office,58.06
+2025-03-24,Marketing,252.17
+2025-03-25,COGS,1214.08
+2025-03-25,Promotions,233.97
+2025-03-25,Sales salary,239.93
+2025-03-25,Production wages,359.03
+2025-03-25,Warehouse,103.23
+2025-03-25,Back office,58.06
+2025-03-26,COGS,959.99
+2025-03-26,Promotions,137.32
+2025-03-26,Sales salary,239.93
+2025-03-26,Production wages,359.03
+2025-03-26,Warehouse,103.23
+2025-03-26,Back office,58.06
+2025-03-27,COGS,196.1
+2025-03-27,Promotions,47.02
+2025-03-27,Sales salary,239.93
+2025-03-27,Production wages,359.03
+2025-03-27,Warehouse,103.23
+2025-03-27,Back office,58.06
+2025-03-28,COGS,1108.6
+2025-03-28,Promotions,228.44
+2025-03-28,Sales salary,239.93
+2025-03-28,Production wages,359.03
+2025-03-28,Warehouse,103.23
+2025-03-28,Back office,58.06
+2025-03-28,Breakage & loss,83.78
+2025-03-29,COGS,398.92
+2025-03-29,Promotions,41.56
+2025-03-29,Sales salary,239.93
+2025-03-29,Production wages,359.03
+2025-03-29,Warehouse,103.23
+2025-03-29,Back office,58.06
+2025-03-29,Breakage & loss,191.84
+2025-03-30,COGS,284.07
+2025-03-30,Promotions,71.14
+2025-03-30,Sales salary,239.93
+2025-03-30,Production wages,359.03
+2025-03-30,Warehouse,103.23
+2025-03-30,Back office,58.06
+2025-03-31,COGS,730.94
+2025-03-31,Promotions,139.88
+2025-03-31,Sales salary,239.93
+2025-03-31,Production wages,359.03
+2025-03-31,Warehouse,103.23
+2025-03-31,Back office,58.06
+2025-03-31,Marketing,248.68
+2025-04-01,COGS,603.34
+2025-04-01,Promotions,65.93
+2025-04-01,Sales salary,265.45
+2025-04-01,Production wages,369.87
+2025-04-01,Warehouse,106.67
+2025-04-01,Back office,60.0
+2025-04-01,Office,105.23
+2025-04-02,COGS,1489.04
+2025-04-02,Promotions,78.87
+2025-04-02,Sales salary,265.45
+2025-04-02,Production wages,369.87
+2025-04-02,Warehouse,106.67
+2025-04-02,Back office,60.0
+2025-04-03,COGS,637.22
+2025-04-03,Promotions,48.64
+2025-04-03,Sales salary,265.45
+2025-04-03,Production wages,369.87
+2025-04-03,Warehouse,106.67
+2025-04-03,Back office,60.0
+2025-04-04,COGS,287.05
+2025-04-04,Promotions,76.4
+2025-04-04,Sales salary,265.45
+2025-04-04,Production wages,369.87
+2025-04-04,Warehouse,106.67
+2025-04-04,Back office,60.0
+2025-04-05,COGS,304.14
+2025-04-05,Promotions,103.26
+2025-04-05,Sales salary,265.45
+2025-04-05,Production wages,369.87
+2025-04-05,Warehouse,106.67
+2025-04-05,Back office,60.0
+2025-04-06,COGS,645.12
+2025-04-06,Promotions,39.88
+2025-04-06,Sales salary,265.45
+2025-04-06,Production wages,369.87
+2025-04-06,Warehouse,106.67
+2025-04-06,Back office,60.0
+2025-04-07,COGS,824.54
+2025-04-07,Promotions,141.86
+2025-04-07,Sales salary,265.45
+2025-04-07,Production wages,369.87
+2025-04-07,Warehouse,106.67
+2025-04-07,Back office,60.0
+2025-04-07,Marketing,206.52
+2025-04-08,COGS,739.71
+2025-04-08,Promotions,198.24
+2025-04-08,Sales salary,265.45
+2025-04-08,Production wages,369.87
+2025-04-08,Warehouse,106.67
+2025-04-08,Back office,60.0
+2025-04-09,COGS,509.27
+2025-04-09,Promotions,63.04
+2025-04-09,Sales salary,265.45
+2025-04-09,Production wages,369.87
+2025-04-09,Warehouse,106.67
+2025-04-09,Back office,60.0
+2025-04-10,COGS,716.93
+2025-04-10,Promotions,167.03
+2025-04-10,Sales salary,265.45
+2025-04-10,Production wages,369.87
+2025-04-10,Warehouse,106.67
+2025-04-10,Back office,60.0
+2025-04-11,COGS,527.66
+2025-04-11,Promotions,190.94
+2025-04-11,Sales salary,265.45
+2025-04-11,Production wages,369.87
+2025-04-11,Warehouse,106.67
+2025-04-11,Back office,60.0
+2025-04-11,Breakage & loss,272.45
+2025-04-12,COGS,1033.71
+2025-04-12,Promotions,211.91
+2025-04-12,Sales salary,265.45
+2025-04-12,Production wages,369.87
+2025-04-12,Warehouse,106.67
+2025-04-12,Back office,60.0
+2025-04-13,COGS,1571.57
+2025-04-13,Promotions,290.04
+2025-04-13,Sales salary,265.45
+2025-04-13,Production wages,369.87
+2025-04-13,Warehouse,106.67
+2025-04-13,Back office,60.0
+2025-04-13,Breakage & loss,111.5
+2025-04-14,COGS,473.31
+2025-04-14,Promotions,123.59
+2025-04-14,Sales salary,265.45
+2025-04-14,Production wages,369.87
+2025-04-14,Warehouse,106.67
+2025-04-14,Back office,60.0
+2025-04-14,Marketing,169.05
+2025-04-15,COGS,680.02
+2025-04-15,Promotions,31.89
+2025-04-15,Sales salary,265.45
+2025-04-15,Production wages,369.87
+2025-04-15,Warehouse,106.67
+2025-04-15,Back office,60.0
+2025-04-16,COGS,410.64
+2025-04-16,Promotions,23.64
+2025-04-16,Sales salary,265.45
+2025-04-16,Production wages,369.87
+2025-04-16,Warehouse,106.67
+2025-04-16,Back office,60.0
+2025-04-17,COGS,541.58
+2025-04-17,Promotions,71.35
+2025-04-17,Sales salary,265.45
+2025-04-17,Production wages,369.87
+2025-04-17,Warehouse,106.67
+2025-04-17,Back office,60.0
+2025-04-18,COGS,938.69
+2025-04-18,Promotions,67.98
+2025-04-18,Sales salary,265.45
+2025-04-18,Production wages,369.87
+2025-04-18,Warehouse,106.67
+2025-04-18,Back office,60.0
+2025-04-19,COGS,1178.27
+2025-04-19,Promotions,301.58
+2025-04-19,Sales salary,265.45
+2025-04-19,Production wages,369.87
+2025-04-19,Warehouse,106.67
+2025-04-19,Back office,60.0
+2025-04-19,Breakage & loss,341.56
+2025-04-20,COGS,1264.58
+2025-04-20,Promotions,218.11
+2025-04-20,Sales salary,265.45
+2025-04-20,Production wages,369.87
+2025-04-20,Warehouse,106.67
+2025-04-20,Back office,60.0
+2025-04-21,COGS,1059.27
+2025-04-21,Promotions,179.0
+2025-04-21,Sales salary,265.45
+2025-04-21,Production wages,369.87
+2025-04-21,Warehouse,106.67
+2025-04-21,Back office,60.0
+2025-04-21,Breakage & loss,347.97
+2025-04-21,Marketing,235.13
+2025-04-22,COGS,977.22
+2025-04-22,Promotions,162.54
+2025-04-22,Sales salary,265.45
+2025-04-22,Production wages,369.87
+2025-04-22,Warehouse,106.67
+2025-04-22,Back office,60.0
+2025-04-23,COGS,414.79
+2025-04-23,Promotions,18.58
+2025-04-23,Sales salary,265.45
+2025-04-23,Production wages,369.87
+2025-04-23,Warehouse,106.67
+2025-04-23,Back office,60.0
+2025-04-24,COGS,374.11
+2025-04-24,Promotions,0.0
+2025-04-24,Sales salary,265.45
+2025-04-24,Production wages,369.87
+2025-04-24,Warehouse,106.67
+2025-04-24,Back office,60.0
+2025-04-25,COGS,680.01
+2025-04-25,Promotions,33.78
+2025-04-25,Sales salary,265.45
+2025-04-25,Production wages,369.87
+2025-04-25,Warehouse,106.67
+2025-04-25,Back office,60.0
+2025-04-26,COGS,897.72
+2025-04-26,Promotions,219.07
+2025-04-26,Sales salary,265.45
+2025-04-26,Production wages,369.87
+2025-04-26,Warehouse,106.67
+2025-04-26,Back office,60.0
+2025-04-26,Breakage & loss,131.39
+2025-04-27,COGS,491.11
+2025-04-27,Promotions,62.1
+2025-04-27,Sales salary,265.45
+2025-04-27,Production wages,369.87
+2025-04-27,Warehouse,106.67
+2025-04-27,Back office,60.0
+2025-04-27,Breakage & loss,61.71
+2025-04-28,COGS,358.39
+2025-04-28,Promotions,58.34
+2025-04-28,Sales salary,265.45
+2025-04-28,Production wages,369.87
+2025-04-28,Warehouse,106.67
+2025-04-28,Back office,60.0
+2025-04-28,Breakage & loss,299.72
+2025-04-28,Marketing,249.21
+2025-04-29,COGS,888.75
+2025-04-29,Promotions,266.15
+2025-04-29,Sales salary,265.45
+2025-04-29,Production wages,369.87
+2025-04-29,Warehouse,106.67
+2025-04-29,Back office,60.0
+2025-04-30,COGS,821.23
+2025-04-30,Promotions,73.89
+2025-04-30,Sales salary,265.45
+2025-04-30,Production wages,369.87
+2025-04-30,Warehouse,106.67
+2025-04-30,Back office,60.0
+2025-05-01,COGS,660.35
+2025-05-01,Promotions,166.17
+2025-05-01,Sales salary,263.22
+2025-05-01,Production wages,361.52
+2025-05-01,Warehouse,103.23
+2025-05-01,Back office,58.06
+2025-05-01,Office,71.61
+2025-05-02,COGS,687.94
+2025-05-02,Promotions,34.43
+2025-05-02,Sales salary,263.22
+2025-05-02,Production wages,361.52
+2025-05-02,Warehouse,103.23
+2025-05-02,Back office,58.06
+2025-05-03,COGS,888.96
+2025-05-03,Promotions,190.84
+2025-05-03,Sales salary,263.22
+2025-05-03,Production wages,361.52
+2025-05-03,Warehouse,103.23
+2025-05-03,Back office,58.06
+2025-05-04,COGS,990.99
+2025-05-04,Promotions,122.25
+2025-05-04,Sales salary,263.22
+2025-05-04,Production wages,361.52
+2025-05-04,Warehouse,103.23
+2025-05-04,Back office,58.06
+2025-05-05,COGS,565.16
+2025-05-05,Promotions,61.77
+2025-05-05,Sales salary,263.22
+2025-05-05,Production wages,361.52
+2025-05-05,Warehouse,103.23
+2025-05-05,Back office,58.06
+2025-05-05,Marketing,245.25
+2025-05-06,COGS,443.03
+2025-05-06,Promotions,112.68
+2025-05-06,Sales salary,263.22
+2025-05-06,Production wages,361.52
+2025-05-06,Warehouse,103.23
+2025-05-06,Back office,58.06
+2025-05-07,COGS,513.16
+2025-05-07,Promotions,24.28
+2025-05-07,Sales salary,263.22
+2025-05-07,Production wages,361.52
+2025-05-07,Warehouse,103.23
+2025-05-07,Back office,58.06
+2025-05-08,COGS,1069.82
+2025-05-08,Promotions,76.72
+2025-05-08,Sales salary,263.22
+2025-05-08,Production wages,361.52
+2025-05-08,Warehouse,103.23
+2025-05-08,Back office,58.06
+2025-05-08,Breakage & loss,277.16
+2025-05-09,COGS,833.71
+2025-05-09,Promotions,185.66
+2025-05-09,Sales salary,263.22
+2025-05-09,Production wages,361.52
+2025-05-09,Warehouse,103.23
+2025-05-09,Back office,58.06
+2025-05-10,COGS,814.24
+2025-05-10,Promotions,152.54
+2025-05-10,Sales salary,263.22
+2025-05-10,Production wages,361.52
+2025-05-10,Warehouse,103.23
+2025-05-10,Back office,58.06
+2025-05-11,COGS,1548.21
+2025-05-11,Promotions,251.99
+2025-05-11,Sales salary,263.22
+2025-05-11,Production wages,361.52
+2025-05-11,Warehouse,103.23
+2025-05-11,Back office,58.06
+2025-05-12,COGS,1295.14
+2025-05-12,Promotions,147.34
+2025-05-12,Sales salary,263.22
+2025-05-12,Production wages,361.52
+2025-05-12,Warehouse,103.23
+2025-05-12,Back office,58.06
+2025-05-12,Marketing,205.66
+2025-05-13,COGS,627.29
+2025-05-13,Promotions,86.12
+2025-05-13,Sales salary,263.22
+2025-05-13,Production wages,361.52
+2025-05-13,Warehouse,103.23
+2025-05-13,Back office,58.06
+2025-05-14,COGS,579.54
+2025-05-14,Promotions,120.7
+2025-05-14,Sales salary,263.22
+2025-05-14,Production wages,361.52
+2025-05-14,Warehouse,103.23
+2025-05-14,Back office,58.06
+2025-05-14,Breakage & loss,248.56
+2025-05-15,COGS,475.7
+2025-05-15,Promotions,15.73
+2025-05-15,Sales salary,263.22
+2025-05-15,Production wages,361.52
+2025-05-15,Warehouse,103.23
+2025-05-15,Back office,58.06
+2025-05-15,Breakage & loss,263.92
+2025-05-16,COGS,414.18
+2025-05-16,Promotions,100.76
+2025-05-16,Sales salary,263.22
+2025-05-16,Production wages,361.52
+2025-05-16,Warehouse,103.23
+2025-05-16,Back office,58.06
+2025-05-17,COGS,1083.5
+2025-05-17,Promotions,119.25
+2025-05-17,Sales salary,263.22
+2025-05-17,Production wages,361.52
+2025-05-17,Warehouse,103.23
+2025-05-17,Back office,58.06
+2025-05-18,COGS,553.04
+2025-05-18,Promotions,148.99
+2025-05-18,Sales salary,263.22
+2025-05-18,Production wages,361.52
+2025-05-18,Warehouse,103.23
+2025-05-18,Back office,58.06
+2025-05-18,Breakage & loss,144.8
+2025-05-19,COGS,669.98
+2025-05-19,Promotions,126.62
+2025-05-19,Sales salary,263.22
+2025-05-19,Production wages,361.52
+2025-05-19,Warehouse,103.23
+2025-05-19,Back office,58.06
+2025-05-19,Breakage & loss,374.08
+2025-05-19,Marketing,188.69
+2025-05-20,COGS,1027.49
+2025-05-20,Promotions,171.54
+2025-05-20,Sales salary,263.22
+2025-05-20,Production wages,361.52
+2025-05-20,Warehouse,103.23
+2025-05-20,Back office,58.06
+2025-05-21,COGS,733.04
+2025-05-21,Promotions,199.81
+2025-05-21,Sales salary,263.22
+2025-05-21,Production wages,361.52
+2025-05-21,Warehouse,103.23
+2025-05-21,Back office,58.06
+2025-05-22,COGS,284.97
+2025-05-22,Promotions,57.91
+2025-05-22,Sales salary,263.22
+2025-05-22,Production wages,361.52
+2025-05-22,Warehouse,103.23
+2025-05-22,Back office,58.06
+2025-05-22,Breakage & loss,82.21
+2025-05-23,COGS,733.7
+2025-05-23,Promotions,37.0
+2025-05-23,Sales salary,263.22
+2025-05-23,Production wages,361.52
+2025-05-23,Warehouse,103.23
+2025-05-23,Back office,58.06
+2025-05-24,COGS,1725.72
+2025-05-24,Promotions,172.61
+2025-05-24,Sales salary,263.22
+2025-05-24,Production wages,361.52
+2025-05-24,Warehouse,103.23
+2025-05-24,Back office,58.06
+2025-05-25,COGS,1137.6
+2025-05-25,Promotions,182.52
+2025-05-25,Sales salary,263.22
+2025-05-25,Production wages,361.52
+2025-05-25,Warehouse,103.23
+2025-05-25,Back office,58.06
+2025-05-26,COGS,429.81
+2025-05-26,Promotions,116.35
+2025-05-26,Sales salary,263.22
+2025-05-26,Production wages,361.52
+2025-05-26,Warehouse,103.23
+2025-05-26,Back office,58.06
+2025-05-26,Marketing,177.18
+2025-05-27,COGS,706.85
+2025-05-27,Promotions,84.7
+2025-05-27,Sales salary,263.22
+2025-05-27,Production wages,361.52
+2025-05-27,Warehouse,103.23
+2025-05-27,Back office,58.06
+2025-05-27,Breakage & loss,367.39
+2025-05-28,COGS,629.35
+2025-05-28,Promotions,87.7
+2025-05-28,Sales salary,263.22
+2025-05-28,Production wages,361.52
+2025-05-28,Warehouse,103.23
+2025-05-28,Back office,58.06
+2025-05-29,COGS,853.59
+2025-05-29,Promotions,198.96
+2025-05-29,Sales salary,263.22
+2025-05-29,Production wages,361.52
+2025-05-29,Warehouse,103.23
+2025-05-29,Back office,58.06
+2025-05-30,COGS,583.58
+2025-05-30,Promotions,120.99
+2025-05-30,Sales salary,263.22
+2025-05-30,Production wages,361.52
+2025-05-30,Warehouse,103.23
+2025-05-30,Back office,58.06
+2025-05-31,COGS,652.16
+2025-05-31,Promotions,176.64
+2025-05-31,Sales salary,263.22
+2025-05-31,Production wages,361.52
+2025-05-31,Warehouse,103.23
+2025-05-31,Back office,58.06
+2025-06-01,COGS,619.2
+2025-06-01,Promotions,136.44
+2025-06-01,Sales salary,260.82
+2025-06-01,Production wages,378.97
+2025-06-01,Warehouse,106.67
+2025-06-01,Back office,60.0
+2025-06-01,Breakage & loss,182.38
+2025-06-01,Office,88.09
+2025-06-02,COGS,1079.41
+2025-06-02,Promotions,239.21
+2025-06-02,Sales salary,260.82
+2025-06-02,Production wages,378.97
+2025-06-02,Warehouse,106.67
+2025-06-02,Back office,60.0
+2025-06-02,Marketing,236.52
+2025-06-03,COGS,1228.58
+2025-06-03,Promotions,125.54
+2025-06-03,Sales salary,260.82
+2025-06-03,Production wages,378.97
+2025-06-03,Warehouse,106.67
+2025-06-03,Back office,60.0
+2025-06-04,COGS,607.68
+2025-06-04,Promotions,103.96
+2025-06-04,Sales salary,260.82
+2025-06-04,Production wages,378.97
+2025-06-04,Warehouse,106.67
+2025-06-04,Back office,60.0
+2025-06-05,COGS,499.38
+2025-06-05,Promotions,85.57
+2025-06-05,Sales salary,260.82
+2025-06-05,Production wages,378.97
+2025-06-05,Warehouse,106.67
+2025-06-05,Back office,60.0
+2025-06-06,COGS,806.11
+2025-06-06,Promotions,136.06
+2025-06-06,Sales salary,260.82
+2025-06-06,Production wages,378.97
+2025-06-06,Warehouse,106.67
+2025-06-06,Back office,60.0
+2025-06-06,Breakage & loss,127.19
+2025-06-07,COGS,1178.95
+2025-06-07,Promotions,208.52
+2025-06-07,Sales salary,260.82
+2025-06-07,Production wages,378.97
+2025-06-07,Warehouse,106.67
+2025-06-07,Back office,60.0
+2025-06-07,Breakage & loss,127.8
+2025-06-08,COGS,728.84
+2025-06-08,Promotions,90.0
+2025-06-08,Sales salary,260.82
+2025-06-08,Production wages,378.97
+2025-06-08,Warehouse,106.67
+2025-06-08,Back office,60.0
+2025-06-08,Breakage & loss,116.87
+2025-06-09,COGS,731.33
+2025-06-09,Promotions,102.96
+2025-06-09,Sales salary,260.82
+2025-06-09,Production wages,378.97
+2025-06-09,Warehouse,106.67
+2025-06-09,Back office,60.0
+2025-06-09,Breakage & loss,187.89
+2025-06-09,Marketing,124.0
+2025-06-10,COGS,500.19
+2025-06-10,Promotions,72.89
+2025-06-10,Sales salary,260.82
+2025-06-10,Production wages,378.97
+2025-06-10,Warehouse,106.67
+2025-06-10,Back office,60.0
+2025-06-10,Breakage & loss,267.02
+2025-06-11,COGS,1058.1
+2025-06-11,Promotions,116.3
+2025-06-11,Sales salary,260.82
+2025-06-11,Production wages,378.97
+2025-06-11,Warehouse,106.67
+2025-06-11,Back office,60.0
+2025-06-12,COGS,322.49
+2025-06-12,Promotions,20.8
+2025-06-12,Sales salary,260.82
+2025-06-12,Production wages,378.97
+2025-06-12,Warehouse,106.67
+2025-06-12,Back office,60.0
+2025-06-13,COGS,974.74
+2025-06-13,Promotions,157.55
+2025-06-13,Sales salary,260.82
+2025-06-13,Production wages,378.97
+2025-06-13,Warehouse,106.67
+2025-06-13,Back office,60.0
+2025-06-14,COGS,411.89
+2025-06-14,Promotions,65.39
+2025-06-14,Sales salary,260.82
+2025-06-14,Production wages,378.97
+2025-06-14,Warehouse,106.67
+2025-06-14,Back office,60.0
+2025-06-15,COGS,1313.61
+2025-06-15,Promotions,157.65
+2025-06-15,Sales salary,260.82
+2025-06-15,Production wages,378.97
+2025-06-15,Warehouse,106.67
+2025-06-15,Back office,60.0
+2025-06-15,Breakage & loss,306.72
+2025-06-16,COGS,504.86
+2025-06-16,Promotions,43.21
+2025-06-16,Sales salary,260.82
+2025-06-16,Production wages,378.97
+2025-06-16,Warehouse,106.67
+2025-06-16,Back office,60.0
+2025-06-16,Marketing,218.97
+2025-06-17,COGS,928.08
+2025-06-17,Promotions,166.13
+2025-06-17,Sales salary,260.82
+2025-06-17,Production wages,378.97
+2025-06-17,Warehouse,106.67
+2025-06-17,Back office,60.0
+2025-06-18,COGS,554.79
+2025-06-18,Promotions,76.16
+2025-06-18,Sales salary,260.82
+2025-06-18,Production wages,378.97
+2025-06-18,Warehouse,106.67
+2025-06-18,Back office,60.0
+2025-06-18,Breakage & loss,139.3
+2025-06-19,COGS,467.27
+2025-06-19,Promotions,59.64
+2025-06-19,Sales salary,260.82
+2025-06-19,Production wages,378.97
+2025-06-19,Warehouse,106.67
+2025-06-19,Back office,60.0
+2025-06-20,COGS,397.68
+2025-06-20,Promotions,38.81
+2025-06-20,Sales salary,260.82
+2025-06-20,Production wages,378.97
+2025-06-20,Warehouse,106.67
+2025-06-20,Back office,60.0
+2025-06-21,COGS,768.57
+2025-06-21,Promotions,118.64
+2025-06-21,Sales salary,260.82
+2025-06-21,Production wages,378.97
+2025-06-21,Warehouse,106.67
+2025-06-21,Back office,60.0
+2025-06-22,COGS,765.82
+2025-06-22,Promotions,90.67
+2025-06-22,Sales salary,260.82
+2025-06-22,Production wages,378.97
+2025-06-22,Warehouse,106.67
+2025-06-22,Back office,60.0
+2025-06-22,Breakage & loss,220.27
+2025-06-23,COGS,536.06
+2025-06-23,Promotions,95.93
+2025-06-23,Sales salary,260.82
+2025-06-23,Production wages,378.97
+2025-06-23,Warehouse,106.67
+2025-06-23,Back office,60.0
+2025-06-23,Marketing,132.66
+2025-06-24,COGS,750.92
+2025-06-24,Promotions,106.15
+2025-06-24,Sales salary,260.82
+2025-06-24,Production wages,378.97
+2025-06-24,Warehouse,106.67
+2025-06-24,Back office,60.0
+2025-06-25,COGS,869.55
+2025-06-25,Promotions,157.42
+2025-06-25,Sales salary,260.82
+2025-06-25,Production wages,378.97
+2025-06-25,Warehouse,106.67
+2025-06-25,Back office,60.0
+2025-06-25,Breakage & loss,346.39
+2025-06-26,COGS,626.36
+2025-06-26,Promotions,66.37
+2025-06-26,Sales salary,260.82
+2025-06-26,Production wages,378.97
+2025-06-26,Warehouse,106.67
+2025-06-26,Back office,60.0
+2025-06-26,Breakage & loss,147.55
+2025-06-27,COGS,628.54
+2025-06-27,Promotions,105.95
+2025-06-27,Sales salary,260.82
+2025-06-27,Production wages,378.97
+2025-06-27,Warehouse,106.67
+2025-06-27,Back office,60.0
+2025-06-28,COGS,426.42
+2025-06-28,Promotions,42.56
+2025-06-28,Sales salary,260.82
+2025-06-28,Production wages,378.97
+2025-06-28,Warehouse,106.67
+2025-06-28,Back office,60.0
+2025-06-29,COGS,780.75
+2025-06-29,Promotions,140.96
+2025-06-29,Sales salary,260.82
+2025-06-29,Production wages,378.97
+2025-06-29,Warehouse,106.67
+2025-06-29,Back office,60.0
+2025-06-30,COGS,220.33
+2025-06-30,Promotions,36.9
+2025-06-30,Sales salary,260.82
+2025-06-30,Production wages,378.97
+2025-06-30,Warehouse,106.67
+2025-06-30,Back office,60.0
+2025-06-30,Marketing,156.05
+2025-07-01,COGS,255.9
+2025-07-01,Promotions,94.87
+2025-07-01,Sales salary,251.63
+2025-07-01,Production wages,368.74
+2025-07-01,Warehouse,103.23
+2025-07-01,Back office,58.06
+2025-07-01,Breakage & loss,174.89
+2025-07-01,Office,75.32
+2025-07-02,COGS,895.52
+2025-07-02,Promotions,142.76
+2025-07-02,Sales salary,251.63
+2025-07-02,Production wages,368.74
+2025-07-02,Warehouse,103.23
+2025-07-02,Back office,58.06
+2025-07-03,COGS,441.72
+2025-07-03,Promotions,24.4
+2025-07-03,Sales salary,251.63
+2025-07-03,Production wages,368.74
+2025-07-03,Warehouse,103.23
+2025-07-03,Back office,58.06
+2025-07-04,COGS,674.79
+2025-07-04,Promotions,63.14
+2025-07-04,Sales salary,251.63
+2025-07-04,Production wages,368.74
+2025-07-04,Warehouse,103.23
+2025-07-04,Back office,58.06
+2025-07-04,Breakage & loss,187.24
+2025-07-05,COGS,327.15
+2025-07-05,Promotions,40.51
+2025-07-05,Sales salary,251.63
+2025-07-05,Production wages,368.74
+2025-07-05,Warehouse,103.23
+2025-07-05,Back office,58.06
+2025-07-06,COGS,1361.13
+2025-07-06,Promotions,334.52
+2025-07-06,Sales salary,251.63
+2025-07-06,Production wages,368.74
+2025-07-06,Warehouse,103.23
+2025-07-06,Back office,58.06
+2025-07-07,COGS,566.84
+2025-07-07,Promotions,77.36
+2025-07-07,Sales salary,251.63
+2025-07-07,Production wages,368.74
+2025-07-07,Warehouse,103.23
+2025-07-07,Back office,58.06
+2025-07-07,Marketing,217.56
+2025-07-08,COGS,471.31
+2025-07-08,Promotions,23.31
+2025-07-08,Sales salary,251.63
+2025-07-08,Production wages,368.74
+2025-07-08,Warehouse,103.23
+2025-07-08,Back office,58.06
+2025-07-09,COGS,908.87
+2025-07-09,Promotions,143.69
+2025-07-09,Sales salary,251.63
+2025-07-09,Production wages,368.74
+2025-07-09,Warehouse,103.23
+2025-07-09,Back office,58.06
+2025-07-10,COGS,932.42
+2025-07-10,Promotions,231.55
+2025-07-10,Sales salary,251.63
+2025-07-10,Production wages,368.74
+2025-07-10,Warehouse,103.23
+2025-07-10,Back office,58.06
+2025-07-10,Breakage & loss,196.89
+2025-07-11,COGS,416.2
+2025-07-11,Promotions,49.14
+2025-07-11,Sales salary,251.63
+2025-07-11,Production wages,368.74
+2025-07-11,Warehouse,103.23
+2025-07-11,Back office,58.06
+2025-07-11,Breakage & loss,180.26
+2025-07-12,COGS,560.31
+2025-07-12,Promotions,134.0
+2025-07-12,Sales salary,251.63
+2025-07-12,Production wages,368.74
+2025-07-12,Warehouse,103.23
+2025-07-12,Back office,58.06
+2025-07-12,Breakage & loss,298.64
+2025-07-13,COGS,339.05
+2025-07-13,Promotions,70.06
+2025-07-13,Sales salary,251.63
+2025-07-13,Production wages,368.74
+2025-07-13,Warehouse,103.23
+2025-07-13,Back office,58.06
+2025-07-14,COGS,529.19
+2025-07-14,Promotions,61.98
+2025-07-14,Sales salary,251.63
+2025-07-14,Production wages,368.74
+2025-07-14,Warehouse,103.23
+2025-07-14,Back office,58.06
+2025-07-14,Marketing,181.1
+2025-07-15,COGS,450.6
+2025-07-15,Promotions,16.14
+2025-07-15,Sales salary,251.63
+2025-07-15,Production wages,368.74
+2025-07-15,Warehouse,103.23
+2025-07-15,Back office,58.06
+2025-07-15,Breakage & loss,136.04
+2025-07-16,COGS,898.6
+2025-07-16,Promotions,86.27
+2025-07-16,Sales salary,251.63
+2025-07-16,Production wages,368.74
+2025-07-16,Warehouse,103.23
+2025-07-16,Back office,58.06
+2025-07-17,COGS,522.61
+2025-07-17,Promotions,142.57
+2025-07-17,Sales salary,251.63
+2025-07-17,Production wages,368.74
+2025-07-17,Warehouse,103.23
+2025-07-17,Back office,58.06
+2025-07-17,Breakage & loss,209.72
+2025-07-18,COGS,659.67
+2025-07-18,Promotions,17.45
+2025-07-18,Sales salary,251.63
+2025-07-18,Production wages,368.74
+2025-07-18,Warehouse,103.23
+2025-07-18,Back office,58.06
+2025-07-19,COGS,933.16
+2025-07-19,Promotions,146.52
+2025-07-19,Sales salary,251.63
+2025-07-19,Production wages,368.74
+2025-07-19,Warehouse,103.23
+2025-07-19,Back office,58.06
+2025-07-20,COGS,698.91
+2025-07-20,Promotions,167.97
+2025-07-20,Sales salary,251.63
+2025-07-20,Production wages,368.74
+2025-07-20,Warehouse,103.23
+2025-07-20,Back office,58.06
+2025-07-20,Breakage & loss,388.03
+2025-07-21,COGS,1403.58
+2025-07-21,Promotions,102.34
+2025-07-21,Sales salary,251.63
+2025-07-21,Production wages,368.74
+2025-07-21,Warehouse,103.23
+2025-07-21,Back office,58.06
+2025-07-21,Marketing,135.43
+2025-07-22,COGS,515.39
+2025-07-22,Promotions,111.63
+2025-07-22,Sales salary,251.63
+2025-07-22,Production wages,368.74
+2025-07-22,Warehouse,103.23
+2025-07-22,Back office,58.06
+2025-07-23,COGS,555.05
+2025-07-23,Promotions,9.15
+2025-07-23,Sales salary,251.63
+2025-07-23,Production wages,368.74
+2025-07-23,Warehouse,103.23
+2025-07-23,Back office,58.06
+2025-07-24,COGS,452.17
+2025-07-24,Promotions,56.23
+2025-07-24,Sales salary,251.63
+2025-07-24,Production wages,368.74
+2025-07-24,Warehouse,103.23
+2025-07-24,Back office,58.06
+2025-07-24,Breakage & loss,314.6
+2025-07-25,COGS,807.39
+2025-07-25,Promotions,104.97
+2025-07-25,Sales salary,251.63
+2025-07-25,Production wages,368.74
+2025-07-25,Warehouse,103.23
+2025-07-25,Back office,58.06
+2025-07-26,COGS,758.62
+2025-07-26,Promotions,44.63
+2025-07-26,Sales salary,251.63
+2025-07-26,Production wages,368.74
+2025-07-26,Warehouse,103.23
+2025-07-26,Back office,58.06
+2025-07-27,COGS,722.18
+2025-07-27,Promotions,108.51
+2025-07-27,Sales salary,251.63
+2025-07-27,Production wages,368.74
+2025-07-27,Warehouse,103.23
+2025-07-27,Back office,58.06
+2025-07-28,COGS,917.59
+2025-07-28,Promotions,98.65
+2025-07-28,Sales salary,251.63
+2025-07-28,Production wages,368.74
+2025-07-28,Warehouse,103.23
+2025-07-28,Back office,58.06
+2025-07-28,Breakage & loss,352.73
+2025-07-28,Marketing,126.51
+2025-07-29,COGS,978.71
+2025-07-29,Promotions,123.74
+2025-07-29,Sales salary,251.63
+2025-07-29,Production wages,368.74
+2025-07-29,Warehouse,103.23
+2025-07-29,Back office,58.06
+2025-07-30,COGS,807.6
+2025-07-30,Promotions,114.78
+2025-07-30,Sales salary,251.63
+2025-07-30,Production wages,368.74
+2025-07-30,Warehouse,103.23
+2025-07-30,Back office,58.06
+2025-07-31,COGS,281.85
+2025-07-31,Promotions,30.16
+2025-07-31,Sales salary,251.63
+2025-07-31,Production wages,368.74
+2025-07-31,Warehouse,103.23
+2025-07-31,Back office,58.06
+2025-07-31,Breakage & loss,196.06
+2025-08-01,COGS,644.44
+2025-08-01,Promotions,122.17
+2025-08-01,Sales salary,264.31
+2025-08-01,Production wages,346.68
+2025-08-01,Warehouse,103.23
+2025-08-01,Back office,58.06
+2025-08-01,Office,94.79
+2025-08-02,COGS,1090.11
+2025-08-02,Promotions,121.0
+2025-08-02,Sales salary,264.31
+2025-08-02,Production wages,346.68
+2025-08-02,Warehouse,103.23
+2025-08-02,Back office,58.06
+2025-08-03,COGS,629.35
+2025-08-03,Promotions,145.83
+2025-08-03,Sales salary,264.31
+2025-08-03,Production wages,346.68
+2025-08-03,Warehouse,103.23
+2025-08-03,Back office,58.06
+2025-08-04,COGS,774.99
+2025-08-04,Promotions,226.76
+2025-08-04,Sales salary,264.31
+2025-08-04,Production wages,346.68
+2025-08-04,Warehouse,103.23
+2025-08-04,Back office,58.06
+2025-08-04,Marketing,121.37
+2025-08-05,COGS,372.0
+2025-08-05,Promotions,91.52
+2025-08-05,Sales salary,264.31
+2025-08-05,Production wages,346.68
+2025-08-05,Warehouse,103.23
+2025-08-05,Back office,58.06
+2025-08-05,Breakage & loss,97.07
+2025-08-06,COGS,422.41
+2025-08-06,Promotions,54.22
+2025-08-06,Sales salary,264.31
+2025-08-06,Production wages,346.68
+2025-08-06,Warehouse,103.23
+2025-08-06,Back office,58.06
+2025-08-06,Breakage & loss,159.61
+2025-08-07,COGS,104.03
+2025-08-07,Promotions,20.31
+2025-08-07,Sales salary,264.31
+2025-08-07,Production wages,346.68
+2025-08-07,Warehouse,103.23
+2025-08-07,Back office,58.06
+2025-08-07,Breakage & loss,235.68
+2025-08-08,COGS,1215.39
+2025-08-08,Promotions,107.54
+2025-08-08,Sales salary,264.31
+2025-08-08,Production wages,346.68
+2025-08-08,Warehouse,103.23
+2025-08-08,Back office,58.06
+2025-08-09,COGS,853.95
+2025-08-09,Promotions,106.59
+2025-08-09,Sales salary,264.31
+2025-08-09,Production wages,346.68
+2025-08-09,Warehouse,103.23
+2025-08-09,Back office,58.06
+2025-08-10,COGS,1249.83
+2025-08-10,Promotions,282.72
+2025-08-10,Sales salary,264.31
+2025-08-10,Production wages,346.68
+2025-08-10,Warehouse,103.23
+2025-08-10,Back office,58.06
+2025-08-11,COGS,1466.69
+2025-08-11,Promotions,175.25
+2025-08-11,Sales salary,264.31
+2025-08-11,Production wages,346.68
+2025-08-11,Warehouse,103.23
+2025-08-11,Back office,58.06
+2025-08-11,Marketing,139.94
+2025-08-12,COGS,512.53
+2025-08-12,Promotions,75.0
+2025-08-12,Sales salary,264.31
+2025-08-12,Production wages,346.68
+2025-08-12,Warehouse,103.23
+2025-08-12,Back office,58.06
+2025-08-12,Breakage & loss,284.53
+2025-08-13,COGS,896.92
+2025-08-13,Promotions,131.27
+2025-08-13,Sales salary,264.31
+2025-08-13,Production wages,346.68
+2025-08-13,Warehouse,103.23
+2025-08-13,Back office,58.06
+2025-08-14,COGS,595.34
+2025-08-14,Promotions,59.82
+2025-08-14,Sales salary,264.31
+2025-08-14,Production wages,346.68
+2025-08-14,Warehouse,103.23
+2025-08-14,Back office,58.06
+2025-08-14,Breakage & loss,88.89
+2025-08-15,COGS,1352.05
+2025-08-15,Promotions,367.39
+2025-08-15,Sales salary,264.31
+2025-08-15,Production wages,346.68
+2025-08-15,Warehouse,103.23
+2025-08-15,Back office,58.06
+2025-08-16,COGS,657.64
+2025-08-16,Promotions,132.53
+2025-08-16,Sales salary,264.31
+2025-08-16,Production wages,346.68
+2025-08-16,Warehouse,103.23
+2025-08-16,Back office,58.06
+2025-08-17,COGS,462.18
+2025-08-17,Promotions,84.51
+2025-08-17,Sales salary,264.31
+2025-08-17,Production wages,346.68
+2025-08-17,Warehouse,103.23
+2025-08-17,Back office,58.06
+2025-08-17,Breakage & loss,198.07
+2025-08-18,COGS,653.95
+2025-08-18,Promotions,70.21
+2025-08-18,Sales salary,264.31
+2025-08-18,Production wages,346.68
+2025-08-18,Warehouse,103.23
+2025-08-18,Back office,58.06
+2025-08-18,Breakage & loss,356.67
+2025-08-18,Marketing,221.77
+2025-08-19,COGS,654.12
+2025-08-19,Promotions,173.47
+2025-08-19,Sales salary,264.31
+2025-08-19,Production wages,346.68
+2025-08-19,Warehouse,103.23
+2025-08-19,Back office,58.06
+2025-08-19,Breakage & loss,103.2
+2025-08-20,COGS,1332.05
+2025-08-20,Promotions,259.06
+2025-08-20,Sales salary,264.31
+2025-08-20,Production wages,346.68
+2025-08-20,Warehouse,103.23
+2025-08-20,Back office,58.06
+2025-08-21,COGS,693.86
+2025-08-21,Promotions,163.84
+2025-08-21,Sales salary,264.31
+2025-08-21,Production wages,346.68
+2025-08-21,Warehouse,103.23
+2025-08-21,Back office,58.06
+2025-08-22,COGS,719.1
+2025-08-22,Promotions,123.46
+2025-08-22,Sales salary,264.31
+2025-08-22,Production wages,346.68
+2025-08-22,Warehouse,103.23
+2025-08-22,Back office,58.06
+2025-08-23,COGS,840.58
+2025-08-23,Promotions,48.62
+2025-08-23,Sales salary,264.31
+2025-08-23,Production wages,346.68
+2025-08-23,Warehouse,103.23
+2025-08-23,Back office,58.06
+2025-08-23,Breakage & loss,247.65
+2025-08-24,COGS,521.4
+2025-08-24,Promotions,66.57
+2025-08-24,Sales salary,264.31
+2025-08-24,Production wages,346.68
+2025-08-24,Warehouse,103.23
+2025-08-24,Back office,58.06
+2025-08-25,COGS,716.46
+2025-08-25,Promotions,3.7
+2025-08-25,Sales salary,264.31
+2025-08-25,Production wages,346.68
+2025-08-25,Warehouse,103.23
+2025-08-25,Back office,58.06
+2025-08-25,Marketing,154.89
+2025-08-26,COGS,607.34
+2025-08-26,Promotions,132.05
+2025-08-26,Sales salary,264.31
+2025-08-26,Production wages,346.68
+2025-08-26,Warehouse,103.23
+2025-08-26,Back office,58.06
+2025-08-26,Breakage & loss,157.84
+2025-08-27,COGS,1018.69
+2025-08-27,Promotions,46.13
+2025-08-27,Sales salary,264.31
+2025-08-27,Production wages,346.68
+2025-08-27,Warehouse,103.23
+2025-08-27,Back office,58.06
+2025-08-28,COGS,881.8
+2025-08-28,Promotions,57.99
+2025-08-28,Sales salary,264.31
+2025-08-28,Production wages,346.68
+2025-08-28,Warehouse,103.23
+2025-08-28,Back office,58.06
+2025-08-29,COGS,172.41
+2025-08-29,Promotions,35.63
+2025-08-29,Sales salary,264.31
+2025-08-29,Production wages,346.68
+2025-08-29,Warehouse,103.23
+2025-08-29,Back office,58.06
+2025-08-29,Breakage & loss,315.88
+2025-08-30,COGS,1460.52
+2025-08-30,Promotions,238.05
+2025-08-30,Sales salary,264.31
+2025-08-30,Production wages,346.68
+2025-08-30,Warehouse,103.23
+2025-08-30,Back office,58.06
+2025-08-30,Breakage & loss,150.37
+2025-08-31,COGS,736.42
+2025-08-31,Promotions,100.7
+2025-08-31,Sales salary,264.31
+2025-08-31,Production wages,346.68
+2025-08-31,Warehouse,103.23
+2025-08-31,Back office,58.06
+2025-09-01,COGS,679.28
+2025-09-01,Promotions,168.52
+2025-09-01,Sales salary,259.45
+2025-09-01,Production wages,377.7
+2025-09-01,Warehouse,106.67
+2025-09-01,Back office,60.0
+2025-09-01,Breakage & loss,176.32
+2025-09-01,Marketing,252.97
+2025-09-01,Office,107.49
+2025-09-02,COGS,231.78
+2025-09-02,Promotions,28.48
+2025-09-02,Sales salary,259.45
+2025-09-02,Production wages,377.7
+2025-09-02,Warehouse,106.67
+2025-09-02,Back office,60.0
+2025-09-03,COGS,524.84
+2025-09-03,Promotions,86.99
+2025-09-03,Sales salary,259.45
+2025-09-03,Production wages,377.7
+2025-09-03,Warehouse,106.67
+2025-09-03,Back office,60.0
+2025-09-03,Breakage & loss,242.34
+2025-09-04,COGS,425.61
+2025-09-04,Promotions,9.81
+2025-09-04,Sales salary,259.45
+2025-09-04,Production wages,377.7
+2025-09-04,Warehouse,106.67
+2025-09-04,Back office,60.0
+2025-09-05,COGS,949.77
+2025-09-05,Promotions,171.13
+2025-09-05,Sales salary,259.45
+2025-09-05,Production wages,377.7
+2025-09-05,Warehouse,106.67
+2025-09-05,Back office,60.0
+2025-09-05,Breakage & loss,201.95
+2025-09-06,COGS,449.61
+2025-09-06,Promotions,85.24
+2025-09-06,Sales salary,259.45
+2025-09-06,Production wages,377.7
+2025-09-06,Warehouse,106.67
+2025-09-06,Back office,60.0
+2025-09-07,COGS,503.55
+2025-09-07,Promotions,105.29
+2025-09-07,Sales salary,259.45
+2025-09-07,Production wages,377.7
+2025-09-07,Warehouse,106.67
+2025-09-07,Back office,60.0
+2025-09-08,COGS,435.19
+2025-09-08,Promotions,139.57
+2025-09-08,Sales salary,259.45
+2025-09-08,Production wages,377.7
+2025-09-08,Warehouse,106.67
+2025-09-08,Back office,60.0
+2025-09-08,Breakage & loss,175.07
+2025-09-08,Marketing,259.57
+2025-09-09,COGS,863.31
+2025-09-09,Promotions,157.61
+2025-09-09,Sales salary,259.45
+2025-09-09,Production wages,377.7
+2025-09-09,Warehouse,106.67
+2025-09-09,Back office,60.0
+2025-09-09,Breakage & loss,339.85
+2025-09-10,COGS,850.3
+2025-09-10,Promotions,97.43
+2025-09-10,Sales salary,259.45
+2025-09-10,Production wages,377.7
+2025-09-10,Warehouse,106.67
+2025-09-10,Back office,60.0
+2025-09-11,COGS,633.85
+2025-09-11,Promotions,101.28
+2025-09-11,Sales salary,259.45
+2025-09-11,Production wages,377.7
+2025-09-11,Warehouse,106.67
+2025-09-11,Back office,60.0
+2025-09-12,COGS,841.79
+2025-09-12,Promotions,127.6
+2025-09-12,Sales salary,259.45
+2025-09-12,Production wages,377.7
+2025-09-12,Warehouse,106.67
+2025-09-12,Back office,60.0
+2025-09-13,COGS,854.04
+2025-09-13,Promotions,109.37
+2025-09-13,Sales salary,259.45
+2025-09-13,Production wages,377.7
+2025-09-13,Warehouse,106.67
+2025-09-13,Back office,60.0
+2025-09-14,COGS,1367.38
+2025-09-14,Promotions,86.48
+2025-09-14,Sales salary,259.45
+2025-09-14,Production wages,377.7
+2025-09-14,Warehouse,106.67
+2025-09-14,Back office,60.0
+2025-09-15,COGS,588.49
+2025-09-15,Promotions,169.24
+2025-09-15,Sales salary,259.45
+2025-09-15,Production wages,377.7
+2025-09-15,Warehouse,106.67
+2025-09-15,Back office,60.0
+2025-09-15,Marketing,203.36
+2025-09-16,COGS,522.62
+2025-09-16,Promotions,89.14
+2025-09-16,Sales salary,259.45
+2025-09-16,Production wages,377.7
+2025-09-16,Warehouse,106.67
+2025-09-16,Back office,60.0
+2025-09-17,COGS,954.99
+2025-09-17,Promotions,187.58
+2025-09-17,Sales salary,259.45
+2025-09-17,Production wages,377.7
+2025-09-17,Warehouse,106.67
+2025-09-17,Back office,60.0
+2025-09-18,COGS,651.5
+2025-09-18,Promotions,87.13
+2025-09-18,Sales salary,259.45
+2025-09-18,Production wages,377.7
+2025-09-18,Warehouse,106.67
+2025-09-18,Back office,60.0
+2025-09-19,COGS,700.16
+2025-09-19,Promotions,112.82
+2025-09-19,Sales salary,259.45
+2025-09-19,Production wages,377.7
+2025-09-19,Warehouse,106.67
+2025-09-19,Back office,60.0
+2025-09-20,COGS,482.67
+2025-09-20,Promotions,2.89
+2025-09-20,Sales salary,259.45
+2025-09-20,Production wages,377.7
+2025-09-20,Warehouse,106.67
+2025-09-20,Back office,60.0
+2025-09-20,Breakage & loss,143.2
+2025-09-21,COGS,664.88
+2025-09-21,Promotions,65.35
+2025-09-21,Sales salary,259.45
+2025-09-21,Production wages,377.7
+2025-09-21,Warehouse,106.67
+2025-09-21,Back office,60.0
+2025-09-22,COGS,657.98
+2025-09-22,Promotions,65.04
+2025-09-22,Sales salary,259.45
+2025-09-22,Production wages,377.7
+2025-09-22,Warehouse,106.67
+2025-09-22,Back office,60.0
+2025-09-22,Marketing,218.46
+2025-09-23,COGS,1445.67
+2025-09-23,Promotions,112.64
+2025-09-23,Sales salary,259.45
+2025-09-23,Production wages,377.7
+2025-09-23,Warehouse,106.67
+2025-09-23,Back office,60.0
+2025-09-24,COGS,784.78
+2025-09-24,Promotions,174.6
+2025-09-24,Sales salary,259.45
+2025-09-24,Production wages,377.7
+2025-09-24,Warehouse,106.67
+2025-09-24,Back office,60.0
+2025-09-24,Breakage & loss,347.71
+2025-09-25,COGS,378.88
+2025-09-25,Promotions,24.63
+2025-09-25,Sales salary,259.45
+2025-09-25,Production wages,377.7
+2025-09-25,Warehouse,106.67
+2025-09-25,Back office,60.0
+2025-09-26,COGS,385.03
+2025-09-26,Promotions,101.6
+2025-09-26,Sales salary,259.45
+2025-09-26,Production wages,377.7
+2025-09-26,Warehouse,106.67
+2025-09-26,Back office,60.0
+2025-09-27,COGS,606.89
+2025-09-27,Promotions,21.16
+2025-09-27,Sales salary,259.45
+2025-09-27,Production wages,377.7
+2025-09-27,Warehouse,106.67
+2025-09-27,Back office,60.0
+2025-09-28,COGS,1253.93
+2025-09-28,Promotions,121.81
+2025-09-28,Sales salary,259.45
+2025-09-28,Production wages,377.7
+2025-09-28,Warehouse,106.67
+2025-09-28,Back office,60.0
+2025-09-28,Breakage & loss,211.25
+2025-09-29,COGS,807.41
+2025-09-29,Promotions,203.1
+2025-09-29,Sales salary,259.45
+2025-09-29,Production wages,377.7
+2025-09-29,Warehouse,106.67
+2025-09-29,Back office,60.0
+2025-09-29,Marketing,214.54
+2025-09-30,COGS,401.21
+2025-09-30,Promotions,36.57
+2025-09-30,Sales salary,259.45
+2025-09-30,Production wages,377.7
+2025-09-30,Warehouse,106.67
+2025-09-30,Back office,60.0
+2025-09-30,Breakage & loss,383.28
+2025-10-01,COGS,758.91
+2025-10-01,Promotions,215.17
+2025-10-01,Sales salary,249.15
+2025-10-01,Production wages,367.1
+2025-10-01,Warehouse,103.23
+2025-10-01,Back office,58.06
+2025-10-01,Office,98.11
+2025-10-02,COGS,774.97
+2025-10-02,Promotions,143.09
+2025-10-02,Sales salary,249.15
+2025-10-02,Production wages,367.1
+2025-10-02,Warehouse,103.23
+2025-10-02,Back office,58.06
+2025-10-02,Breakage & loss,265.5
+2025-10-03,COGS,212.73
+2025-10-03,Promotions,23.79
+2025-10-03,Sales salary,249.15
+2025-10-03,Production wages,367.1
+2025-10-03,Warehouse,103.23
+2025-10-03,Back office,58.06
+2025-10-04,COGS,436.44
+2025-10-04,Promotions,56.25
+2025-10-04,Sales salary,249.15
+2025-10-04,Production wages,367.1
+2025-10-04,Warehouse,103.23
+2025-10-04,Back office,58.06
+2025-10-04,Breakage & loss,153.72
+2025-10-05,COGS,1006.41
+2025-10-05,Promotions,73.97
+2025-10-05,Sales salary,249.15
+2025-10-05,Production wages,367.1
+2025-10-05,Warehouse,103.23
+2025-10-05,Back office,58.06
+2025-10-06,COGS,585.14
+2025-10-06,Promotions,68.25
+2025-10-06,Sales salary,249.15
+2025-10-06,Production wages,367.1
+2025-10-06,Warehouse,103.23
+2025-10-06,Back office,58.06
+2025-10-06,Marketing,228.97
+2025-10-07,COGS,1014.06
+2025-10-07,Promotions,106.73
+2025-10-07,Sales salary,249.15
+2025-10-07,Production wages,367.1
+2025-10-07,Warehouse,103.23
+2025-10-07,Back office,58.06
+2025-10-08,COGS,342.65
+2025-10-08,Promotions,24.4
+2025-10-08,Sales salary,249.15
+2025-10-08,Production wages,367.1
+2025-10-08,Warehouse,103.23
+2025-10-08,Back office,58.06
+2025-10-09,COGS,385.04
+2025-10-09,Promotions,0.0
+2025-10-09,Sales salary,249.15
+2025-10-09,Production wages,367.1
+2025-10-09,Warehouse,103.23
+2025-10-09,Back office,58.06
+2025-10-10,COGS,764.99
+2025-10-10,Promotions,184.25
+2025-10-10,Sales salary,249.15
+2025-10-10,Production wages,367.1
+2025-10-10,Warehouse,103.23
+2025-10-10,Back office,58.06
+2025-10-11,COGS,1038.98
+2025-10-11,Promotions,253.35
+2025-10-11,Sales salary,249.15
+2025-10-11,Production wages,367.1
+2025-10-11,Warehouse,103.23
+2025-10-11,Back office,58.06
+2025-10-12,COGS,949.28
+2025-10-12,Promotions,98.11
+2025-10-12,Sales salary,249.15
+2025-10-12,Production wages,367.1
+2025-10-12,Warehouse,103.23
+2025-10-12,Back office,58.06
+2025-10-13,COGS,959.2
+2025-10-13,Promotions,155.53
+2025-10-13,Sales salary,249.15
+2025-10-13,Production wages,367.1
+2025-10-13,Warehouse,103.23
+2025-10-13,Back office,58.06
+2025-10-13,Breakage & loss,313.21
+2025-10-13,Marketing,227.14
+2025-10-14,COGS,1069.2
+2025-10-14,Promotions,177.68
+2025-10-14,Sales salary,249.15
+2025-10-14,Production wages,367.1
+2025-10-14,Warehouse,103.23
+2025-10-14,Back office,58.06
+2025-10-15,COGS,525.53
+2025-10-15,Promotions,154.97
+2025-10-15,Sales salary,249.15
+2025-10-15,Production wages,367.1
+2025-10-15,Warehouse,103.23
+2025-10-15,Back office,58.06
+2025-10-16,COGS,655.51
+2025-10-16,Promotions,57.71
+2025-10-16,Sales salary,249.15
+2025-10-16,Production wages,367.1
+2025-10-16,Warehouse,103.23
+2025-10-16,Back office,58.06
+2025-10-17,COGS,757.26
+2025-10-17,Promotions,147.08
+2025-10-17,Sales salary,249.15
+2025-10-17,Production wages,367.1
+2025-10-17,Warehouse,103.23
+2025-10-17,Back office,58.06
+2025-10-17,Breakage & loss,66.25
+2025-10-18,COGS,420.96
+2025-10-18,Promotions,34.55
+2025-10-18,Sales salary,249.15
+2025-10-18,Production wages,367.1
+2025-10-18,Warehouse,103.23
+2025-10-18,Back office,58.06
+2025-10-19,COGS,828.61
+2025-10-19,Promotions,207.6
+2025-10-19,Sales salary,249.15
+2025-10-19,Production wages,367.1
+2025-10-19,Warehouse,103.23
+2025-10-19,Back office,58.06
+2025-10-19,Breakage & loss,138.01
+2025-10-20,COGS,612.52
+2025-10-20,Promotions,93.44
+2025-10-20,Sales salary,249.15
+2025-10-20,Production wages,367.1
+2025-10-20,Warehouse,103.23
+2025-10-20,Back office,58.06
+2025-10-20,Breakage & loss,67.82
+2025-10-20,Marketing,152.97
+2025-10-21,COGS,1102.89
+2025-10-21,Promotions,118.4
+2025-10-21,Sales salary,249.15
+2025-10-21,Production wages,367.1
+2025-10-21,Warehouse,103.23
+2025-10-21,Back office,58.06
+2025-10-22,COGS,1091.35
+2025-10-22,Promotions,168.16
+2025-10-22,Sales salary,249.15
+2025-10-22,Production wages,367.1
+2025-10-22,Warehouse,103.23
+2025-10-22,Back office,58.06
+2025-10-22,Breakage & loss,373.0
+2025-10-23,COGS,606.24
+2025-10-23,Promotions,55.99
+2025-10-23,Sales salary,249.15
+2025-10-23,Production wages,367.1
+2025-10-23,Warehouse,103.23
+2025-10-23,Back office,58.06
+2025-10-23,Breakage & loss,158.72
+2025-10-24,COGS,959.88
+2025-10-24,Promotions,161.93
+2025-10-24,Sales salary,249.15
+2025-10-24,Production wages,367.1
+2025-10-24,Warehouse,103.23
+2025-10-24,Back office,58.06
+2025-10-24,Breakage & loss,242.42
+2025-10-25,COGS,655.09
+2025-10-25,Promotions,47.58
+2025-10-25,Sales salary,249.15
+2025-10-25,Production wages,367.1
+2025-10-25,Warehouse,103.23
+2025-10-25,Back office,58.06
+2025-10-25,Breakage & loss,244.25
+2025-10-26,COGS,668.75
+2025-10-26,Promotions,175.0
+2025-10-26,Sales salary,249.15
+2025-10-26,Production wages,367.1
+2025-10-26,Warehouse,103.23
+2025-10-26,Back office,58.06
+2025-10-26,Breakage & loss,316.86
+2025-10-27,COGS,200.75
+2025-10-27,Promotions,21.54
+2025-10-27,Sales salary,249.15
+2025-10-27,Production wages,367.1
+2025-10-27,Warehouse,103.23
+2025-10-27,Back office,58.06
+2025-10-27,Marketing,171.86
+2025-10-28,COGS,784.7
+2025-10-28,Promotions,213.05
+2025-10-28,Sales salary,249.15
+2025-10-28,Production wages,367.1
+2025-10-28,Warehouse,103.23
+2025-10-28,Back office,58.06
+2025-10-29,COGS,690.67
+2025-10-29,Promotions,141.81
+2025-10-29,Sales salary,249.15
+2025-10-29,Production wages,367.1
+2025-10-29,Warehouse,103.23
+2025-10-29,Back office,58.06
+2025-10-29,Breakage & loss,235.01
+2025-10-30,COGS,248.63
+2025-10-30,Promotions,55.21
+2025-10-30,Sales salary,249.15
+2025-10-30,Production wages,367.1
+2025-10-30,Warehouse,103.23
+2025-10-30,Back office,58.06
+2025-10-31,COGS,785.17
+2025-10-31,Promotions,66.25
+2025-10-31,Sales salary,249.15
+2025-10-31,Production wages,367.1
+2025-10-31,Warehouse,103.23
+2025-10-31,Back office,58.06
+2025-11-01,COGS,1417.54
+2025-11-01,Promotions,137.44
+2025-11-01,Sales salary,284.02
+2025-11-01,Production wages,365.5
+2025-11-01,Warehouse,106.67
+2025-11-01,Back office,60.0
+2025-11-01,Office,109.78
+2025-11-02,COGS,1110.51
+2025-11-02,Promotions,231.66
+2025-11-02,Sales salary,284.02
+2025-11-02,Production wages,365.5
+2025-11-02,Warehouse,106.67
+2025-11-02,Back office,60.0
+2025-11-02,Breakage & loss,381.89
+2025-11-03,COGS,1321.26
+2025-11-03,Promotions,143.73
+2025-11-03,Sales salary,284.02
+2025-11-03,Production wages,365.5
+2025-11-03,Warehouse,106.67
+2025-11-03,Back office,60.0
+2025-11-03,Marketing,135.07
+2025-11-04,COGS,725.85
+2025-11-04,Promotions,142.12
+2025-11-04,Sales salary,284.02
+2025-11-04,Production wages,365.5
+2025-11-04,Warehouse,106.67
+2025-11-04,Back office,60.0
+2025-11-05,COGS,767.35
+2025-11-05,Promotions,80.41
+2025-11-05,Sales salary,284.02
+2025-11-05,Production wages,365.5
+2025-11-05,Warehouse,106.67
+2025-11-05,Back office,60.0
+2025-11-06,COGS,538.44
+2025-11-06,Promotions,127.76
+2025-11-06,Sales salary,284.02
+2025-11-06,Production wages,365.5
+2025-11-06,Warehouse,106.67
+2025-11-06,Back office,60.0
+2025-11-06,Breakage & loss,239.96
+2025-11-07,COGS,1677.18
+2025-11-07,Promotions,196.93
+2025-11-07,Sales salary,284.02
+2025-11-07,Production wages,365.5
+2025-11-07,Warehouse,106.67
+2025-11-07,Back office,60.0
+2025-11-07,Breakage & loss,328.69
+2025-11-08,COGS,1154.24
+2025-11-08,Promotions,104.05
+2025-11-08,Sales salary,284.02
+2025-11-08,Production wages,365.5
+2025-11-08,Warehouse,106.67
+2025-11-08,Back office,60.0
+2025-11-09,COGS,1162.89
+2025-11-09,Promotions,113.9
+2025-11-09,Sales salary,284.02
+2025-11-09,Production wages,365.5
+2025-11-09,Warehouse,106.67
+2025-11-09,Back office,60.0
+2025-11-09,Breakage & loss,395.54
+2025-11-10,COGS,886.72
+2025-11-10,Promotions,142.25
+2025-11-10,Sales salary,284.02
+2025-11-10,Production wages,365.5
+2025-11-10,Warehouse,106.67
+2025-11-10,Back office,60.0
+2025-11-10,Marketing,181.66
+2025-11-11,COGS,417.05
+2025-11-11,Promotions,27.8
+2025-11-11,Sales salary,284.02
+2025-11-11,Production wages,365.5
+2025-11-11,Warehouse,106.67
+2025-11-11,Back office,60.0
+2025-11-12,COGS,1219.97
+2025-11-12,Promotions,226.79
+2025-11-12,Sales salary,284.02
+2025-11-12,Production wages,365.5
+2025-11-12,Warehouse,106.67
+2025-11-12,Back office,60.0
+2025-11-13,COGS,1565.24
+2025-11-13,Promotions,169.1
+2025-11-13,Sales salary,284.02
+2025-11-13,Production wages,365.5
+2025-11-13,Warehouse,106.67
+2025-11-13,Back office,60.0
+2025-11-13,Breakage & loss,130.97
+2025-11-14,COGS,919.79
+2025-11-14,Promotions,211.13
+2025-11-14,Sales salary,284.02
+2025-11-14,Production wages,365.5
+2025-11-14,Warehouse,106.67
+2025-11-14,Back office,60.0
+2025-11-15,COGS,746.28
+2025-11-15,Promotions,212.05
+2025-11-15,Sales salary,284.02
+2025-11-15,Production wages,365.5
+2025-11-15,Warehouse,106.67
+2025-11-15,Back office,60.0
+2025-11-16,COGS,668.38
+2025-11-16,Promotions,75.5
+2025-11-16,Sales salary,284.02
+2025-11-16,Production wages,365.5
+2025-11-16,Warehouse,106.67
+2025-11-16,Back office,60.0
+2025-11-17,COGS,613.5
+2025-11-17,Promotions,29.81
+2025-11-17,Sales salary,284.02
+2025-11-17,Production wages,365.5
+2025-11-17,Warehouse,106.67
+2025-11-17,Back office,60.0
+2025-11-17,Breakage & loss,384.52
+2025-11-17,Marketing,180.4
+2025-11-18,COGS,676.12
+2025-11-18,Promotions,200.29
+2025-11-18,Sales salary,284.02
+2025-11-18,Production wages,365.5
+2025-11-18,Warehouse,106.67
+2025-11-18,Back office,60.0
+2025-11-18,Breakage & loss,75.31
+2025-11-19,COGS,841.02
+2025-11-19,Promotions,109.44
+2025-11-19,Sales salary,284.02
+2025-11-19,Production wages,365.5
+2025-11-19,Warehouse,106.67
+2025-11-19,Back office,60.0
+2025-11-20,COGS,1148.91
+2025-11-20,Promotions,203.27
+2025-11-20,Sales salary,284.02
+2025-11-20,Production wages,365.5
+2025-11-20,Warehouse,106.67
+2025-11-20,Back office,60.0
+2025-11-21,COGS,422.4
+2025-11-21,Promotions,115.35
+2025-11-21,Sales salary,284.02
+2025-11-21,Production wages,365.5
+2025-11-21,Warehouse,106.67
+2025-11-21,Back office,60.0
+2025-11-22,COGS,1030.07
+2025-11-22,Promotions,94.4
+2025-11-22,Sales salary,284.02
+2025-11-22,Production wages,365.5
+2025-11-22,Warehouse,106.67
+2025-11-22,Back office,60.0
+2025-11-23,COGS,992.25
+2025-11-23,Promotions,283.31
+2025-11-23,Sales salary,284.02
+2025-11-23,Production wages,365.5
+2025-11-23,Warehouse,106.67
+2025-11-23,Back office,60.0
+2025-11-23,Breakage & loss,95.05
+2025-11-24,COGS,951.36
+2025-11-24,Promotions,300.23
+2025-11-24,Sales salary,284.02
+2025-11-24,Production wages,365.5
+2025-11-24,Warehouse,106.67
+2025-11-24,Back office,60.0
+2025-11-24,Marketing,180.2
+2025-11-25,COGS,302.56
+2025-11-25,Promotions,67.38
+2025-11-25,Sales salary,284.02
+2025-11-25,Production wages,365.5
+2025-11-25,Warehouse,106.67
+2025-11-25,Back office,60.0
+2025-11-26,COGS,280.67
+2025-11-26,Promotions,59.74
+2025-11-26,Sales salary,284.02
+2025-11-26,Production wages,365.5
+2025-11-26,Warehouse,106.67
+2025-11-26,Back office,60.0
+2025-11-27,COGS,581.81
+2025-11-27,Promotions,114.49
+2025-11-27,Sales salary,284.02
+2025-11-27,Production wages,365.5
+2025-11-27,Warehouse,106.67
+2025-11-27,Back office,60.0
+2025-11-28,COGS,1246.04
+2025-11-28,Promotions,252.43
+2025-11-28,Sales salary,284.02
+2025-11-28,Production wages,365.5
+2025-11-28,Warehouse,106.67
+2025-11-28,Back office,60.0
+2025-11-29,COGS,849.05
+2025-11-29,Promotions,62.22
+2025-11-29,Sales salary,284.02
+2025-11-29,Production wages,365.5
+2025-11-29,Warehouse,106.67
+2025-11-29,Back office,60.0
+2025-11-30,COGS,848.61
+2025-11-30,Promotions,142.9
+2025-11-30,Sales salary,284.02
+2025-11-30,Production wages,365.5
+2025-11-30,Warehouse,106.67
+2025-11-30,Back office,60.0
+2025-11-30,Breakage & loss,196.63
+2025-12-01,COGS,943.19
+2025-12-01,Promotions,90.49
+2025-12-01,Sales salary,275.59
+2025-12-01,Production wages,367.48
+2025-12-01,Warehouse,103.23
+2025-12-01,Back office,58.06
+2025-12-01,Breakage & loss,252.96
+2025-12-01,Marketing,241.84
+2025-12-01,Office,92.4
+2025-12-02,COGS,821.05
+2025-12-02,Promotions,154.06
+2025-12-02,Sales salary,275.59
+2025-12-02,Production wages,367.48
+2025-12-02,Warehouse,103.23
+2025-12-02,Back office,58.06
+2025-12-03,COGS,703.61
+2025-12-03,Promotions,130.93
+2025-12-03,Sales salary,275.59
+2025-12-03,Production wages,367.48
+2025-12-03,Warehouse,103.23
+2025-12-03,Back office,58.06
+2025-12-04,COGS,804.68
+2025-12-04,Promotions,62.11
+2025-12-04,Sales salary,275.59
+2025-12-04,Production wages,367.48
+2025-12-04,Warehouse,103.23
+2025-12-04,Back office,58.06
+2025-12-05,COGS,611.4
+2025-12-05,Promotions,79.15
+2025-12-05,Sales salary,275.59
+2025-12-05,Production wages,367.48
+2025-12-05,Warehouse,103.23
+2025-12-05,Back office,58.06
+2025-12-06,COGS,937.85
+2025-12-06,Promotions,176.89
+2025-12-06,Sales salary,275.59
+2025-12-06,Production wages,367.48
+2025-12-06,Warehouse,103.23
+2025-12-06,Back office,58.06
+2025-12-07,COGS,1006.58
+2025-12-07,Promotions,56.92
+2025-12-07,Sales salary,275.59
+2025-12-07,Production wages,367.48
+2025-12-07,Warehouse,103.23
+2025-12-07,Back office,58.06
+2025-12-07,Breakage & loss,280.68
+2025-12-08,COGS,927.04
+2025-12-08,Promotions,81.29
+2025-12-08,Sales salary,275.59
+2025-12-08,Production wages,367.48
+2025-12-08,Warehouse,103.23
+2025-12-08,Back office,58.06
+2025-12-08,Marketing,228.34
+2025-12-09,COGS,561.66
+2025-12-09,Promotions,79.23
+2025-12-09,Sales salary,275.59
+2025-12-09,Production wages,367.48
+2025-12-09,Warehouse,103.23
+2025-12-09,Back office,58.06
+2025-12-09,Breakage & loss,120.7
+2025-12-10,COGS,1272.65
+2025-12-10,Promotions,135.46
+2025-12-10,Sales salary,275.59
+2025-12-10,Production wages,367.48
+2025-12-10,Warehouse,103.23
+2025-12-10,Back office,58.06
+2025-12-10,Breakage & loss,137.96
+2025-12-11,COGS,831.88
+2025-12-11,Promotions,218.47
+2025-12-11,Sales salary,275.59
+2025-12-11,Production wages,367.48
+2025-12-11,Warehouse,103.23
+2025-12-11,Back office,58.06
+2025-12-11,Breakage & loss,157.84
+2025-12-12,COGS,610.69
+2025-12-12,Promotions,116.45
+2025-12-12,Sales salary,275.59
+2025-12-12,Production wages,367.48
+2025-12-12,Warehouse,103.23
+2025-12-12,Back office,58.06
+2025-12-12,Breakage & loss,122.44
+2025-12-13,COGS,827.45
+2025-12-13,Promotions,145.02
+2025-12-13,Sales salary,275.59
+2025-12-13,Production wages,367.48
+2025-12-13,Warehouse,103.23
+2025-12-13,Back office,58.06
+2025-12-13,Breakage & loss,141.25
+2025-12-14,COGS,867.74
+2025-12-14,Promotions,161.11
+2025-12-14,Sales salary,275.59
+2025-12-14,Production wages,367.48
+2025-12-14,Warehouse,103.23
+2025-12-14,Back office,58.06
+2025-12-15,COGS,339.89
+2025-12-15,Promotions,42.58
+2025-12-15,Sales salary,275.59
+2025-12-15,Production wages,367.48
+2025-12-15,Warehouse,103.23
+2025-12-15,Back office,58.06
+2025-12-15,Marketing,248.36
+2025-12-16,COGS,1106.63
+2025-12-16,Promotions,17.86
+2025-12-16,Sales salary,275.59
+2025-12-16,Production wages,367.48
+2025-12-16,Warehouse,103.23
+2025-12-16,Back office,58.06
+2025-12-17,COGS,1246.98
+2025-12-17,Promotions,181.88
+2025-12-17,Sales salary,275.59
+2025-12-17,Production wages,367.48
+2025-12-17,Warehouse,103.23
+2025-12-17,Back office,58.06
+2025-12-18,COGS,764.27
+2025-12-18,Promotions,98.75
+2025-12-18,Sales salary,275.59
+2025-12-18,Production wages,367.48
+2025-12-18,Warehouse,103.23
+2025-12-18,Back office,58.06
+2025-12-19,COGS,877.0
+2025-12-19,Promotions,87.22
+2025-12-19,Sales salary,275.59
+2025-12-19,Production wages,367.48
+2025-12-19,Warehouse,103.23
+2025-12-19,Back office,58.06
+2025-12-20,COGS,842.82
+2025-12-20,Promotions,64.91
+2025-12-20,Sales salary,275.59
+2025-12-20,Production wages,367.48
+2025-12-20,Warehouse,103.23
+2025-12-20,Back office,58.06
+2025-12-21,COGS,325.79
+2025-12-21,Promotions,67.12
+2025-12-21,Sales salary,275.59
+2025-12-21,Production wages,367.48
+2025-12-21,Warehouse,103.23
+2025-12-21,Back office,58.06
+2025-12-22,COGS,993.48
+2025-12-22,Promotions,242.22
+2025-12-22,Sales salary,275.59
+2025-12-22,Production wages,367.48
+2025-12-22,Warehouse,103.23
+2025-12-22,Back office,58.06
+2025-12-22,Marketing,237.75
+2025-12-23,COGS,675.93
+2025-12-23,Promotions,92.82
+2025-12-23,Sales salary,275.59
+2025-12-23,Production wages,367.48
+2025-12-23,Warehouse,103.23
+2025-12-23,Back office,58.06
+2025-12-24,COGS,1025.07
+2025-12-24,Promotions,63.95
+2025-12-24,Sales salary,275.59
+2025-12-24,Production wages,367.48
+2025-12-24,Warehouse,103.23
+2025-12-24,Back office,58.06
+2025-12-25,COGS,1080.82
+2025-12-25,Promotions,259.83
+2025-12-25,Sales salary,275.59
+2025-12-25,Production wages,367.48
+2025-12-25,Warehouse,103.23
+2025-12-25,Back office,58.06
+2025-12-25,Breakage & loss,225.13
+2025-12-26,COGS,425.6
+2025-12-26,Promotions,114.86
+2025-12-26,Sales salary,275.59
+2025-12-26,Production wages,367.48
+2025-12-26,Warehouse,103.23
+2025-12-26,Back office,58.06
+2025-12-27,COGS,1420.62
+2025-12-27,Promotions,204.86
+2025-12-27,Sales salary,275.59
+2025-12-27,Production wages,367.48
+2025-12-27,Warehouse,103.23
+2025-12-27,Back office,58.06
+2025-12-27,Breakage & loss,278.72
+2025-12-28,COGS,1491.12
+2025-12-28,Promotions,304.97
+2025-12-28,Sales salary,275.59
+2025-12-28,Production wages,367.48
+2025-12-28,Warehouse,103.23
+2025-12-28,Back office,58.06
+2025-12-29,COGS,1579.02
+2025-12-29,Promotions,172.86
+2025-12-29,Sales salary,275.59
+2025-12-29,Production wages,367.48
+2025-12-29,Warehouse,103.23
+2025-12-29,Back office,58.06
+2025-12-29,Marketing,133.67
+2025-12-30,COGS,541.96
+2025-12-30,Promotions,94.13
+2025-12-30,Sales salary,275.59
+2025-12-30,Production wages,367.48
+2025-12-30,Warehouse,103.23
+2025-12-30,Back office,58.06
+2025-12-31,COGS,615.6
+2025-12-31,Promotions,107.53
+2025-12-31,Sales salary,275.59
+2025-12-31,Production wages,367.48
+2025-12-31,Warehouse,103.23
+2025-12-31,Back office,58.06

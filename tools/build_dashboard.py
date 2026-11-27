@@ -4,7 +4,7 @@ import os, json
 import pandas as pd
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SAL = os.path.join(ROOT, "projects", "car-rental-sales-performance-powerbi", "data")
+MFG = os.path.join(ROOT, "projects", "glass-manufacturing-performance-powerbi", "data")
 CAR = os.path.join(ROOT, "projects", "car-rental-overview-powerbi", "data")
 OUT = os.path.join(ROOT, "docs")
 os.makedirs(OUT, exist_ok=True)
@@ -15,28 +15,28 @@ def rows(df):
     return json.loads(df.to_json(orient="values"))
 
 
-# ---------------- project 1: car rental sales performance ----------------
-r = pd.read_csv(os.path.join(SAL, "rentals.csv"), **NA)
-r["m"] = pd.to_datetime(r.date).dt.month
-daily = (r.groupby(["date", "car_class", "promotion_name"])
-         .agg(days=("rental_days", "sum"), sales=("amount_aud", "sum"), promo=("promo_cost_aud", "sum"), cost=("direct_cost_aud", "sum"),
-              n=("rental_id", "count"), newc=("is_new_customer", "sum"))
+# ---------------- project 1: glass manufacturing performance ----------------
+o = pd.read_csv(os.path.join(MFG, "orders.csv"), **NA)
+o["m"] = pd.to_datetime(o.date).dt.month
+daily = (o.groupby(["date", "product_line", "promotion_name"])
+         .agg(units=("quantity", "sum"), sales=("amount_aud", "sum"), promo=("promo_cost_aud", "sum"), cogs=("cogs_aud", "sum"),
+              n=("order_id", "count"), newc=("is_new_customer", "sum"))
          .round(2).reset_index())
-sub = pd.read_csv(os.path.join(SAL, "suburbs.csv"))
+sub = pd.read_csv(os.path.join(MFG, "suburbs.csv"))
 sidx = {s: i for i, s in enumerate(sub.suburb)}
-r["si"] = r.suburb.map(sidx)
-bysub = r.groupby(["m", "si"]).agg(sales=("amount_aud", "sum"), n=("rental_id", "count"), uniq=("customer_id", "nunique")).round(2).reset_index()
-cust = r.groupby("m").agg(uniq=("customer_id", "nunique"), new=("is_new_customer", "sum")).reset_index()
-dur = r.groupby(["m", "rental_days"]).size().reset_index(name="n")
-exp = pd.read_csv(os.path.join(SAL, "expenses.csv"))
-kpi = pd.read_csv(os.path.join(SAL, "staff_kpi.csv"))
-sales = {
-    "rent": rows(daily),     # date, class, promo, rentalDays, sales, promoCost, directCost, rentals, newCustomers
+o["si"] = o.suburb.map(sidx)
+bysub = o.groupby(["m", "si"]).agg(sales=("amount_aud", "sum"), n=("order_id", "count"), uniq=("customer_id", "nunique")).round(2).reset_index()
+cust = o.groupby("m").agg(uniq=("customer_id", "nunique"), new=("is_new_customer", "sum")).reset_index()
+size = o.groupby(["m", "quantity"]).size().reset_index(name="n")
+exp = pd.read_csv(os.path.join(MFG, "expenses.csv"))
+kpi = pd.read_csv(os.path.join(MFG, "staff_kpi.csv"))
+mfg = {
+    "ord": rows(daily),      # date, line, promo, units, sales, promoCost, cogs, orders, newCustomers
     "exp": rows(exp),        # date, category, amount
     "suburbs": rows(sub[["suburb", "lat", "lon"]]),
-    "bysub": rows(bysub),    # month, suburbIdx, sales, rentals, uniqueCustomers
+    "bysub": rows(bysub),    # month, suburbIdx, sales, orders, uniqueCustomers
     "cust": rows(cust),      # month, uniqueCustomers, newCustomers
-    "dur": rows(dur),        # month, rentalDays, rentals
+    "size": rows(size),      # month, unitsPerOrder, orders
     "staff": rows(kpi[["month", "staff", "total_made_aud", "kpi_target_aud", "base_salary_aud", "commission_aud", "bonus_aud"]]),
 }
 
@@ -63,5 +63,5 @@ carj = {
 
 with open(os.path.join(OUT, "data.js"), "w", encoding="utf-8") as f:
     f.write("// SYNTHETIC sample data (seeded). Not real company data.\n")
-    f.write("window.DATA = " + json.dumps({"sales": sales, "car": carj}, separators=(",", ":")) + ";\n")
+    f.write("window.DATA = " + json.dumps({"mfg": mfg, "car": carj}, separators=(",", ":")) + ";\n")
 print("data.js", os.path.getsize(os.path.join(OUT, "data.js")) // 1024, "KB")
