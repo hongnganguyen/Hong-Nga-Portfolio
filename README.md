@@ -12,25 +12,13 @@ Manufacturing business selling Premium and Luxury glass products in Sydney (AUD)
 **What the sample report shows** (synthetic, Nov 2025): sales **A$81.8K** (+24.7% MoM), profit margin **27.9%**, COGS **46%** of expenses, promotions **48%** of sales but a **55.5%** margin vs **67.1%** on full-price orders.
 **Design:** one accent color, five fixed expense-group colors, KPI cards with sparklines, profit bridge (waterfall), promotion margin vs full price, suburb map, sales concentration and growth by suburb, product mix by suburb, auto-written insights.
 
-**All 6 pages** (synthetic data):
+**Selected pages** (synthetic data):
 
 **1 · Overview**
 ![Overview](projects/glass-manufacturing-performance-powerbi/images/01-overview.png)
 
-**2 · Sales & Products**
-![Sales and products](projects/glass-manufacturing-performance-powerbi/images/02-sales-products.png)
-
-**3 · Promotions**
-![Promotions](projects/glass-manufacturing-performance-powerbi/images/03-promotions.png)
-
-**4 · Location**
-![Location](projects/glass-manufacturing-performance-powerbi/images/04-location.png)
-
 **5 · Profit & Costs**
 ![Profit and costs](projects/glass-manufacturing-performance-powerbi/images/05-profit-costs.png)
-
-**6 · Team**
-![Team](projects/glass-manufacturing-performance-powerbi/images/06-team.png)
 
 → [Project folder](projects/glass-manufacturing-performance-powerbi) · [sample report](projects/glass-manufacturing-performance-powerbi/reports/sample-report-2025-11.md) · [data](projects/glass-manufacturing-performance-powerbi/data)
 
@@ -40,13 +28,10 @@ Car rental operation in Sydney (AUD), answering *how much does the fleet earn an
 **What the sample report shows** (synthetic, Nov 2025): sales **A$27.6K** (-9.7% MoM), profit margin **24.2%**, material costs **75%** of expenses, **33 of 47** rentable cars on rent at month end, **85%** of customers paid.
 **Design:** light page with a teal navigation panel, cyan for sales, navy for expenses, amber for highlights, Operation vs Invest split kept on every expense view, expandable expense detail table, status colors with a natural meaning.
 
-**All 4 pages** (synthetic data):
+**Selected pages** (synthetic data):
 
 **1 · Overview**
 ![Overview](projects/car-rental-overview-powerbi/images/01-overview.png)
-
-**2 · Expenses**
-![Expenses](projects/car-rental-overview-powerbi/images/02-expenses.png)
 
 **3 · Material Costs**
 ![Material costs](projects/car-rental-overview-powerbi/images/03-material-costs.png)
