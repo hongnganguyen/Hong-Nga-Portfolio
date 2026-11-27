@@ -4,26 +4,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hong Nga · Power BI Dashboard Portfolio</title>
-<meta name="description" content="Interactive recreations of two Power BI dashboards (automotive glass service and car rental) built on synthetic data.">
+<meta name="description" content="Interactive recreations of two Power BI car-rental dashboards (sales performance and fleet &amp; finance overview) built on synthetic data.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
   :root{--ink:#111;--muted:#667085;--line:#e4e7ec;--card:#fff;--accent:#ff5500;--page:#e9e7ea;--good:#1f9e32;--bad:#d92d20}
+  body.t-fleet{--accent:#c9a0dc}
   *{box-sizing:border-box}
   body{margin:0;min-height:100vh;background:var(--page);color:var(--ink);font:13px/1.4 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
-  .top{background:#000;color:#fff;padding:14px 14px 10px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+  .top{background:#000;color:#fff;padding:14px 14px 0}
+  .row1{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
   .top h1{margin:0;font-size:18px;letter-spacing:.3px;font-weight:700}
   .top h1 b{color:var(--accent)}
-  .nav{display:flex;gap:6px;flex-wrap:wrap}
-  .nav button{background:#000;color:#fff;border:1px solid #333;border-radius:4px;padding:6px 10px;font:600 12px inherit;font-family:inherit;cursor:pointer}
-  .nav button[aria-selected="true"]{color:var(--accent);border-color:var(--accent)}
-  body.t-car{--accent:#c9a0dc}
-  .nav button{background:#0d0d0d;border-color:#262626;font-size:13px}
-  .nav button[aria-selected="true"]{border-color:#0d0d0d;border-bottom:2px solid var(--accent);border-radius:0}
+  .proj{display:flex;gap:6px;flex-wrap:wrap}
+  .proj button{background:#000;color:#fff;border:1px solid #444;border-radius:999px;padding:5px 12px;font:600 12px "Segoe UI",system-ui,sans-serif;cursor:pointer}
+  .proj button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#000}
+  .tabs{display:flex;gap:2px;flex-wrap:wrap;margin-top:10px}
+  .tabs button{background:transparent;color:#b8b8b8;border:0;border-bottom:3px solid transparent;padding:8px 12px;font:600 13px "Segoe UI",system-ui,sans-serif;cursor:pointer}
+  .tabs button[aria-selected="true"]{color:#fff;border-bottom-color:var(--accent)}
   .bar{display:flex;flex-wrap:wrap;gap:14px;align-items:end;justify-content:space-between;padding:10px 14px}
   .bar .f{display:flex;gap:14px;align-items:end}
   .bar label{display:flex;flex-direction:column;font-size:11px;font-weight:600;gap:2px}
+  .purpose{font-size:12px;color:#344054;max-width:560px}
   select{border:1px solid #c7ccd4;border-radius:6px;padding:5px 8px;background:#fff;font:inherit}
-  .note{font-size:12px;color:#344054;background:#fffaeb;border:1px solid #fedf89;border-radius:8px;padding:6px 10px;max-width:640px}
+  .note{font-size:12px;color:#344054;background:#fffaeb;border:1px solid #fedf89;border-radius:8px;padding:6px 10px;max-width:560px}
   .wrap{padding:0 14px 14px}
   .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px;margin-bottom:12px}
   .card{background:var(--card);border-radius:12px;padding:10px 12px;min-width:0;box-shadow:0 1px 2px rgba(16,24,40,.06)}
@@ -44,7 +47,7 @@
   tr.hl td{background:#86f595;font-weight:700}
   tr.grp td{background:#eceef2;font-weight:700;cursor:pointer}
   .scroll{overflow:auto;max-height:420px}
-  .ins{font-size:12px;line-height:1.5}.ins ul{margin:4px 0 0 16px;padding:0}.ins li{margin-bottom:6px}
+  .ins{font-size:12.5px;line-height:1.5}.ins ul{margin:4px 0 0 16px;padding:0}.ins li{margin-bottom:6px}
   .hdr2{display:flex;gap:12px}.hdr2 div{flex:1;text-align:center;color:#fff;font-weight:700;padding:8px;border-radius:4px}
   .hdr2 .a{background:#000}.hdr2 .b{background:#326a96}
   footer{padding:6px 14px 18px;font-size:12px;color:#475467}
@@ -53,80 +56,117 @@
   @media (max-width:900px){.c2,.c3,.c4,.c5,.c6,.c7,.c8{grid-column:span 12}.ch{height:240px}}
 </style>
 </head>
-<body class="t-glass">
+<body class="t-sales">
 <div class="top">
-  <h1 id="title">SALES PERFORMANCE DASHBOARD | <b>OVERVIEW</b></h1>
-  <div class="nav" role="tablist">
-    <button data-p="g-over" aria-selected="true">Glass · Overview</button>
-    <button data-p="g-work" aria-selected="false">Glass · Worker</button>
-    <button data-p="g-loc" aria-selected="false">Glass · Location</button>
-    <button data-p="c-over" aria-selected="false">Car Rental</button>
-    <button data-p="c-det" aria-selected="false">Car Rental · Detail</button>
+  <div class="row1">
+    <h1 id="title">CAR RENTAL SALES PERFORMANCE | <b>OVERVIEW</b></h1>
+    <div class="proj" role="tablist" aria-label="Project">
+      <button data-proj="sales" aria-selected="true">1 · Sales Performance</button>
+      <button data-proj="fleet" aria-selected="false">2 · Fleet &amp; Finance Overview</button>
+    </div>
   </div>
+  <div class="tabs" id="tabs" role="tablist"></div>
 </div>
 <div class="bar">
   <div class="f">
     <label>Month <select id="month"></select></label>
     <label>Year <select id="year"><option>2025</option></select></label>
+    <div class="purpose" id="purpose"></div>
   </div>
   <div class="note"><strong>Synthetic data.</strong> Interactive recreation of two real Power BI dashboards using randomly generated numbers. Not production screenshots; no figure is a real business result. <a href="https://github.com/hongnganguyen/Hong-Nga-Portfolio">Repo</a></div>
 </div>
 
 <div class="wrap">
-<!-- ============ GLASS OVERVIEW ============ -->
-<section id="g-over">
-  <div class="grid" id="g-kpis"></div>
+<!-- ================= PROJECT 1 · SALES PERFORMANCE ================= -->
+<section id="s-over">
+  <div class="grid" id="s-kpis"></div>
   <div class="grid">
-    <div class="card c7"><h2>Sales &amp; Total Expenses by day</h2><div class="ch t" id="g-salesexp"></div></div>
-    <div class="card c5"><h2>Profit Trendline</h2><div class="ch t" id="g-profit"></div></div>
+    <div class="card c7"><h2>Rental sales &amp; total expenses by day</h2><div class="ch t" id="s-salesexp"></div></div>
+    <div class="card c5"><h2>Profit trendline</h2><div class="ch t" id="s-profitline"></div></div>
   </div>
   <div class="grid">
-    <div class="card c5"><h2>Total Expense Breakdown</h2><div class="ch" id="g-expdonut"></div></div>
-    <div class="card c7"><h2>Total Expense Detail</h2><div class="ch" id="g-expdetail"></div></div>
+    <div class="card c7"><h2>Sales, expenses and profit margin · last 6 months</h2><div class="ch" id="s-trend6"></div></div>
+    <div class="card c5"><h2>Summary | P&amp;L</h2><div class="scroll" id="s-summary"></div></div>
   </div>
   <div class="grid">
-    <div class="card c5"><h2>Summary | Automotive Glass</h2><div id="g-summary"></div></div>
-    <div class="card c7"><h2>Expenses Breakdown by month</h2><div class="ch" id="g-expbr"></div></div>
-  </div>
-  <div class="grid">
-    <div class="card c7"><h2>Promotion performance</h2><div class="scroll" id="g-promotbl"></div></div>
-    <div class="card c5"><h2>Promotion Name by Total Sales</h2><div class="ch" id="g-promo"></div></div>
-  </div>
-  <div class="grid">
-    <div class="card c5"><h2>Quantity Trendline</h2><div class="ch" id="g-qty"></div></div>
-    <div class="card c7"><h2>Sales by customer suburb (bubble = sales)</h2><div class="map" id="g-map1"></div></div>
-  </div>
-  <div class="grid">
-    <div class="card c12"><div class="hdr2"><div class="a" id="g-lm">LAST MONTH</div><div class="b" id="g-tm">THIS MONTH</div></div></div>
-  </div>
-  <div class="grid">
-    <div class="card c4"><h2>Daily profit · last month</h2><div class="scroll" id="g-lmtbl"></div></div>
-    <div class="card c4"><h2>Insights <small style="font-weight:400;color:#667085">(auto-generated from the synthetic data)</small></h2><div class="ins" id="g-ins"></div></div>
-    <div class="card c4"><h2>Daily profit · this month vs last month</h2><div class="scroll" id="g-tmtbl"></div></div>
-  </div>
-  <div class="grid">
-    <div class="card c12"><h2>Profit vs same period last month (SPLM) and variance</h2><div class="ch t" id="g-splm"></div></div>
+    <div class="card c12"><h2>Insights <small style="font-weight:400;color:#667085">(auto-generated from the synthetic data)</small></h2><div class="ins" id="s-ins"></div></div>
   </div>
 </section>
 
-<!-- ============ GLASS WORKER ============ -->
-<section id="g-work" hidden>
-  <div class="grid" id="w-kpis"></div>
+<section id="s-sales" hidden>
+  <div class="grid" id="s-skpis"></div>
   <div class="grid">
-    <div class="card c6"><h2>Total made by sales staff: last month vs this month</h2><div class="ch t" id="w-chart"></div></div>
-    <div class="card c6"><h2>KPI achievement, bonus and salary</h2><div class="scroll" id="w-table"></div></div>
+    <div class="card c7"><h2>Rentals per day by car class</h2><div class="ch" id="s-qty"></div></div>
+    <div class="card c5"><h2>Sales by car class</h2><div class="ch" id="s-clsdonut"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c5"><h2>Average sales by weekday</h2><div class="ch" id="s-wday"></div></div>
+    <div class="card c7"><h2>Rental length distribution (rentals by number of days)</h2><div class="ch" id="s-dur"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c12"><h2>Monthly rental sales by car class · full year</h2><div class="ch" id="s-clsm"></div></div>
   </div>
 </section>
 
-<!-- ============ GLASS LOCATION ============ -->
-<section id="g-loc" hidden>
+<section id="s-promo" hidden>
+  <div class="grid" id="s-pkpis"></div>
   <div class="grid">
-    <div class="card c8"><h2>Sales by customer suburb</h2><div class="map" id="g-map2" style="height:520px"></div></div>
-    <div class="card c4"><h2>Suburb ranking</h2><div class="scroll" id="l-table" style="max-height:520px"></div></div>
+    <div class="card c7"><h2>Promotion performance</h2><div class="scroll" id="s-promotbl"></div></div>
+    <div class="card c5"><h2>Promotion name by sales</h2><div class="ch" id="s-promodonut"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c6"><h2>Margin by promotion vs full price</h2><div class="ch" id="s-promomargin"></div></div>
+    <div class="card c6"><h2>Promotion share of sales by month</h2><div class="ch" id="s-promoshare"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c12"><h2>Promotion insights</h2><div class="ins" id="s-promoins"></div></div>
   </div>
 </section>
 
-<!-- ============ CAR OVERVIEW ============ -->
+<section id="s-cust" hidden>
+  <div class="grid" id="s-ckpis"></div>
+  <div class="grid">
+    <div class="card c8"><h2>Rental sales by customer suburb (bubble = sales)</h2><div class="map" id="s-map" style="height:460px"></div></div>
+    <div class="card c4"><h2>Suburb ranking</h2><div class="scroll" id="s-suburbtbl" style="max-height:460px"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c6"><h2>New vs returning customers by month</h2><div class="ch" id="s-newret"></div></div>
+    <div class="card c6"><h2>Sales concentration: top suburbs and cumulative share</h2><div class="ch" id="s-pareto"></div></div>
+  </div>
+</section>
+
+<section id="s-profit" hidden>
+  <div class="grid" id="s-fkpis"></div>
+  <div class="grid">
+    <div class="card c7"><h2>Profit bridge: revenue to profit</h2><div class="ch t" id="s-waterfall"></div></div>
+    <div class="card c5"><h2>Total expense breakdown</h2><div class="ch t" id="s-expdonut"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c5"><h2>Total expense detail</h2><div class="ch" id="s-expdetail"></div></div>
+    <div class="card c7"><h2>Expenses by month · last 6 months</h2><div class="ch" id="s-expbr"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c12"><div class="hdr2"><div class="a" id="s-lm">LAST MONTH</div><div class="b" id="s-tm">THIS MONTH</div></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c4"><h2>Daily profit · last month</h2><div class="scroll" id="s-lmtbl"></div></div>
+    <div class="card c4"><h2>Insights <small style="font-weight:400;color:#667085">(auto-generated)</small></h2><div class="ins" id="s-pins"></div></div>
+    <div class="card c4"><h2>Daily profit · this month vs last month</h2><div class="scroll" id="s-tmtbl"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c12"><h2>Profit vs same period last month (SPLM) and variance</h2><div class="ch t" id="s-splm"></div></div>
+  </div>
+</section>
+
+<section id="s-team" hidden>
+  <div class="grid" id="s-tkpis"></div>
+  <div class="grid">
+    <div class="card c6"><h2>Rental sales made by sales staff: last month vs this month</h2><div class="ch t" id="s-tchart"></div></div>
+    <div class="card c6"><h2>KPI achievement, commission, bonus and salary</h2><div class="scroll" id="s-ttable"></div></div>
+  </div>
+</section>
+
+<!-- ================= PROJECT 2 · FLEET & FINANCE OVERVIEW ================= -->
 <section id="c-over" hidden>
   <div class="grid" id="c-kpis"></div>
   <div class="grid">
@@ -150,7 +190,6 @@
   </div>
 </section>
 
-<!-- ============ CAR DETAIL ============ -->
 <section id="c-det" hidden>
   <div class="grid" id="d-kpis"></div>
   <div class="grid">
@@ -171,10 +210,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="data.js"></script>
 <script>
+/* ===== shared helpers, exposed as window.BI for sales.js ===== */
 (function(){
 "use strict";
-var D=window.DATA,MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-var ORANGE="#ff5500",BLACK="#1a1a1a",PURPLE="#a666b0",GREEN="#1f9e32",RED="#d92d20",BLUE="#326a96";
+var MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 function $(i){return document.getElementById(i);}
 function pad(n){return n<10?"0"+n:""+n;}
 function dim(m){return new Date(2025,m,0).getDate();}
@@ -202,8 +241,8 @@ function spark(v,color){
 }
 function badge(d,goodUp,txt){if(d==null)return "";var up=d>=0,good=goodUp?up:!up;return '<div class="d '+(good?"up":"down")+'">'+(up?"▲ ":"▼ ")+Math.abs(d*100).toFixed(1)+"% "+(txt||"vs last month")+"</div>";}
 function kpi(span,label,val,d,goodUp,series,color){return '<div class="card kpi c'+span+'"><div class="l">'+label+'</div><div class="v">'+val+'</div>'+badge(d,goodUp)+(series?spark(series,color):"")+"</div>";}
-function tbl(cols,rows,o){
-  o=o||{};var mx={};cols.forEach(function(c,i){if(c.bar){mx[i]=Math.max.apply(null,rows.map(function(r){return Math.abs(r.v[i])||0;}).concat([1e-9]));}});
+function tbl(cols,rows){
+  var mx={};cols.forEach(function(c,i){if(c.bar){mx[i]=Math.max.apply(null,rows.map(function(r){return Math.abs(r.v[i])||0;}).concat([1e-9]));}});
   var h="<table><thead><tr>"+cols.map(function(c,i){return '<th data-i="'+i+'">'+c.t+"</th>";}).join("")+"</tr></thead><tbody>";
   rows.forEach(function(r){h+="<tr"+(r.cls?' class="'+r.cls+'"':"")+(r.attr||"")+">"+cols.map(function(c,i){var v=r.v[i],s=c.f?c.f(v,r):v;
     if(c.bar){var w=Math.min(100,Math.abs(v)/mx[i]*100);return '<td class="bar2"><i style="width:'+w.toFixed(1)+"%;background:"+(v<0?"#f7c6b3":(r.bc||c.bar))+'"></i><span>'+s+"</span></td>";}
@@ -221,16 +260,6 @@ function stacked(id,cats,series,colors){
   opt(id,{tooltip:{trigger:"axis",axisPointer:{type:"shadow"},valueFormatter:function(v){return usd(v,true);}},legend:{top:0,type:"scroll",textStyle:{color:"#475467"}},color:colors,grid:GR,xAxis:xcat(cats),yAxis:yval(),
     series:series.map(function(s){return {name:s[0],type:"bar",stack:"t",data:s[1],label:{show:true,color:"#fff",fontSize:10,formatter:function(p){return p.value>=700?kk(p.value):"";}}};})});
 }
-
-/* ======================= GLASS DATA ======================= */
-var G=D.retail,GS={},GQ1={},GQ2={},GE={},GEC={},GP={},GSM={},GPM={},GCM={};
-G.orders.forEach(function(r){var m=mo(r[0]);add(GS,r[0],r[4]);add(r[1]==="Premium"?GQ1:GQ2,r[0],r[3]);add(GSM,m,r[4]);add(GCM,m,r[6]);
-  if(r[2]!=="None"){GP[m]=GP[m]||{};var o=GP[m][r[2]]=GP[m][r[2]]||{n:0,s:0,p:0,c:0};o.n+=r[7];o.s+=r[4];o.p+=r[5];o.c+=r[6];}});
-G.exp.forEach(function(r){var m=mo(r[0]);add(GE,r[0],r[2]);GEC[m]=GEC[m]||{};add(GEC[m],r[1],r[2]);});
-function gMonth(m){
-  var s=dayArr(GS,m),e=dayArr(GE,m),p=s.map(function(x,i){return x-e[i];});
-  return {s:s,e:e,p:p,q1:dayArr(GQ1,m),q2:dayArr(GQ2,m),S:sum(s),E:sum(e),P:sum(p)};
-}
 var maps={};
 function makeMap(id){
   if(!window.L)return null;
@@ -239,86 +268,17 @@ function makeMap(id){
     maps[id]={map:mp,layer:L.layerGroup().addTo(mp)};}
   return maps[id];
 }
-function drawMap(id,m){
-  var mm=makeMap(id);if(!mm)return;mm.layer.clearLayers();
-  var rows=G.bysub.filter(function(r){return r[0]===m;}),mx=Math.max.apply(null,rows.map(function(r){return r[2];}).concat([1]));
-  rows.forEach(function(r){var s=G.suburbs[r[1]];
-    L.circleMarker([s[1],s[2]],{radius:5+22*Math.sqrt(r[2]/mx),color:"#12b206",weight:1,fillColor:"#2fd02a",fillOpacity:.6})
-     .bindTooltip(s[0]+": "+usd(r[2],true)+" · "+r[3]+" orders").addTo(mm.layer);});
-  setTimeout(function(){mm.map.invalidateSize();},60);
-}
-function renderGOver(m){
-  var c=gMonth(m),p=m>1?gMonth(m-1):null,days=[];for(var d=1;d<=dim(m);d++)days.push(d);
-  var q1=sum(c.q1),q2=sum(c.q2);
-  $("g-kpis").innerHTML=
-    kpi(3,"Profit · margin "+(c.S?(c.P/c.S*100).toFixed(1):"0")+"%",'<span class="'+(c.P>=0?"up":"down")+'">'+usd(c.P)+"</span>",p?dlt(c.P,p.P):null,true,c.p,ORANGE)+
-    kpi(3,"Total Sales",usd(c.S),p?dlt(c.S,p.S):null,true,c.s,"#5fc8d6")+
-    kpi(3,"Total Expenses",usd(c.E),p?dlt(c.E,p.E):null,false,c.e,"#333")+
-    '<div class="card kpi c3 two"><div><div class="l">Total Premium</div><div class="v">'+q1+"</div>"+badge(p?dlt(q1,sum(p.q1)):null,true,"MoM")+"</div><div><div class=\"l\">Total Luxury</div><div class=\"v\">"+q2+"</div>"+badge(p?dlt(q2,sum(p.q2)):null,true,"MoM")+"</div></div>";
-  opt("g-profit",{tooltip:{trigger:"axis",valueFormatter:function(v){return usd(v,true);}},grid:GR,xAxis:xcat(days),yAxis:yval(),
-    series:[{type:"line",smooth:true,data:c.p.map(function(v){return +v.toFixed(0);}),itemStyle:{color:"#4da3ff"},areaStyle:{color:"#4da3ff",opacity:.2},markLine:{silent:true,symbol:"none",data:[{yAxis:0}],lineStyle:{color:"#999"}},
-      markPoint:{data:[{type:"max",name:"Best"},{type:"min",name:"Worst"}],symbolSize:44,label:{formatter:function(q){return kk(q.value);},fontSize:10,color:"#fff"},itemStyle:{color:"#4da3ff"}}}]});
-  opt("g-salesexp",{tooltip:{trigger:"axis",valueFormatter:function(v){return usd(v,true);}},legend:{top:0},color:[ORANGE,"#111"],grid:GR,xAxis:xcat(days),yAxis:yval(),
-    series:[{name:"Total Sales",type:"bar",stack:"x",data:c.s.map(Math.round)},{name:"Total Expenses",type:"bar",stack:"x",data:c.e.map(Math.round)}]});
-  var ecm=GEC[m]||{},GC={COG:"#161616","Worker Salary":"#0e4a7a","Sales Salary":"#d6d6d6",Promo:"#ff7733",Warehouse:"#7a7a7a","Back Office":"#19a803",Loss:"#5f8fb3",MKT:"#bdbdbd","Office VN":"#f2c94c"};
-  donut("g-expdonut",Object.keys(ecm).map(function(k){return {name:k,value:+ecm[k].toFixed(2)};}),usd(c.E),GC);
-  var grp=[["HR",(ecm["Worker Salary"]||0)+(ecm["Sales Salary"]||0),"#0e4a7a"],["COG",ecm.COG||0,"#111"],["Promo",ecm.Promo||0,ORANGE],["Warehouse",ecm.Warehouse||0,"#7a7a7a"],["Back Office",ecm["Back Office"]||0,"#19a803"],["Loss",ecm.Loss||0,"#5f8fb3"],["MKT",ecm.MKT||0,"#bdbdbd"],["Office VN",ecm["Office VN"]||0,"#f2c94c"]].sort(function(a,b){return a[1]-b[1];});
-  opt("g-expdetail",{tooltip:{valueFormatter:function(v){return usd(v,true);}},grid:{left:90,right:90,top:10,bottom:20},xAxis:yval(),yAxis:{type:"category",data:grp.map(function(r){return r[0];}),axisLabel:{color:"#475467"},axisLine:AX.axisLine,axisTick:AX.axisTick},
-    series:[{type:"bar",data:grp.map(function(r){return {value:Math.round(r[1]),itemStyle:{color:r[2]}};}),label:{show:true,position:"right",formatter:function(q){return usd(q.value)+" ("+(q.value/(c.E||1)*100).toFixed(0)+"%)";}}}]});
-  opt("g-qty",{tooltip:{trigger:"axis"},legend:{top:0},color:[ORANGE,BLACK],grid:GR,xAxis:xcat(days),yAxis:yval(),
-    series:[{name:"Total Premium",type:"bar",stack:"q",data:c.q1,label:{show:true,color:"#fff",fontSize:9}},{name:"Total Luxury",type:"bar",stack:"q",data:c.q2,label:{show:true,color:"#fff",fontSize:9}}]});
-  drawMap("g-map1",m);
-  var from=Math.max(1,m-5),cats=[],cl=["COG","Worker Salary","Sales Salary","Promo","Warehouse","Back Office","Loss","MKT","Office VN"];
-  for(var i=from;i<=m;i++)cats.push(MN[i-1]);
-  stacked("g-expbr",cats,cl.map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round((GEC[i]||{})[k]||0));return [k,a];}),["#161616","#0e4a7a","#d6d6d6","#ff7733","#7a7a7a","#19a803","#5f8fb3","#bdbdbd","#f2c94c"]);
-  var pm=GP[m]||{},names=Object.keys(pm).sort(function(a,b){return pm[b].s-pm[a].s;});
-  donut("g-promo",names.map(function(k){return {name:k,value:+pm[k].s.toFixed(2)};}),null,{BOGO:ORANGE,B4G4:"#1a1a1a",BSGM:"#7a7a7a",B3G2:"#bdbdbd",B2G2:"#e0e0e0",IM:"#326a96"});
-  $("g-promotbl").innerHTML=tbl([{t:"Promotion"},{t:"Number Promo"},{t:"Promo Expenses",bar:ORANGE,f:function(v){return usd(v,true);}},{t:"Cost",f:function(v){return usd(v,true);}},{t:"Total Sales",bar:ORANGE,f:function(v){return usd(v,true);}},{t:"Profit",bar:"#6f95b3",f:function(v){return usd(v,true);}}],
-    names.map(function(k){var o=pm[k];return {v:[k,o.n,o.p,o.c,o.s,o.s-o.c-o.p]};}));
-  var ec=GEC[m]||{},hr=(ec["Worker Salary"]||0)+(ec["Sales Salary"]||0);
-  var srows=[["Revenue",c.S],["HR",hr],["COG",ec.COG||0],["Profit",c.P],["Promo Cost",ec.Promo||0],["Warehouse",ec.Warehouse||0],["Back Office",ec["Back Office"]||0],["Loss",ec.Loss||0],["MKT Expenses",ec.MKT||0],["Office VN",ec["Office VN"]||0]];
-  $("g-summary").innerHTML=tbl([{t:"Item"},{t:"Amount",bar:"#ffd1ba",f:function(v){return usd(v,true);}}],srows.map(function(r){return {v:r,bc:r[0]==="Revenue"?"#a3ddb3":r[0]==="Profit"?"#f5c4af":null};}));
-  $("g-lm").textContent="LAST MONTH · "+(m>1?MN[m-2]:"-");$("g-tm").textContent="THIS MONTH · "+MN[m-1];
-  var fmtv=function(v){return usd(v,true);};
-  $("g-lmtbl").innerHTML=p?tbl([{t:"Day"},{t:"Profit",bar:"#6f95b3",f:fmtv}],p.p.map(function(v,i){return {v:[i+1,v]};})):"<p>No previous month.</p>";
-  $("g-tmtbl").innerHTML=tbl([{t:"Day"},{t:"Profit",bar:"#6f95b3",f:fmtv},{t:"vs SPLM",bar:"#7fd18b",f:function(v){return '<span class="'+(v>=0?"up":"down")+'">'+usd(v,true)+"</span>";}}],
-    c.p.map(function(v,i){return {v:[i+1,v,p&&p.p[i]!==undefined?v-p.p[i]:0]};}));
-  // insights
-  var best=c.p.indexOf(Math.max.apply(null,c.p)),worst=c.p.indexOf(Math.min.apply(null,c.p)),neg=c.p.filter(function(x){return x<0;}).length;
-  var we=[],wd=[];c.p.forEach(function(v,i){var dw=new Date(2025,m-1,i+1).getDay();(dw===0||dw===6?we:wd).push(v);});
-  var avg=function(a){return a.length?sum(a)/a.length:0;};
-  var topn=names[0],worstRatio=names.slice().sort(function(a,b){return pm[b].p/pm[b].s-pm[a].p/pm[a].s;})[0];
-  var li=[];
-  if(p)li.push("Profit is <b>"+usd(c.P)+"</b>, "+(c.P>=p.P?"up ":"down ")+"<b>"+Math.abs(dlt(c.P,p.P)*100).toFixed(1)+"%</b> versus "+MN[m-2]+"; sales moved "+(dlt(c.S,p.S)*100).toFixed(1)+"% and expenses "+(dlt(c.E,p.E)*100).toFixed(1)+"%.");
-  li.push("Best day: <b>"+MN[m-1]+" "+(best+1)+"</b> ("+usd(c.p[best])+"); weakest day: <b>"+MN[m-1]+" "+(worst+1)+"</b> ("+usd(c.p[worst])+"). "+neg+" loss-making day(s) in the month.");
-  li.push("Weekend days average <b>"+usd(avg(we))+"</b> profit vs <b>"+usd(avg(wd))+"</b> on weekdays"+(avg(we)>avg(wd)?": weekends carry the month.":": promotions could target the weaker weekend days."));
-  if(topn)li.push("<b>"+topn+"</b> is the top promotion by sales ("+usd(pm[topn].s)+"). <b>"+worstRatio+"</b> has the heaviest promo cost relative to its sales ("+(pm[worstRatio].p/pm[worstRatio].s*100).toFixed(0)+"%): review it before extending the program.");
-  $("g-ins").innerHTML="<ul><li>"+li.join("</li><li>")+"</li></ul>";
-  opt("g-splm",{tooltip:{trigger:"axis",valueFormatter:function(v){return usd(v,true);}},legend:{top:0},color:["#111",BLUE,GREEN],grid:GR,xAxis:xcat(days),yAxis:yval(),
-    series:[{name:"Profit",type:"line",smooth:true,data:c.p.map(Math.round)},
-      {name:"Profit SPLM",type:"line",smooth:true,data:p?p.p.map(Math.round):[],lineStyle:{type:"dashed"}},
-      {name:"vs profit SPLM",type:"bar",data:c.p.map(function(v,i){return {value:Math.round(v-(p?p.p[i]||0:0)),itemStyle:{color:v-(p?p.p[i]||0:0)>=0?GREEN:RED}};})}]});
-}
-function renderGWork(m){
-  var st=G.staff,cur=st.filter(function(r){return r[0]===m;}),prv=st.filter(function(r){return r[0]===m-1;});
-  var pm={};prv.forEach(function(r){pm[r[1]]=r[2];});
-  var tot=sum(cur.map(function(r){return r[2];})),totp=sum(prv.map(function(r){return r[2];}));
-  var sal=sum(cur.map(function(r){return r[4]+r[5]+r[6];})),hit=cur.filter(function(r){return r[2]>=r[3];}).length;
-  $("w-kpis").innerHTML=kpi(3,"Total made",usd(tot),m>1?dlt(tot,totp):null,true)+kpi(3,"Staff reaching KPI",hit+" / "+cur.length)+kpi(3,"Total sales salary",usd(sal))+kpi(3,"KPI target per person",usd(cur[0]?cur[0][3]:0));
-  var names=cur.map(function(r){return r[1];});
-  opt("w-chart",{tooltip:{trigger:"axis",valueFormatter:function(v){return usd(v,true);}},legend:{top:0},color:["#9aa3b5",ORANGE],grid:GR,xAxis:xcat(names),yAxis:yval(),
-    series:[{name:m>1?"Total made "+MN[m-2]:"Previous",type:"bar",data:cur.map(function(r){return Math.round(pm[r[1]]||0);})},{name:"Total made "+MN[m-1],type:"bar",data:cur.map(function(r){return Math.round(r[2]);}),markLine:{symbol:"none",data:[{yAxis:cur[0]?cur[0][3]:0,name:"KPI"}],lineStyle:{color:"#111",type:"dashed"}}}]});
-  var f=function(v){return usd(v,true);};
-  $("w-table").innerHTML=tbl([{t:"Staff"},{t:"Total made",bar:ORANGE,f:f},{t:"% vs LM",f:function(v){return v==null?"-":'<span class="'+(v>=0?"up":"down")+'">'+(v>=0?"▲ ":"▼ ")+Math.abs(v*100).toFixed(1)+"%</span>";}},{t:"KPI %",f:function(v){return (v*100).toFixed(0)+"%";}},{t:"Commission",f:f},{t:"Bonus",f:f},{t:"Total salary",f:f}],
-    cur.map(function(r){return {v:[r[1],r[2],pm[r[1]]?dlt(r[2],pm[r[1]]):null,r[2]/r[3],r[5],r[6],r[4]+r[5]+r[6]]};}));
-}
-function renderGLoc(m){
-  drawMap("g-map2",m);
-  var rows=G.bysub.filter(function(r){return r[0]===m;}).sort(function(a,b){return b[2]-a[2];});
-  $("l-table").innerHTML=tbl([{t:"Suburb"},{t:"Orders"},{t:"Sales",bar:"#2fd02a",f:function(v){return usd(v,true);}}],rows.map(function(r){return {v:[G.suburbs[r[1]][0],r[3],r[2]]};}));
-}
+window.BI={D:window.DATA,MN:MN,$:$,pad:pad,dim:dim,dk:dk,mo:mo,sum:sum,usd:usd,kk:kk,dlt:dlt,dayArr:dayArr,add:add,charts:charts,ch:ch,opt:opt,AX:AX,xcat:xcat,yval:yval,GR:GR,spark:spark,badge:badge,kpi:kpi,tbl:tbl,donut:donut,stacked:stacked,makeMap:makeMap,pages:{}};
+})();
+</script>
+<script src="sales.js"></script>
+<script>
+/* ===== project 2 (fleet & finance) + page wiring ===== */
+(function(){
+"use strict";
+var B=window.BI,D=B.D,MN=B.MN,$=B.$,dim=B.dim,mo=B.mo,sum=B.sum,usd=B.usd,kk=B.kk,dlt=B.dlt,dayArr=B.dayArr,add=B.add,ch=B.ch,opt=B.opt,AX=B.AX,xcat=B.xcat,yval=B.yval,GR=B.GR,kpi=B.kpi,tbl=B.tbl,donut=B.donut,stacked=B.stacked,charts=B.charts;
+var PURPLE="#a666b0",GREEN="#1f9e32",RED="#d92d20";
 
-/* ======================= CAR DATA ======================= */
 var C=D.car,CAR={},CRV={},CRT={},CEX={},CG={},CC={},CT={},CITEMS={},CEVM={};
 C.cars.forEach(function(c){CAR[c[0]]=c;});
 C.rdaily.forEach(function(r){CRV[r[0]]=r[1];CRT[r[0]]=r[2];});
@@ -345,7 +305,7 @@ function renderCOver(m){
   donut("c-donut",[{name:"Expenses for Operation",value:+(ty.Operation||0).toFixed(2)},{name:"Expenses for Invest",value:+(ty.Invest||0).toFixed(2)}],usd(c.E),["#222",PURPLE]);
   var g=CG[m]||{},tot=c.E||1,gl=["HR","Material","Office","MKT"];
   opt("c-detailbars",{tooltip:{valueFormatter:function(v){return usd(v,true);}},grid:{left:90,right:80,top:10,bottom:20},xAxis:yval(),yAxis:{type:"category",data:gl.slice().reverse(),axisLabel:{color:"#475467"},axisLine:AX.axisLine,axisTick:AX.axisTick},
-    series:[{type:"bar",data:gl.slice().reverse().map(function(k,i){return {value:Math.round(g[k]||0),itemStyle:{color:{HR:"#111",Material:"#a666b0",Office:"#c7ccd4",MKT:"#9cc873"}[k]}};}),
+    series:[{type:"bar",data:gl.slice().reverse().map(function(k){return {value:Math.round(g[k]||0),itemStyle:{color:{HR:"#111",Material:"#a666b0",Office:"#c7ccd4",MKT:"#9cc873"}[k]}};}),
       label:{show:true,position:"right",formatter:function(q){return usd(q.value)+" ("+(q.value/tot*100).toFixed(0)+"%)";}}}]});
   var mt=CC[m]||{},rows=[["Revenue",c.S],["Profit",c.P],["MKT Expense",g.MKT||0],["Material Expenses",g.Material||0],["  Material_Operation",(CITEMS[m]||[]).filter(function(r){return r[6]==="Operation";}).reduce(function(a,r){return a+r[5];},0)],["HR Expense",g.HR||0],["Office Expense",g.Office||0]];
   $("c-summary").innerHTML=tbl([{t:"Item"},{t:"Amount",bar:"#d8c3df",f:function(v){return usd(v,true);}}],rows.map(function(r){return {v:r,bc:r[0]==="Revenue"?"#a3ddb3":r[0]==="Profit"?"#f5c4af":null};}));
@@ -353,7 +313,6 @@ function renderCOver(m){
   stacked("c-opbr",cats,["Material","HR","MKT","Office"].map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round((CG[i]||{})[k]||0));return [k,a];}),["#111","#74cd8b","#a5e3ea","#5a007a"]);
   stacked("c-matbr",cats,Object.keys(CCOL).map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round((CC[i]||{})[k]||0));return [k,a];}),Object.keys(CCOL).map(function(k){return CCOL[k];}));
   donut("c-matdonut",Object.keys(mt).map(function(k){return {name:k,value:+mt[k].toFixed(2)};}),null,CCOL);
-  // grouped detail
   var items=(CITEMS[m]||[]).slice().sort(function(a,b){return b[5]-a[5];}),groups={};
   items.forEach(function(r){(groups[r[2]]=groups[r[2]]||[]).push(r);});
   var order=Object.keys(groups).sort(function(a,b){return sum(groups[b].map(function(r){return r[5];}))-sum(groups[a].map(function(r){return r[5];}));});
@@ -376,7 +335,6 @@ function renderCDet(m){
   var rent=C.cars.filter(function(c){return c[3]==="Active"||c[3]==="RTO";}).length;
   $("d-kpis").innerHTML=kpi(3,"Cars in fleet",C.cars.length)+kpi(3,"Rentable (Active + RTO)",rent)+kpi(3,"Fleet buying price",usd(sum(C.cars.map(function(c){return c[2];}))))+kpi(3,"Avg daily rate",usd(sum(C.cars.map(function(c){return c[4];}))/C.cars.length,true));
   donut("d-status",Object.keys(sc).map(function(k){return {name:k,value:sc[k]};}),null,{Active:"#76cd8c",RTO:"#48bc66",Sold:"#e37a7e",Holding:"#c499ca",Fixing:"#f0a787",Lost:"#7a7a7a",Inactive:"#c7ccd4"});
-  // donut labels for counts
   var c1=ch("d-status");if(c1)c1.setOption({series:[{label:{formatter:function(p){return p.value+" ("+p.percent+"%)";}}}],tooltip:{formatter:function(p){return p.name+": "+p.value;}}});
   var top=rows.slice().sort(function(a,b){return b[7]-a[7];}).slice(0,10).reverse();
   opt("d-top",{tooltip:{valueFormatter:function(v){return usd(v,true);}},grid:{left:70,right:20,top:10,bottom:20},xAxis:yval(),yAxis:{type:"category",data:top.map(function(r){return r[0];}),axisLabel:{color:"#475467"}},series:[{type:"bar",data:top.map(function(r){return Math.round(r[7]);}),itemStyle:{color:GREEN}}]});
@@ -386,20 +344,33 @@ function renderCDet(m){
   $("d-table").innerHTML=tbl(cols,rows.map(function(r){return {v:r};}));
   Array.prototype.forEach.call($("d-table").querySelectorAll("th"),function(th){th.onclick=function(){var i=+th.getAttribute("data-i");if(dSort.k===i)dSort.dir=-dSort.dir;else{dSort.k=i;dSort.dir=-1;}renderCDet(m);};});
 }
+B.pages["c-over"]=renderCOver;B.pages["c-det"]=renderCDet;
 
-/* ======================= wiring ======================= */
-var PAGES={"g-over":["glass","SALES PERFORMANCE DASHBOARD | <b>OVERVIEW</b>"],"g-work":["glass","SALES PERFORMANCE DASHBOARD | <b>WORKER</b>"],"g-loc":["glass","SALES PERFORMANCE DASHBOARD | <b>LOCATION</b>"],"c-over":["car","SALE PERFORMANCE DASHBOARD | <b>CAR RENTAL</b>"],"c-det":["car","SALE PERFORMANCE DASHBOARD | <b>CAR RENTAL DETAIL</b>"]};
-var cur="g-over";
+/* ---------- navigation: project -> pages ---------- */
+var PROJ={
+  sales:{first:"s-over",purpose:"Project 1 · Which rentals, promotions, customers and costs drive revenue and profit each month?",
+    pages:[["s-over","Overview","CAR RENTAL SALES PERFORMANCE | <b>OVERVIEW</b>"],["s-sales","Sales &amp; Rentals","CAR RENTAL SALES PERFORMANCE | <b>SALES &amp; RENTALS</b>"],
+           ["s-promo","Promotions","CAR RENTAL SALES PERFORMANCE | <b>PROMOTIONS</b>"],["s-cust","Customers &amp; Location","CAR RENTAL SALES PERFORMANCE | <b>CUSTOMERS &amp; LOCATION</b>"],
+           ["s-profit","Profit &amp; Costs","CAR RENTAL SALES PERFORMANCE | <b>PROFIT &amp; COSTS</b>"],["s-team","Team","CAR RENTAL SALES PERFORMANCE | <b>TEAM</b>"]]},
+  fleet:{first:"c-over",purpose:"Project 2 · How much does the fleet earn and cost, and where does the money go (Operation vs Invest)?",
+    pages:[["c-over","Finance Overview","CAR RENTAL OVERVIEW | <b>FINANCE</b>"],["c-det","Fleet Detail","CAR RENTAL OVERVIEW | <b>FLEET DETAIL</b>"]]}
+};
+var PAGE={},OWNER={};
+Object.keys(PROJ).forEach(function(k){PROJ[k].pages.forEach(function(p){PAGE[p[0]]=p;OWNER[p[0]]=k;});});
+var cur="s-over";
 function month(){return +$("month").value;}
 function render(){
-  var m=month();
-  ({"g-over":renderGOver,"g-work":renderGWork,"g-loc":renderGLoc,"c-over":renderCOver,"c-det":renderCDet})[cur](m);
+  B.pages[cur](month());
   Object.keys(charts).forEach(function(k){if(charts[k]&&$(k)&&$(k).offsetParent)charts[k].resize();});
 }
 function show(p){
-  cur=p;Object.keys(PAGES).forEach(function(k){$(k).hidden=k!==p;});
-  document.body.className=PAGES[p][0]==="car"?"t-car":"t-glass";$("title").innerHTML=PAGES[p][1];
-  Array.prototype.forEach.call(document.querySelectorAll(".nav button,.side button"),function(b){b.setAttribute("aria-selected",b.getAttribute("data-p")===p);});
+  cur=p;var proj=OWNER[p];
+  Object.keys(PAGE).forEach(function(k){$(k).hidden=k!==p;});
+  document.body.className=proj==="fleet"?"t-fleet":"t-sales";
+  $("title").innerHTML=PAGE[p][2];$("purpose").textContent=PROJ[proj].purpose;
+  $("tabs").innerHTML=PROJ[proj].pages.map(function(x){return '<button data-p="'+x[0]+'" aria-selected="'+(x[0]===p)+'">'+x[1]+"</button>";}).join("");
+  Array.prototype.forEach.call($("tabs").querySelectorAll("button"),function(b){b.onclick=function(){show(b.getAttribute("data-p"));};});
+  Array.prototype.forEach.call(document.querySelectorAll(".proj button"),function(b){b.setAttribute("aria-selected",b.getAttribute("data-proj")===proj);});
   try{history.replaceState(null,"","#"+p);}catch(e){}
   render();
 }
@@ -407,10 +378,9 @@ $("month").innerHTML=MN.map(function(n,i){return '<option value="'+(i+1)+'">'+n+
 var sts=Object.keys(C.cars.reduce(function(o,c){o[c[3]]=1;return o;},{})).sort();
 $("d-filter").innerHTML='<option value="ALL">All statuses</option>'+sts.map(function(s){return "<option>"+s+"</option>";}).join("");
 $("month").onchange=render;$("d-filter").onchange=render;
-Array.prototype.forEach.call(document.querySelectorAll(".nav button,.side button"),function(b){b.onclick=function(){show(b.getAttribute("data-p"));};});
+Array.prototype.forEach.call(document.querySelectorAll(".proj button"),function(b){b.onclick=function(){show(PROJ[b.getAttribute("data-proj")].first);};});
 window.addEventListener("resize",function(){Object.keys(charts).forEach(function(k){if(charts[k])charts[k].resize();});});
-var h=location.hash.slice(1);show(PAGES[h]?h:"g-over");
-// the #page hash matches a section id, so the browser would scroll past the header: reset it
+var h=location.hash.slice(1);show(PAGE[h]?h:"s-over");
 window.scrollTo(0,0);setTimeout(function(){window.scrollTo(0,0);},0);window.addEventListener("load",function(){window.scrollTo(0,0);});
 })();
 </script>

@@ -18,18 +18,19 @@ Data Analyst with an Economics background (UEH, Investment Economics, GPA 3.6/4.
 
 ## Projects
 
-### 1 · Automotive glass service performance (Power BI, synthetic data)
-Car glass sales and installation business (Sydney, AUD). One dashboard tracks daily and monthly **sales, every expense line, profit, promotions, Premium vs Luxury mix and staff KPIs**, always versus the previous month. 3 pages: Overview, Worker, Location (map).
-**Tools:** Power BI, DAX, Power Query · **Model:** star schema, ≈3,200 orders, 20 suburbs, 5 staff.
-**What the sample report shows** (synthetic, Nov 2025): sales **A$68.2K** (+21.4% MoM), profit margin **20.8%**, COG the largest cost at **43%**, BOGO the top promotion at **24%** of sales, 7 loss-making days.
-**Design:** sparkline KPI cards, drill from daily profit to same-period-last-month variance, promotion profitability table, auto-written insights.
+### 1 · Car rental sales performance (Power BI, synthetic data)
+Car rental business in Sydney (AUD). The report answers one management question: *which rentals, promotions, customers and costs drive revenue and profit each month?* It is split into **6 pages by purpose**: Overview (executive summary) · Sales & Rentals · Promotions · Customers & Location · Profit & Costs · Team, all filtered by month and compared with the previous month.
+**Tools:** Power BI, DAX, Power Query · **Model:** star schema, ≈3,100 rentals, ≈2,400 customers, 20 suburbs, 5 sales staff.
+**What the sample report shows** (synthetic, Nov 2025): rental sales **A$69.5K** (+23.7% MoM), profit margin **22.9%**, direct cost **43%** of expenses, promotions **48%** of sales but a **55.5%** margin vs **67.1%** on full-price rentals.
+**Design:** KPI cards with sparklines, profit bridge (waterfall), promotion margin vs full price, new vs returning customers, sales concentration by suburb, last-month vs this-month comparison and auto-written insights.
 
-[![Overview](projects/automotive-glass-service-powerbi/images/01-overview.png)](projects/automotive-glass-service-powerbi/images/01-overview.png)
+[![Overview](projects/car-rental-sales-performance-powerbi/images/01-overview.png)](projects/car-rental-sales-performance-powerbi/images/01-overview.png)
+[![Profit and costs](projects/car-rental-sales-performance-powerbi/images/05-profit-costs.png)](projects/car-rental-sales-performance-powerbi/images/05-profit-costs.png)
 
-→ [Live dashboard](https://hongnganguyen.github.io/Hong-Nga-Portfolio/) · [Project folder](projects/automotive-glass-service-powerbi) · [sample report](projects/automotive-glass-service-powerbi/reports/sample-report-2025-11.md) · [data](projects/automotive-glass-service-powerbi/data)
+→ [Live dashboard](https://hongnganguyen.github.io/Hong-Nga-Portfolio/) · [Project folder](projects/car-rental-sales-performance-powerbi) · [sample report](projects/car-rental-sales-performance-powerbi/reports/sample-report-2025-11.md) · [data](projects/car-rental-sales-performance-powerbi/data)
 
-### 2 · Car rental overview (Power BI, synthetic data)
-Dashboard for a car-rental operation (Sydney, AUD): **sales, expense groups (Operation vs Invest), profit, fleet status and customer debt**, plus a detail page with per-car profitability.
+### 2 · Car rental fleet & finance overview (Power BI, synthetic data)
+The companion dashboard for the same business (Sydney, AUD), answering *how much does the fleet earn and cost, and where does the money go?*: **sales, expense groups (Operation vs Invest), profit, fleet status and customer debt**, plus a fleet-detail page with per-car profitability.
 **Tools:** Power BI, DAX, Power Query · **Model:** 60 cars (44 rentable), daily rentals, dated expenses by group and category.
 **What the sample report shows** (synthetic, Nov 2025): sales **A$27.4K** (+8.8% MoM), profit margin **26.1%**, material costs **72%** of expenses, **33 of 44** rentable cars on rent at month end, **79%** of customers paid.
 **Design:** Operation vs Invest split, expandable expense detail table, stacked month-by-month breakdowns.
@@ -101,13 +102,13 @@ To rebuild a dashboard, load the CSVs from `projects/<project>/data` into Power 
 
 ```
 projects/
-  automotive-glass-service-powerbi/   # project 1: data/, images/, reports/
-  car-rental-overview-powerbi/        # project 2: data/, images/, reports/
+  car-rental-sales-performance-powerbi/  # project 1: data/, images/, reports/
+  car-rental-overview-powerbi/           # project 2: data/, images/, reports/
   lg-social-listening-powerbi/        # project 3: images/, report/, docs/
   paytm-customer-analysis-sql/        # project 4: sql/, data/
   azuz-customer-behavior-sql/         # project 5: sql/, data/
-docs/                                 # GitHub Pages: index.html, data.js, CV PDF
-tools/generate.py                     # synthetic data + charts + sample reports
+docs/                                 # GitHub Pages: index.html, sales.js, data.js, CV PDF
+tools/generate.py                     # synthetic data + sample reports
 tools/build_dashboard.py              # aggregates the CSVs into docs/data.js
 requirements.txt
 ```
