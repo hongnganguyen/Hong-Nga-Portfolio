@@ -171,8 +171,8 @@ function profit(m){
   var from=Math.max(1,m-5),cats=[];for(var i=from;i<=m;i++)cats.push(MN[i-1]);
   stacked("s-expbr",cats,GL.map(function(k){var a=[];for(var i=from;i<=m;i++)a.push(Math.round(EG[i][k]||0));return [k,a];}),GL.map(function(k){return GC[k];}));
   $("s-lm").textContent="LAST MONTH · "+(m>1?MN[m-2]:"-");$("s-tm").textContent="THIS MONTH · "+MN[m-1];
-  $("s-lmtbl").innerHTML=p?tbl([{t:"Day"},{t:"Profit",bar:TINT,f:f2}],p.p.map(function(v,i){return {v:[i+1,v]};})):"<p>No previous month.</p>";
-  $("s-tmtbl").innerHTML=tbl([{t:"Day"},{t:"Profit",bar:TINT,f:f2},{t:"vs SPLM",bar:T.goodTint,f:function(v){return '<span class="'+(v>=0?"up":"down")+'">'+f2(v)+"</span>";}}],
+  $("s-lmtbl").innerHTML=p?tbl([{t:"Day"},{t:"Profit",bar:T.goodTint,f:f2}],p.p.map(function(v,i){return {v:[i+1,v]};})):"<p>No previous month.</p>";
+  $("s-tmtbl").innerHTML=tbl([{t:"Day"},{t:"Profit",bar:T.goodTint,f:f2},{t:"vs SPLM",bar:T.goodTint,f:function(v){return '<span class="'+(v>=0?"up":"down")+'">'+f2(v)+"</span>";}}],
     c.p.map(function(v,i){return {v:[i+1,v,p&&p.p[i]!==undefined?v-p.p[i]:0]};}));
   var ec=EC[m],fixed=(ec["Production wages"]||0)+(ec["Sales salary"]||0)+(ec.Warehouse||0)+(ec["Back office"]||0)+(ec.Office||0),var_=(ec.COGS||0)+(ec.Promotions||0)+(ec["Breakage & loss"]||0),li=[];
   li.push("COGS takes <b>"+pc((ec.COGS||0)/(c.S||1))+"</b> of sales and people costs <b>"+pc(((ec["Production wages"]||0)+(ec["Sales salary"]||0))/(c.S||1))+"</b>: these two groups decide the margin.");
@@ -180,7 +180,7 @@ function profit(m){
   var vs=c.p.map(function(v,i){return p?v-(p.p[i]||0):0;}),bi=vs.indexOf(Math.max.apply(null,vs)),wi=vs.indexOf(Math.min.apply(null,vs));
   if(p)li.push("Largest gain vs same day last month: <b>"+MN[m-1]+" "+(bi+1)+"</b> ("+usd(vs[bi])+"); largest drop: <b>"+MN[m-1]+" "+(wi+1)+"</b> ("+usd(vs[wi])+"). Check the weekday and promotions on those days.");
   $("s-pins").innerHTML=ul(li);
-  opt("s-splm",{tooltip:{trigger:"axis",valueFormatter:f2},legend:{top:0},color:[ACC,BLUE,T.good],grid:GR,xAxis:xcat(dd),yAxis:yval(),
+  opt("s-splm",{tooltip:{trigger:"axis",valueFormatter:f2},legend:{top:0},color:[ACC,INK,T.good],grid:GR,xAxis:xcat(dd),yAxis:yval(),
     series:[{name:"Profit",type:"line",smooth:true,data:c.p.map(Math.round)},{name:"Profit SPLM",type:"line",smooth:true,data:p?p.p.map(Math.round):[],lineStyle:{type:"dashed"}},
       {name:"vs profit SPLM",type:"bar",data:c.p.map(function(v,i){var d=v-(p?p.p[i]||0:0);return {value:Math.round(d),itemStyle:{color:d>=0?T.good:T.bad}};})}]});
 }
