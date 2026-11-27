@@ -67,7 +67,7 @@ function over(m){
     yAxis:[yval(),{type:"value",axisLabel:{color:"#475467",formatter:"{value}%"},splitLine:{show:false}}],
     series:[{name:"Sales",type:"bar",data:sv},{name:"Total expenses",type:"bar",data:ev},{name:"Profit margin %",type:"line",yAxisIndex:1,smooth:true,data:mg,label:{show:true,formatter:"{c}%",fontSize:10}}]});
   var ec=EC[m],rows=[["Sales",c.S]].concat(LINES.map(function(k){return [k,ec[k]||0];}),[["Profit",c.P]]);
-  $("s-summary").innerHTML=tbl([{t:"Item"},{t:"Amount",bar:T.barTint,f:f2}],rows.map(function(r){return {v:r,bc:r[0]==="Sales"?T.goodTint:r[0]==="Profit"?TINT:null};}));
+  $("s-summary").innerHTML=tbl([{t:"Item"},{t:"Amount",bar:TINT,f:f2}],rows.map(function(r){return {v:r,bc:r[0]==="Sales"?T.goodTint:r[0]==="Profit"?"#ffb98f":null};}));
   $("s-ins").innerHTML=ul(insights(m,c,p));
 }
 function insights(m,c,p){

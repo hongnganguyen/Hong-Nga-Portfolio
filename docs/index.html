@@ -54,7 +54,7 @@
   .scroll{overflow:auto;max-height:420px}
   .ins{font-size:12.5px;line-height:1.5}.ins ul{margin:4px 0 0 16px;padding:0}.ins li{margin-bottom:6px}
   .hdr2{display:flex;gap:12px}.hdr2 div{flex:1;text-align:center;color:#fff;font-weight:700;padding:8px;border-radius:4px}
-  .hdr2 .a{background:#475467}.hdr2 .b{background:#e8590c}
+  .hdr2 .a{background:#1f2933}.hdr2 .b{background:#e8590c}
   footer{padding:6px 14px 18px;font-size:12px;color:#475467}
   a{color:#175cd3}
   [hidden]{display:none!important}
@@ -235,7 +235,7 @@
 (function(){
 "use strict";
 var MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-var T={ink:"#1f2933",muted:"#667085",gray:"#98a2b3",gray2:"#d0d5dd",blue:"#2f6da3",good:"#2e9e5b",bad:"#d64545",goodTint:"#cdebd8",badTint:"#f5c2c0",barTint:"#e4e7ec"};
+var T={ink:"#1f2933",muted:"#667085",gray:"#98a2b3",gray2:"#d0d5dd",blue:"#0f766e",good:"#2e9e5b",bad:"#d64545",goodTint:"#cdebd8",badTint:"#f5c2c0",barTint:"#e4e7ec"};
 function $(i){return document.getElementById(i);}
 function pad(n){return n<10?"0"+n:""+n;}
 function dim(m){return new Date(2025,m,0).getDate();}
@@ -342,7 +342,7 @@ function renderOver(m){
     series:[{name:"Total sales",type:"bar",data:sv},{name:"Total expenses",type:"bar",data:ev},{name:"Profit margin %",type:"line",yAxisIndex:1,smooth:true,data:mg,label:{show:true,formatter:"{c}%",fontSize:10}}]});
   var g=CG[m],opx=(CITEMS[m]||[]).filter(function(r){return r[6]==="Operation";}).reduce(function(a,r){return a+r[5];},0);
   var rows=[["Revenue",c.S],["HR",g.HR||0],["Material",g.Material||0],["  of which Operation",opx],["Marketing",g.MKT||0],["Office",g.Office||0],["Profit",c.P]];
-  $("c-summary").innerHTML=tbl([{t:"Item"},{t:"Amount",bar:T.barTint,f:f2}],rows.map(function(r){return {v:r,bc:r[0]==="Revenue"?T.goodTint:r[0]==="Profit"?TINT:null};}));
+  $("c-summary").innerHTML=tbl([{t:"Item"},{t:"Amount",bar:"#efe4f7",f:f2}],rows.map(function(r){return {v:r,bc:r[0]==="Revenue"?T.goodTint:r[0]==="Profit"?"#cdb0e3":null};}));
   // debt chart
   var ob=[],pp=[];for(var k=0;k<12;k++){ob.push(Math.round(C.debt[k][1]));pp.push(Math.round(C.debt[k][2]*100));}
   opt("c-debt",{tooltip:{trigger:"axis"},legend:{top:0},color:[MID,INK],grid:{left:48,right:44,top:30,bottom:26},xAxis:xcat(MN),
