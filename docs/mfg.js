@@ -57,7 +57,7 @@ function over(m){
     kpi(3,"Profit · margin "+pc(c.S?c.P/c.S:0),'<span class="'+(c.P>=0?"up":"down")+'">'+usd(c.P)+"</span>",p?dlt(c.P,p.P):null,true,c.p,ACC)+
     kpi(3,"Sales",usd(c.S),p?dlt(c.S,p.S):null,true,c.s,ACC)+
     kpi(3,"Total expenses",usd(c.E),p?dlt(c.E,p.E):null,false,c.e,T.muted)+
-    kpi(3,"Orders · "+c.U+" units ("+q1+" Premium / "+q2+" Luxury orders)",c.R,p?dlt(c.R,p.R):null,true,c.n,ACC);
+    kpi(3,"Orders · "+c.U+" units sold",c.R,p?dlt(c.R,p.R):null,true,c.n,ACC);
   opt("s-salesexp",{tooltip:{trigger:"axis",valueFormatter:f2},legend:{top:0},color:[ACC,INK],grid:GR,xAxis:xcat(dd),yAxis:yval(),
     series:[{name:"Sales",type:"bar",stack:"x",data:c.s.map(Math.round)},{name:"Total expenses",type:"bar",stack:"x",data:c.e.map(Math.round)}]});
   opt("s-profitline",areaLine(c,dd));
