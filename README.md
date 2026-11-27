@@ -1,17 +1,6 @@
-# Data Analytics Portfolio · Nguyen Thi Hong Nga
-
-Data Analyst with an Economics background (UEH, Investment Economics, GPA 3.6/4.0, high distinction). I build automated ETL workflows, interactive Power BI dashboards and KPI / financial reports that support business decisions. This portfolio holds five projects: two Power BI dashboards from my day-to-day work, one social-listening dashboard, and two SQL analyses.
+# Portfolio · Nguyen Thi Hong Nga
 
 > **About the data.** The two employer dashboards (projects 1 and 2) are built on **synthetic data** that I generated with a seeded script, because the real data is confidential. Their charts are illustrative previews, not production screenshots, and their numbers are **not real business results**. Projects 3–5 use practice / report datasets that are not company data.
-
-| | |
-|---|---|
-| **Contact** | hongnga230902@gmail.com · 0345 576 131 · Ho Chi Minh City |
-| **CV** | [CV_Nguyen_Thi_Hong_Nga.pdf](docs/CV_Nguyen_Thi_Hong_Nga.pdf) |
-| **Skills** | SQL (T-SQL) · Power BI (DAX, data modeling) · Power Query · Advanced Excel · Google Sheets · basic Python |
-| **Source repos** | [Project-PAYTM](https://github.com/hongnganguyen/Project-PAYTM) · [Project-Azuz-Web](https://github.com/hongnganguyen/Project-Azuz-Web) |
-
-[![Dashboard preview](projects/lg-social-listening-powerbi/images/dashboard-page-1.png)](projects/lg-social-listening-powerbi)
 
 ---
 
@@ -72,8 +61,16 @@ Quarterly (Q2) analysis of online discussions about LG and competitors in washin
 **Tools:** Power BI · **Data:** LG corporate data, washing-machine category data, demographics (raw data not published).
 **Findings:** most sentiment toward LG is **neutral** and customer service gets the most negative feedback; Panasonic has the highest discussion volume, driven by minigames and prizes; LG leads on promotion and usage topics but front-loader washing/rinsing specs raise concerns.
 
-[![Detail](projects/lg-social-listening-powerbi/images/dashboard-page-2.png)](projects/lg-social-listening-powerbi/images/dashboard-page-2.png)
-[![Competitors](projects/lg-social-listening-powerbi/images/dashboard-page-3.png)](projects/lg-social-listening-powerbi/images/dashboard-page-3.png)
+**All 3 pages:**
+
+**1 · Overview**
+![Overview](projects/lg-social-listening-powerbi/images/dashboard-page-1.png)
+
+**2 · Detail**
+![Detail](projects/lg-social-listening-powerbi/images/dashboard-page-2.png)
+
+**3 · Competitors**
+![Competitors](projects/lg-social-listening-powerbi/images/dashboard-page-3.png)
 
 → [Project folder](projects/lg-social-listening-powerbi) · [PDF report](projects/lg-social-listening-powerbi/report/Report-Social-Listening.pdf) · [data dictionary](projects/lg-social-listening-powerbi/docs/data-dictionary.txt)
 
@@ -88,27 +85,13 @@ Which products sell most on a payment app, do promotions work, and who are the v
 | RFM segmentation | Customers grouped into Best, Loyal, Big Spenders, Lost… | `PERCENT_RANK`, `CASE` |
 
 **Findings:** Telco is the most purchased category; repeat purchases after a first promotional transaction exceeded **50%** of measured customers.
-→ [Project folder](projects/paytm-customer-analysis-sql) · [SQL](projects/paytm-customer-analysis-sql/sql/paytm_analysis.sql)
+→ [Project folder](projects/paytm-customer-analysis-sql) · [SQL](projects/paytm-customer-analysis-sql/sql/paytm_analysis.sql) · [original repo](https://github.com/hongnganguyen/Project-PAYTM)
 
 ### 5 · Azuz customer behavior (SQL)
 Purchase patterns, the effect of gold membership, and a points-based loyalty program on a small teaching-scale dataset (3 customers, 16 orders).
 **Techniques:** CTEs, `RANK()` over partitions, subqueries, `DATEADD`, conditional `LEFT JOIN`.
 **Findings:** product 2 earns the most loyalty points; one customer raised spending in the first year of gold membership despite fewer total points.
-→ [Project folder](projects/azuz-customer-behavior-sql) · [SQL](projects/azuz-customer-behavior-sql/sql/azuz_analysis.sql)
-
----
-
-## Experience
-
-**Data Analysis · HeraPrimes** (Apr 2025 – now) — automated Power BI reports on revenue, cost, profit and Sales & Marketing KPIs; ETL workflows in Power Query and Excel; AOP budget tracking and variance analysis (automotive service and manufacturing); cash-flow forecasts.
-
-**Junior Operation Analyst, Research / Data Processing · Kompa Technology** (Dec 2023 – Mar 2025) — Kibana quality checks removing **10–25%** inaccurate data; automation that raised productivity by **50–80%**; real-time dashboards.
-
-**Teaching Assistant · VyLe Training** (May 2024 – now) — supported 20+ Excel / Power BI classes and analyzed learner feedback.
-
-## Education & awards
-University of Economics HCMC (UEH), B.A. Investment Economics, 2020–2024, GPA 3.6/4.0 · 3rd Prize E-research Award 2022 · 2nd Prize UEH Young Researcher 2022 · 3 GPA scholarships · IC3 · TOEIC 715
-Courses: SQL & Python for Data Analysis (MazHocData), Excel for Analysis and Power BI Essential (Vy Le Training), Finance for Leaders (PACE Training)
+→ [Project folder](projects/azuz-customer-behavior-sql) · [SQL](projects/azuz-customer-behavior-sql/sql/azuz_analysis.sql) · [original repo](https://github.com/hongnganguyen/Project-Azuz-Web)
 
 ---
 
@@ -132,12 +115,12 @@ To rebuild a dashboard, load the CSVs from `projects/<project>/data` into Power 
 projects/
   glass-manufacturing-performance-powerbi/  # project 1: data/, images/, reports/
   car-rental-overview-powerbi/              # project 2: data/, images/, reports/
-  lg-social-listening-powerbi/        # project 3: images/, report/, docs/
-  paytm-customer-analysis-sql/        # project 4: sql/, data/
-  azuz-customer-behavior-sql/         # project 5: sql/, data/
-docs/                                 # interactive dashboards (index.html, mfg.js, data.js) and CV PDF
-tools/generate.py                     # synthetic data + sample reports
-tools/build_dashboard.py              # aggregates the CSVs into docs/data.js
+  lg-social-listening-powerbi/              # project 3: images/, report/, docs/
+  paytm-customer-analysis-sql/              # project 4: sql/, data/
+  azuz-customer-behavior-sql/               # project 5: sql/, data/
+docs/                                       # interactive dashboards (index.html, mfg.js, data.js)
+tools/generate.py                           # synthetic data + sample reports
+tools/build_dashboard.py                    # aggregates the CSVs into docs/data.js
 requirements.txt
 ```
 
