@@ -1,7 +1,7 @@
 # Car Rental Fleet & Finance Overview Dashboard — Power BI
 
 **Tools:** Power BI (data modeling, DAX, Power Query), Excel · **Currency:** AUD · **Area:** Sydney, Australia
-**Live interactive recreation:** [hongnganguyen.github.io/Hong-Nga-Portfolio](https://hongnganguyen.github.io/Hong-Nga-Portfolio/#c-over) (project **2 · Fleet & Finance Overview**: pages *Finance Overview* and *Fleet Detail*). Companion to the [Sales Performance dashboard](../car-rental-sales-performance-powerbi) of the same business.
+**Live interactive recreation:** [hongnganguyen.github.io/Hong-Nga-Portfolio](https://hongnganguyen.github.io/Hong-Nga-Portfolio/#c-over) (project **2 · Fleet & Finance Overview**: pages *Finance Overview* and *Fleet Detail*). It is a different business from the [Sales Performance dashboard](../car-rental-sales-performance-powerbi) (project 1).
 
 > ⚠️ **About the data.** The original dashboard was built for a real employer, so its data (customers, car plates, staff, bank transactions) is confidential and is not published. Everything in this folder is **synthetic**: randomly generated (fixed seed) with the same table structure, the same kind of metrics and the same page layout as the real report. The images are screenshots of a web recreation of the dashboard built from that synthetic data, **not** screenshots of the production report, and no number is a real business result.
 

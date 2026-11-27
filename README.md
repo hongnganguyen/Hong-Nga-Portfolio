@@ -30,7 +30,7 @@ Car rental business in Sydney (AUD). The report answers one management question:
 → [Live dashboard](https://hongnganguyen.github.io/Hong-Nga-Portfolio/) · [Project folder](projects/car-rental-sales-performance-powerbi) · [sample report](projects/car-rental-sales-performance-powerbi/reports/sample-report-2025-11.md) · [data](projects/car-rental-sales-performance-powerbi/data)
 
 ### 2 · Car rental fleet & finance overview (Power BI, synthetic data)
-The companion dashboard for the same business (Sydney, AUD), answering *how much does the fleet earn and cost, and where does the money go?*: **sales, expense groups (Operation vs Invest), profit, fleet status and customer debt**, plus a fleet-detail page with per-car profitability.
+A separate dashboard for a different car-rental operation (Sydney, AUD), answering *how much does the fleet earn and cost, and where does the money go?*: **sales, expense groups (Operation vs Invest), profit, fleet status and customer debt**, plus a fleet-detail page with per-car profitability.
 **Tools:** Power BI, DAX, Power Query · **Model:** 60 cars (44 rentable), daily rentals, dated expenses by group and category.
 **What the sample report shows** (synthetic, Nov 2025): sales **A$27.4K** (+8.8% MoM), profit margin **26.1%**, material costs **72%** of expenses, **33 of 44** rentable cars on rent at month end, **79%** of customers paid.
 **Design:** Operation vs Invest split, expandable expense detail table, stacked month-by-month breakdowns.
