@@ -18,9 +18,9 @@ The report is split into four pages so that each page answers one question:
 | **4 · Fleet & Cars** | Which cars earn their keep? | Fleet by status (Active, RTO, Holding, Fixing, Sold, Lost, Inactive) · top cars by profit · new rentals vs returns by month · sortable per-car table with revenue, material expenses and profit |
 
 ## Design system (why the colors are limited)
-- **One accent color** (purple) for sales and the key measure; expenses are **ink** so income and cost are always distinguishable at a glance.
+- **One accent color** (teal) for sales and the key measure; expenses are **ink** so income and cost are always distinguishable at a glance.
 - **Green and red mean good and bad only**, plus car status where the meaning is natural (green = earning, amber = temporarily not earning, grey = gone, red = lost).
-- Expense groups, Operation vs Invest and material categories use **fixed colors** (purple tints for material categories), the same on every page.
+- Expense groups, Operation vs Invest and material categories use **fixed colors** (teal tints for material categories), the same on every page.
 - Layout: overview first, then one drill-down page per question; the same Month slicer and previous-month comparison on every page; KPI cards that show value, trend and change together; expandable detail table instead of an endless list.
 
 ## Data model

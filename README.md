@@ -33,7 +33,7 @@ Manufacturing business selling Premium and Luxury glass products in Sydney (AUD)
 Car rental operation in Sydney (AUD), answering *how much does the fleet earn and cost, and where does the money go?* It is split into **4 pages**: Overview · Expenses (Operation vs Invest) · Material Costs · Fleet & Cars.
 **Tools:** Power BI, DAX, Power Query · **Model:** 60 cars (47 rentable), daily rentals, dated expenses by group and category.
 **What the sample report shows** (synthetic, Nov 2025): sales **A$27.6K** (-9.7% MoM), profit margin **24.2%**, material costs **75%** of expenses, **33 of 47** rentable cars on rent at month end, **85%** of customers paid.
-**Design:** one purple accent with expenses in ink, Operation vs Invest split kept on every expense view, expandable expense detail table, status colors with a natural meaning.
+**Design:** one teal accent with expenses in ink, Operation vs Invest split kept on every expense view, expandable expense detail table, status colors with a natural meaning.
 
 [![Overview](projects/car-rental-overview-powerbi/images/01-overview.png)](projects/car-rental-overview-powerbi/images/01-overview.png)
 [![Expenses](projects/car-rental-overview-powerbi/images/02-expenses.png)](projects/car-rental-overview-powerbi/images/02-expenses.png)
