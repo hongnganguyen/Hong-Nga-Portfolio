@@ -67,7 +67,8 @@ for d in days:
         oid += 1
 orders = pd.DataFrame(rows, columns=["order_id", "date", "suburb", "customer_id", "is_new_customer", "product_line", "quantity",
                                      "amount_aud", "promotion_name", "promo_cost_aud", "cogs_aud", "sales_staff"])
-orders.to_csv(os.path.join(MFG, "data", "orders.csv"), index=False)
+# The real data has no customer id or name, so those simulation helper columns are NOT exported.
+orders.drop(columns=["customer_id", "is_new_customer"]).to_csv(os.path.join(MFG, "data", "orders.csv"), index=False)
 orders["m"] = pd.to_datetime(orders.date).dt.month
 
 # staff KPI by month
@@ -168,7 +169,10 @@ mg_no = (no.amount_aud.sum() - no.cogs_aud.sum()) / no.amount_aud.sum()
 mg_pr = (pp.sales.sum() - pp.dc.sum() - pp.pc.sum()) / pp.sales.sum()
 dprof = (pm.groupby("date").amount_aud.sum() - exp[dts.dt.month == M].groupby("date").amount_aud.sum()).dropna()
 neg_days = int((dprof < 0).sum())
-cu = pm.customer_id.nunique(); new_c = int(pm.is_new_customer.sum())
+bys = pm.groupby("suburb").amount_aud.sum().sort_values(ascending=False)
+bys_prev = orders[orders.m == P].groupby("suburb").amount_aud.sum()
+growth = ((bys - bys_prev) / bys_prev).dropna().sort_values(ascending=False)
+top5 = bys.head(5).sum() / bys.sum()
 lines = "\n".join(f"| {k} | {int(r.n)} | {r.sales:,.0f} | {r.pc:,.0f} | {r.profit:,.0f} |" for k, r in pp.iterrows())
 open(os.path.join(MFG, "reports", "sample-report-2025-11.md"), "w", encoding="utf-8").write(f"""# Sample monthly report - November 2025 (synthetic data)
 
@@ -183,7 +187,8 @@ open(os.path.join(MFG, "reports", "sample-report-2025-11.md"), "w", encoding="ut
 | Orders | {len(pm):,} | {(orders.m==P).sum():,} |
 | Units sold | {int(pm.quantity.sum()):,} | {int(orders[orders.m==P].quantity.sum()):,} |
 | Average order value | {aud(pm.amount_aud.mean())} | {pct(pm.amount_aud.mean(), orders[orders.m==P].amount_aud.mean())} |
-| Unique customers | {cu:,} ({new_c:,} new) | |
+| Active suburbs (with at least one order) | {len(bys)} | {(bys_prev > 0).sum()} |
+| Top 5 suburbs share of sales | {top5:.0%} | |
 
 ## Expense structure (Nov)
 {chr(10).join(f"- **{k}**: {aud(v)} ({v/ex[M]:.0%})" for k, v in cat_m.items())}
@@ -200,11 +205,12 @@ Margin after COGS and promo cost: **{mg_pr:.1%}** on promotional orders vs **{mg
 - **{pp.index[0]}** is the top promotion by sales ({pp.sales.iloc[0]/pm.amount_aud.sum():.0%} of the month); compare its promo cost with the profit it generates before extending it.
 - Premium products bring {pm[pm.product_line=='Premium'].amount_aud.sum()/pm.amount_aud.sum():.0%} of sales and Luxury {pm[pm.product_line=='Luxury'].amount_aud.sum()/pm.amount_aud.sum():.0%}.
 - Production wages and warehouse costs are fixed, so profit is thin on low-order days.
+- Sales are concentrated: **{bys.index[0]}** is the top suburb ({bys.iloc[0]/bys.sum():.0%} of sales) and the top 5 suburbs bring {top5:.0%}. Fastest growing suburb vs Oct: **{growth.index[0]}** ({growth.iloc[0]:+.0%}); steepest decline: **{growth.index[-1]}** ({growth.iloc[-1]:+.0%}).
 
 ## Recommended actions (example format)
 1. Concentrate promotions on low-demand days instead of days that already sell well.
 2. Review breakage and loss events weekly to find recurring causes in production or handling.
-3. Grow the repeat-customer share with an offer in the top suburbs.
+3. Defend sales in the top 5 suburbs and test a local offer in the suburbs that are declining.
 """)
 
 rr = rev.assign(m=pd.to_datetime(rev.date).dt.month).groupby("m").amount_aud.sum()

@@ -11,7 +11,8 @@
 | Orders | 305 | 255 |
 | Units sold | 832 | 649 |
 | Average order value | A$268 | +4.2% |
-| Unique customers | 298 (235 new) | |
+| Active suburbs (with at least one order) | 20 | 20 |
+| Top 5 suburbs share of sales | 41% | |
 
 ## Expense structure (Nov)
 - **COGS**: A$27,083 (46%)
@@ -41,8 +42,9 @@ Margin after COGS and promo cost: **55.5%** on promotional orders vs **67.1%** o
 - **BOGO** is the top promotion by sales (17% of the month); compare its promo cost with the profit it generates before extending it.
 - Premium products bring 50% of sales and Luxury 50%.
 - Production wages and warehouse costs are fixed, so profit is thin on low-order days.
+- Sales are concentrated: **Liverpool** is the top suburb (13% of sales) and the top 5 suburbs bring 41%. Fastest growing suburb vs Oct: **Randwick** (+276%); steepest decline: **Ryde** (-45%).
 
 ## Recommended actions (example format)
 1. Concentrate promotions on low-demand days instead of days that already sell well.
 2. Review breakage and loss events weekly to find recurring causes in production or handling.
-3. Grow the repeat-customer share with an offer in the top suburbs.
+3. Defend sales in the top 5 suburbs and test a local offer in the suburbs that are declining.

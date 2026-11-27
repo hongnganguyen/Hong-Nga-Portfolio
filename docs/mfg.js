@@ -16,11 +16,11 @@ var GC={"COGS":INK,"People":BLUE,"Promotions & marketing":ACC,"Facilities":GRAY,
 var LINES=["COGS","Production wages","Sales salary","Promotions","Marketing","Warehouse","Back office","Office","Breakage & loss"];
 
 /* ---------- aggregates ---------- */
-var S={},N={},NP={},NL={},UN={},NW={},ED={},EC={},EG={},PM={},NO={},CLS={},MT={};
-for(var i=1;i<=12;i++){MT[i]={s:0,n:0,u:0,c:0,w:0};CLS[i]={Premium:{s:0,n:0},Luxury:{s:0,n:0}};PM[i]={};NO[i]={n:0,s:0,c:0};EC[i]={};EG[i]={};}
+var S={},N={},NP={},NL={},UN={},ED={},EC={},EG={},PM={},NO={},CLS={},MT={};
+for(var i=1;i<=12;i++){MT[i]={s:0,n:0,u:0,c:0};CLS[i]={Premium:{s:0,n:0},Luxury:{s:0,n:0}};PM[i]={};NO[i]={n:0,s:0,c:0};EC[i]={};EG[i]={};}
 G.ord.forEach(function(r){var dt=r[0],m=mo(dt),ln=r[1],pr=r[2];
-  add(S,dt,r[4]);add(N,dt,r[7]);add(ln==="Premium"?NP:NL,dt,r[7]);add(UN,dt,r[3]);add(NW,dt,r[8]);
-  var t=MT[m];t.s+=r[4];t.n+=r[7];t.u+=r[3];t.c+=r[6];t.w+=r[8];
+  add(S,dt,r[4]);add(N,dt,r[7]);add(ln==="Premium"?NP:NL,dt,r[7]);add(UN,dt,r[3]);
+  var t=MT[m];t.s+=r[4];t.n+=r[7];t.u+=r[3];t.c+=r[6];
   CLS[m][ln].s+=r[4];CLS[m][ln].n+=r[7];
   if(pr==="None"){var o=NO[m];o.n+=r[7];o.s+=r[4];o.c+=r[6];}
   else{var q=PM[m][pr]=PM[m][pr]||{n:0,s:0,p:0,c:0};q.n+=r[7];q.s+=r[4];q.p+=r[5];q.c+=r[6];}});
@@ -128,24 +128,46 @@ function promo(m){
   $("s-promoins").innerHTML=ul(li);
 }
 
-/* ---------- 4 CUSTOMERS & LOCATION ---------- */
-function cust(m){
-  var t=MT[m],cr=G.cust[m-1],pcr=m>1?G.cust[m-2]:null,pt=m>1?MT[m-1]:null,rep=t.n?(t.n-t.w)/t.n:0,prep=pt&&pt.n?(pt.n-pt.w)/pt.n:null;
-  $("s-ckpis").innerHTML=
-    kpi(3,"Unique customers",cr[1],pcr?dlt(cr[1],pcr[1]):null,true)+
-    kpi(3,"New customers",t.w,pt?dlt(t.w,pt.w):null,true)+
-    kpi(3,"Orders from returning customers",pc(rep),prep!=null?dlt(rep,prep):null,true)+
-    kpi(3,"Orders per customer",(cr[1]?t.n/cr[1]:0).toFixed(2));
+/* ---------- 4 LOCATION (the real data has no customer id or name: only the delivery address / suburb is analysed) ---------- */
+function loc(m){
+  var rows=G.bysub.filter(function(r){return r[0]===m;}),prev={};
+  if(m>1)G.bysub.forEach(function(r){if(r[0]===m-1)prev[r[1]]=r;});
+  var tot=sum(rows.map(function(r){return r[2];}))||1,pk=Object.keys(prev),ptot=sum(pk.map(function(k){return prev[k][2];}));
+  rows.sort(function(a,b){return b[2]-a[2];});
+  var nm=function(r){return G.suburbs[r[1]][0];},top5=sum(rows.slice(0,5).map(function(r){return r[2];}))/tot;
+  var ptop5=ptot?sum(pk.map(function(k){return prev[k][2];}).sort(function(a,b){return b-a;}).slice(0,5))/ptot:null;
+  var gr=rows.filter(function(r){return prev[r[1]]&&prev[r[1]][3]>=8&&r[3]>=8;}).map(function(r){return {n:nm(r),g:(r[2]-prev[r[1]][2])/prev[r[1]][2]};}).sort(function(a,b){return b.g-a.g;});
+  var best=gr[0];
+  $("s-lkpis").innerHTML=
+    kpi(3,"Active suburbs (with orders)",rows.length,m>1?dlt(rows.length,pk.length):null,true)+
+    kpi(3,"Top suburb · "+nm(rows[0]),pc(rows[0][2]/tot),null,true)+
+    kpi(3,"Top 5 suburbs share of sales",pc(top5),ptop5!=null?dlt(top5,ptop5):null,false)+
+    kpi(3,"Fastest growing suburb vs last month",best?best.n+" "+(best.g>=0?"+":"")+(best.g*100).toFixed(0)+"%":"-");
   drawMap("s-map",m);
-  var rows=G.bysub.filter(function(r){return r[0]===m;}).sort(function(a,b){return b[2]-a[2];}),tot=sum(rows.map(function(r){return r[2];}))||1;
-  $("s-suburbtbl").innerHTML=tbl([{t:"Suburb"},{t:"Orders"},{t:"Sales",bar:TINT,f:f2},{t:"Share",f:function(v){return pc(v);}}],rows.map(function(r){return {v:[G.suburbs[r[1]][0],r[3],r[2],r[2]/tot]};}));
-  var nw=[],rt=[];for(var i=1;i<=12;i++){nw.push(MT[i].w);rt.push(MT[i].n-MT[i].w);}
-  opt("s-newret",{tooltip:{trigger:"axis"},legend:{top:0},color:[ACC,INK],grid:GR,xAxis:xcat(MN),yAxis:yval(),
-    series:[{name:"Orders from new customers",type:"bar",stack:"c",data:nw},{name:"Orders from returning customers",type:"bar",stack:"c",data:rt}]});
   var top=rows.slice(0,12),cum=0,cp=top.map(function(r){cum+=r[2];return +(cum/tot*100).toFixed(1);});
-  opt("s-pareto",{tooltip:{trigger:"axis"},legend:{top:0},color:[ACC,INK],grid:{left:48,right:44,top:30,bottom:46},xAxis:{type:"category",data:top.map(function(r){return G.suburbs[r[1]][0];}),axisLabel:{color:"#475467",rotate:35,fontSize:10},axisLine:AX.axisLine,axisTick:AX.axisTick},
+  opt("s-pareto",{tooltip:{trigger:"axis"},legend:{top:0},color:[ACC,INK],grid:{left:48,right:44,top:30,bottom:46},xAxis:{type:"category",data:top.map(nm),axisLabel:{color:"#475467",rotate:35,fontSize:10},axisLine:AX.axisLine,axisTick:AX.axisTick},
     yAxis:[yval(),{type:"value",max:100,axisLabel:{color:"#475467",formatter:"{value}%"},splitLine:{show:false}}],
     series:[{name:"Sales",type:"bar",data:top.map(function(r){return Math.round(r[2]);})},{name:"Cumulative share",type:"line",yAxisIndex:1,smooth:true,data:cp,label:{show:true,formatter:"{c}%",fontSize:9}}]});
+  var t10=rows.slice(0,10).reverse();
+  opt("s-mix",{tooltip:{trigger:"axis",axisPointer:{type:"shadow"},valueFormatter:f2},legend:{top:0},color:[ACC,INK],grid:{left:100,right:20,top:30,bottom:20},xAxis:yval(),
+    yAxis:{type:"category",data:t10.map(nm),axisLabel:{color:"#475467"},axisLine:AX.axisLine,axisTick:AX.axisTick},
+    series:[{name:"Premium sales",type:"bar",stack:"m",data:t10.map(function(r){return Math.round(r[5]);})},{name:"Luxury sales",type:"bar",stack:"m",data:t10.map(function(r){return Math.round(r[2]-r[5]);})}]});
+  var gd=(gr.length>10?gr.slice(0,5).concat(gr.slice(-5)):gr.slice()).reverse();
+  opt("s-growth",{tooltip:{valueFormatter:function(v){return v+"%";}},grid:{left:100,right:50,top:10,bottom:20},xAxis:yval(function(v){return v+"%";}),
+    yAxis:{type:"category",data:gd.map(function(x){return x.n;}),axisLabel:{color:"#475467"},axisLine:{lineStyle:AX.axisLine.lineStyle,onZero:false},axisTick:AX.axisTick},
+    series:[{type:"bar",data:gd.map(function(x){return {value:+(x.g*100).toFixed(1),itemStyle:{color:x.g>=0?T.good:T.bad},label:{show:true,formatter:"{c}%",position:x.g>=0?"right":"left"}};})}]});
+  var big=rows.filter(function(r){return r[3]>=8;});   // rank only suburbs with at least 8 orders: tiny samples are noise
+  var lux=big.map(function(r){return {n:nm(r),v:1-r[5]/r[2]};}).sort(function(a,b){return b.v-a.v;});
+  var prm=big.map(function(r){return {n:nm(r),v:r[6]/r[2]};}).sort(function(a,b){return b.v-a.v;});
+  var aov=big.map(function(r){return {n:nm(r),v:r[2]/r[3]};}).sort(function(a,b){return b.v-a.v;}),li=[];
+  li.push("<b>"+nm(rows[0])+"</b> is the top suburb with <b>"+pc(rows[0][2]/tot)+"</b> of sales; the top 5 suburbs bring <b>"+pc(top5)+"</b> and the other "+(rows.length-5)+" share the rest, so sales are "+(top5>.5?"concentrated: protect these accounts first.":"fairly spread across the area."));
+  if(best)li.push("Fastest growing suburb: <b>"+best.n+"</b> ("+(best.g>=0?"+":"")+(best.g*100).toFixed(0)+"%); steepest decline: <b>"+gr[gr.length-1].n+"</b> ("+(gr[gr.length-1].g*100).toFixed(0)+"%). Check whether a local promotion or a lost job explains the drop.");
+  if(lux.length)li.push("Highest Luxury share: <b>"+lux[0].n+"</b> ("+pc(lux[0].v)+" of its sales) versus <b>"+lux[lux.length-1].n+"</b> ("+pc(lux[lux.length-1].v)+"): target Luxury offers where it already sells. (Suburbs with fewer than 8 orders are left out of these rankings.)");
+  if(prm.length)li.push("Highest promotion dependence: <b>"+prm[0].n+"</b> ("+pc(prm[0].v)+" of its sales through promotions). Highest average order value: <b>"+aov[0].n+"</b> ("+usd(aov[0].v,true)+").");
+  $("s-lins").innerHTML=ul(li);
+  $("s-suburbtbl").innerHTML=tbl([{t:"Suburb"},{t:"Orders"},{t:"Units"},{t:"Sales",bar:TINT,f:f2},{t:"Share",f:pc},{t:"Avg order",f:f2},
+      {t:"vs last month",f:function(v){return v==null?"-":'<span class="'+(v>=0?"up":"down")+'">'+(v>=0?"▲ ":"▼ ")+Math.abs(v*100).toFixed(1)+"%</span>";}},{t:"Premium share",f:pc},{t:"Promo share",f:pc}],
+    rows.map(function(r){var p=prev[r[1]];return {v:[nm(r),r[3],r[4],r[2],r[2]/tot,r[2]/r[3],p&&p[2]>0?(r[2]-p[2])/p[2]:null,r[5]/r[2],r[6]/r[2]]};}));
 }
 
 /* ---------- 5 PROFIT & COSTS ---------- */
@@ -198,5 +220,5 @@ function team(m){
     cur.map(function(r){return {v:[r[1],r[2],pm[r[1]]?dlt(r[2],pm[r[1]]):null,r[2]/r[3],r[5],r[6],r[4]+r[5]+r[6]]};}));
 }
 
-B.pages["s-over"]=over;B.pages["s-sales"]=sales;B.pages["s-promo"]=promo;B.pages["s-cust"]=cust;B.pages["s-profit"]=profit;B.pages["s-team"]=team;
+B.pages["s-over"]=over;B.pages["s-sales"]=sales;B.pages["s-promo"]=promo;B.pages["s-loc"]=loc;B.pages["s-profit"]=profit;B.pages["s-team"]=team;
 })();

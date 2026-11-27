@@ -20,22 +20,23 @@ o = pd.read_csv(os.path.join(MFG, "orders.csv"), **NA)
 o["m"] = pd.to_datetime(o.date).dt.month
 daily = (o.groupby(["date", "product_line", "promotion_name"])
          .agg(units=("quantity", "sum"), sales=("amount_aud", "sum"), promo=("promo_cost_aud", "sum"), cogs=("cogs_aud", "sum"),
-              n=("order_id", "count"), newc=("is_new_customer", "sum"))
+              n=("order_id", "count"))
          .round(2).reset_index())
 sub = pd.read_csv(os.path.join(MFG, "suburbs.csv"))
 sidx = {s: i for i, s in enumerate(sub.suburb)}
 o["si"] = o.suburb.map(sidx)
-bysub = o.groupby(["m", "si"]).agg(sales=("amount_aud", "sum"), n=("order_id", "count"), uniq=("customer_id", "nunique")).round(2).reset_index()
-cust = o.groupby("m").agg(uniq=("customer_id", "nunique"), new=("is_new_customer", "sum")).reset_index()
+o["prem"] = o.amount_aud.where(o.product_line == "Premium", 0.0)
+o["promo_sales"] = o.amount_aud.where(o.promotion_name != "None", 0.0)
+bysub = (o.groupby(["m", "si"]).agg(sales=("amount_aud", "sum"), n=("order_id", "count"), units=("quantity", "sum"), prem=("prem", "sum"), psales=("promo_sales", "sum"))
+         .round(2).reset_index())
 size = o.groupby(["m", "quantity"]).size().reset_index(name="n")
 exp = pd.read_csv(os.path.join(MFG, "expenses.csv"))
 kpi = pd.read_csv(os.path.join(MFG, "staff_kpi.csv"))
 mfg = {
-    "ord": rows(daily),      # date, line, promo, units, sales, promoCost, cogs, orders, newCustomers
+    "ord": rows(daily),      # date, line, promo, units, sales, promoCost, cogs, orders
     "exp": rows(exp),        # date, category, amount
     "suburbs": rows(sub[["suburb", "lat", "lon"]]),
-    "bysub": rows(bysub),    # month, suburbIdx, sales, orders, uniqueCustomers
-    "cust": rows(cust),      # month, uniqueCustomers, newCustomers
+    "bysub": rows(bysub),    # month, suburbIdx, sales, orders, units, premiumSales, promoSales
     "size": rows(size),      # month, unitsPerOrder, orders
     "staff": rows(kpi[["month", "staff", "total_made_aud", "kpi_target_aud", "base_salary_aud", "commission_aud", "bonus_aud"]]),
 }

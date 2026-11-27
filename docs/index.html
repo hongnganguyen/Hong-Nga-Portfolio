@@ -145,15 +145,21 @@
   </div>
 </section>
 
-<section id="s-cust" hidden>
-  <div class="grid" id="s-ckpis"></div>
+<section id="s-loc" hidden>
+  <div class="grid" id="s-lkpis"></div>
   <div class="grid">
-    <div class="card c8"><h2>Sales by customer suburb (bubble = sales)</h2><div class="map" id="s-map" style="height:460px"></div></div>
-    <div class="card c4"><h2>Suburb ranking</h2><div class="scroll" id="s-suburbtbl" style="max-height:460px"></div></div>
+    <div class="card c7"><h2>Sales by delivery suburb (bubble = sales)</h2><div class="map" id="s-map" style="height:440px"></div></div>
+    <div class="card c5"><h2>Sales concentration: top suburbs and cumulative share</h2><div class="ch" id="s-pareto" style="height:440px"></div></div>
   </div>
   <div class="grid">
-    <div class="card c6"><h2>New vs returning customers by month</h2><div class="ch" id="s-newret"></div></div>
-    <div class="card c6"><h2>Sales concentration: top suburbs and cumulative share</h2><div class="ch" id="s-pareto"></div></div>
+    <div class="card c6"><h2>Product mix in the top 10 suburbs (Premium vs Luxury sales)</h2><div class="ch" id="s-mix"></div></div>
+    <div class="card c6"><h2>Biggest movers vs last month (% change in sales)</h2><div class="ch" id="s-growth"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c12"><h2>Insights <small style="font-weight:400;color:#667085">(auto-generated from the synthetic data)</small></h2><div class="ins" id="s-lins"></div></div>
+  </div>
+  <div class="grid">
+    <div class="card c12"><h2>Suburb detail</h2><div class="scroll" id="s-suburbtbl" style="max-height:440px"></div></div>
   </div>
 </section>
 
@@ -439,9 +445,9 @@ B.pages["c-over"]=renderOver;B.pages["c-exp"]=renderExp;B.pages["c-mat"]=renderM
 
 /* ---------- navigation: project -> pages ---------- */
 var PROJ={
-  mfg:{first:"s-over",purpose:"Project 1 · Which orders, products, promotions, customers and costs drive sales and profit each month?",
+  mfg:{first:"s-over",purpose:"Project 1 · Which orders, products, promotions, locations and costs drive sales and profit each month?",
     pages:[["s-over","Overview","GLASS MANUFACTURING PERFORMANCE | <b>OVERVIEW</b>"],["s-sales","Sales &amp; Products","GLASS MANUFACTURING PERFORMANCE | <b>SALES &amp; PRODUCTS</b>"],
-           ["s-promo","Promotions","GLASS MANUFACTURING PERFORMANCE | <b>PROMOTIONS</b>"],["s-cust","Customers &amp; Location","GLASS MANUFACTURING PERFORMANCE | <b>CUSTOMERS &amp; LOCATION</b>"],
+           ["s-promo","Promotions","GLASS MANUFACTURING PERFORMANCE | <b>PROMOTIONS</b>"],["s-loc","Location","GLASS MANUFACTURING PERFORMANCE | <b>LOCATION</b>"],
            ["s-profit","Profit &amp; Costs","GLASS MANUFACTURING PERFORMANCE | <b>PROFIT &amp; COSTS</b>"],["s-team","Team","GLASS MANUFACTURING PERFORMANCE | <b>TEAM</b>"]]},
   fleet:{first:"c-over",purpose:"Project 2 · How much does the rental fleet earn and cost, and where does the money go (Operation vs Invest)?",
     pages:[["c-over","Overview","CAR RENTAL | <b>OVERVIEW</b>"],["c-exp","Expenses","CAR RENTAL | <b>EXPENSES</b>"],["c-mat","Material Costs","CAR RENTAL | <b>MATERIAL COSTS</b>"],["c-fleet","Fleet &amp; Cars","CAR RENTAL | <b>FLEET &amp; CARS</b>"]]}

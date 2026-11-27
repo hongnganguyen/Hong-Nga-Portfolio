@@ -7,10 +7,10 @@
 ## Projects
 
 ### 1 · Glass manufacturing performance (Power BI, synthetic data)
-Manufacturing business selling Premium and Luxury glass products in Sydney (AUD). The report answers one management question: *which orders, products, promotions, customers and costs drive sales and profit each month?* It is split into **6 pages by purpose**: Overview (executive summary) · Sales & Products · Promotions · Customers & Location · Profit & Costs · Team, all filtered by month and compared with the previous month.
-**Tools:** Power BI, DAX, Power Query · **Model:** star schema, ≈3,100 orders, ≈2,400 customers, 20 suburbs, 5 sales staff.
+Manufacturing business selling Premium and Luxury glass products in Sydney (AUD). The report answers one management question: *which orders, products, promotions, locations and costs drive sales and profit each month?* It is split into **6 pages by purpose**: Overview (executive summary) · Sales & Products · Promotions · Location · Profit & Costs · Team, all filtered by month and compared with the previous month.
+**Tools:** Power BI, DAX, Power Query · **Model:** star schema, ≈3,100 orders, 20 delivery suburbs, 5 sales staff.
 **What the sample report shows** (synthetic, Nov 2025): sales **A$81.8K** (+24.7% MoM), profit margin **27.9%**, COGS **46%** of expenses, promotions **48%** of sales but a **55.5%** margin vs **67.1%** on full-price orders.
-**Design:** one accent color, five fixed expense-group colors, KPI cards with sparklines, profit bridge (waterfall), promotion margin vs full price, new vs returning customers, sales concentration by suburb, auto-written insights.
+**Design:** one accent color, five fixed expense-group colors, KPI cards with sparklines, profit bridge (waterfall), promotion margin vs full price, suburb map, sales concentration and growth by suburb, product mix by suburb, auto-written insights.
 
 **All 6 pages** (synthetic data):
 
@@ -23,8 +23,8 @@ Manufacturing business selling Premium and Luxury glass products in Sydney (AUD)
 **3 · Promotions**
 ![Promotions](projects/glass-manufacturing-performance-powerbi/images/03-promotions.png)
 
-**4 · Customers & Location**
-![Customers and location](projects/glass-manufacturing-performance-powerbi/images/04-customers-location.png)
+**4 · Location**
+![Location](projects/glass-manufacturing-performance-powerbi/images/04-location.png)
 
 **5 · Profit & Costs**
 ![Profit and costs](projects/glass-manufacturing-performance-powerbi/images/05-profit-costs.png)
